@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Digital Clock</title>
+        <script>
+            function displayTime() {
+                var elt = document.getElementById('clock');
+                var now = new Date();
+                elt.innerHTML = now.toLocaleTimeString();
+                setTimeout(displayTime, 1000);
+            }
+            window.onload = displayTime;
+        </script>
+        <style>
+            #clock {
+                font: bold 24pt sans;
+                background: #ddf;
+                padding: 10px;
+                border: solid black 2px;
+                border-radius: 10px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <h1>Digital Clock</h1>
+        <span id="clock"></span>
+        <br>
+        <br>
+        <br>
+        <a href="javascript:alert('hi');">测试bookmarklet</a>
+        <br>
+        <a href="javascript:function se (d) {return d.selection ? d.selection.createRange().text : d.getSelection()} s = se (document); for(i=0; i<frames.length && !s; i++)s = se(frames[i].document); if(!s || s=='')s = prompt('输入维基百科搜索关键字',''); open('http://zh.wikipedia.org' + (s ? '/w/index.php?title=Special:Search&search=' + encodeURIComponent(s): '')).focus();">维基百科搜索</a>
+        <br>
+    </body>
+</html>

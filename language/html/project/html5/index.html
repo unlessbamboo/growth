@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>A Portfolio of Joefrey Mahusay a Freelance Web Designer</title>
+    <link href="css/reset.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css" />
+</head>
+
+<body>
+    <!-- page的宽度限制了主体内容的显示位置 -->
+    <div id="page">
+        <!-- 当前页面附属信息, 用于引用, 侧边栏, 广告, 导航条等 -->
+        <aside id="sidebar">
+            <nav>
+                <a class="logo" href="#top" id="nav-logo">
+                    <span>超级垃圾</span> man
+                </a>
+                <ul>
+                    <li class="active" id="nav-1"><a href="#home">Home</a></li>
+                    <li id="nav-2"><a href="#work">Work</a></li>
+                    <li id="nav-3"><a href="#about">About</a></li>
+                    <li id="nav-4"><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="bg_bottom"></div>
+            </nav>
+        </aside>
+
+        <!-- 主体区域 
+            其中总共有5个章节区域:
+                top, home, work, about, contact
+        -->
+        <div id="main-content">
+            <section id="top"></section>
+            <!-- do not remove ;)-->
+            <!-- 主体内容布局 -->
+            <section id="home">
+                <div id="loader" class="loader"></div>
+                <!-- 轮图, 利用js来实现页面滑动效果 -->
+                <div id="ps_container" class="ps_container">
+                    <span class="ribbon"></span>
+                    <!-- 这里展现图片, 大图 -->
+                    <div class="ps_image_wrapper">
+                        <!-- 默认情况下, 先呈现第一个张图片, 之后由 JS 控制 -->
+                        <img src="images/1.jpg" alt="" /> </div>
+                    <!-- 控制上一张/下一张图片的呈现 -->
+                    <div class="ps_next"></div>
+                    <div class="ps_prev"></div>
+
+                    <!-- 用于图片轮播, 网页上的5个列表句号, 图片在
+                        ps_image_wrapper中呈现.
+                    -->
+                    <ul class="ps_nav">
+                        <li class="selected"><a href="images/1.jpg" rel="images/thumbs/1.jpg">Image 1</a></li>
+                        <li><a href="images/2.jpg" rel="images/thumbs/2.jpg">Image 2</a></li>
+                        <li><a href="images/3.jpg" rel="images/thumbs/3.jpg">Image 3</a></li>
+                        <li><a href="images/4.jpg" rel="images/thumbs/4.jpg">Image 4</a></li>
+                        <li><a href="images/5.jpg" rel="images/thumbs/5.jpg">Image 5</a></li>
+                        <!-- 预览图片标签存放, 图片下面的5个拇指带下的点 -->
+                        <li class="ps_preview">
+                            <div class="ps_preview_wrapper">
+                                <!-- Thumbnail comes here -->
+                            </div>
+                            <!-- Little triangle -->
+                            <span></span> </li>
+                    </ul>
+                </div>
+
+                <!--end ps_container-->
+                <header class="divider intro-text">
+                    <h2>狂想写作本的个人博客</h2>
+                </header>
+                <div class="recent-work columns">
+                    <h3>My Recent Work</h3>
+                    <div class="two-column">
+                        <figure>
+                            <a href="images/pricing_table_3.jpg" rel="recent_work" class="zoom"><img src="images/work_1.jpg" alt="Image"></a>
+                        </figure>
+                    </div>
+                    <div class="two-column last">
+                        <figure>
+                            <a href="images/pricing_table_3.jpg" rel="recent_work" class="zoom"><img src="images/work_2.jpg" alt="Image"></a>
+                        </figure>
+                    </div>
+                </div>
+                <div class="my-services columns">
+                    <h3>My Services</h3>
+                    <div class="three-column">
+                        <h4>Graphic Design</h4>
+                        <p>Test</p>
+                    </div>
+                </div>
+                <div class="one-column columns testimony">
+                    <div class="clearfix says">
+                        <figure class="marginRight"><img src="images/client_image_1.jpg" alt="Image" /></figure>
+                        <blockquote>
+                            <p>Test</p>
+                            <cite>&mdash; <a href="#">Joefrey Mahusay</a></cite> </blockquote>
+                    </div>
+                </div>
+            </section>
+            <!--end section-->
+
+            <section id="work" class="clearfix">
+                <header>
+                    <h2>我的工作经历</h2>
+                </header>
+            </section>
+            <!--end section-->
+            <section id="about" class="clearfix">
+                <header>
+                    <h2>Who is this Guy?</h2>
+                </header>
+                <figure class="marginRight"><img src="images/me.gif" alt="Image" /></figure>
+                <p>自我介绍</p>
+                <p>自我介绍2</p>
+                <div class="clearfix"></div>
+            </section>
+            <!--end section-->
+            <section id="contact" class="clearfix">
+                <header>
+                    <h2>Get in touch</h2>
+                </header>
+                <div class="social_wrapper">
+                    <h3>Where to find me?</h3>
+                    <ul class="social">
+                        <li class="dribble"><a href="#">Dribble</a></li>
+                        <li class="twitter"><a href="#">Twitter</a></li>
+                        <li class="lastfm"><a href="#">Last FM</a></li>
+                        <li class="facebook"><a href="#">Facebook</a></li>
+                        <li class="location"><a href="#">Location</a></li>
+                        <li class="forrst"><a href="#">Forrst</a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    <p><small>This <abbr title="Hypertext Markup Language 5">HTML5</abbr> Single Page Portfolio was created <em>by</em> <a href="http://webdesigneraid.com/">WebDesignerAid.com</a> <em>for</em> <a href="http://speckyboy.com/">Speckyboy</a></small></p>
+                </div>
+                <!--end copyright-->
+            </section>
+            <!--end section-->
+        </div>
+    </div>
+
+    <!-- The JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="js/jquery.fancybox.min.js"></script>
+    <script type="text/javascript" src="js/preload.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/aside.js"></script>
+    <!-- [> 图片轮播插件 <] -->
+
+</body>
+
+</html>

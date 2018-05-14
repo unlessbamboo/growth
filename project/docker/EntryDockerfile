@@ -1,0 +1,12 @@
+# 用于测试ENTRYPOINT的dockerfile
+# 使用命令: docker build -t learn:entry -f EntryDockerfile . 定制镜像
+FROM ubuntu:bamboo
+# 设置环境变量
+# ENV BAMBOO=1.6.8
+# 拷贝上下文中的文件到镜像中
+COPY entry/docker-entrypoint.sh /usr/bin/
+# 预处理, 基于CMD传入的值来决定ENTRYPOINT的执行
+ENTRYPOINT ["docker-entrypoint.sh"]
+# 声明运行服务时的端口
+# EXPOSE 6379
+CMD ["echo"]

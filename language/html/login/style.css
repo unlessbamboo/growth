@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, serif;
+  background: url(images/login-page-bg.jpg) center -50px no-repeat #c4c4c4;
+  color: #3a3a3a;
+}
+
+/* 强制float元素换行 */
+.clear {
+  clear: both;
+}
+
+form {
+  width: 406px;
+  margin: 120px auto 0;
+}
+
+/* 仅仅为了 HTML 结构好看, 隐藏了该元素的显示 */
+legend {
+  display: none;
+}
+
+/* 边框 */
+fieldset {
+  border: 0;
+}
+
+/* 以左浮动, 但是文本对齐向右 */
+label {
+  width: 115px;
+  text-align: right;
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 9px 0 0 0;
+  font-size: 16px;
+}
+
+/* 
+ * 1 设置input和label的边距, 这里以最大值为准 
+ * 2 块状元素和下一个元素的上下边距
+ */
+input {
+  width: 220px;
+  display: block;
+  /* 内部填充 */
+  padding: 4px; 
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: #3a3a3a;
+  font-family: Georgia, serif;
+}
+
+/* 设置inline-block, 一遍设置大小 */
+input[type=checkbox] {
+  width: 20px;
+  margin: 0;
+  display: inline-block;
+}
+
+.button {
+  background: url(images/button-bg.png) repeat-x top center;
+  border: 1px solid #999;
+  -moz-border-radius: 5px;
+  padding: 5px;
+  color: black;
+  font-weight: bold;
+  -webkit-border-radius: 5px;
+  font-size: 13px;
+  width: 70px;
+}
+
+.button:hover {
+  background: white;
+  color: black;
+}

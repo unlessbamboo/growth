@@ -1,0 +1,1305 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+<head id="ctl00_Head1"><title>
+	Nonimmigrant Visa - Travel Information
+</title><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><link href="../../_res/css/print.css" rel="stylesheet" type="text/css" media="print" /><link href="../../_res/css/screen.css" rel="stylesheet" type="text/css" media="screen" /><link href="../../_res/css/tooltip.css" rel="stylesheet" type="text/css" media="screen" />    
+    <script language="javascript" type="text/javascript" src='/GenNIV/_res/js/Common.js'></script>
+    <script language="javascript" type="text/javascript" src='/GenNIV/_res/js/UI.js'></script>
+    
+    <script type="text/javascript">         
+        
+        var exitBtnID= 'ctl00_lbtnExit';        
+        var hdFieldID = 'ctl00_HDClearSession';        
+        var timeoutUrl = '/GenNIV/Logout.aspx';
+        
+        function SessionAlert()
+        {
+             // Call serverside function
+            var msg = 'There has been no activity for 15 minutes. As a security measure, your session will time out in 5 minutes. Click OK to continue.';
+        
+            var now = new Date();
+            alert("[" + now + "] " + msg);
+            //document.forms[0].submit();
+            needToConfirm = false;  // Turn off navigation message
+            location.reload(true);  // Refresh page
+            setTimeout("SessionAlert()", 15 * 60 * 1000);
+        }
+        
+        function StopMe()
+        {
+            var anchor = document.getElementById("stophere");
+            
+            if(anchor)
+            {
+                scroll(0,0);
+                document.getElementById("stophere").focus();
+            }
+        }
+
+      
+    </script>
+    <script language="javascript" type="text/javascript"  src='/GenNIV/_res/js/CheckBrowserClose.js'></script>
+    <script type='text/javascript' src='/CEAC/GoogleAnalytics.js'></script>
+    <script language="javascript" id="_fed_an_ua_tag" src="/CEAC/UniversalFederated-Analytics.js?agency=DOS&subagency=CA"></script>    
+</head>
+<body onload="InitializeTimeoutTimer('5', 'True'); StopMe(); history.go(+1); ClearConfirmPgSession();">
+    
+    <input id="Hidden1" type="hidden"  />
+    <form name="aspnetForm" method="post" action="./complete_travel.aspx?node=Travel" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPaA8FDzhkNWI3ZWZiMTEyYzEyOBgDBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WBwVQY3RsMDAkU2l0ZUNvbnRlbnRQbGFjZUhvbGRlciRGb3JtVmlldzEkZGxQcmluY2lwYWxBcHBUcmF2ZWwkY3RsMDAkaGVscHBvcFBVUlBPU0UFVmN0bDAwJFNpdGVDb250ZW50UGxhY2VIb2xkZXIkRm9ybVZpZXcxJGRsUHJpbmNpcGFsQXBwVHJhdmVsJGN0bDAwJGhlbHBwb3BPVEhFUl9QVVJQT1NFBTtjdGwwMCRTaXRlQ29udGVudFBsYWNlSG9sZGVyJEZvcm1WaWV3MSRoZWxwcG9wVFJBVkVMX0RURV9NTwU7Y3RsMDAkU2l0ZUNvbnRlbnRQbGFjZUhvbGRlciRGb3JtVmlldzEkaGVscHBvcFRSQVZFTF9MT1NfQ0QFOGN0bDAwJFNpdGVDb250ZW50UGxhY2VIb2xkZXIkRm9ybVZpZXcxJGhlbHBwb3BQQVlFUl9UWVBFBUBjdGwwMCRTaXRlQ29udGVudFBsYWNlSG9sZGVyJEZvcm1WaWV3MSRjYnhETkFQQVlFUl9FTUFJTF9BRERSX05BBTJjdGwwMCRTaXRlQ29udGVudFBsYWNlSG9sZGVyJEZvcm1WaWV3MSRIZWxwQnV0dG9uMQUmY3RsMDAkU2l0ZUNvbnRlbnRQbGFjZUhvbGRlciRGb3JtVmlldzEPFCsAB2RkAgFkZBYAAgFkBQxjdGwwMCRjY01lbnUPMs0aAAEAAAD/////AQAAAAAAAAAMAgAAAE9DZWFjLkNvbXBvbmVudC5VSSwgVmVyc2lvbj0xLjAuNDM0OS4xMjM1MCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1udWxsBQEAAAAgQ2VhYy5Db21wb25lbnQuVUkuTWVudStNZW51U3RhdGUEAAAADF94bWxNZW51RGF0YQ9fc2VsZWN0ZWRNZW51SUQWX3NlbGVjdGVkTWVudVNlY3Rpb25JRBNfZGlzcGxheVRvcE1lbnVPbmx5AQEBAAECAAAABgMAAADJGDxTVEFUVVM+PFNFQyBJRD0iQ09NUExFVEUiPjxDPk48L0M+PFI+WTwvUj48UEdTPjxQRyBJRD0iR2V0U3RhcnRlZCI+PEM+WTwvQz48Uj5ZPC9SPjwvUEc+PFBHIElEPSJQZXJzb25hbCI+PEM+WTwvQz48Uj5ZPC9SPjxTUFM+PFNQMSBJRD0iUGVyc29uYWwxIj48Qz5ZPC9DPjxSPlk8L1I+PC9TUDE+PFNQMSBJRD0iUGVyc29uYWwyIj48Qz5ZPC9DPjxSPlk8L1I+PC9TUDE+PC9TUFM+PC9QRz48UEcgSUQ9IkFkZHJlc3NQaG9uZSI+PEM+WTwvQz48Uj5ZPC9SPjwvUEc+PFBHIElEPSJQcHRWaXNhIj48Qz5ZPC9DPjxSPlk8L1I+PC9QRz48UEcgSUQ9IlRyYXZlbCI+PEM+WDwvQz48Uj5ZPC9SPjwvUEc+PFBHIElEPSJUcmF2ZWxDb21wYW5pb25zIj48Qz5YPC9DPjxSPlk8L1I+PC9QRz48UEcgSUQ9IlByZXZpb3VzVVNUcmF2ZWwiPjxDPlg8L0M+PFI+WTwvUj48L1BHPjxQRyBJRD0iVVNDb250YWN0Ij48Qz5OPC9DPjxSPlk8L1I+PC9QRz48UEcgSUQ9IkZhbWlseSI+PEM+WDwvQz48Uj5ZPC9SPjxTUFM+PFNQMSBJRD0iUmVsYXRpdmVzIj48Qz5YPC9DPjxSPlk8L1I+PC9TUDE+PFNQMSBJRD0iU3BvdXNlIj48Qz5OPC9DPjxSPk48L1I+PC9TUDE+PFNQMSBJRD0iRmlhbmNlRmlhbmNlZSI+PEM+TjwvQz48Uj5OPC9SPjwvU1AxPjxTUDEgSUQ9IlByZXZTcG91c2UiPjxDPk48L0M+PFI+TjwvUj48L1NQMT48U1AxIElEPSJEZWNlYXNlZFNwb3VzZSI+PEM+TjwvQz48Uj5OPC9SPjwvU1AxPjxTUDEgSUQ9IkNoaWxkcmVuIj48Qz5OPC9DPjxSPk48L1I+PC9TUDE+PC9TUFM+PC9QRz48UEcgSUQ9IldvcmtFZHVjYXRpb25NYWluIj48Qz5YPC9DPjxSPlk8L1I+PFNQUz48U1AxIElEPSJXb3JrRWR1Y2F0aW9uMSI+PEM+TjwvQz48Uj5ZPC9SPjwvU1AxPjxTUDEgSUQ9IldvcmtFZHVjYXRpb24yIj48Qz5YPC9DPjxSPlk8L1I+PC9TUDE+PFNQMSBJRD0iV29ya0VkdWNhdGlvbjMiPjxDPlg8L0M+PFI+WTwvUj48L1NQMT48L1NQUz48L1BHPjxQRyBJRD0iU2VjQW5kQmFja01haW4iPjxDPk48L0M+PFI+WTwvUj48U1BTPjxTUDEgSUQ9IlNlY3VyaXR5YW5kQmFja2dyb3VuZDEiPjxDPk48L0M+PFI+WTwvUj48L1NQMT48U1AxIElEPSJTZWN1cml0eWFuZEJhY2tncm91bmQyIj48Qz5OPC9DPjxSPlk8L1I+PC9TUDE+PFNQMSBJRD0iU2VjdXJpdHlhbmRCYWNrZ3JvdW5kMyI+PEM+TjwvQz48Uj5ZPC9SPjwvU1AxPjxTUDEgSUQ9IlNlY3VyaXR5YW5kQmFja2dyb3VuZDQiPjxDPk48L0M+PFI+WTwvUj48L1NQMT48U1AxIElEPSJTZWN1cml0eWFuZEJhY2tncm91bmQ1Ij48Qz5OPC9DPjxSPlk8L1I+PC9TUDE+PC9TUFM+PC9QRz48UEcgSUQ9IkVWaXNhVHJlYXR5TWFpbiI+PEM+TjwvQz48Uj5OPC9SPjxTUFM+PFNQMSBJRD0iRVZpc2FUcmVhdHkiPjxDPk48L0M+PFI+TjwvUj48L1NQMT48U1AxIElEPSJTdXBFVmlzYUJ1c2luZXNzMSI+PEM+TjwvQz48Uj5OPC9SPjwvU1AxPjxTUDEgSUQ9IlN1cEVWaXNhQnVzaW5lc3MyIj48Qz5OPC9DPjxSPk48L1I+PC9TUDE+PFNQMSBJRD0iU3VwRVZpc2FCdXNpbmVzczMiPjxDPk48L0M+PFI+TjwvUj48L1NQMT48U1AxIElEPSJTdXBFVmlzYUJ1c2luZXNzNCI+PEM+TjwvQz48Uj5OPC9SPjwvU1AxPjxTUDEgSUQ9IlN1cEVWaXNhUGVyc29ubmVsMSI+PEM+TjwvQz48Uj5OPC9SPjwvU1AxPjxTUDEgSUQ9IlN1cEVWaXNhUGVyc29ubmVsMiI+PEM+TjwvQz48Uj5OPC9SPjwvU1AxPjxTUDEgSUQ9IlN1cEVWaXNhQXBwMSI+PEM+TjwvQz48Uj5OPC9SPjwvU1AxPjxTUDEgSUQ9IlN1cEVWaXNhQXBwMiI+PEM+TjwvQz48Uj5OPC9SPjwvU1AxPjxTUDEgSUQ9IlN1cEVWaXNhQXBwMyI+PEM+TjwvQz48Uj5OPC9SPjwvU1AxPjwvU1BTPjwvUEc+PFBHIElEPSJFeGNoYW5nZVZpc2l0b3JNYWluIj48Qz5OPC9DPjxSPk48L1I+PFNQUz48U1AxIElEPSJFeGNoYW5nZVZpc2l0b3IyIj48Qz5OPC9DPjxSPk48L1I+PC9TUDE+PFNQMSBJRD0iRXhjaGFuZ2VWaXNpdG9yMyI+PEM+TjwvQz48Uj5OPC9SPjwvU1AxPjwvU1BTPjwvUEc+PFBHIElEPSJDcmV3VmlzYSI+PEM+TjwvQz48Uj5OPC9SPjwvUEc+PFBHIElEPSJUZW1wb3JhcnlXb3JrIj48Qz5OPC9DPjxSPk48L1I+PC9QRz48UEcgSUQ9IlZWaXNhIj48Qz5OPC9DPjxSPk48L1I+PC9QRz48L1BHUz48L1NFQz48U0VDIElEPSJQSE9UTyI+PEM+TjwvQz48Uj5ZPC9SPjxQR1M+PFBHIElEPSJVcGxvYWRQaG90byI+PEM+TjwvQz48Uj5ZPC9SPjwvUEc+PFBHIElEPSJDb25maXJtUGhvdG8iPjxDPk48L0M+PFI+WTwvUj48L1BHPjwvUEdTPjwvU0VDPjxTRUMgSUQ9IkZFRSI+PEM+TjwvQz48Uj5OPC9SPjxQR1M+PFBHIElEPSJQYXlGZWUiPjxDPk48L0M+PFI+TjwvUj48L1BHPjwvUEdTPjwvU0VDPjxTRUMgSUQ9IkFQUE9JTlRNRU5UIj48Qz5OPC9DPjxSPk48L1I+PFBHUz48UEcgSUQ9Ik1ha2VBcHBvaW50bWVudCI+PEM+TjwvQz48Uj5OPC9SPjwvUEc+PC9QR1M+PC9TRUM+PFNFQyBJRD0iUkVWSUVXIj48Qz5OPC9DPjxSPlk8L1I+PFBHUz48UEcgSUQ9IlJldmlld1BlcnNvbmFsIj48Qz5OPC9DPjxSPlk8L1I+PC9QRz48UEcgSUQ9IlJldmlld1RyYXZlbCI+PEM+WDwvQz48Uj5ZPC9SPjwvUEc+PFBHIElEPSJSZXZpZXdVU0NvbnRhY3QiPjxDPk48L0M+PFI+WTwvUj48L1BHPjxQRyBJRD0iUmV2aWV3RmFtaWx5Ij48Qz5YPC9DPjxSPlk8L1I+PC9QRz48UEcgSUQ9IlJldmlld1dvcmtFZHVjYXRpb24iPjxDPlg8L0M+PFI+WTwvUj48L1BHPjxQRyBJRD0iUmV2aWV3U2VjdXJpdHkiPjxDPk48L0M+PFI+WTwvUj48L1BHPjxQRyBJRD0iUmV2aWV3RVZpc2EiPjxDPk48L0M+PFI+TjwvUj48L1BHPjxQRyBJRD0iUmV2aWV3U3R1ZGVudCI+PEM+TjwvQz48Uj5OPC9SPjwvUEc+PFBHIElEPSJSZXZpZXdDcmV3Ij48Qz5OPC9DPjxSPk48L1I+PC9QRz48UEcgSUQ9IlJldmlld1RlbXBvcmFyeVdvcmsiPjxDPk48L0M+PFI+TjwvUj48L1BHPjxQRyBJRD0iUmV2aWV3VlZpc2EiPjxDPk48L0M+PFI+TjwvUj48L1BHPjxQRyBJRD0iUmV2aWV3TG9jYXRpb24iPjxDPk48L0M+PFI+WTwvUj48L1BHPjwvUEdTPjwvU0VDPjxTRUMgSUQ9IkVTSUdOIj48Qz5OPC9DPjxSPlk8L1I+PFBHUz48UEcgSUQ9IlNpZ25DZXJ0aWZ5Ij48Qz5OPC9DPjxSPlk8L1I+PC9QRz48L1BHUz48L1NFQz48L1NUQVRVUz4GBAAAAAZUcmF2ZWwGBQAAAAhDT01QTEVURQALZISk0j9ZrmEFpP1pnZb/rmQd35kv" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/GenNIV/WebResource.axd?d=icsadJ8Zc2rtQ_8NGTlm_jaJgpUwM1o7gz5kDbVk_NAwVMYjg4zv7a015htSWRhTaMKZNK6cxFYmS5br7LYZ3fHz73U1&amp;t=636396530200000000" type="text/javascript"></script>
+
+
+<script src="/GenNIV/WebResource.axd?d=XZqGvvrBu1BwCch0-3tyY050SvL2lbm8OfnmreH7vBwA4nUNyJI-828vnq8H-AhQctPIsP8UJTt98WdkuI8EGflt9BNOGJ7TbFf1KCp2xKrixEW9aZECCALN1qROXqnXAPSzj3Dmu9ZoJAU_WQtHvAkHQ7k1&amp;t=636474650120000000" type="text/javascript"></script>
+<script src="/GenNIV/ScriptResource.axd?d=rZtA2MNtasNTvJwO5JI4ayIxTWjpgiYOKhWny_MrxiW56nthsoH7BAeMLCvVyZEjmkxu0eRNdaqR-E2NU7tzOsZ_yFxj7ZQmwUs1y2UpBkPR7szGnJsPIYMu_AKvekSBDk3HikCOWIceMOlr3N6_UpvqRkg1&amp;t=ffffffffdbdc666f" type="text/javascript"></script>
+<script src="/GenNIV/ScriptResource.axd?d=O9E6Ez2RlMAb_pPBzd3uRNMA4j-8sctSA43mvdUn2ONEldcsCbh3I9Bf89OSwyWHnrgzkS3LLjwwkIlRzwjY0Xk5rzLuzsiz-T8zWmxGSSixZWQHSnPiDdQmKxPOdQHUAAJsQFayToQbM7DlkeaNbHHZEAny2NdpzXM78Tnqp1tjlID90&amp;t=620ef15f" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax client-side framework failed to load.');
+//]]>
+</script>
+
+<script src="/GenNIV/ScriptResource.axd?d=Wvzo4VGKF3Sc9Mnf_4HfUlxVa5GtjSSwug3dStvTeV-p7dYHlMvgj3p-CPR3L0xLu73kQQxkpmBzUWhnkbyBzxgG_mmjgagTG65tslpixm6bZ4K0d8VL-EmCdPdlr3EtQDCIawUtYPgOcT18rNzaF4GXCBXIuT-MGbhPu-fZGXikMvcYlHv9CbGSlOJamBQ3xZgc2w2&amp;t=620ef15f" type="text/javascript"></script>
+<script src="../../_res/js/AjaxHandler.js" type="text/javascript"></script>
+<script src="/GenNIV/ScriptResource.axd?d=KWJrh40a75zz2NSEA8z24F4HR4tuKa1tzs_Rz3_fzI1Bu0_q74M5B4oGQ6JvHRi_ckHq5QIWVg7lVNLL3lLhinF9X0hqDMAK_gVfDQQ8d3k5YkjDMyNxtpruI3TFljIW_8z25fTX0vBcNRQJquSXsGuSC0U1&amp;t=ffffffffb3d6249d" type="text/javascript"></script>
+<script src="/GenNIV/ScriptResource.axd?d=j0uXdWB7J1XziFqJLrSbefHhK1T5oUqZvM3f7AG1pvYX_F9pjCtzO6cKukKTcvtBPm_JZg1oN-3SU18ttP8K2mrvqjTyKWno6tmok5QFzYbd_GQXojZCYe5a82fuAQsZAgbdQqYbdy7UvJlThbwy0-l93wpljbCLDaTVpUlLXgA9Ft1U0&amp;t=ffffffffb3d6249d" type="text/javascript"></script>
+<script src="/GenNIV/ScriptResource.axd?d=B_-eBqHpoIEDK62Rd41hw9IXg3YNggXdLTzPqIYvlzYZJOApNZjf37Gxue_5it8VXptN7QjuRLAopcWQlaceS47I-VfCDVxAbfu1YihDu75SSJ2OhTiFRvCCt2GGjikr8aYsQ0k_U6pTL7tqJP5fV-5gsBTFVTBjcaXnHx8jnfFbWPhbuzQ4d7bazcFZ7sl8D5pGPw2&amp;t=ffffffffb3d6249d" type="text/javascript"></script>
+<script src="/GenNIV/ScriptResource.axd?d=nItDd0BR4mtkDBDWBICh-bzljV8NDb9ViYM96EdAx_jcPw4UGqPUDAwq6lDuqGVxOPRWHyw5ckRIxS39FUe9CJ9Z6D6m01E7yjnYhD6gmpOgVNFwor2kW4B60FWF5AHM-dpztovnvqVEHSa_EGVsUaQABxI1&amp;t=ffffffffb3d6249d" type="text/javascript"></script>
+<script src="/GenNIV/ScriptResource.axd?d=EK6WqWMRI_71Sdlr1tuCGMSsnkVrV2oL-0GFAg9qk7HnSFkUXVL54XO3qp_JCT2Ixp6itVga_a4n3dVq2OvmWduRrhscpRd-R3Lz6KEOc74N9k3154wQCEdeiLOJFmEWLAxLnugRIKmR7grGrW3nOtok-5DIRh9-e2irSVPYpm4qQzIV0&amp;t=ffffffffb3d6249d" type="text/javascript"></script>
+<script src="/GenNIV/ScriptResource.axd?d=GrcYLtSzj-1-ZBN2KM8snQ-i4HXuRp0sXfq4eVND6hJcg7MrLtBfkgnOhwPbOwXysHcUTzm3RhAWQCJ74n8cGtUKTH3ucj55BzRPb1oserGRpQlAnXJr5ceRO6Ss-YeChmpJtBJrVlsyInR1hg_y3zJDzaRY8KAN3-uS9DH0-ApxVggoHNp8eUA2xnRLXNCpDhlLpQ2&amp;t=ffffffffb3d6249d" type="text/javascript"></script>
+<script src="/GenNIV/ScriptResource.axd?d=T2yNdImvrDfbKpZ0qlbowqIPq7JG1yLwq9oXZL6WkZI2wvIG24INDHczqzfxeGHRq5_JDcYisw6A8R3cnqqpG7_anXVUJsm5MshOB8mJJmKDUoP0TfzaOzXLC1ZuuRZU-roymsuEWR8H_xqTPQ8e9rZjZTyADmNBPhpjephMNZ7ExSjL0&amp;t=ffffffffb3d6249d" type="text/javascript"></script>
+<script src="/GenNIV/ScriptResource.axd?d=VOKUJ9B9yQxwX3wIGf58fT6zobovKxpBMKLzQFDfQrsV5QJOh7ZRSAFX6SBQmOPcwa1Dh0qTHFloL4aOdFfV8GWFQQOyIL5E-tR0xx6k1gT5Ct85YUAKUF5cbyI39rCMKDQnRbowKIakYwJJzKPUC9O4WQwPQQWQs84oJuX7ZmJQBdKS0&amp;t=ffffffffb3d6249d" type="text/javascript"></script>
+<script src="/GenNIV/ScriptResource.axd?d=tYFd7GglisdiyGTFfkTLkTq6JaFdGEVTi6uV_Lvzmjx1q2jfWICAEslmZ0EZ0hg9ocqpuxjGveDeXx5kUWHzQyXFdrV0gNR7L5ApP-VQDnOSyW94Z44CQOHwPiCX-7ctuxjKCH3NJOUD5i4x2HOKdOcDXieDRLntyHJ-4yLstfmfRez90&amp;t=ffffffffb3d6249d" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="19764239" />
+	<input type="hidden" name="__PREVIOUSPAGE" id="__PREVIOUSPAGE" value="Mbf6pe-gn0CpESBod1yRnIlL_-VEO6N3_7o51DOl7Htgq_UdAvNbhCkOqxM5A6hdNdaSfRone8FTs712VNxh2ylEH2jpNl54sNkY1Wwx9val-15ueGppjvVWo6akNhJbrUuyxA2" />
+</div>
+        <div id="container">
+            <div id="branding">
+                <div id="branding-logo">
+                    <img id="ctl00_banner" src="../../_res/img/design/banner.png" alt="U.S. Department of State Electronic Application Center" usemap="#ImageMapctl00_banner" style="border-width:0px;" /><map name="ImageMapctl00_banner" id="ImageMapctl00_banner">
+	<area shape="circle" coords="45,38,34" href="javascript:__doPostBack(&#39;ctl00$banner&#39;,&#39;0&#39;)" title="Go to the DS-160 home page" alt="Go to the DS-160 home page" />
+</map>   
+                </div>
+            </div>
+            <hr />
+            <div id="tools">
+                <div id="tools-language">
+                    <p>
+                        <div id="ctl00_pnlSelectLanguage">
+	
+                            <span id="ctl00_TTLabel5" class="tooltip_text" onmousemove="widetip=false; tip=&#39;选择提示语言&#39;; delayToolTip(event,tip,widetip,0,0);return false" onmouseout="hideToolTip()">Select Tooltip Language</span> 
+                            <select name="ctl00$ddlLanguage" onchange="needToConfirm = false;setTimeout(&#39;__doPostBack(\&#39;ctl00$ddlLanguage\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_ddlLanguage" onclick="return ValidNavigationSelect();" style="font-size:8pt;width:190px;">
+		<option value="en-US">English</option>
+		<option value="ar-EG">العربية (Arabic)</option>
+		<option value="x-bn-BD">বাংলা (Bangla)</option>
+		<option selected="selected" value="zh-CN">中文(简体）(Chinese-Simplified) </option>
+		<option value="zh-TW">中文(繁體）(Chinese-Traditional) </option>
+		<option value="fr-FR">Fran&#231;ais (French)</option>
+		<option value="de-DE">Deutsch (German)</option>
+		<option value="he-IL">עברית (Hebrew)</option>
+		<option value="hi-IN">हिन्दी (Hindi)</option>
+		<option value="id-ID">Indonesia (Indonesian)</option>
+		<option value="it-IT">Italiano (Italian)</option>
+		<option value="ja-JP">日本語 (Japanese)</option>
+		<option value="ko-KR">한국어 (Korean)</option>
+		<option value="sr-Latn-CS">Crnogorski (Montenegrin(Latin))</option>
+		<option value="fa-IR">فارسی (Persian(Farsi))</option>
+		<option value="pl-PL">Polski (Polish)</option>
+		<option value="pt-BR">Portugu&#234;s (Portuguese)</option>
+		<option value="ro-RO">Rom&#226;nă (Romanian)</option>
+		<option value="ru-RU">Русский (Russian)</option>
+		<option value="es-MX">Espa&#241;ol (Spanish)</option>
+		<option value="th-TH">ภาษาไทย (Thai)</option>
+		<option value="tr-TR">T&#252;rk&#231;e (Turkish)</option>
+		<option value="ur-PK">اردو (Urdu)</option>
+		<option value="vi-VN">Việt (Vietnamese)</option>
+
+	</select>
+                        
+</div>
+                    </p>
+                </div>
+            </div>
+            <hr />
+            <div id="nav">
+                <div id="nav-global">
+                    <ul>
+                        
+                        <li>
+                            <div id="ctl00_TTPanel2" class="tooltip_text" onmousemove="widetip=false; tip=&#39;联系我们&#39;; delayToolTip(event,tip,widetip,0,0);return false" onmouseout="hideToolTip()">
+	
+                                <a onclick="window.open(&#39;http://travel.state.gov&#39;);return false;" id="ctl00_lbtnContactUs" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$lbtnContactUs&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))">Contact Us</a>
+                            
+</div>
+                        </li>
+                        <li id="ctl00_lbtnHelp2">
+                            <div id="ctl00_TTPanel1" class="tooltip_text" onmousemove="widetip=false; tip=&#39;帮助&#39;; delayToolTip(event,tip,widetip,0,0);return false" onmouseout="hideToolTip()">
+	
+                                <a onclick="window.open(&#39;/GenNIV/Help/Help.aspx&#39;,&#39;Help&#39;,&#39;height=760,width=778,toolbar=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,modal=yes,help=no&#39;);return false;" id="ctl00_lbtnHelp" href="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$lbtnHelp&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, true))">Help</a>
+                            
+</div>
+                        </li>
+                        <li>
+                            <div class="tooltip_text" onmousemove="widetip=false; tip=&#39;退出&#39;; delayToolTip(event,tip,widetip,0,0);return false" onmouseout="hideToolTip()">
+	
+                                <a id="ctl00_lbtnExit" href="javascript:__doPostBack(&#39;ctl00$lbtnExit&#39;,&#39;&#39;)">Exit</a>
+                                <input name="ctl00$HDClearSession" type="hidden" id="ctl00_HDClearSession" />                                
+                            
+</div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="nav-main" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:CSD-Namespace" >
+  <table cellspacing="0" cellpadding="0" border="0" style="border-collapse:collapse;">
+    <tr>
+      <td>
+        <li class="on" style="width:190px; display:inline-block;"><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='完成'; delayToolTip(event,tip,widetip,0,0);return false"><a class="main" style="width:190px; display:inline-block;" href="/GenNIV/General/complete/complete_personal.aspx?node=Personal1" id="COMPLETE">COMPLETE</a></span></li>
+      </td>
+      <td>
+        <li class="" style="width:190px; display:inline-block;"><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='照片'; delayToolTip(event,tip,widetip,0,0);return false"><a class="main" style="width:190px; display:inline-block;" disabled="true" id="PHOTO">PHOTO</a></span></li>
+      </td>
+      <td>
+        <li class="" style="width:190px; display:inline-block;"><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='检查'; delayToolTip(event,tip,widetip,0,0);return false"><a class="main" style="width:190px; display:inline-block;" disabled="true" id="REVIEW">REVIEW</a></span></li>
+      </td>
+      <td>
+        <li class="" style="width:190px;"><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='签名'; delayToolTip(event,tip,widetip,0,0);return false"><a class="main" style="width:190px;" disabled="true" id="ESIGN">SIGN</a></span></li>
+      </td>
+    </tr>
+  </table>
+</div>              
+            </div>
+            <hr />
+            <!--- side navigation menu --->
+            <div id="sideNav" class="nav-sidebar-main">
+                <div id="hideobject" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:CSD-Namespace" >
+  <div id="nav-sidebar">
+    <ul class="nav-side1">
+      <li class="complete"><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='开始'; delayToolTip(event,tip,widetip,0,0);return false"><a href="/GenNIV/Default.aspx" onClick="javascript:confirmExitPage(this,'Travel'); return false; CheckNodeClicked('GetStarted');" id="GetStarted">Getting Started</a></span></li>
+      <li class="complete"><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='个人的'; delayToolTip(event,tip,widetip,0,0);return false"><a href="/GenNIV/General/complete/complete_personal.aspx?node=Personal1" onClick="javascript:confirmExitPage(this,'Travel'); return false; CheckNodeClicked('Personal');" id="Personal">Personal</a></span></li>
+      <li class="complete"><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='地址和电话'; delayToolTip(event,tip,widetip,0,0);return false"><a href="/GenNIV/General/complete/complete_contact.aspx?node=AddressPhone" onClick="javascript:confirmExitPage(this,'Travel'); return false; CheckNodeClicked('AddressPhone');" id="AddressPhone">Address and Phone</a></span></li>
+      <li class="complete"><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='护照'; delayToolTip(event,tip,widetip,0,0);return false"><a href="/GenNIV/General/complete/Passport_Visa_Info.aspx?node=PptVisa" onClick="javascript:confirmExitPage(this,'Travel'); return false; CheckNodeClicked('PptVisa');" id="PptVisa">Passport</a></span></li>
+      <li class="current on"><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='旅行'; delayToolTip(event,tip,widetip,0,0);return false"><a href="/GenNIV/General/complete/complete_travel.aspx?node=Travel" onClick="javascript:confirmExitPage(this,'Travel'); return false; CheckNodeClicked('Travel');" id="Travel">Travel</a></span><ul class="nav-side2"></ul>
+      </li>
+      <li class=""><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='旅行同伴'; delayToolTip(event,tip,widetip,0,0);return false"><a disabled="true" onClick="javascript:confirmExitPage(this,'Travel'); return false; CheckNodeClicked('TravelCompanions');" id="TravelCompanions">Travel Companions</a></span></li>
+      <li class=""><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='以前美国之行'; delayToolTip(event,tip,widetip,0,0);return false"><a disabled="true" onClick="javascript:confirmExitPage(this,'Travel'); return false; CheckNodeClicked('PreviousUSTravel');" id="PreviousUSTravel">Previous U.S. Travel</a></span></li>
+      <li class=""><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='美国联系人'; delayToolTip(event,tip,widetip,0,0);return false"><a disabled="true" onClick="javascript:confirmExitPage(this,'Travel'); return false; CheckNodeClicked('USContact');" id="USContact">U.S. Contact</a></span></li>
+      <li class=""><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='家庭'; delayToolTip(event,tip,widetip,0,0);return false"><a disabled="true" onClick="javascript:confirmExitPage(this,'Travel'); return false; CheckNodeClicked('Family');" id="Family">Family</a></span></li>
+      <li class=""><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='工作/教育/培训'; delayToolTip(event,tip,widetip,0,0);return false"><a disabled="true" onClick="javascript:confirmExitPage(this,'Travel'); return false; CheckNodeClicked('WorkEducationMain');" id="WorkEducationMain">Work / Education / Training</a></span></li>
+      <li class=""><span class="tooltip_text" onmouseout="hideToolTip()" onmouseover="widetip=false; tip='安全与背景'; delayToolTip(event,tip,widetip,0,0);return false"><a disabled="true" onClick="javascript:confirmExitPage(this,'Travel'); return false; CheckNodeClicked('SecAndBackMain');" id="SecAndBackMain">Security and Background</a></span></li>
+    </ul>
+  </div>
+</div>  
+                <div id="nav-sidebar-help" class="noprint">
+                    <div id="ctl00_pnlSidebarHelp" class="sidebar-help">
+	
+                        <h4>
+                            <span class="tooltip_text" onmouseover="widetip=false; tip='帮助：'; delayToolTip(event,tip,widetip,0,0);return false"
+                                onmouseout="hideToolTip()">
+                                <span id="ctl00_Label5" style="color:#891300;">Help:</span>
+                            </span>
+                            <span class="tooltip_text" onmouseover="widetip=false; tip='导航按钮'; delayToolTip(event,tip,widetip,0,0);return false"
+                                onmouseout="hideToolTip()">
+                                <span id="ctl00_Label6">Navigation Buttons</span>
+                            </span>
+                        </h4>
+                        <p>
+                            <span class="tooltip_text" onmouseover="widetip=false; tip='点击以上按钮进入之前输入的资料'; delayToolTip(event,tip,widetip,0,0);return false"
+                                onmouseout="hideToolTip()">
+                                <span id="ctl00_Label7">Click on the buttons above to access previously entered data.</span>
+                            </span>
+                        </p>
+                    
+</div>
+                </div>
+            </div>
+            <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', 'aspnetForm', ['tctl00$ucNavigateOption$ucNavPanel$updConfirm','','tctl00$SiteContentPlaceHolder$FormView1$upnlPrincipalApplicant','','tctl00$SiteContentPlaceHolder$FormView1$upnlSpecificTravel','','tctl00$SiteContentPlaceHolder$FormView1$upnlNotKnow','','tctl00$SiteContentPlaceHolder$FormView1$UpdatePanel1','','tctl00$SiteContentPlaceHolder$FormView1$upnlPayer','','tctl00$SiteContentPlaceHolder$FormView1$upnlPAYER_EMAIL_ADDR',''], [], [], 180, 'ctl00');
+//]]>
+</script>
+
+            <span id="ctl00_ToolTipManager1">
+<div id="bubble_tooltip">
+    <div class="bubble_middle" style="direction:ltr;">
+        <span id="bubble_tooltip_content" ></span></div>
+    </div>
+    <div id="widebubble_tooltip">
+    <div class="widebubble_middle" style="direction:ltr;">
+    <span id="widebubble_tooltip_content" ></span></div>
+</div></span> 
+
+            <div id="content">
+                <div id="content-main">
+                    <div id="ctl00_Panel1">
+	
+                        <h1 style="width:99%">
+                            <span class="tooltip_text" onmouseover="widetip=false; tip='DS-160 在线非移民签证申请表格'; delayToolTip(event,tip,widetip,0,0);return false"
+                                onmouseout="hideToolTip()" style="float:none;"><!-- Ken Snyder changed the float:left to float:none to fix a problem with alignment in Safari-->
+                                <span id="ctl00_Label2">Online Nonimmigrant Visa Application (DS-160)</span>
+                            </span>
+                            <span class="tooltip_text" onmouseover="widetip=false; tip='申请表格识别码'; delayToolTip(event,tip,widetip,0,0);return false"
+                                onmouseout="hideToolTip()"  style="float:right;">
+                                <span id="ctl00_lblAppIDLabel" style="color:#666; font-size:small;">Application ID</span>
+                                <span id="ctl00_lblAppID" style="color:#790000; font-weight:bold;">AA007XDCL4</span>                            
+                            </span>
+                        </h1>
+                    
+</div>
+                    
+    <input name="ctl00$SiteContentPlaceHolder$HiddenPageValid" type="hidden" id="ctl00_SiteContentPlaceHolder_HiddenPageValid" />
+    <table cellspacing="0" border="0" id="ctl00_SiteContentPlaceHolder_FormView1" style="border-collapse:collapse;">
+	<tr>
+		<td colspan="2">        
+            <h2>
+                <span class="tooltip_text" onmousemove="widetip=false; tip='旅行信息'; delayToolTip(event,tip,widetip,0,0);return false"
+                    onmouseout="hideToolTip()">
+                    <span id="ctl00_SiteContentPlaceHolder_FormView1_Label1">Travel Information</span></span>
+            </h2>
+            <div id="ctl00_SiteContentPlaceHolder_FormView1_ValidationSummary" class="error-message" style="color:Red;background-color:White;">
+			Please correct all areas in error as indicated below. Once you have finished, click ‘Save’ or ‘Next’ to continue completing your online application form.<ul><li>Marital status selected on Personal Information 1 page should match selection made for 'Relationship to You.'</li></ul>
+		</div>
+            <br />
+            <div class="note">
+                <span class="tooltip_text" onmousemove="widetip=true; tip='注意： 请提供以下有关您旅行计划的信息'; delayToolTip(event,tip,widetip,0,100);return false"
+                    onmouseout="hideToolTip()">
+                    <span id="ctl00_SiteContentPlaceHolder_FormView1_lblPageNote1">NOTE: Provide the following information concerning your travel plans.
+</span></span>
+            </div>
+            
+            <div class="fieldset-group">
+                <div id="ctl00_SiteContentPlaceHolder_FormView1_upnlPrincipalApplicant">
+			
+                        <fieldset>
+                            <div class="field-groups">
+                                
+                                
+                                
+                                
+                            <input name="ctl00$SiteContentPlaceHolder$FormView1$hfSite" type="hidden" id="ctl00_SiteContentPlaceHolder_FormView1_hfSite" value="CHE" />    
+                            <input name="ctl00$SiteContentPlaceHolder$FormView1$hfVisaClass" type="hidden" id="ctl00_SiteContentPlaceHolder_FormView1_hfVisaClass" />
+                         
+                                <div class="field-group full">
+                                    <div id="ctl00_SiteContentPlaceHolder_FormView1_ShowDivPrincipal">
+                                        
+                                        <h4>
+                                            <span class="tooltip_text" onmousemove="widetip=false; tip='请提供以下信息：'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                onmouseout="hideToolTip()">
+                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_lblPrincipalPOT">Provide the following information:</span>
+                                            </span>
+                                        </h4>
+
+                                        
+                                            
+                                                                                                                
+                                                                                                             
+                                                        
+                                        <table id="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel" cellspacing="0" border="0" style="width:310px;border-collapse:collapse;">
+				<tr>
+					<td>
+                                                <div class="field-group callout wadd">
+                                                    <div class="field full" style="padding-bottom: 0%">
+                                                        
+                                                        <span class="tooltip_text" onmousemove="widetip=false; tip='赴美访问目的'; delayToolTip(event,tip,widetip,0,-10);return false"
+                                                            onmouseout="hideToolTip()">
+                                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_lblPurposeOfTrip">Purpose of Trip to the U.S.</span></span>                                                                        
+                                                        
+                                                        <input type="image" name="ctl00$SiteContentPlaceHolder$FormView1$dlPrincipalAppTravel$ctl00$helppopPURPOSE" id="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_helppopPURPOSE" tabindex="160" src="../../_res/img/infopop.bmp" alt="Click here for more information" onclick="window.open(&#39;/GenNIV/Help/Help.aspx#PurposeOfTripToUS&#39;,&#39;Help&#39;,&#39;height=760,width=778,toolbar=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,modal=yes,help=no&#39;);return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$SiteContentPlaceHolder$FormView1$dlPrincipalAppTravel$ctl00$helppopPURPOSE&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" style="height:15px;width:15px;border-width:0px;" />
+                                                        <span id="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValPurposeOfTrip" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                                        <select name="ctl00$SiteContentPlaceHolder$FormView1$dlPrincipalAppTravel$ctl00$ddlPurposeOfTrip" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();setTimeout(&#39;__doPostBack(\&#39;ctl00$SiteContentPlaceHolder$FormView1$dlPrincipalAppTravel$ctl00$ddlPurposeOfTrip\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_ddlPurposeOfTrip" tabindex="160" onmousewheel="return false;" onfocus="return ValidNavigation();">
+						<option value="">PLEASE SELECT A VISA CLASS</option>
+						<option value="A">FOREIGN GOVERNMENT OFFICIAL (A)</option>
+						<option selected="selected" value="B">TEMP. BUSINESS PLEASURE VISITOR (B)</option>
+						<option value="C">ALIEN IN TRANSIT (C)</option>
+						<option value="CNMI">CNMI WORKER OR INVESTOR (CW/E2C)</option>
+						<option value="D">CREWMEMBER (D)</option>
+						<option value="E">TREATY TRADER OR INVESTOR (E)</option>
+						<option value="F">ACADEMIC OR LANGUAGE STUDENT (F)</option>
+						<option value="G">INTERNATIONAL ORGANIZATION REP./EMP. (G)</option>
+						<option value="H">TEMPORARY WORKER (H)</option>
+						<option value="I">FOREIGN MEDIA REPRESENTATIVE (I)</option>
+						<option value="J">EXCHANGE VISITOR (J)</option>
+						<option value="K">FIANC&#201;(E) OR SPOUSE OF A U.S. CITIZEN (K)</option>
+						<option value="L">INTRACOMPANY TRANSFEREE (L)</option>
+						<option value="M">VOCATIONAL/NONACADEMIC STUDENT (M)</option>
+						<option value="N">OTHER (N)</option>
+						<option value="NATO">NATO STAFF (NATO)</option>
+						<option value="O">ALIEN WITH EXTRAORDINARY ABILITY (O)</option>
+						<option value="P">INTERNATIONALLY RECOGNIZED ALIEN (P)</option>
+						<option value="Q">CULTURAL EXCHANGE VISITOR (Q)</option>
+						<option value="R">RELIGIOUS WORKER (R)</option>
+						<option value="S">INFORMANT OR WITNESS (S)</option>
+						<option value="T">VICTIM OF TRAFFICKING (T)</option>
+						<option value="TD/TN">NAFTA PROFESSIONAL (TD/TN)</option>
+						<option value="U">VICTIM OF CRIMINAL ACTIVITY (U)</option>
+						<option value="PAROLE-BEN">PAROLE BENEFICIARY (PARCIS)</option>
+
+					</select>
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                    
+                                                    
+                                                    <div id="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_visa" class="field full" style="padding-bottom: 0%">
+                                                        <span class="tooltip_text" onmousemove="widetip=false; tip='具体说明'; delayToolTip(event,tip,widetip,0,-10);return false"
+                                                            onmouseout="hideToolTip()">
+                                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_lblOtherPurpose">Specify</span></span>
+                                                        
+                                                        <input type="image" name="ctl00$SiteContentPlaceHolder$FormView1$dlPrincipalAppTravel$ctl00$helppopOTHER_PURPOSE" id="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_helppopOTHER_PURPOSE" tabindex="160" src="../../_res/img/infopop.bmp" alt="Click here for more information" onclick="window.open(&#39;/GenNIV/Help/Help.aspx#Specify&#39;,&#39;Help&#39;,&#39;height=760,width=778,toolbar=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,modal=yes,help=no&#39;);return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$SiteContentPlaceHolder$FormView1$dlPrincipalAppTravel$ctl00$helppopOTHER_PURPOSE&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" style="height:15px;width:15px;border-width:0px;" />
+                                                        <span id="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValOtherPurpose" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                                        <select name="ctl00$SiteContentPlaceHolder$FormView1$dlPrincipalAppTravel$ctl00$ddlOtherPurpose" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();setTimeout(&#39;__doPostBack(\&#39;ctl00$SiteContentPlaceHolder$FormView1$dlPrincipalAppTravel$ctl00$ddlOtherPurpose\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_ddlOtherPurpose" tabindex="160" onmousewheel="return false;" onfocus="return ValidNavigation();">
+						<option value="">PLEASE SELECT</option>
+						<option selected="selected" value="B1-B2">BUSINESS &amp; TOURISM (TEMPORARY VISITOR) (B1/B2)</option>
+						<option value="B1-CF">BUSINESS/CONFERENCE (B1)</option>
+						<option value="B2-TM">TOURISM/MEDICAL TREATMENT (B2)</option>
+
+					</select>
+                                                            
+                                                        
+                                                        <br />
+                                                        <br />
+                                                    </div>
+                                                    
+                                                     
+                                                                                                                     
+                                                    <div>
+                                                    </div>
+                                                </div>
+                                                    <div class="addremove">
+                                                        <div class="addone">
+                                                            <span class="tooltip_text" onmousemove="widetip=false; tip='增加另一个'; delayToolTip(event,tip,widetip,50,10);return false"
+                                                                onmouseout="hideToolTip()">
+                                                                <a onclick="return ValidNavigation();setDirty(); setDirty(); setDirty(); setDirty(); setDirty();" id="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_InsertButtonAlias" tabindex="160" href="javascript:__doPostBack(&#39;ctl00$SiteContentPlaceHolder$FormView1$dlPrincipalAppTravel$ctl00$InsertButtonAlias&#39;,&#39;&#39;)">Add Another</a></span>
+                                                        </div>
+                                                        <div class="removeone">
+                                                            <span class="tooltip_text" onmousemove="widetip=false; tip='移走'; delayToolTip(event,tip,widetip,70,10);return false"
+                                                                onmouseout="hideToolTip()">
+                                                                <a onclick="return ValidNavigation();setDirty(); setDirty(); setDirty(); setDirty(); setDirty();" id="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_DeleteButtonAlias" tabindex="160" href="javascript:__doPostBack(&#39;ctl00$SiteContentPlaceHolder$FormView1$dlPrincipalAppTravel$ctl00$DeleteButtonAlias&#39;,&#39;&#39;)">Remove</a></span>
+                                                        </div>
+                                                    </div>  
+                                                <br />
+                                            </td>
+				</tr>
+			</table>
+                                                
+                                         
+                                    </div>
+                                </div>
+                                <br /><br />
+                                <div class="hr">
+                                </div>
+                            </div>
+                            
+                            
+                        </fieldset>
+                    
+		</div>
+                <div id="ctl00_SiteContentPlaceHolder_FormView1_upnlSpecificTravel">
+			
+                        <fieldset>
+                            <div id="ctl00_SiteContentPlaceHolder_FormView1_ShowDivSpecificTravel">
+                                <div class="hr">
+                                </div>
+                                <div class="field-groups">
+                                    
+                                    <div class="q">
+                                        <span class="tooltip_text" onmousemove="widetip=false; tip='您是否已经制定了具体的旅行计划？'; delayToolTip(event,tip,widetip,0,0);return false"
+                                            onmouseout="hideToolTip()">
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_lblSpecificTravel" tabindex="300">Have you made specific travel plans?</span></span>
+                                        <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValSpecTravelPlans" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                    </div>
+                                    <div class="a">
+                                        <div class="field-group radio">
+                                            <div class="field full">
+                                                <span class="RadioCheck"><span class="tooltip_text" onmousemove="widetip=false; tip='是或否'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                    onmouseout="hideToolTip()">
+                                                    <table id="ctl00_SiteContentPlaceHolder_FormView1_rblSpecificTravel" class="additional-hide-specifictravel" onfocus="return ValidNavigation();" border="0">
+				<tr>
+					<td><input id="ctl00_SiteContentPlaceHolder_FormView1_rblSpecificTravel_0" type="radio" name="ctl00$SiteContentPlaceHolder$FormView1$rblSpecificTravel" value="Y" onclick="javascript:setDirty();setTimeout(&#39;__doPostBack(\&#39;ctl00$SiteContentPlaceHolder$FormView1$rblSpecificTravel$0\&#39;,\&#39;\&#39;)&#39;, 0)" tabindex="310" /><label for="ctl00_SiteContentPlaceHolder_FormView1_rblSpecificTravel_0">Yes</label></td><td><input id="ctl00_SiteContentPlaceHolder_FormView1_rblSpecificTravel_1" type="radio" name="ctl00$SiteContentPlaceHolder$FormView1$rblSpecificTravel" value="N" checked="checked" onclick="javascript:setDirty();" tabindex="310" /><label for="ctl00_SiteContentPlaceHolder_FormView1_rblSpecificTravel_1">No</label></td>
+				</tr>
+			</table></span> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                            </div>
+                            <div id="ctl00_SiteContentPlaceHolder_FormView1_ShowDivNoSpecificTravel">
+                                <div class="field-groups">
+                                    <div class="field full">
+                                        <span class="tooltip_text" onmousemove="widetip=false; tip='计划到达日期'; delayToolTip(event,tip,widetip,0,-10);return false"
+                                            onmouseout="hideToolTip()">
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_lblIntendtoTravel">Intended Date of Arrival</span></span>
+                                        
+                                        <input type="image" name="ctl00$SiteContentPlaceHolder$FormView1$helppopTRAVEL_DTE_MO" id="ctl00_SiteContentPlaceHolder_FormView1_helppopTRAVEL_DTE_MO" tabindex="499" src="../../_res/img/infopop.bmp" alt="Click here for more information" onclick="window.open(&#39;/GenNIV/Help/Help.aspx#Month&#39;,&#39;Help&#39;,&#39;height=760,width=778,toolbar=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,modal=yes,help=no&#39;);return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$SiteContentPlaceHolder$FormView1$helppopTRAVEL_DTE_MO&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" style="height:15px;width:15px;border-width:0px;" />
+                                        <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValTRAVEL_DTE" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span><br />
+                                        <div class="date">
+                                            <select name="ctl00$SiteContentPlaceHolder$FormView1$ddlTRAVEL_DTEDay" id="ctl00_SiteContentPlaceHolder_FormView1_ddlTRAVEL_DTEDay" tabindex="500" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" style="width:45px;">
+				<option value=""></option>
+				<option value="1">01</option>
+				<option value="2">02</option>
+				<option value="3">03</option>
+				<option value="4">04</option>
+				<option value="5">05</option>
+				<option value="6">06</option>
+				<option value="7">07</option>
+				<option value="8">08</option>
+				<option value="9">09</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+				<option value="24">24</option>
+				<option value="25">25</option>
+				<option value="26">26</option>
+				<option value="27">27</option>
+				<option value="28">28</option>
+				<option value="29">29</option>
+				<option value="30">30</option>
+				<option selected="selected" value="31">31</option>
+
+			</select>
+                                            <select name="ctl00$SiteContentPlaceHolder$FormView1$ddlTRAVEL_DTEMonth" id="ctl00_SiteContentPlaceHolder_FormView1_ddlTRAVEL_DTEMonth" tabindex="510" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" style="width:55px;">
+				<option value=""></option>
+				<option value="1">JAN</option>
+				<option value="2">FEB</option>
+				<option value="3">MAR</option>
+				<option value="4">APR</option>
+				<option selected="selected" value="5">MAY</option>
+				<option value="6">JUN</option>
+				<option value="7">JUL</option>
+				<option value="8">AUG</option>
+				<option value="9">SEP</option>
+				<option value="10">OCT</option>
+				<option value="11">NOV</option>
+				<option value="12">DEC</option>
+
+			</select>
+                                            <input name="ctl00$SiteContentPlaceHolder$FormView1$tbxTRAVEL_DTEYear" type="text" value="2018" maxlength="4" id="ctl00_SiteContentPlaceHolder_FormView1_tbxTRAVEL_DTEYear" tabindex="520" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" style="width:35px;" />
+                                        </div>
+                                        <div class="hint">
+                                            <span class="tooltip_text" onmousemove="widetip=false; tip='（格式：日/月/年）'; delayToolTip(event,tip,widetip,0,10);return false"
+                                                onmouseout="hideToolTip()">
+                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_lblDateFormat1">(Format: DD-MMM-YYYY)</span></span>
+                                        </div>
+                                    </div>
+                                    <div id="ctl00_SiteContentPlaceHolder_FormView1_intendedLos" class="field full">
+                                        
+                                        <span class="tooltip_text" onmousemove="widetip=false; tip='计划在美停留时间'; delayToolTip(event,tip,widetip,0,-10);return false"
+                                            onmouseout="hideToolTip()">
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_lblIntendtoStay">Intended Length of Stay in U.S.</span></span>
+                                        
+                                        <input type="image" name="ctl00$SiteContentPlaceHolder$FormView1$helppopTRAVEL_LOS_CD" id="ctl00_SiteContentPlaceHolder_FormView1_helppopTRAVEL_LOS_CD" tabindex="529" src="../../_res/img/infopop.bmp" alt="Click here for more information" onclick="window.open(&#39;/GenNIV/Help/Help.aspx#LengthOfStay&#39;,&#39;Help&#39;,&#39;height=760,width=778,toolbar=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,modal=yes,help=no&#39;);return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$SiteContentPlaceHolder$FormView1$helppopTRAVEL_LOS_CD&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" style="height:15px;width:15px;border-width:0px;" />
+                                        <span id="ctl00_SiteContentPlaceHolder_FormView1_cvLOS" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span><br />
+                                        <div class="date">
+                                            <input name="ctl00$SiteContentPlaceHolder$FormView1$tbxTRAVEL_LOS" type="text" value="10" maxlength="3" id="ctl00_SiteContentPlaceHolder_FormView1_tbxTRAVEL_LOS" tabindex="530" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" style="background-color:White;width: 30px" />
+                                            <select name="ctl00$SiteContentPlaceHolder$FormView1$ddlTRAVEL_LOS_CD" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();setTimeout(&#39;__doPostBack(\&#39;ctl00$SiteContentPlaceHolder$FormView1$ddlTRAVEL_LOS_CD\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_SiteContentPlaceHolder_FormView1_ddlTRAVEL_LOS_CD" tabindex="540" onclick="return ValidNavigationSelect();" onfocus="return ValidNavigation();" style="width: 120px">
+				<option value="">-Select One-</option>
+				<option value="Y">Year(s)</option>
+				<option value="M">Month(s)</option>
+				<option value="W">Week(s)</option>
+				<option selected="selected" value="D">Day(s)</option>
+				<option value="H">Less Than 24 Hours</option>
+
+			</select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="help">
+                                    <h4>
+                                        
+                                        
+                                        <span class="tooltip_text" onmouseover="widetip=false; tip='帮助：'; delayToolTip(event,tip,widetip,0,0);return false"
+                                            onmouseout="hideToolTip()">
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_lblHelp11" style="color:#891300;">Help:</span>
+                                        </span><span><span class="tooltip_text" onmousemove="widetip=false; tip='抵达计划'; delayToolTip(event,tip,widetip,0,0);return false"
+                                            onmouseout="hideToolTip()">
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_Label12">Arrival Plans</span></span>
+                                        </span>
+                                    </h4>
+                                    <p>
+                                        <span class="tooltip_text" onmousemove="widetip=true; tip='如果您还无法确定您的旅行计划，请提供一个预计的旅行计划。'; delayToolTip(event,tip,widetip,0,0);return false"
+                                            onmouseout="hideToolTip()">
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_Label13">If you are unsure of your travel plans, please provide an estimate.</span></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </fieldset>
+                    
+		</div>
+                
+                <fieldset>
+                    <div id="ctl00_SiteContentPlaceHolder_FormView1_upnlNotKnow">
+			                            
+                            <div class="field-groups">
+                                <div id="ctl00_SiteContentPlaceHolder_FormView1_USAddressToStay">
+                                    <div class="hr">
+                                    </div>
+                                    <h4>
+                                        <span class="tooltip_text" onmousemove="widetip=false; tip='在美停留期间的住址'; delayToolTip(event,tip,widetip,0,10);return false"
+                                            onmouseout="hideToolTip()">
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_lblAddressInUS">Address Where You Will Stay in the U.S.</span>
+                                        </span>
+                                    </h4>
+                                    
+                                    <div class="field-group callout wadd">
+                                        <div class="field full">
+                                            <span class="tooltip_text" onmousemove="widetip=false; tip='街道地址（第一行）'; delayToolTip(event,tip,widetip,0,10);return false"
+                                                onmouseout="hideToolTip()">
+                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_lblStreetAddress1">Street Address (Line 1)</span></span>
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValStreetAddress1" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                            <input name="ctl00$SiteContentPlaceHolder$FormView1$tbxStreetAddress1" type="text" value="GUANDAO NO 50" maxlength="40" id="ctl00_SiteContentPlaceHolder_FormView1_tbxStreetAddress1" tabindex="600" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" style="background-color:White;width:98%;" />
+                                        </div>
+                                        <div class="field full">
+                                            <span class="tooltip_text" onmousemove="widetip=false; tip='街道地址 （第二行）'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                onmouseout="hideToolTip()">
+                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_lblStreetAddress2">Street Address (Line 2)</span></span>
+                                            <span class="tooltip_text" onmousemove="widetip=false; tip='*可选的'; delayToolTip(event,tip,widetip,20,0);return false" onmouseout="hideToolTip()">
+                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_lblStreetAddress2Optional" style="color:#891300;font-style: italic">*Optional</span></span>
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValidator2" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                            <input name="ctl00$SiteContentPlaceHolder$FormView1$tbxStreetAddress2" type="text" maxlength="40" id="ctl00_SiteContentPlaceHolder_FormView1_tbxStreetAddress2" tabindex="600" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" style="background-color:White;width:98%;" />
+                                        </div>
+                                        <div class="field full">
+                                            <span class="tooltip_text" onmousemove="widetip=false; tip='城市'; delayToolTip(event,tip,widetip,30,0);return false"
+                                                onmouseout="hideToolTip()">
+                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_lblCity">City</span></span>
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValCity" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                            <input name="ctl00$SiteContentPlaceHolder$FormView1$tbxCity" type="text" value="GUANDAO" maxlength="20" id="ctl00_SiteContentPlaceHolder_FormView1_tbxCity" tabindex="600" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" style="background-color:White;width:98%;" />
+                                        </div>
+                                        <div class="field full">
+                                            <span class="tooltip_text" onmousemove="widetip=false; tip='州'; delayToolTip(event,tip,widetip,30,0);return false"
+                                                onmouseout="hideToolTip()">
+                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_lblTravelState">State</span></span>
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValUSState" style="color:Red;visibility:hidden;">
+                                        <img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                            <br />
+                                            <select name="ctl00$SiteContentPlaceHolder$FormView1$ddlTravelState" id="ctl00_SiteContentPlaceHolder_FormView1_ddlTravelState" tabindex="600" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" style="background-color:White;width:98%;">
+				<option value="">- Select one -</option>
+				<option value="AL">ALABAMA</option>
+				<option value="AK">ALASKA</option>
+				<option value="AS">AMERICAN SAMOA</option>
+				<option value="AZ">ARIZONA</option>
+				<option value="AR">ARKANSAS</option>
+				<option value="CA">CALIFORNIA</option>
+				<option value="CO">COLORADO</option>
+				<option value="CT">CONNECTICUT</option>
+				<option value="DE">DELAWARE</option>
+				<option value="DC">DISTRICT OF COLUMBIA</option>
+				<option value="FL">FLORIDA</option>
+				<option value="GA">GEORGIA</option>
+				<option selected="selected" value="GU">GUAM</option>
+				<option value="HI">HAWAII</option>
+				<option value="ID">IDAHO</option>
+				<option value="IL">ILLINOIS</option>
+				<option value="IN">INDIANA</option>
+				<option value="IA">IOWA</option>
+				<option value="KS">KANSAS</option>
+				<option value="KY">KENTUCKY</option>
+				<option value="LA">LOUISIANA</option>
+				<option value="ME">MAINE</option>
+				<option value="MD">MARYLAND</option>
+				<option value="MA">MASSACHUSETTS</option>
+				<option value="MI">MICHIGAN</option>
+				<option value="MN">MINNESOTA</option>
+				<option value="MS">MISSISSIPPI</option>
+				<option value="MO">MISSOURI</option>
+				<option value="MT">MONTANA</option>
+				<option value="NE">NEBRASKA</option>
+				<option value="NV">NEVADA</option>
+				<option value="NH">NEW HAMPSHIRE</option>
+				<option value="NJ">NEW JERSEY</option>
+				<option value="NM">NEW MEXICO</option>
+				<option value="NY">NEW YORK</option>
+				<option value="NC">NORTH CAROLINA</option>
+				<option value="ND">NORTH DAKOTA</option>
+				<option value="MP">NORTHERN MARIANA ISLANDS</option>
+				<option value="OH">OHIO</option>
+				<option value="OK">OKLAHOMA</option>
+				<option value="OR">OREGON</option>
+				<option value="PA">PENNSYLVANIA</option>
+				<option value="PR">PUERTO RICO</option>
+				<option value="RI">RHODE ISLAND</option>
+				<option value="SC">SOUTH CAROLINA</option>
+				<option value="SD">SOUTH DAKOTA</option>
+				<option value="TN">TENNESSEE</option>
+				<option value="TX">TEXAS</option>
+				<option value="UT">UTAH</option>
+				<option value="VT">VERMONT</option>
+				<option value="VI">VIRGIN ISLANDS</option>
+				<option value="VA">VIRGINIA</option>
+				<option value="WA">WASHINGTON</option>
+				<option value="WV">WEST VIRGINIA</option>
+				<option value="WI">WISCONSIN</option>
+				<option value="WY">WYOMING</option>
+
+			</select>
+                                        </div>
+                                        <div class="field full">
+                                            <span class="tooltip_text" onmousemove="widetip=false; tip='邮政编码'; delayToolTip(event,tip,widetip,0,10);return false"
+                                                onmouseout="hideToolTip()">
+                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_lblTRAVEL_ADDR_POSTAL_CD">ZIP Code</span></span>
+                                            <span class="tooltip_text" onmousemove="widetip=false; tip='（如果已经知道）'; delayToolTip(event,tip,widetip,0,10);return false"
+                                                onmouseout="hideToolTip()">
+                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_lblTRAVEL_ADDR_POSTAL_CD_IK">(if known)</span></span>
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValZip" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                            <br />
+                                            <input name="ctl00$SiteContentPlaceHolder$FormView1$tbZIPCode" type="text" maxlength="10" id="ctl00_SiteContentPlaceHolder_FormView1_tbZIPCode" tabindex="600" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" style="background-color:White;width:65%;" />
+                                            <div class="hint">
+                                                <span class="tooltip_text" onmousemove="widetip=false; tip='（例如：12345 或 12345-1234）'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                    onmouseout="hideToolTip()">
+                                                    <span id="ctl00_SiteContentPlaceHolder_FormView1_lblZIPCodeExample">(e.g., 12345 or 12345-1234)</span></span>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div> 
+                            </div>                     
+                        
+		</div>
+                </fieldset>
+                <div class="hr">
+                </div>
+                <div id="ctl00_SiteContentPlaceHolder_FormView1_UpdatePanel1">
+			
+                        
+                        <div id="ctl00_SiteContentPlaceHolder_FormView1_upnlPayer">
+				
+                                <fieldset>
+                                    <div class="field-groups">
+                                        <div class="field full">
+                                            <span class="tooltip_text" onmousemove="widetip=false; tip='支付您旅行费用的个人或组织名称'; delayToolTip(event,tip,widetip,0,-10);return false"
+                                                onmouseout="hideToolTip()">
+                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_lblWhoIsPaying">Person/Entity Paying for Your Trip</span></span>
+                                            
+                                            <input type="image" name="ctl00$SiteContentPlaceHolder$FormView1$helppopPAYER_TYPE" id="ctl00_SiteContentPlaceHolder_FormView1_helppopPAYER_TYPE" tabindex="799" src="../../_res/img/infopop.bmp" alt="Click here for more information" onclick="window.open(&#39;/GenNIV/Help/Help.aspx#Payer&#39;,&#39;Help&#39;,&#39;height=760,width=778,toolbar=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,modal=yes,help=no&#39;);return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$SiteContentPlaceHolder$FormView1$helppopPAYER_TYPE&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" style="height:15px;width:15px;border-width:0px;" />
+                                            <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValWhoIsPaying" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                            <br />
+                                            <select name="ctl00$SiteContentPlaceHolder$FormView1$ddlWhoIsPaying" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();setTimeout(&#39;__doPostBack(\&#39;ctl00$SiteContentPlaceHolder$FormView1$ddlWhoIsPaying\&#39;,\&#39;\&#39;)&#39;, 0)" id="ctl00_SiteContentPlaceHolder_FormView1_ddlWhoIsPaying" tabindex="800" onfocus="return ValidNavigation();">
+					<option value="">-Select One-</option>
+					<option value="S">Self</option>
+					<option selected="selected" value="O">Other Person</option>
+					<option value="P" ToolTip="">Present Employer</option>
+					<option value="U" ToolTip="">Employer in the U.S.</option>
+					<option value="C">Other Company/Organization</option>
+
+				</select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="ctl00_SiteContentPlaceHolder_FormView1_add5">
+                                        <div class="field-groups">
+                                        
+                                            <h4>
+                                                <span class="tooltip_text" onmousemove="widetip=false; tip='请提供以下信息'; delayToolTip(event,tip,widetip,0,30);return false"
+                                                    onmouseout="hideToolTip()">
+                                                    <span id="ctl00_SiteContentPlaceHolder_FormView1_Label6">Provide the following information:</span></span>
+                                            </h4>
+                                            <div class="field-group callout">
+                                                <div id="ctl00_SiteContentPlaceHolder_FormView1_add2">
+                                                    <div class="field full">
+                                                        <span class="tooltip_text" onmousemove="widetip=false; tip='承担您旅行费用者的姓氏'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                            onmouseout="hideToolTip()">
+                                                            <label for="ctl00_SiteContentPlaceHolder_FormView1_tbxPayerSurname" id="ctl00_SiteContentPlaceHolder_FormView1_lblPayerSurname">Surnames of Person Paying for Trip</label></span>
+                                                        <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerSurname" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                                        <br />
+                                                        <input name="ctl00$SiteContentPlaceHolder$FormView1$tbxPayerSurname" type="text" value="YU" maxlength="33" id="ctl00_SiteContentPlaceHolder_FormView1_tbxPayerSurname" tabindex="800" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" />
+                                                        <div class="hint">
+                                                            <span class="tooltip_text" onmousemove="widetip=false; tip='（例如：FERNANDEZ GARCIA）'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                                onmouseout="hideToolTip()">
+                                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_tbxPayerSurnameExample">(e.g., FERNANDEZ GARCIA)</span></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field full">
+                                                        <span class="tooltip_text" onmousemove="widetip=false; tip='承担您旅行费用者的名字'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                            onmouseout="hideToolTip()">
+                                                            <label for="ctl00_SiteContentPlaceHolder_FormView1_tbxPayerGivenName" id="ctl00_SiteContentPlaceHolder_FormView1_lblPayerGivenName">Given Names of Person Paying for Trip</label></span>
+                                                        <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerGivenName" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                                        <br />
+                                                        <input name="ctl00$SiteContentPlaceHolder$FormView1$tbxPayerGivenName" type="text" value="SHENG" maxlength="33" id="ctl00_SiteContentPlaceHolder_FormView1_tbxPayerGivenName" tabindex="800" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" />
+                                                        <br />
+                                                        <div class="hint">
+                                                            <span class="tooltip_text" onmousemove="widetip=false; tip='（例如：JUAN MIGUEL）'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                                onmouseout="hideToolTip()">
+                                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_lblPayerGivenNameExample">(e.g., JUAN MIGUEL)</span></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="field full">
+                                                    <span class="tooltip_text" onmousemove="widetip=false; tip='电话号码'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                        onmouseout="hideToolTip()">
+                                                        <span id="ctl00_SiteContentPlaceHolder_FormView1_lblPayerPhone">Telephone Number</span></span>
+                                                    <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerPhone" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                                    <br />
+                                                    <input name="ctl00$SiteContentPlaceHolder$FormView1$tbxPayerPhone" type="text" value="19928789907" maxlength="20" id="ctl00_SiteContentPlaceHolder_FormView1_tbxPayerPhone" tabindex="800" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" />
+                                                </div>
+                                                
+                                                <div id="ctl00_SiteContentPlaceHolder_FormView1_add4">
+                                                    <div id="ctl00_SiteContentPlaceHolder_FormView1_upnlPAYER_EMAIL_ADDR">
+					
+                                                            <div class="field full">
+                                                                <span class="tooltip_text" onmousemove="widetip=false; tip='电子邮件地址'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                                    onmouseout="hideToolTip()">
+                                                                    <span id="ctl00_SiteContentPlaceHolder_FormView1_lblProvideEmailInfo">Email Address</span></span><span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValPAYER_EMAIL" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span><br />
+                                                                <input name="ctl00$SiteContentPlaceHolder$FormView1$tbxPAYER_EMAIL_ADDR" type="text" maxlength="50" id="ctl00_SiteContentPlaceHolder_FormView1_tbxPAYER_EMAIL_ADDR" disabled="disabled" tabindex="800" class="emailaddress" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();" style="background-color:LightGrey;width: 60%;" />
+                                                                
+                                                                <span class="RadioCheck"><span class="tooltip_text" onmousemove="widetip=false; tip='不适用的'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                                    onmouseout="hideToolTip()">
+                                                                    <input id="ctl00_SiteContentPlaceHolder_FormView1_cbxDNAPAYER_EMAIL_ADDR_NA" type="checkbox" name="ctl00$SiteContentPlaceHolder$FormView1$cbxDNAPAYER_EMAIL_ADDR_NA" checked="checked" onclick="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();setTimeout(&#39;__doPostBack(\&#39;ctl00$SiteContentPlaceHolder$FormView1$cbxDNAPAYER_EMAIL_ADDR_NA\&#39;,\&#39;\&#39;)&#39;, 0)" tabindex="800" /><label for="ctl00_SiteContentPlaceHolder_FormView1_cbxDNAPAYER_EMAIL_ADDR_NA">Does Not Apply</label>
+                                                                </span></span>
+                                                                <div class="hint">
+                                                                    <span class="tooltip_text" onmousemove="widetip=false; tip='（例如：emailaddress@example.com）(例如: emailaddress@example.com)'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                                        onmouseout="hideToolTip()">
+                                                                        <span id="ctl00_SiteContentPlaceHolder_FormView1_lblNameExample">(e.g., emailaddress@example.com)</span></span>
+                                                                </div>
+                                                            </div>
+                                                        
+				</div>
+                                                </div>
+                                                <div id="ctl00_SiteContentPlaceHolder_FormView1_pnlPersonRelationship" class="field full">
+                                                    <span class="tooltip_text" onmousemove="widetip=false; tip='与您的关系'; delayToolTip(event,tip,widetip,0,-10);return false"
+                                                        onmouseout="hideToolTip()">
+                                                        <label for="ctl00_SiteContentPlaceHolder_FormView1_ddlPayerRelationship" id="ctl00_SiteContentPlaceHolder_FormView1_lblPayerRelationship">Relationship to You</label></span>
+                                                    
+                                                    <input type="image" name="ctl00$SiteContentPlaceHolder$FormView1$HelpButton1" id="ctl00_SiteContentPlaceHolder_FormView1_HelpButton1" tabindex="800" src="../../_res/img/infopop.bmp" alt="Click here for more information" onclick="window.open(&#39;/GenNIV/Help/Help.aspx#PayerRelationshipPerson&#39;,&#39;Help&#39;,&#39;height=760,width=778,toolbar=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,modal=yes,help=no&#39;);return false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$SiteContentPlaceHolder$FormView1$HelpButton1&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" style="height:15px;width:15px;border-width:0px;" />
+                                                    <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerRelationship" style="color:Red;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                                    <br />
+                                                    <select name="ctl00$SiteContentPlaceHolder$FormView1$ddlPayerRelationship" id="ctl00_SiteContentPlaceHolder_FormView1_ddlPayerRelationship" tabindex="800" onchange="javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty(); javascript:setDirty();">
+					<option value="">- SELECT ONE -</option>
+					<option value="C">CHILD</option>
+					<option value="P">PARENT</option>
+					<option selected="selected" value="S">SPOUSE</option>
+					<option value="R">OTHER RELATIVE</option>
+					<option value="F">FRIEND</option>
+					<option value="O">OTHER</option>
+
+				</select>
+                                                </div>
+                                                <div id="ctl00_SiteContentPlaceHolder_FormView1_SameAddress" class="field full">                                            
+                                                    <div class="q">
+                                                        <span>
+                                                        
+                                                            <span class="tooltip_text" onmousemove="widetip=true; tip='为您支付旅行费用的一方，其地址是否与您的家庭地址或邮寄地址相同？'; delayToolTip(event,tip,widetip,100,80);return false"
+                                                                onmouseout="hideToolTip()">
+                                                                <span id="ctl00_SiteContentPlaceHolder_FormView1_lblPayerAddrSameAsInd" tabindex="800">Is the address of the party paying for your trip the same as your Home or Mailing Address?</span>
+                                                            </span>
+                                                        </span>
+                                                        
+                                                        <span id="ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerAddrSameAsInd" style="color:Red;visibility:hidden;"><img alt="Error" src="../../_res/img/trg_bk.GIF" /></span>
+                                                    </div>
+                                                    <div class="a">
+                                                        <div class="field-group radio">
+                                                            <span class="RadioCheck"><span class="tooltip_text" onmousemove="widetip=false; tip='是或否'; delayToolTip(event,tip,widetip,0,0);return false"
+                                                                onmouseout="hideToolTip()">
+                                                                <table id="ctl00_SiteContentPlaceHolder_FormView1_rblPayerAddrSameAsInd" onfocus="return ValidNavigation();" border="0">
+					<tr>
+						<td><input id="ctl00_SiteContentPlaceHolder_FormView1_rblPayerAddrSameAsInd_0" type="radio" name="ctl00$SiteContentPlaceHolder$FormView1$rblPayerAddrSameAsInd" value="Y" checked="checked" onclick="javascript:setDirty();" tabindex="800" /><label for="ctl00_SiteContentPlaceHolder_FormView1_rblPayerAddrSameAsInd_0">Yes</label></td><td><input id="ctl00_SiteContentPlaceHolder_FormView1_rblPayerAddrSameAsInd_1" type="radio" name="ctl00$SiteContentPlaceHolder$FormView1$rblPayerAddrSameAsInd" value="N" onclick="javascript:setDirty();setTimeout(&#39;__doPostBack(\&#39;ctl00$SiteContentPlaceHolder$FormView1$rblPayerAddrSameAsInd$1\&#39;,\&#39;\&#39;)&#39;, 0)" tabindex="800" /><label for="ctl00_SiteContentPlaceHolder_FormView1_rblPayerAddrSameAsInd_1">No</label></td>
+					</tr>
+				</table></span> </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </fieldset>
+                                </SPAN>
+                            
+			</div>
+                        
+                
+		</div>
+            </div>
+        </td>
+	</tr>
+</table>
+    <div class="fieldset-group">
+        <fieldset class="submits">
+            <div>
+                <span class="tooltip_text" onmouseover="widetip=false; tip='返回：护照信息'; delayToolTip(event,tip,widetip,0,-30);return false"
+                    onmouseout="hideToolTip()">
+                    <input type="submit" name="ctl00$SiteContentPlaceHolder$UpdateButton1" value="Back: Passport" onclick="javascript:needToConfirm = false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$SiteContentPlaceHolder$UpdateButton1&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ctl00_SiteContentPlaceHolder_UpdateButton1" tabindex="5000" class="back" onfocus="return ValidNavigation();" />
+                </span><span class="tooltip_text" onmouseover="widetip=false; tip='保存'; delayToolTip(event,tip,widetip,0,-30);return false"
+                    onmouseout="hideToolTip()">
+                    <input type="submit" name="ctl00$SiteContentPlaceHolder$UpdateButton2" value="Save" onclick="javascript:needToConfirm = false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$SiteContentPlaceHolder$UpdateButton2&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ctl00_SiteContentPlaceHolder_UpdateButton2" tabindex="5010" class="save" onfocus="return ValidNavigation();" />
+                </span><span class="tooltip_text" onmouseover="widetip=false; tip='下一页：随行人员'; delayToolTip(event,tip,widetip,0,-30);return false"
+                    onmouseout="hideToolTip()">
+                    <input type="submit" name="ctl00$SiteContentPlaceHolder$UpdateButton3" value="Next: Travel Companions" onclick="javascript:needToConfirm = false;WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$SiteContentPlaceHolder$UpdateButton3&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ctl00_SiteContentPlaceHolder_UpdateButton3" accesskey="z" tabindex="5020" class="next" onfocus="return ValidNavigation();" />
+                </span>
+            </div>
+        </fieldset>
+    </div>
+    <div class="hr">
+    </div>
+      
+    <div id="ctl00_SiteContentPlaceHolder_pnlNIVWarning" class="modal-content" style="width:725px; padding:20px 20px; display:none;">
+	
+        <div style="font-size:11px; padding-bottom:10px; text-align:center;"> 
+        </div>
+        <div style="padding-bottom:30px; padding-left:25px;">
+
+            <span class="tooltip_text" onmousemove="widetip=true; tip='您已经表明您将申请下面的签证类别：'; delayToolTip(event,tip,widetip,0,-10);return false" onmouseout="hideToolTip()">
+            <span id="ctl00_SiteContentPlaceHolder_TTLabel1">You have indicated that you will be applying for the following visa class:</span>
+            </span><span id="ctl00_SiteContentPlaceHolder_TTVisaClass"></span>.&nbsp;
+            <span class="tooltip_text" onmousemove="widetip=true; tip='您选择的申请签证地点：'; delayToolTip(event,tip,widetip,0,-10);return false" onmouseout="hideToolTip()">
+            <span id="ctl00_SiteContentPlaceHolder_TTLabel2">The location that you selected to process your visa is</span>
+            </span><span id="ctl00_SiteContentPlaceHolder_TTSiteDesc"></span>.&nbsp;
+            <span class="tooltip_text" onmousemove="widetip=true; tip='该地点不能审理您所选择的签证类别。请在下面的列表中选择一审理移民签证的使领馆；或，如您选择的签证类别是错误的话，请点击“取消”键并更改您赴美旅行目的。'; delayToolTip(event,tip,widetip,0,-10);return false" onmouseout="hideToolTip()">
+            <span id="ctl00_SiteContentPlaceHolder_TTLabel3">This location does not process the visa class that you have selected.  Please select an IV-processing post below, or if the visa class that you have selected is incorrect, click Cancel and change your Purpose of Trip to the U.S.</span>
+            </span>
+        </div>
+        <div style="padding-bottom:30px;">
+            <span class="tooltip_text" onmousemove="widetip=true; tip=''; delayToolTip(event,tip,widetip,0,-10);return false" onmouseout="hideToolTip()">
+            <span id="ctl00_SiteContentPlaceHolder_lblSite" style="display:inline-block;width:325px;text-align:right;">IV Processing Posts</span>    
+            </span>
+            <select name="ctl00$SiteContentPlaceHolder$ddlSite" id="ctl00_SiteContentPlaceHolder_ddlSite" tabindex="130" style="width:340px;">
+
+	</select>
+        </div>
+        <div style="height:25px; text-align:center;">
+            <span class="tooltip_text" onmouseover="widetip=false; tip=''; delayToolTip(event,tip,widetip,0,-30);return false"
+                onmouseout="hideToolTip()">
+                <input type="submit" name="ctl00$SiteContentPlaceHolder$btnChangeSite" value="Save and Continue" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$SiteContentPlaceHolder$btnChangeSite&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ctl00_SiteContentPlaceHolder_btnChangeSite" class="blankbluebutton2" style="width:205px;" />
+
+            </span>
+             <span class="tooltip_text" onmouseover="widetip=false; tip='取消'; delayToolTip(event,tip,widetip,0,-30);return false"
+                onmouseout="hideToolTip()">
+                <input type="submit" name="ctl00$SiteContentPlaceHolder$btnCancel" value="Cancel" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$SiteContentPlaceHolder$btnCancel&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ctl00_SiteContentPlaceHolder_btnCancel" class="blankbluebutton2" style="width:205px;" />
+
+            </span>
+        </div>
+    
+</div>
+    <a id="ctl00_SiteContentPlaceHolder_anchorModalActivate" style="display:none; visibility:hidden;" onclick="return false"></a>
+    
+    
+    
+    
+    
+    
+   
+                    
+                                       
+                </div>
+                                
+            </div>
+            <div id="ctl00_pnlSiteInfo">
+	
+                <div id="siteinfo">
+                    <div id="siteinfo-legal" style="text-align: left;">
+                        <p>
+                            
+                            <span class="tooltip_text" onmouseover="widetip=true; tip='本网站由美国国务院领事事务局管理。与其他网站的链接并不代表本网站支持其他网站所包含的观点。'; delayToolTip(event,tip,widetip,0,0);return false"
+                                onmouseout="hideToolTip()">
+                                <span id="ctl00_siteinfoLabel">This site is managed by the Bureau of Consular Affairs, U.S. Department of State. External links to other Internet sites should not be construed as an endorsement of the views contained therein.</span></span>
+                            <br />
+                            
+                            <span class="tooltip_text" onmouseover="widetip=false; tip='版权信息'; delayToolTip(event,tip,widetip,0,0);return false"
+                                onmouseout="hideToolTip()">
+                                <a id="ctl00_hplCopyright" tabindex="6010" href="/CEAC/Common/Copyright.aspx" target="_ceac">Copyright Information</a></span>
+                            &nbsp;
+                            
+                            <span class="tooltip_text" onmouseover="widetip=false; tip='免责申明'; delayToolTip(event,tip,widetip,0,0);return false"
+                                onmouseout="hideToolTip()">
+                                <a id="ctl00_hplDisclaimers" tabindex="6020" href="/CEAC/Common/Disclaimer.aspx" target="_ceac">Disclaimers</a></span>
+                            &nbsp;
+                            
+                            <span class="tooltip_text" onmouseover="widetip=false; tip='文书工作减负法案'; delayToolTip(event,tip,widetip,0,0);return false"
+                                onmouseout="hideToolTip()">
+                                <a id="ctl00_hplPaperworkReduction" tabindex="6030" href="../../common/paperworkreduction.aspx" target="_ceac">Paperwork Reduction Act</a></span>
+                                    
+                            <span style="float:right;">
+                                <span id="ctl00_lblIP" tabindex="6050" style="background-color:LightGrey;font-size:0.6em;">(27)</span>
+                            </span>
+                                    
+                            
+                        </p>
+                    </div>
+                </div>
+            
+</div>
+            
+            <br />
+        </div>
+        
+        
+        <input type="submit" name="ctl00$btnModalHolder" value="" onclick="return ValidNavigation();WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$btnModalHolder&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ctl00_btnModalHolder" style="display:none" />
+        
+        <div id="ctl00_pnlWarning" class="modal-content" style="width:650px; padding:20px 20px; z-index:1000; display:none;">
+	
+            <div style="font-size:11px; font-weight:bold;color: #c90b01;">
+                
+                <span id="ctl00_TTLabel1Warning" class="tooltip_text" onmousemove="widetip=false; tip=&#39;距您填表时限仅剩有一分钟。请按“OK”键以确保您可以获得另外20分钟的填表时间。&#39;; delayToolTip(event,tip,widetip,0,0);return false" onmouseout="hideToolTip()">Your session will expire in 1 minute.  Click ‘OK’ to keep your session active for another 20 minutes.</span>
+            </div>
+            <br />
+            <br />
+            <div style="text-align:center; margin-left:auto; margin-right:auto; width:650px;">
+                <span class="tooltip_text" onmouseover="widetip=false; tip='可以'; delayToolTip(event,tip,widetip,0,-30);return false"
+                    onmouseout="hideToolTip()">
+                    <input type="submit" name="ctl00$btnWarning" value="OK" onclick="return ValidNavigation();WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$btnWarning&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ctl00_btnWarning" class="blankbluebutton" />
+                </span>
+            </div>
+            
+        
+</div>
+        
+        <div id="ctl00_pnlTimeout" class="modal-content" style="width:650px; padding:20px 20px; display:none;">
+	
+            <div style="font-size:11px; font-weight:bold;color: #c90b01;">
+                
+                <span id="ctl00_TTLabelTimeout" class="tooltip_text" onmousemove="widetip=false; tip=&#39;您的填表时限已到。您现在需要提供以下信息：&#39;; delayToolTip(event,tip,widetip,0,0);return false" onmouseout="hideToolTip()">Your session has timed out.  To recover your application, you will need to enter the following information:</span>
+                <ul>
+                    <li>
+                        <span id="ctl00_TTLabel1" class="tooltip_text" onmousemove="widetip=false; tip=&#39;申请编号&#39;; delayToolTip(event,tip,widetip,0,0);return false" onmouseout="hideToolTip()">Application ID:</span>
+                        <span id="ctl00_lblRecoveryAppID">AA007XDCL4</span>
+                    </li>
+                    <li>
+                        <span id="ctl00_TTLabel2" class="tooltip_text" onmousemove="widetip=false; tip=&#39;申请人姓氏的头5位字母&#39;; delayToolTip(event,tip,widetip,0,0);return false" onmouseout="hideToolTip()">First 5 letters of applicant’s surname</span>                    
+                    </li>
+                    <li>
+                        <span id="ctl00_TTLabel3" class="tooltip_text" onmousemove="widetip=false; tip=&#39;申请人出生年份&#39;; delayToolTip(event,tip,widetip,0,0);return false" onmouseout="hideToolTip()">Applicant’s year of birth</span>                    
+                    </li>
+                    <li>
+                        <span id="ctl00_TTLabel4" class="tooltip_text" onmousemove="widetip=false; tip=&#39;关于安全问题的回答（第一次填表时已选择）&#39;; delayToolTip(event,tip,widetip,0,0);return false" onmouseout="hideToolTip()">Answer to the security question (selected when the application was first created)</span>                    
+                    </li>
+                </ul>
+            </div>
+            <br />
+            <br />
+            <div style="text-align:center; margin-left:auto; margin-right:auto; width:650px;">
+                <span class="tooltip_text" onmouseover="widetip=false; tip='恢复申请'; delayToolTip(event,tip,widetip,0,-30);return false"
+                    onmouseout="hideToolTip()">
+                    <input type="submit" name="ctl00$btnRecover" value="Recover Application" onclick="return ValidNavigation();WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$btnRecover&quot;, &quot;&quot;, true, &quot;&quot;, &quot;../../Default.aspx&quot;, false, false))" id="ctl00_btnRecover" class="blankbluebutton" />
+                </span>
+            </div>
+            
+        
+</div>
+        
+        
+        
+        <div id="ctl00_pnlSaveWarning" class="modal-content" style="width:625px; padding:20px 20px; display:none;">
+	            
+            <div style="font-size:11px; padding-bottom:30px; text-align:center;">            
+                <span id="ctl00_lblWarning" class="tooltip_text" onmousemove="widetip=false; tip=&#39;您想在继续选择前将当前页面上的信息进行保存吗？&#39;; delayToolTip(event,tip,widetip,0,0);return false" onmouseout="hideToolTip()">Do you want to save the data on the page before continuing on to your selection?</span>
+            </div>
+            
+            <div style="float:left; margin-right:5px;">
+                <span class="tooltip_text" onmouseover="widetip=false; tip='是-保存，然后继续。'; delayToolTip(event,tip,widetip,0,-30);return false"
+                    onmouseout="hideToolTip()">
+                        <input type="submit" name="ctl00$btnOkWarning" value="Yes - Save and Continue" onclick="return ValidNavigation();return ValidNavigation();WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$btnOkWarning&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ctl00_btnOkWarning" class="blankbluebutton" />
+                </span>                
+            </div>
+            <div style="float:left; margin-right:5px;">
+                <span class="tooltip_text" onmouseover="widetip=false; tip='否-继续，不保存。'; delayToolTip(event,tip,widetip,0,-30);return false"
+                    onmouseout="hideToolTip()">
+                    <input type="button" class="blankbluebutton"  value="No - Continue Without Saving" onclick="javascript:gotoPage();return ValidNavigation();" />                        
+                </span>
+            </div>
+            
+            <div>      
+                <span class="tooltip_text" onmouseover="widetip=false; tip='取消：停留在当前页面。'; delayToolTip(event,tip,widetip,0,-30);return false"
+                    onmouseout="hideToolTip()">
+                        <input type="submit" name="ctl00$btnCancelWarning" value="Cancel: Stay on Page" onclick="javascript:cancelPage();return ValidNavigation();WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$btnCancelWarning&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ctl00_btnCancelWarning" class="blankbluebutton" />
+                </span>
+            </div>
+        
+</div>
+                
+        <div id="ctl00_pnlExitWarning" class="modal-content" style="width:625px; padding:20px 20px; display:none;">
+	
+            <div style="font-size:11px; padding-bottom:30px; text-align:center;">            
+                <span id="ctl00_lblExitWarning" class="tooltip_text" onmousemove="widetip=false; tip=&#39;您现在进行的是进入DS-160申请表格以外的页面，您将需要您表格的识别码来调出DS-160表格。&#39;; delayToolTip(event,tip,widetip,0,0);return false" onmouseout="hideToolTip()">You are attempting to navigate to a page outside your DS-160 application.  You will need your Application ID to retrieve this DS-160.</span>
+            </div>
+            <div>
+                
+                
+                
+                <table style="margin-left:auto; margin-right:auto"><tr><td>
+                    <span class="tooltip_text" onmouseover="widetip=false; tip='推出'; delayToolTip(event,tip,widetip,0,-30);return false"
+                        onmouseout="hideToolTip()">
+                                                        
+                            <input name="ctl00$btnClientExit" type="button" id="ctl00_btnClientExit" class="blankbluebutton" onclick="javascript:gotoPage();" value="Exit" />                        
+                    </span>
+                </td>
+                <td style="width:30px">
+                </td>
+                <td>
+                    <span class="tooltip_text" onmouseover="widetip=false; tip='取消：停留在当前页面。'; delayToolTip(event,tip,widetip,0,-30);return false"
+                        onmouseout="hideToolTip()">
+                            <input type="submit" name="ctl00$btnCancelExitWarning" value="Cancel: Stay on Page" onclick="javascript:cancelPage();return ValidNavigation();" id="ctl00_btnCancelExitWarning" class="blankbluebutton" />
+                    </span>
+                </td></tr></table>
+                
+                
+            </div>
+        
+</div>
+        
+        <div id="ctl00_ucNavigateOption_ucNavPanel_updConfirm">
+	  
+        <div id="ctl00_ucNavigateOption_ucNavPanel_pnlMessage" class="modal-content" style="width:500px; padding:20px 20px; display:none;">
+		
+                 
+            
+            <div style="max-height:500px; overflow-y:auto;">
+                
+        <div style="font-size:11px; padding-bottom:30px; text-align:center;">
+            <span id="ctl00_ucNavigateOption_ucNavPanel_ctl01_lblNavigate">Your DS-160 is complete.  Do you want to return to the Review section?</span>
+        </div>
+        <br />
+        <div id="ctl00_ucNavigateOption_ucNavPanel_ctl01_completeButtons" style="height:25px; text-align:center;">
+            <span class="tooltip_text" onmouseover="widetip=false; tip=''; delayToolTip(event,tip,widetip,0,-30);return false"
+                onmouseout="hideToolTip()">
+                <input type="submit" name="ctl00$ucNavigateOption$ucNavPanel$ctl01$btnReviewPage" value="Yes – Return to Review" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ucNavigateOption$ucNavPanel$ctl01$btnReviewPage&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ctl00_ucNavigateOption_ucNavPanel_ctl01_btnReviewPage" class="blankbluebutton2" style="width:200px;" />
+            </span>
+            <span class="tooltip_text" onmouseover="widetip=false; tip=''; delayToolTip(event,tip,widetip,0,-30);return false"
+                onmouseout="hideToolTip()">
+                <input type="submit" name="ctl00$ucNavigateOption$ucNavPanel$ctl01$btnNextPageComplete" value="No – Continue Form" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ucNavigateOption$ucNavPanel$ctl01$btnNextPageComplete&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ctl00_ucNavigateOption_ucNavPanel_ctl01_btnNextPageComplete" class="blankbluebutton2" TooTip="" style="width:200px;" />
+            </span>
+        </div>
+        
+       
+            </div>       
+        
+	</div>
+
+        <a href="../../Common/Controls/#" id="ctl00_ucNavigateOption_ucNavPanel_anchorModalActivate"></a>
+         
+    
+</div>
+        
+        <input name="ctl00$HiddenSideBarItemClicked" type="hidden" id="ctl00_HiddenSideBarItemClicked" Text="" />
+        <a id="ctl00_anchorModalActivate" style="display:none; visibility:hidden;" onclick="return false"></a>
+        
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_ValidationSummary"));
+var Page_Validators =  new Array(document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValPurposeOfTrip"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValOtherPurpose"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValSpecTravelPlans"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValTRAVEL_DTE"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_cvLOS"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValStreetAddress1"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValidator2"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValCity"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValUSState"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValZip"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValWhoIsPaying"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerSurname"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerGivenName"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerPhone"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValPAYER_EMAIL"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerRelationship"), document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerAddrSameAsInd"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_SiteContentPlaceHolder_FormView1_ValidationSummary = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_ValidationSummary"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_ValidationSummary");
+ctl00_SiteContentPlaceHolder_FormView1_ValidationSummary.headertext = "Please correct all areas in error as indicated below. Once you have finished, click ‘Save’ or ‘Next’ to continue completing your online application form.";
+var ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValPurposeOfTrip = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValPurposeOfTrip"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValPurposeOfTrip");
+ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValPurposeOfTrip.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_ddlPurposeOfTrip";
+ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValPurposeOfTrip.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValOtherPurpose = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValOtherPurpose"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValOtherPurpose");
+ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValOtherPurpose.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_ddlOtherPurpose";
+ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValOtherPurpose.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValSpecTravelPlans = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValSpecTravelPlans"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValSpecTravelPlans");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValSpecTravelPlans.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_rblSpecificTravel";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValSpecTravelPlans.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValTRAVEL_DTE = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValTRAVEL_DTE"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValTRAVEL_DTE");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValTRAVEL_DTE.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_tbxTRAVEL_DTEYear";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValTRAVEL_DTE.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_cvLOS = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_cvLOS"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_cvLOS");
+ctl00_SiteContentPlaceHolder_FormView1_cvLOS.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_tbxTRAVEL_LOS";
+ctl00_SiteContentPlaceHolder_FormView1_cvLOS.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValStreetAddress1 = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValStreetAddress1"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValStreetAddress1");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValStreetAddress1.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_tbxStreetAddress1";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValStreetAddress1.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValidator2 = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValidator2"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValidator2");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValidator2.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_tbxStreetAddress2";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValidator2.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValCity = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValCity"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValCity");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValCity.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_tbxCity";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValCity.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValUSState = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValUSState"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValUSState");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValUSState.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_ddlTravelState";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValUSState.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValZip = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValZip"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValZip");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValZip.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_tbZIPCode";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValZip.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValWhoIsPaying = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValWhoIsPaying"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValWhoIsPaying");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValWhoIsPaying.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_ddlWhoIsPaying";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValWhoIsPaying.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerSurname = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerSurname"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerSurname");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerSurname.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_tbxPayerSurname";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerSurname.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerGivenName = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerGivenName"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerGivenName");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerGivenName.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_tbxPayerGivenName";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerGivenName.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerPhone = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerPhone"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerPhone");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerPhone.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_tbxPayerPhone";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerPhone.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValPAYER_EMAIL = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValPAYER_EMAIL"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValPAYER_EMAIL");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPAYER_EMAIL.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_tbxPAYER_EMAIL_ADDR";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPAYER_EMAIL.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerRelationship = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerRelationship"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerRelationship");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerRelationship.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_ddlPayerRelationship";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerRelationship.errormessage = "Marital status selected on Personal Information 1 page should match selection made for \'Relationship to You.\'";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerRelationship.isvalid = "False";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerRelationship.evaluationfunction = "CustomValidatorEvaluateIsValid";
+var ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerAddrSameAsInd = document.all ? document.all["ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerAddrSameAsInd"] : document.getElementById("ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerAddrSameAsInd");
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerAddrSameAsInd.controltovalidate = "ctl00_SiteContentPlaceHolder_FormView1_rblPayerAddrSameAsInd";
+ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerAddrSameAsInd.evaluationfunction = "CustomValidatorEvaluateIsValid";
+//]]>
+</script>
+
+
+<script type="text/javascript">
+//<![CDATA[
+
+(function(id) {
+    var e = document.getElementById(id);
+    if (e) {
+        e.dispose = function() {
+            Array.remove(Page_ValidationSummaries, document.getElementById(id));
+        }
+        e = null;
+    }
+})('ctl00_SiteContentPlaceHolder_FormView1_ValidationSummary');
+
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValPurposeOfTrip').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValPurposeOfTrip'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValOtherPurpose').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_CustomValOtherPurpose'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValSpecTravelPlans').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValSpecTravelPlans'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValTRAVEL_DTE').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValTRAVEL_DTE'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_cvLOS').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_cvLOS'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValStreetAddress1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValStreetAddress1'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValidator2').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValidator2'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValCity').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValCity'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValUSState').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValUSState'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValZip').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValZip'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValWhoIsPaying').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValWhoIsPaying'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerSurname').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerSurname'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerGivenName').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerGivenName'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerPhone').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerPhone'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValPAYER_EMAIL').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValPAYER_EMAIL'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerRelationship').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerRelationship'));
+}
+
+document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerAddrSameAsInd').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_SiteContentPlaceHolder_FormView1_CustomValPayerAddrSameAsInd'));
+}
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","DropShadow":true,"PopupControlID":"ctl00_SiteContentPlaceHolder_pnlNIVWarning","Y":150,"dynamicServicePath":"/GenNIV/General/complete/complete_travel.aspx","id":"ctl00_SiteContentPlaceHolder_modalNIVWarning"}, null, null, $get("ctl00_SiteContentPlaceHolder_anchorModalActivate"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","CancelControlID":"ctl00_btnWarning","DropShadow":true,"OkControlID":"ctl00_btnWarning","OnOkScript":"onOk()","PopupControlID":"ctl00_pnlWarning","Y":150,"dynamicServicePath":"/GenNIV/General/complete/complete_travel.aspx","id":"warning"}, null, null, $get("ctl00_btnModalHolder"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","DropShadow":true,"PopupControlID":"ctl00_pnlTimeout","Y":150,"dynamicServicePath":"/GenNIV/General/complete/complete_travel.aspx","id":"timeout"}, null, null, $get("ctl00_btnModalHolder"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","CancelControlID":"ctl00_anchorModalActivate","DropShadow":true,"OkControlID":"ctl00_btnCancelWarning","PopupControlID":"ctl00_pnlSaveWarning","Y":150,"dynamicServicePath":"/GenNIV/General/complete/complete_travel.aspx","id":"modalSave"}, null, null, $get("ctl00_anchorModalActivate"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","CancelControlID":"ctl00_anchorModalActivate","DropShadow":true,"OkControlID":"ctl00_btnCancelExitWarning","PopupControlID":"ctl00_pnlExitWarning","Y":150,"dynamicServicePath":"/GenNIV/General/complete/complete_travel.aspx","id":"modalExitWarning"}, null, null, $get("ctl00_anchorModalActivate"));
+});
+Sys.Application.add_init(function() {
+    $create(AjaxControlToolkit.ModalPopupBehavior, {"BackgroundCssClass":"modalBackground","CancelControlID":"ctl00_ucNavigateOption_ucNavPanel_anchorModalActivate","DropShadow":true,"OkControlID":"ctl00_ucNavigateOption_ucNavPanel_anchorModalActivate","PopupControlID":"ctl00_ucNavigateOption_ucNavPanel_pnlMessage","Y":10,"dynamicServicePath":"/GenNIV/General/complete/complete_travel.aspx","id":"ctl00_ucNavigateOption_ucNavPanel_modalConfirm"}, null, null, $get("ctl00_ucNavigateOption_ucNavPanel_anchorModalActivate"));
+});
+//]]>
+</script>
+</form>
+</body>
+</html>

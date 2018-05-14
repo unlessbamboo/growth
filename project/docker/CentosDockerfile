@@ -1,0 +1,15 @@
+# 基于官方centos:7构建一个基于本人使用的centos环境
+# 1 包查找命令: yum whatprovides *bin/which
+# 2 使用命令: docker build -t centos:bamboo -f CentosDockerfile . 定制镜像
+FROM centos:7
+RUN yum update \
+    && yum install -y yum-utils \
+    && yum install -y zsh wget curl git git-core which \
+    && chsh -s `which zsh` \
+    && yum install -y vim \
+    && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" || true \
+    && cd \
+    && mkdir workspace 
+
+# 指定工作目录
+WORKDIR $HOME/workspace

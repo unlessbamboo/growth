@@ -1,0 +1,15 @@
+div {
+  width: 400px;
+  height: 100px;
+  border: solid 2px red;
+  margin: 4px;
+  position: relative;
+}
+
+#box1 {
+  top: 108px;
+}
+
+#box2 {
+  top: -108px;
+}

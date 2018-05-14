@@ -1,0 +1,60 @@
+/* 默认将所有填白/边界全部置0 */
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* 适应 Internet */
+  text-align: center;
+}
+
+#model {
+  width: 800px;
+  margin: auto;
+  text-align: left;
+}
+
+#header {
+  background: #FF00FF;
+}
+
+/* main 主信息, 包含三个部分: 主信息栏, 次信息栏, 服务区 */
+#main {
+  position: relative;  /* 如果没有, 则从上往下排列三个部分 */
+  width: 100%;
+  overflow: hidden;
+  /* background: url(images/bg.gif) center repeat-y; */
+}
+
+#content { /* 主体信息区域 */
+  margin: auto 20% auto 25%;
+  background: #FFCC00;
+  margin-bottom: -9999px;
+  padding-bottom: 9999px;
+  float: left;
+}
+
+#subplot { /* 次信息栏 */
+  width: 20%;
+  position: absolute; /* 绝对定位 */
+  right: 0;
+  top: 0;
+  background: #00CCCC;
+  margin-bottom: -9999px;
+  padding-bottom: 9999px;
+}
+
+#serve { /* 服务区 */
+  width: 25%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #99CCFF;
+  margin-bottom: -9999px;
+  padding-bottom: 9999px;
+}
+
+#footer {
+  background: #FF99FF;
+}

@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* 整体DIV */
+
+.news-box {
+  width: 580px;
+  padding: 10px;
+  font: normal 14px/1.5em simsun, Verdana, Lucida, Arial, Helvetica, sans-serif;
+  /* simsun 字体就是宋体的英文写法 */
+  color: #000000;
+  border: 1px solid #333333;
+  background-color: #F6FAFD;
+}
+
+
+/* 次级标题: 仅仅用于提示开发者, 不显示 */
+
+.news-box h2 {
+  display: none;
+}
+
+
+/* 主标题 */
+
+.news-box h1 {
+  height: 20px;
+  padding: 5px 0;
+  line-height: 26px;
+  overflow: hidden;
+  /* 行高大于高度，设置overflow:hidden;使超过的部分隐藏, 部分文字显示一半*/
+  font-size: 20px;
+}
+
+/* 新闻标题 */
+.news-box h1 {
+  float: left;
+  height: 20px;
+  padding: 5px 20px 5px 0;
+  /* 添加右边的内补丁，增加空白的空间显示背景图片 */
+  line-height: 26px;
+  overflow: hidden;
+  /* 行高比高度的属性值要大，设置overflow:hidden;使超过的部分隐藏 */
+  font-size: 20px;
+  background: url(images/ico.gif) no-repeat right 10px;
+}
+
+
+/* 新闻相关信息 */
+.news-box .info {
+  /* 考略到h1的浮点型, 这里必须换行 */
+  clear: both;
+  height: 20px;
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+
+
+/* 摘要信息(类summary): 首行缩进, 设置背景色 */
+
+.news-box .summary {
+  padding: 5px;
+  margin-bottom: 10px;
+  /* 首行缩进2个汉字的宽度 */
+  text-indent: 2em;
+  border: 1px solid #DCDDDD;
+  background-color: #FFFFFF;
+}
+
+
+/* 主体内容: 首行缩进(不包括图片), 加大行间距 */
+.news-box .content {
+  text-align: center;
+}
+.news-box .content img.news_pic {
+  float: left;
+  margin-right: 10px;
+}
+.news-box .content p {
+  /* 段间距 */
+  margin-bottom: 10px;
+  text-indent: 2em;
+  /* 行间距 */
+  line-height: 22px;
+  text-align: left;
+}
+
+a {
+  color: #1E50A2;
+}
+
+
+/* 设置页面中所有a链接的颜色 */
+
+a:hover {
+  color: #BA2636;
+  text-decoration: none;
+}
+
+
+/* 设置页面中所有a链接被触发时的颜色以及下划线消失 */
+
+a.comments_num {
+  color: #BA2636;
+}
+
+
+/* 设置新闻相关信息处的跟帖信息链接的文字颜色 */
+
+.comments a em {
+  font-style: normal;
+}

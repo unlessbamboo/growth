@@ -1,0 +1,24 @@
+body {
+  text-align: center;
+}
+
+/* ID 选择器 */
+#wrap {
+  margin: auto;
+  text-align: left;
+  border: solid 1px red;
+  width: 800px;
+}
+
+#wrap2 {
+  margin: 100px auto;
+  text-align: left;
+  border: solid 1px red;  /* 实心边框 */
+  width: 600px;
+  position: relative;  /* 在外层定位框: 相对定位 */ 
+}
+
+#subwrap2 {
+  width:100%;
+  position: absolute;
+}

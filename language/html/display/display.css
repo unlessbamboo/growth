@@ -1,0 +1,9 @@
+
+div { border: solid 1px blue; } 				/* 蓝色边框  */
+span { border: solid 1px red; } 				/* 红色边框  */
+img { width: 300px; }						/* 统一图像的宽度  */
+
+/* div {display: inline;} */
+
+/* span本身整体作为块状参与到 HTML 文档流中 */
+span {display: block;}
