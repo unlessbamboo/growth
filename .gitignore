@@ -28,8 +28,9 @@ node_modules
 *.eot
 *.woff
 result.out
-bin/
 build/
+bin/
+!bamboo/**/bin
 core
 
 *.gz
