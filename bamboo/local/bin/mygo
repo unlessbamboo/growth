@@ -19,15 +19,28 @@ vps()
 }
 
 
-visa()
-{
-    ssh ${VISA_NAME} -p ${VISA_PORT}
-}
-
-
 server()
 {
-    ssh ${SERVER_NAME} -p ${SERVER_PORT}
+    if [[ ! -n $1 ]];then
+        ssh ${SERVER_NAME} -p ${SERVER_PORT}
+    elif [[ $1 == 'monitor' ]];then
+        ssh "monitor@${SERVER_HOST}" -p ${SERVER_PORT}
+    elif [[ $1 == 'visa' ]];then
+        ssh "visa@${SERVER_HOST}" -p ${SERVER_PORT}
+    elif [[ $1 == 'api' ]];then
+        ssh "apiv1@${SERVER_HOST}" -p ${SERVER_PORT}
+    fi
+}
+
+testing()
+{
+    if [[ ! -n $1 ]];then
+        ssh ${TEST_NAME} -p ${TEST_PORT}
+    elif [[ $1 == 'visa' ]];then
+        ssh "visa@${TEST_HOST}" -p ${TEST_PORT}
+    elif [[ $1 == 'api' ]];then
+        ssh "apiv1@${TEST_HOST}" -p ${TEST_PORT}
+    fi
 }
 
 
@@ -52,8 +65,13 @@ usage()
     feng            go to hongkong blog server
     vps             go to vps
     ==============================================
-    visa            go to visa server
     server          go to server
+                    visa        --go to visa user
+                    apiv1       --go to visa user
+                    monitor     --go to monitor user
+    testing         go to test
+                    visa        --go to visa user                 
+                    api         --go to apiv1 user
     "
 }
 
@@ -67,10 +85,10 @@ case "$1" in
         feng;;
     vps):
         vps;;
-    visa):
-        visa;;
     server):
-        server;;
+        server $2;;
+    testing):
+        testing $2;;
     *)
         usage;;
 esac
