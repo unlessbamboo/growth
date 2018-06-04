@@ -62,9 +62,10 @@ def lslfab():
 
 
 # 利用with_settings, 仅仅用于更改环境变量, 无法像上下文环境一样, 进行其他改动
-@with_settings(lcd='~/grocery-shop')
-def bamboomaster(message=None):
-    #  with lcd('~/grocery-shop'):
+@with_settings(lcd='~/Growth')
+def growth(message=None):
+    """更新 Growth 代码"""
+    #  with lcd('~/Growth'):
     with settings(warn_only=True):
         local('pwd')
         local('git pull origin master')
@@ -97,6 +98,7 @@ def bamboo():
 
 @roles('feng')
 def feng():
+    """测试香港服务器"""
     # 测试warn_only, 使用临时修改env会话管理器
     # 上下文管理器settings, 嵌套其他上下文管理器, 覆盖env变量
     with settings(warn_only=True):
