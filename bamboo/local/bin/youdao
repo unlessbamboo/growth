@@ -1,0 +1,26 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: youdao.sh
+# 
+#         USAGE: ./youdao.sh 
+# 
+#   DESCRIPTION: 利用terminal终端浏览器w3m, 配合有道翻译进行词典查询
+# 
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: YOUR NAME (), 
+#  ORGANIZATION: 
+#       CREATED: 2018/06/01 10:28
+#      REVISION:  ---
+#===============================================================================
+
+
+
+if [[ -z "$1" ]];then
+    echo "Usage youdao <word>"
+else
+    w3m http://dict.youdao.com/search?q=$1
+fi
