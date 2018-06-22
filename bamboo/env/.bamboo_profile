@@ -179,3 +179,8 @@ alias ipython='python -m IPython'
 
 # docker
 alias dockervm='screen ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty'
+
+# android platform-tools
+if [[ -d $HOME/Library/Android/sdk/platform-tools/ ]];then
+    export PATH=$PATH:/Users/bifeng/Library/Android/sdk/platform-tools/
+fi
