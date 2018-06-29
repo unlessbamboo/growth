@@ -32,6 +32,9 @@ company()
         redis-cli -a ${REDIS_PASSWD} -n ${REDIS_DB} -h ${TEST_HOST}
     elif [[ $1 == "batch" ]];then
         redis-cli -a ${REDIS_PASSWD} -n 1 -h ${BATCH_HOST}
+    elif [[ $1 == "server" ]];then
+        set -x
+        redis-cli -a ${REDIS_PASSWD} -n 1 -h ${SERVER_HOST}
     fi
 }
 
@@ -42,6 +45,7 @@ usage()
     own             personal redis
     ==============================================
     company         go to company redis(Login local redis as db is equal to 0 default)
+                    server      --login server redis(db==0)
                     local       --login local redis(db==1)
                     test        --go to test redis(db==0)
                     batch       --login batch redis(db==1)

@@ -3,10 +3,8 @@
 import smtplib
 import base64
 import socket
-import sys
 import os
 
-import email
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.image import MIMEImage
@@ -94,29 +92,26 @@ def send(confDict, data):
         server.login(confDict['from'], confDict['passwd'])
         server.sendmail(confDict['from'], confDict['recip'], data)
         server.quit()
-    except smtplib.SMTPServerDisconnected as e:
+    except smtplib.SMTPServerDisconnected:
         error_msg = ERR_SMTP_SERVER_DISCONNECTED
-    except smtplib.SMTPSenderRefused as e:
+    except smtplib.SMTPSenderRefused:
         error_msg = ERR_SMTP_SENDER_REFUSED
-    except smtplib.SMTPRecipientsRefused as e:
+    except smtplib.SMTPRecipientsRefused:
         error_msg = ERR_SMTP_RECIPIENT_REFUSED
-    except smtplib.SMTPDataError as e:
+    except smtplib.SMTPDataError:
         error_msg = ERR_SMTP_DATA
-    except smtplib.SMTPConnectError as e:
+    except smtplib.SMTPConnectError:
         error_msg = ERR_SMTP_CONNECT
-    except smtplib.SMTPHeloError as e:
+    except smtplib.SMTPHeloError:
         error_msg = ERR_SMTP_HELO
-    except smtplib.SMTPAuthenticationError as e:
+    except smtplib.SMTPAuthenticationError:
         error_msg = ERR_SMTP_AUTHENTICATION
-    except (socket.timeout, socket.error) as e:
+    except (socket.timeout, socket.error):
         error_msg = ERR_SMTP_CONNECT
-    except KeyError as e:
+    except KeyError:
         error_msg = ERR_DATA_FORMAT
 
-    _rsp = {
-        'result': False,
-        'errmsg': error_msg} if error_msg else {
-        'result': True}
+    _rsp = {'result': False, 'errmsg': error_msg} if error_msg else {'result': True}
 
     return _rsp
 
