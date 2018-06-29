@@ -26,9 +26,22 @@ server()
     elif [[ $1 == 'monitor' ]];then
         ssh "monitor@${SERVER_HOST}" -p ${SERVER_PORT}
     elif [[ $1 == 'visa' ]];then
-        ssh "visa@${SERVER_HOST}" -p ${SERVER_PORT}
+        sshpass -p ${SERVER_VISA_PASSWD} ssh "visa@${SERVER_HOST}" -p ${SERVER_PORT}
     elif [[ $1 == 'api' ]];then
-        ssh "apiv1@${SERVER_HOST}" -p ${SERVER_PORT}
+        sshpass -p ${SERVER_VISA_PASSWD} ssh "apiv1@${SERVER_HOST}" -p ${SERVER_PORT}
+    fi
+}
+
+crawl02()
+{
+    if [[ ! -n $1 ]];then
+        ssh ${CRAWL02_NAME} -p ${CRAWL02_PORT}
+    elif [[ $1 == 'monitor' ]];then
+        ssh "monitor@${CRAWL02_HOST}" -p ${CRAWL02_PORT}
+    elif [[ $1 == 'visa' ]];then
+        sshpass -p ${CRAWL02_VISA_PASSWD} ssh "visa@${CRAWL02_HOST}" -p ${CRAWL02_PORT}
+    elif [[ $1 == 'api' ]];then
+        sshpass -p ${CRAWL02_VISA_PASSWD} ssh "apiv1@${CRAWL02_HOST}" -p ${CRAWL02_PORT}
     fi
 }
 
@@ -79,8 +92,13 @@ usage()
     ==============================================
     server          go to server
                     visa        --go to visa user
-                    apiv1       --go to visa user
+                    apiv1       --go to apiv1 user
                     monitor     --go to monitor user
+
+    crawl           go to crawler server 2
+                    visa        --go to visa user
+                    apiv1       --go to apiv1
+
     test            go to test
                     visa        --go to visa user                 
                     api         --go to apiv1 user
@@ -101,6 +119,8 @@ case "$1" in
         vps;;
     server):
         server $2;;
+    crawl):
+        crawl02 $2;;
     test):
         testing $2;;
     batch):
