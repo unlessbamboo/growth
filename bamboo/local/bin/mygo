@@ -10,7 +10,17 @@ bamboo()
 
 feng()
 {
-    ssh ${FENG_NAME}
+    if [[ ! -n $1 ]];then
+        usage
+    elif [[ $1 == '0' ]];then
+        ssh ${FENG_NAME}
+    elif [[ $1 == '1' ]];then
+        ssh ${CN_FENG_1_NAME}
+    elif [[ $1 == '2' ]];then
+        ssh ${CN_FENG_2_NAME}
+    else
+        usage
+    fi
 }
 
 vps()
@@ -88,6 +98,9 @@ usage()
     ==============================================
     bamboo          go to personal blog server
     feng            go to hongkong blog server
+                    0           --go to HongKong
+                    1           --go to CN_feng_1
+                    2           --go to CN_feng_2
     vps             go to vps
     ==============================================
     server          go to server
@@ -114,7 +127,7 @@ case "$1" in
     bamboo):
         bamboo;;
     feng):
-        feng;;
+        feng $2;;
     vps):
         vps;;
     server):
