@@ -4,7 +4,6 @@ import os
 import sys
 import time
 import atexit
-import time
 import signal
 from signal import SIGTERM
 
@@ -87,7 +86,7 @@ class Daemon(object):
     def sigInt(self, signum, frame):
         '''SIGINT handle'''
         globalLog.getError().log(globalLog.ERROR, "Receive SIGINT, eixt process")
-        #os.kill(os.getpid(), signal.SIGTERM)
+        #  os.kill(os.getpid(), signal.SIGTERM)
 
     def delpid(self):
         '''destructor function'''
@@ -95,7 +94,7 @@ class Daemon(object):
 
     def debug(self):
         '''debug the daemon'''
-        #signal.signal(signal.SIGINT, self.sigInt)
+        #  signal.signal(signal.SIGINT, self.sigInt)
         self.run()
 
     def start(self):
