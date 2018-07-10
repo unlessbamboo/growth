@@ -7,6 +7,7 @@
 # User specific environment and startup programs
 export mypy=~/Growth/language/python/
 export mygcc=~/Growth/language/gcc/
+export mygocode=~/Growth/language/go/
 export myhtml=~/Growth/language/html/
 export mycx=~/Growth/language/g++/
 export mysh=~/Growth/language/shell/

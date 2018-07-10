@@ -67,6 +67,20 @@ testing()
 }
 
 
+verify()
+{
+    if [[ ! -n $1 ]];then
+        ssh ${VERIFY_NAME} -p ${VERIFY_PORT}
+    elif [[ $1 == 'visa' ]];then
+        ssh "visa@${VERIFY_HOST}" -p ${VERIFY_PORT}
+    elif [[ $1 == 'verifycode' ]];then
+        ssh "verifycode@${VERIFY_HOST}" -p ${VERIFY_PORT}
+    elif [[ $1 == 'api' ]];then
+        ssh "apiv1@${VERIFY_HOST}" -p ${VERIFY_PORT}
+    fi
+}
+
+
 batch()
 {
     if [[ ! -n $1 ]];then
@@ -105,16 +119,22 @@ usage()
     ==============================================
     server          go to server
                     visa        --go to visa user
-                    apiv1       --go to apiv1 user
+                    api         --go to apiv1 user
                     monitor     --go to monitor user
 
     crawl           go to crawler server 2
                     visa        --go to visa user
-                    apiv1       --go to apiv1
+                    api         --go to apiv1
 
     test            go to test
                     visa        --go to visa user                 
                     api         --go to apiv1 user
+
+    verify          go to verifycode or test
+                    visa        --go to visa user
+                    api         --go to apiv1 user
+                    verifycode  --go to verifycode user
+
     batch           go to batch
                     api         --go to apiv1 user
     "
@@ -136,6 +156,8 @@ case "$1" in
         crawl02 $2;;
     test):
         testing $2;;
+    verify):
+        verify $2;;
     batch):
         batch $2;;
     *)
