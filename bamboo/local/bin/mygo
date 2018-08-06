@@ -5,7 +5,7 @@
 
 bamboo()
 {
-    ssh ${BAMBOO_NAME}
+    ssh ${CN_BLOG_NAME}
 }
 
 feng()
@@ -13,7 +13,7 @@ feng()
     if [[ ! -n $1 ]];then
         usage
     elif [[ $1 == '0' ]];then
-        ssh ${FENG_NAME}
+        ssh ${HK_FENG_0_NAME}
     elif [[ $1 == '1' ]];then
         ssh ${CN_FENG_1_NAME}
     elif [[ $1 == '2' ]];then
@@ -52,17 +52,6 @@ crawl02()
         sshpass -p ${CRAWL02_VISA_PASSWD} ssh "visa@${CRAWL02_HOST}" -p ${CRAWL02_PORT}
     elif [[ $1 == 'api' ]];then
         sshpass -p ${CRAWL02_VISA_PASSWD} ssh "apiv1@${CRAWL02_HOST}" -p ${CRAWL02_PORT}
-    fi
-}
-
-testing()
-{
-    if [[ ! -n $1 ]];then
-        ssh ${TEST_NAME} -p ${TEST_PORT}
-    elif [[ $1 == 'visa' ]];then
-        ssh "visa@${TEST_HOST}" -p ${TEST_PORT}
-    elif [[ $1 == 'api' ]];then
-        ssh "apiv1@${TEST_HOST}" -p ${TEST_PORT}
     fi
 }
 
@@ -126,10 +115,6 @@ usage()
                     visa        --go to visa user
                     api         --go to apiv1
 
-    test            go to test
-                    visa        --go to visa user                 
-                    api         --go to apiv1 user
-
     verify          go to verifycode or test
                     visa        --go to visa user
                     api         --go to apiv1 user
@@ -154,8 +139,6 @@ case "$1" in
         server $2;;
     crawl):
         crawl02 $2;;
-    test):
-        testing $2;;
     verify):
         verify $2;;
     batch):
