@@ -38,7 +38,7 @@ def get_data_from_db():
     import pdb
     pdb.set_trace()
     pObjList = Publisher.objects.all()
-    print pObjList
+    print(pObjList)
 
 
 def command_line():

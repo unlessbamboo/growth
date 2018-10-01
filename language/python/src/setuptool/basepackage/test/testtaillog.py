@@ -58,4 +58,4 @@ if __name__ == '__main__':
     testObj.run()
 
     endTime = time.time()
-    print '(pyinotify)Read-Running time:', endTime - startTime
+    print('(pyinotify)Read-Running time:', endTime - startTime)

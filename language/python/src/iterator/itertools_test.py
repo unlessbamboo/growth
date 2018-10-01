@@ -37,7 +37,7 @@ def liceTest(iobj):
     :param iobj:
     """
     for x in itertools.islice(iobj, 10, 20):
-        print x
+        print(x)
 
 
 def dropTest(iobj):
@@ -49,7 +49,7 @@ def dropTest(iobj):
     :param iobj:
     """
     for x in itertools.dropwhile(lambda v: v < 15, iobj):
-        print x
+        print(x)
 
 
 def premutationTest(listObj):
@@ -58,13 +58,13 @@ def premutationTest(listObj):
     :param listObj:
     """
     for num in itertools.permutations(listObj):
-        print num
+        print(num)
 
 
 if __name__ == '__main__':
     iterObj = count(0)
     liceTest(iterObj)
-    print 'xxxxxxxxxxxxxxxxxxdropwhilexxxxxxxxxxxxxxxxxxx'
+    print('xxxxxxxxxxxxxxxxxxdropwhilexxxxxxxxxxxxxxxxxxx')
     dropTest(iterObj)
-    print 'xxxxxxxxxxxxxxxxxxpremutationxxxxxxxxxxxxxxxxxx'
+    print('xxxxxxxxxxxxxxxxxxpremutationxxxxxxxxxxxxxxxxxx')
     premutationTest([3, 10, 5])

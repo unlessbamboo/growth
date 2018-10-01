@@ -1,5 +1,5 @@
 # coding:utf-8
-# /usr/bin/python
+
 import os
 import sys
 import time
@@ -38,7 +38,7 @@ def producer2(squeue):
 
 
 def producer3():
-    print 'xxxxxxxxxxxxx'
+    print('xxxxxxxxxxxxx')
     pass
 
 
@@ -64,12 +64,12 @@ def main():
     p2.start()
     p3.start()
 
-    print '----------------------1'
-    print p1.join()
-    print '----------------------2'
-    print p2.join()
-    print '----------------------3'
-    print p3.join()
+    print('----------------------1')
+    print(p1.join())
+    print('----------------------2')
+    print(p2.join())
+    print('----------------------3')
+    print(p3.join())
 
     #
     # consumer
@@ -79,14 +79,14 @@ def main():
         index += 1
         if index > 20 or not mpl.receive():
             break
-        print 'Index:', index
-        print 'Dict:', d1
+        print('Index:', index)
+        print('Dict:', d1)
 
     #
     # stop all process
     #
     while len(processDict):
-        for (name, pro) in processDict.items():
+        for (name, pro) in list(processDict.items()):
             if pro.is_alive():
                 pro.terminate()
             else:

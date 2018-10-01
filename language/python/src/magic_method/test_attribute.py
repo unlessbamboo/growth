@@ -2,7 +2,7 @@
 """
     测试魔术方法中的属性访问控制
 """
-from __future__ import print_function
+
 
 
 class TestNotExistedAttr1(object):

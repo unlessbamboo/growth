@@ -19,12 +19,12 @@ def testRestart():
         consumer_timeout_ms=10 * 1000,
         auto_offset_reset='smallest'
     )
-    print kc.offsets()
+    print(kc.offsets())
     for partition in [0, 1, 2]:
         consumerMsg = KafkaMessage('JOB_BASIC',
                                    partition, 2000, 'shit', 'shit')
         kc.task_done(consumerMsg)
-    print kc.offsets()
+    print(kc.offsets())
     kc.set_topic_partitions(
         ('JOB_BASIC', 0, 2000),
         ('JOB_BASIC', 1, 2000),
@@ -34,12 +34,12 @@ def testRestart():
     while True:
         try:
             for consumer in kc:
-                print consumer
-                print type(consumer)
+                print(consumer)
+                print(type(consumer))
                 kc.task_done(consumer)
         except ConsumerTimeout:
             kc.commit()
-            print 'xxxxxxxxxxxxxxxxx'
+            print('xxxxxxxxxxxxxxxxx')
             continue
 
 
@@ -71,21 +71,21 @@ def testOffset():
     #   except ConsumerTimeout:
     #       print 'xxxxxxxxxxxxxxxxx'
     #       continue
-    print '+++++++++++++++++++++++++++++++'
+    print('+++++++++++++++++++++++++++++++')
     kc.set_topic_partitions(*topicsList)
     while True:
         try:
             for consumer in kc:
-                print consumer
-                print type(consumer)
+                print(consumer)
+                print(type(consumer))
         except ConsumerTimeout:
-            print 'xxxxxxxxxxxxxxxxx'
+            print('xxxxxxxxxxxxxxxxx')
             continue
     offsetDict = kc.offsets()
-    print
-    print "commit:", offsetDict['commit']
-    print "task_done:", offsetDict['task_done']
-    print "fetch:", offsetDict['fetch']
+    print()
+    print("commit:", offsetDict['commit'])
+    print("task_done:", offsetDict['task_done'])
+    print("fetch:", offsetDict['fetch'])
 
 
 if __name__ == '__main__':

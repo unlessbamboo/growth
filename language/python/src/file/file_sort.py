@@ -64,9 +64,7 @@ def sortdir(path, sort_cond='mtime', sort_filter=None,
 
     if onlyfn:
         # if onlyfn is True, return [filename1, filename2, ...]
-        return map(
-            lambda e: e[0],
-            _sortdir(path, f_sort_cond, f_sf, reverse, abspath, postfix))
+        return [e[0] for e in _sortdir(path, f_sort_cond, f_sf, reverse, abspath, postfix)]
     else:
         return _sortdir(path, f_sort_cond, f_sf, reverse, abspath, postfix)
 
@@ -86,11 +84,11 @@ def _sortdir(path, sort_cond, sort_filter, reverse, abspath, postfix):
         path = path + '/'
 
     # Map: 对每一个item进行tranform, 对所有的文件进行路径拼装
-    a_fns = map(lambda f: path + f, fns)
+    a_fns = [path + f for f in fns]
     # 获取所有文件的当前状况, 以列表格式返回
-    sts = map(os.stat, a_fns)
+    sts = list(map(os.stat, a_fns))
     # Zip: 对各个参数进行zip打包操作, 以键值对(file, stat)作为元素存在
-    res = zip(a_fns, sts) if abspath else zip(fns, sts)
+    res = list(zip(a_fns, sts)) if abspath else list(zip(fns, sts))
 
     n_res = []
     for e in res:
@@ -115,14 +113,14 @@ def remove_outdate_files(file_list, file_number):
     remove outdate filenames
     """
     list_length = len(file_list)
-    print list_length
+    print(list_length)
     if file_number > list_length:
         return
 
     for index in range(file_number - 1, list_length):
         os.remove(file_list[index])
-        print file_list[index]
-    print 'Remove outdate files end'
+        print(file_list[index])
+    print('Remove outdate files end')
 
 
 if __name__ == '__main__':
@@ -131,5 +129,5 @@ if __name__ == '__main__':
     """
     file_list = sortdir('/home/temp/', postfix=lambda f: f.endswith('.info'))
     for element in file_list:
-        print element
+        print(element)
     remove_outdate_files(file_list, 20)

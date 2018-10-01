@@ -21,7 +21,7 @@ class B(Y, X):
 class C(A, B):
     def __init__(self):
         super(C, self).__init__(self)
-        print 'C'
+        print('C')
 
 
 c = C()

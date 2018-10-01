@@ -27,7 +27,7 @@ class parseXml(object):
 
     def displayTree(self, root):
         '''打印整棵树'''
-        print root.tag, root.attrib, root.text
+        print(root.tag, root.attrib, root.text)
         for child in root:
             self.displayTree(child)
 
@@ -40,4 +40,4 @@ if __name__ == '__main__':
     print("======================================\n")
     node = parse.findChildNode('./movie/type')
     for a in node:
-        print(a.text)
+        print((a.text))

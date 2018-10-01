@@ -4,12 +4,12 @@
 
 def A():
     try:
-        print "xx"
+        print("xx")
         return
     except BaseException:
-        print "err"
+        print("err")
     else:
-        print "---"
+        print("---")
     return
 
 

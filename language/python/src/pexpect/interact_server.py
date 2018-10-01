@@ -9,17 +9,17 @@ import pexpect
 def interact_server():
     # 确保logfile不是stdout, 否则输入会有冗余数据
     child = pexpect.spawnu('mygo bamboo')
-    child.expect([u'~'])
-    print '--------------------------'
+    child.expect(['~'])
+    print('--------------------------')
     child.interact()
-    print '--------------------------'
+    print('--------------------------')
 
     # interact之后child就失效了
     child = pexpect.spawnu('mygo bamboo')
     child.logfile = sys.stdout
-    print '--------------------------'
-    child.expect([u'.', pexpect.EOF])
-    print '--------------------------'
+    print('--------------------------')
+    child.expect(['.', pexpect.EOF])
+    print('--------------------------')
 
 
 if __name__ == '__main__':

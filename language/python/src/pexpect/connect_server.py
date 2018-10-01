@@ -11,13 +11,13 @@ def connect():
     # 指定标准输出或者文件
     child.logfile = sys.stdout
 
-    child.expect([u'~'])
-    print '--------------------------'
+    child.expect(['~'])
+    print('--------------------------')
     child.sendline('ls -l')
-    print '--------------------------'
+    print('--------------------------')
     # 确保能够捕获, 否则一致等待
-    child.expect([u'.*', pexpect.EOF])
-    print '--------------------------'
+    child.expect(['.*', pexpect.EOF])
+    print('--------------------------')
 
 
 if __name__ == '__main__':

@@ -33,4 +33,4 @@ def frange(start, stop, increment):
 if __name__ == '__main__':
     """main"""
     for num in frange(0, 4, 0.3):
-        print num
+        print(num)

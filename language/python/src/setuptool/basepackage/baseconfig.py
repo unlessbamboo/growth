@@ -2,7 +2,7 @@
 # coding:utf-8
 import os
 import sys
-import ConfigParser
+import configparser
 
 
 CONF_DIR = "/data/conf/job/basepackage.ini"
@@ -13,8 +13,8 @@ def parseExcept(func):
     def innerFunc(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError) as msg:
+        except (configparser.NoSectionError,
+                configparser.NoOptionError) as msg:
             sys.stderr.write("Occure excecpt:{0}.n".format(msg))
             return None
     return innerFunc
@@ -26,7 +26,7 @@ class _ParseConfig(object):
     def __init__(self, filename):
         """init"""
         self._filename = filename
-        self._configParser = ConfigParser.ConfigParser()
+        self._configParser = configparser.ConfigParser()
         self._configParser.read(filename)
 
     @parseExcept
@@ -127,7 +127,7 @@ class KafkaParse(object):
     def __init__(self, filename):
         '''init'''
         self._filename = filename
-        self._configParser = ConfigParser.ConfigParser()
+        self._configParser = configparser.ConfigParser()
         self._configParser.read(filename)
 
     def _getPythonpath(self):
@@ -135,8 +135,8 @@ class KafkaParse(object):
         try:
             return self._configParser.get('pythonenv',
                                           'pythonpath').split('$')
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def setPythonpath(self):
@@ -154,40 +154,40 @@ class KafkaParse(object):
         '''get topic for nginx'''
         try:
             return self._configParser.get('topic', key)
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getInterTime(self):
         '''get interval time'''
         try:
             return float(self._configParser.get('kafka', 'intervaltime'))
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getCacheTime(self, key):
         '''get cache time'''
         try:
             return int(self._configParser.get('cacheTime', key))
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getKvId(self, key):
         '''get KV'''
         try:
             return int(self._configParser.get('kvId', key))
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getApp(self, key):
         '''get KV'''
         try:
             return self._configParser.get('app', key).split('$')
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getBrokerList(self):
@@ -195,64 +195,64 @@ class KafkaParse(object):
         '''
         try:
             return self._configParser.get('kafka', 'broker').split('$')
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getHbaseTable(self, key):
         '''get hbase table'''
         try:
             return self._configParser.get('hbase', key)
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getHbaseList(self):
         '''get hbase list'''
         try:
             return self._configParser.get('hbaseserver', 'host').split('$')
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getMysqlHost(self):
         '''get mysql host'''
         try:
             return self._configParser.get('ossdb', 'host')
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getMysqlPort(self):
         '''get mysql port'''
         try:
             return float(self._configParser.get('ossdb', 'port'))
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getMysqlUser(self):
         '''get mysql username'''
         try:
             return self._configParser.get('ossdb', 'username')
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getMysqlPasswd(self):
         '''get mysql password'''
         try:
             return self._configParser.get('ossdb', 'password')
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getMyqlDb(self):
         '''get mysql db'''
         try:
             return self._configParser.get('ossdb', 'dbname')
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def getModule(self, key):
@@ -262,32 +262,32 @@ class KafkaParse(object):
         '''
         try:
             return self._configParser.get('module', key)
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def re_read(self):
         '''Re-read configure file'''
         try:
             self._configParser.read(self._filename)
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def options(self, sections):
         '''Get all options by sections.'''
         try:
             return self._configParser.options(sections)
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
     def get(self, sections, options):
         '''Get value by sections/options.'''
         try:
             return self._configParser.get(sections, options)
-        except (ConfigParser.NoSectionError,
-                ConfigParser.NoOptionError):
+        except (configparser.NoSectionError,
+                configparser.NoOptionError):
             return None
 
 

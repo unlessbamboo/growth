@@ -7,10 +7,10 @@ import traceback
 
 
 def foo(exctype, value, tb):
-    print 'My Error Information'
-    print 'Type:', exctype
-    print 'Value:', value
-    print 'Traceback:', tb
+    print('My Error Information')
+    print('Type:', exctype)
+    print('Value:', value)
+    print('Traceback:', tb)
 
 
 def testExcept():

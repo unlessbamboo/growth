@@ -94,6 +94,21 @@ db()
 }
 
 
+redis()
+{
+    if [[ $1 == "local" ]];then
+        redis-cli -h ${REDIS_HOST} -p ${REDIS_PORT} -a ${REDIS_PASSWD}
+    elif [[ $1 == "verify" ]];then
+        redis-cli -h ${SH_REDIS_HOST} -p ${SH_REDIS_PORT} -a ${SH_REDIS_PASSWD}
+    elif [[ $1 == "test" ]];then
+        redis-cli -h ${TEST_REDIS_HOST} -p ${TEST_REDIS_PORT}
+    else
+        echo "Not found this redis server."
+        exit 1
+    fi
+}
+
+
 usage()
 {
     echo "Go to special machine.
@@ -111,7 +126,7 @@ usage()
                     api         --go to apiv1 user
                     monitor     --go to monitor user
 
-    crawl           go to crawler server 2
+    server2         go to crawler server 2
                     visa        --go to visa user
                     api         --go to apiv1
 
@@ -122,6 +137,11 @@ usage()
 
     batch           go to batch
                     api         --go to apiv1 user
+    ==============================================
+    redis           connect local redis or 150
+                    local       --connect localhost
+                    verify      --connect verify
+                    test        --connect test
     "
 }
 
@@ -137,12 +157,14 @@ case "$1" in
         vps;;
     server):
         server $2;;
-    crawl):
+    server2):
         crawl02 $2;;
     verify):
         verify $2;;
     batch):
         batch $2;;
+    redis):
+        redis $2;;
     *)
         usage;;
 esac

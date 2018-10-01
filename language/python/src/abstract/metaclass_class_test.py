@@ -70,4 +70,4 @@ class Child(Parent):
 
 if __name__ == '__main__':
     cobj = Child()
-    print cobj.now
+    print(cobj.now)

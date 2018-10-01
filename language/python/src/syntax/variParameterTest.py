@@ -9,14 +9,14 @@ kwargs:     key/word参数
 
 def displayList(*args):
     '''注意可变参数和list之间的转换'''
-    print 'args = ', args
+    print('args = ', args)
 
 
 def foo(*args, **kwargs):
     argsList = args
     displayList(*argsList)
-    print 'kwargs = ', kwargs
-    print
+    print('kwargs = ', kwargs)
+    print()
 
 
 def foo1(method, auth=None, **kwargs):
@@ -26,10 +26,10 @@ def foo1(method, auth=None, **kwargs):
     if auth:
         d1['auth'] = auth
 
-    for (k, v) in kwargs.items():
+    for (k, v) in list(kwargs.items()):
         d1[k] = v
 
-    print d1
+    print(d1)
 
 
 if __name__ == '__main__':

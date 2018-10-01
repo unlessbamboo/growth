@@ -7,8 +7,8 @@ s.bind(address)
 while True:
     data, addr = s.recvfrom(2048)
     if not data:
-        print "client has exist"
+        print("client has exist")
         break
-    print "received:", data, "from", addr
+    print("received:", data, "from", addr)
 
 s.close()

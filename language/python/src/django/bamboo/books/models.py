@@ -12,7 +12,7 @@ class Publisher(models.Model):
 
     def __unicode__(self):
         """unicode str"""
-        return u'{0} {1} {2} {3} {4} {5} {6}'.format(
+        return '{0} {1} {2} {3} {4} {5} {6}'.format(
             self.name, self.address, self.city,
             self.state_province, self.country,
             self.website, self.put_date)

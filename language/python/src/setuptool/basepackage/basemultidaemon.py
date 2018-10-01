@@ -28,7 +28,7 @@ class Daemon(object):
             if pid:
                 sys.exit(0)
         except OSError as e:
-            print "Fork process failed: %d(%s)." % (e.errno, e.strerror)
+            print("Fork process failed: %d(%s)." % (e.errno, e.strerror))
             sys.exit(1)
 
         # decouple from parent environment
@@ -42,7 +42,7 @@ class Daemon(object):
             if pid > 0:
                 sys.exit(0)
         except OSError as e:
-            print "Fork process failed: %d(%s)." % (e.errno, e.strerror)
+            print("Fork process failed: %d(%s)." % (e.errno, e.strerror))
             sys.exit(1)
 
         # redirect standard file descriptors
@@ -64,7 +64,7 @@ class Daemon(object):
             fd.close()
             os.chmod(self.pidfile, 0o777)
         except IOError as msg:
-            print "%s:open pidfile failed." % msg
+            print("%s:open pidfile failed." % msg)
             sys.exit(1)
 
     def delpid(self):
@@ -82,7 +82,7 @@ class Daemon(object):
 
         if pid:
             message = "pidfile %s already exist, start failed."
-            print message % (self.pidfile)
+            print(message % (self.pidfile))
             sys.exit(1)
 
         self.daemonize()
@@ -100,7 +100,7 @@ class Daemon(object):
         if not pid:
             message = ("Not found pid at Pidfile %s does not exist."
                        "Manual check process please!")
-            print message % self.pidfile
+            print(message % self.pidfile)
             return
 
         try:
@@ -112,9 +112,9 @@ class Daemon(object):
             if err.find("No such process") > 0:
                 message = ("Not found pid=%s at %s."
                            "Manual removal process please.")
-                print message % (pid, self.pidfile)
+                print(message % (pid, self.pidfile))
             else:
-                print 'Daemon stop:%s' % err
+                print('Daemon stop:%s' % err)
             if os.path.exists(self.pidfile):
                 os.remove(self.pidfile)
 
@@ -135,12 +135,12 @@ class Daemon(object):
         if not pid:
             message = ("Not found pid at Pidfile %s does not exist."
                        "Manual check process please!")
-            print message % self.pidfile
+            print(message % self.pidfile)
             return
 
         os.kill(pid, SIGHUP)
         time.sleep(1)
-        print 'Reload program successful!'
+        print('Reload program successful!')
 
     def stopforce(self, cmdfile):
         """Forced to stop process"""
@@ -149,7 +149,7 @@ class Daemon(object):
                       "|grep -v grep|awk '{print $2}'|"
                       "grep -v %s|xargs kill -9" % (cmdfile, pid))
         if os.system(commandstr) >> 8 is not 0:
-            print "Forced to stop all process failed, command:%s" % commandstr
+            print("Forced to stop all process failed, command:%s" % commandstr)
 
     def usage(self):
         """user help info"""
@@ -169,19 +169,19 @@ def start_up(filename, ob, opt, *args):
     :args:  other argument
     """
     if opt == 'start':
-        print "Start aggregate handle."
+        print("Start aggregate handle.")
         ob.start()
 
     elif opt == 'stop':
-        print "Stop aggregate handle."
+        print("Stop aggregate handle.")
         ob.stop()
 
     elif opt == 'restart':
-        print "Restart aggregate handle."
+        print("Restart aggregate handle.")
         ob.restart()
 
     elif opt == 'reload':
-        print "Reload aggregate handle."
+        print("Reload aggregate handle.")
         ob.reload()
 
     elif opt == 'debug':

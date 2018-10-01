@@ -20,7 +20,7 @@ class A:
         self.startTimer()
 
     def display(self):
-        print 'this is a timer....'
+        print('this is a timer....')
         self.timer1 = threading.Timer(3, self.display)
         self.timer1.start()
 

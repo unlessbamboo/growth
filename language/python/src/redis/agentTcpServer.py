@@ -259,9 +259,9 @@ class AgentServer(Daemon):
     def signalExit(self, a, b):
         '''close all'''
         if self._attackPip:
-            print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX----'
+            print('XXXXXXXXXXXXXXXXXXXXXXXXXXXX----')
             self._attackPip.close()
-        print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+        print('XXXXXXXXXXXXXXXXXXXXXXXXXXXX')
         sys.exit(-1)
 
     def run(self):

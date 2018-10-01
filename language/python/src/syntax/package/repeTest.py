@@ -2,13 +2,13 @@
 
 
 def test1():
-    import repeImport
-    print 'Test1++++++++++++++++++++++++++++++'
+    from . import repeImport
+    print('Test1++++++++++++++++++++++++++++++')
 
 
 if __name__ == '__main__':
     """main"""
-    print 'Main==========================='
+    print('Main===========================')
     import time
     time.sleep(3)
     test1()

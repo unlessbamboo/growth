@@ -3,17 +3,17 @@ import sys
 import threading
 import signal
 import time
-import Queue
+import queue
 
 
 class A:
     def __init__(self):
         self.flag = False
-        self.queue = Queue.Queue()
+        self.queue = queue.Queue()
 
     def display(self, *args, **kwargs):
         '''print'''
-        print args
+        print(args)
         for i in range(1000):
             self.queue.put('This is %d test' % (i))
             time.sleep(1)
@@ -21,7 +21,7 @@ class A:
                 break
 
     def handle(self, a, b):
-        print 'XXXXXXXXXXXXXXXXXXXXXXXX'
+        print('XXXXXXXXXXXXXXXXXXXXXXXX')
         self.flag = True
 
     def threadingFunc(self):
@@ -35,12 +35,12 @@ class A:
         # 启动线程
         thread1.start()
         while not self.flag:
-            print '==============='
-            print self.queue.get()
+            print('===============')
+            print(self.queue.get())
             time.sleep(1)
         thread1.join()
         time.sleep(3)
-        print "xxxxxxxxxx", thread1.isAlive()
+        print("xxxxxxxxxx", thread1.isAlive())
 
 
 if __name__ == '__main__':

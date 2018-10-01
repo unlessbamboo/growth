@@ -46,4 +46,4 @@ if __name__ == '__main__':
     filename = '/tmp/ioNotify.tmp'
     writeLog(filename)
     endTime = time.time()
-    print 'Write-Running time:', endTime - startTime
+    print('Write-Running time:', endTime - startTime)

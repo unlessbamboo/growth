@@ -28,8 +28,8 @@ def _handle_attach(main, data):
     if 'file' in data and not data['file']:
         fileAttach = data['file']
         for (_name, _data) in fileAttach:
-            print '**********************'
-            print 'data: ', _data
+            print('**********************')
+            print('data: ', _data)
             att = MIMEText(base64.b64decode(_data), "plain", 'utf-8')
             att["Content-Type"] = 'application/octet-stream'
             att["Content-Disposition"] = 'filedir/attachment; "\
@@ -55,8 +55,8 @@ def create(data):
     try:
         main = MIMEMultipart('related')
         _handle_attach(main, data)
-        print 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        print str(main)
+        print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+        print(str(main))
         main.attach(MIMEText(data['content'], 'html', 'utf-8'))
 
         main['Subject'] = data['subject']
@@ -175,10 +175,10 @@ if __name__ == '__main__':
             'http: //xiage.shitx.shit.com/v1/send/mail/',
             data=json.dumps(data_dict),
             headers={'Content-type': 'application/json'})
-        print rsp.text
+        print(rsp.text)
     else:
-        print data_dict['file']
+        print(data_dict['file'])
         _data, rsp = create(data_dict)
         if not rsp:
             rsp = send(data_dict, _data)
-        print rsp
+        print(rsp)

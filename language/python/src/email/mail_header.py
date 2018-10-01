@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # coding:utf-8
 
-from cStringIO import StringIO
+from io import StringIO
 from email.generator import Generator
 from email.mime.text import MIMEText
 import time
@@ -17,4 +17,4 @@ fp = StringIO()
 g = Generator(fp, mangle_from_=False, maxheaderlen=60)
 g.flatten(main_msg)
 text = fp.getvalue()
-print text
+print(text)

@@ -5,20 +5,20 @@ import psutil
 
 def simpleTest():
     startTime = time.time()
-    for i in xrange(100000000):
+    for i in range(100000000):
         mem = psutil.virtual_memory()
-        print 'Total:', mem.total / 1024 / 1024, 'Used:', mem.used / 1024 / 1024
+        print('Total:', mem.total / 1024 / 1024, 'Used:', mem.used / 1024 / 1024)
         break
     endTime = time.time()
-    print '迭代器消耗时间:', endTime - startTime
+    print('迭代器消耗时间:', endTime - startTime)
 
     startTime = time.time()
     for i in range(100000000):
         mem = psutil.virtual_memory()
-        print 'Total:', mem.total / 1024 / 1024, 'Used:', mem.used / 1024 / 1024
+        print('Total:', mem.total / 1024 / 1024, 'Used:', mem.used / 1024 / 1024)
         break
     endTime = time.time()
-    print '消耗时间:', endTime - startTime
+    print('消耗时间:', endTime - startTime)
 
 
 class BambooIter(object):
@@ -47,7 +47,7 @@ class BambooIter(object):
         self.n = 0
         return self
 
-    def next(self):
+    def __next__(self):
         if self.n > self.max:
             raise StopIteration
         fib = self.a
@@ -71,7 +71,7 @@ def bambooIterFunc(max):
     n, a, b = 0, 0, 1
     while n < max:
         yield b
-        print 'yield 之后的代码'
+        print('yield 之后的代码')
         a, b = b, a + b
         n += 1
 
@@ -82,7 +82,7 @@ def readFileByIter(filename):
     '''
     with open(filename, 'r') as f:
         for line in f:
-            print line
+            print(line)
 
 
 import itertools
@@ -94,18 +94,18 @@ def itertoolsTest():
         '''过滤处理函数'''
         return x > 2
     destList = [3, 5, 2, 3, 2, 10, 3, 8, 4]
-    print 'Dropwhile测试：'
+    print('Dropwhile测试：')
     for i in itertools.dropwhile(filterFunc, destList):
-        print i
-    print 'Takewhile测试：'
+        print(i)
+    print('Takewhile测试：')
     for i in itertools.takewhile(filterFunc, destList):
-        print i
-    print 'ifilter测试：'
-    for i in itertools.ifilter(filterFunc, destList):
-        print i
-    print 'ifilterfalse测试：'
-    for i in itertools.ifilterfalse(filterFunc, destList):
-        print i
+        print(i)
+    print('ifilter测试：')
+    for i in filter(filterFunc, destList):
+        print(i)
+    print('ifilterfalse测试：')
+    for i in itertools.filterfalse(filterFunc, destList):
+        print(i)
 
 
 def itertoolGroupby():
@@ -113,10 +113,10 @@ def itertoolGroupby():
     destIter = [(1, 2), (1, 2),
                 'shit', 'shit',
                 'xiang', 3, 3, 4]
-    print 'GroupBy测试:'
+    print('GroupBy测试:')
     for k, v in itertools.groupby(destIter):
-        print k, '--', tuple(v)
-    print
+        print(k, '--', tuple(v))
+    print()
 
 
 if __name__ == '__main__':
@@ -125,9 +125,9 @@ if __name__ == '__main__':
     # for i in biter:
     #    print i
 
-    print '生成器输出'
+    print('生成器输出')
     for j in bambooIterFunc(10):
-        print "当前值：", j
+        print("当前值：", j)
 
     itertoolsTest()
     itertoolGroupby()

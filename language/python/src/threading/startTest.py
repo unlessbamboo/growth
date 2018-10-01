@@ -11,7 +11,7 @@ class StartTest(object):
 
     def display(self):
         '''判断self.testVar是否发生变化'''
-        print self.testVar
+        print(self.testVar)
 
     def run(self):
         '''run'''

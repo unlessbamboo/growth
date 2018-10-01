@@ -3,7 +3,7 @@
 
 
 def display():
-    print 'I am server'
+    print('I am server')
 
 
 import rely_client_solve

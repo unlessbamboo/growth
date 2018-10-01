@@ -32,7 +32,7 @@ class Count(object):
         # 用的时候采取拿数据，不用就一直开着指针
         return self
 
-    def next(self):
+    def __next__(self):
         """__next__
 
         @Note:在python3中，使用__next__替换next方法
@@ -49,4 +49,4 @@ if __name__ == '__main__':
     """main"""
     cObj = Count(100)
     for num in cObj:
-        print num
+        print(num)

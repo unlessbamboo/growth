@@ -11,8 +11,8 @@ def test_params():
     """test params参数"""
     d1 = {'shit': 3, 'xiang': 4}
     rsp = requests.get(URL, params=d1)
-    print rsp.url
-    print rsp.raw
+    print(rsp.url)
+    print(rsp.raw)
 
 
 def test_headers():
@@ -20,14 +20,14 @@ def test_headers():
     d1 = {'content-type': 'application/json'}
     rsp = requests.get(URL, data=json.dumps({'shit': 3}),
                        headers=d1)
-    print rsp.url
+    print(rsp.url)
 
 
 def test_cookies():
     """test cookies"""
     cookieDict = dict(mykey='123')
     rsp = requests.get(URL, cookies=cookieDict)
-    print rsp.status_code
+    print(rsp.status_code)
 
 
 def test_files():
@@ -35,14 +35,14 @@ def test_files():
     rsp = requests.get(URL, files={'file1': open('manage', 'rb'),
                                    'file2': ('manage999', open('manage', 'rb'))},
                        data={'shit': 3})
-    print rsp.status_code
+    print(rsp.status_code)
 
 
 def test_stream():
     """测试流式上传"""
     with open('manage', 'rb') as fp:
         rsp = requests.get(URL, data=fp)
-        print rsp.status_code
+        print(rsp.status_code)
 
 
 def test_delay_download():
@@ -52,13 +52,13 @@ def test_delay_download():
     rsp = requests.get(URL, stream=True)
     if int(rsp.headers['Content-length']) < 3939535:
         content = rsp.content
-        print content
+        print(content)
 
 
 def test_redirect():
     """test redirect"""
     rsp = requests.get('http://github.com')
-    print rsp.history
+    print(rsp.history)
 
 
 def test_auth():
@@ -66,7 +66,7 @@ def test_auth():
     from requests.auth import HTTPBasicAuth
     auth = HTTPBasicAuth('unlessbamboo@gmail.com', 'passwd')
     rsp = requests.get('http://github.com', auth=auth)
-    print rsp.history
+    print(rsp.history)
 
 
 def test_json():
@@ -76,7 +76,7 @@ def test_json():
             rsp.headers['content-type'] == \
             'application/json; charset=utf-8':
         data = rsp.json()
-        print data
+        print(data)
 
 
 def test_encoding():

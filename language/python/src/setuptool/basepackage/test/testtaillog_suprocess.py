@@ -55,4 +55,4 @@ if __name__ == '__main__':
     filename = '/tmp/ioNotify.tmp'
     readLog(filename)
     endTime = time.time()
-    print '(Subprocess)Read-Running time:', endTime - startTime
+    print('(Subprocess)Read-Running time:', endTime - startTime)

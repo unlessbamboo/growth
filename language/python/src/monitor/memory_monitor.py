@@ -22,8 +22,8 @@ def index():
         i
 
     h = hp.heap()
-    print h
-    print h.more
+    print(h)
+    print(h.more)
 
 
 def item():
@@ -35,8 +35,8 @@ def item():
         list1[i]
 
     h = hp.heap()
-    print h
-    print h.more
+    print(h)
+    print(h.more)
 
 
 if __name__ == '__main__':

@@ -15,16 +15,16 @@ def exitFinally():
     try:
         sys.exit(0)
     except SystemExit as msg:
-        print 'Caught systemexit, msg:%s' % msg
+        print('Caught systemexit, msg:%s' % msg)
     finally:
-        print 'Finally execute. Well coll!'
+        print('Finally execute. Well coll!')
 
     try:
         os._exit(0)
     except SystemExit as msg:
-        print '1Caught systemexit, msg:%s' % msg
+        print('1Caught systemexit, msg:%s' % msg)
     finally:
-        print '1Finally execute. Well coll!'
+        print('1Finally execute. Well coll!')
 
 
 if __name__ == '__main__':

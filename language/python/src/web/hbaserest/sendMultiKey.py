@@ -13,72 +13,72 @@ ageB64 = base64.b64encode('age:')
 colorB64 = base64.b64encode('color:')
 nameB64 = base64.b64encode('name:')
 minmoduledict = {
-    u'Row': [
+    'Row': [
         {
-            u'key': base64.b64encode('panxiaoyuan:01'),
-            u'Cell': [
+            'key': base64.b64encode('panxiaoyuan:01'),
+            'Cell': [
                 {
-                    u'column': ageB64,
-                    u'$': base64.b64encode('24'),
+                    'column': ageB64,
+                    '$': base64.b64encode('24'),
                 },
                 {
-                    u'column': colorB64,
-                    u'$': base64.b64encode('red'),
+                    'column': colorB64,
+                    '$': base64.b64encode('red'),
                 },
                 {
-                    u'column': nameB64,
-                    u'$': base64.b64encode('mylove'),
+                    'column': nameB64,
+                    '$': base64.b64encode('mylove'),
                 },
             ]
         },
         {
-            u'key': base64.b64encode('panxiaoyuan:02'),
-            u'Cell': [
+            'key': base64.b64encode('panxiaoyuan:02'),
+            'Cell': [
                 {
-                    u'column': ageB64,
-                    u'$': base64.b64encode('24'),
+                    'column': ageB64,
+                    '$': base64.b64encode('24'),
                 },
                 {
-                    u'column': colorB64,
-                    u'$': base64.b64encode('red'),
+                    'column': colorB64,
+                    '$': base64.b64encode('red'),
                 },
                 {
-                    u'column': nameB64,
-                    u'$': base64.b64encode('mylove'),
-                },
-            ]
-        },
-        {
-            u'key': base64.b64encode('panxiaoyuan:03'),
-            u'Cell': [
-                {
-                    u'column': ageB64,
-                    u'$': base64.b64encode('24'),
-                },
-                {
-                    u'column': colorB64,
-                    u'$': base64.b64encode('red'),
-                },
-                {
-                    u'column': nameB64,
-                    u'$': base64.b64encode('mylove'),
+                    'column': nameB64,
+                    '$': base64.b64encode('mylove'),
                 },
             ]
         },
         {
-            u'key': base64.b64encode('who:01'),
-            u'Cell': [
+            'key': base64.b64encode('panxiaoyuan:03'),
+            'Cell': [
                 {
-                    u'column': ageB64,
-                    u'$': base64.b64encode('27'),
+                    'column': ageB64,
+                    '$': base64.b64encode('24'),
                 },
                 {
-                    u'column': colorB64,
-                    u'$': base64.b64encode('blue'),
+                    'column': colorB64,
+                    '$': base64.b64encode('red'),
                 },
                 {
-                    u'column': nameB64,
-                    u'$': base64.b64encode('love'),
+                    'column': nameB64,
+                    '$': base64.b64encode('mylove'),
+                },
+            ]
+        },
+        {
+            'key': base64.b64encode('who:01'),
+            'Cell': [
+                {
+                    'column': ageB64,
+                    '$': base64.b64encode('27'),
+                },
+                {
+                    'column': colorB64,
+                    '$': base64.b64encode('blue'),
+                },
+                {
+                    'column': nameB64,
+                    '$': base64.b64encode('love'),
                 },
             ]
         },
@@ -91,6 +91,6 @@ url = 'http://10.1.200.7:8080/bifeng/false-row-key'
 rsp = requests.put(url, data=paydata,
                    headers={"Content-Type": "application/json"})
 if rsp is None:
-    print 'return none'
+    print('return none')
     sys.exit(-1)
-print rsp.status_code
+print(rsp.status_code)

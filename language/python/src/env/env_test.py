@@ -9,4 +9,4 @@
 import sys
 
 
-print "解释器为/usr/bin/env python，此时系统版本为:{0}".format(sys.version_info)
+print("解释器为/usr/bin/env python，此时系统版本为:{0}".format(sys.version_info))

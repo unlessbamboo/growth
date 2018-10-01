@@ -23,7 +23,7 @@ msg['To'] = COMMASPACE.join(family)
 msg.preamble = 'Our family reunion'
 
 # Assume we know that the image files are all in PNG format
-dirname = raw_input(">>>Input dirname:")
+dirname = input(">>>Input dirname:")
 pngfiles = os.listdir(dirname)
 for file in pngfiles:
     # Open the files in binary mode. Let the MIMEImage class automatically

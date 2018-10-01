@@ -16,9 +16,9 @@ def chainDistTest():
     }
 
     newDist = ChainMap(dist1, dist2)
-    print newDist
+    print(newDist)
     dist1['shit'] = 'I changed'
-    print newDist
+    print(newDist)
 
 
 if __name__ == '__main__':

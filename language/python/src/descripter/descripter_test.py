@@ -24,10 +24,10 @@ class TestDescipter(object):
 
     def testMethod(self):
         """testMethod"""
-        print 'testMeothd:{0}'.format(self.name)
+        print('testMeothd:{0}'.format(self.name))
 
     def classMethod(TestDescipter):
-        print 'classMethod!'
+        print('classMethod!')
 
     ##
     # @brief    property:相当于声明了score属性，另外还有
@@ -86,18 +86,18 @@ def methodTest():
 
     """
     test1 = TestDescipter('test1')
-    print '对象调用(验证相等)-方法对象打印:{0}\n\t方法类型：{1}'.format(
+    print('对象调用(验证相等)-方法对象打印:{0}\n\t方法类型：{1}'.format(
         test1.testMethod,
-        types.MethodType(test1.testMethod, test1, type(test1)))
-    print '对象调用__dict__[...]输出:{0}'.format(
-        TestDescipter.__dict__['testMethod'].__get__(test1, TestDescipter))
-    print '类调用-方法对象打印:{0}'.format(
-        TestDescipter.classMethod)
-    print '类调用__dict__[...]输出:{0}'.format(
-        TestDescipter.__dict__['classMethod'].__get__(None, TestDescipter))
-    print '使用@property，逐渐递增score值：\n'
-    print 'Score value:{0}, {1}, {2}, {3}'.format(
-        test1.score, test1.score, test1.score, test1.score)
+        types.MethodType(test1.testMethod, test1, type(test1))))
+    print('对象调用__dict__[...]输出:{0}'.format(
+        TestDescipter.__dict__['testMethod'].__get__(test1, TestDescipter)))
+    print('类调用-方法对象打印:{0}'.format(
+        TestDescipter.classMethod))
+    print('类调用__dict__[...]输出:{0}'.format(
+        TestDescipter.__dict__['classMethod'].__get__(None, TestDescipter)))
+    print('使用@property，逐渐递增score值：\n')
+    print('Score value:{0}, {1}, {2}, {3}'.format(
+        test1.score, test1.score, test1.score, test1.score))
 
 
 if __name__ == '__main__':

@@ -13,4 +13,4 @@ class Foo(object):
 # 测试__format__，对format内建方法的封装
 foo = Foo(12)
 # Pass "baz" as a format_spec
-print 'This is a foo: {0:baz}'.format(foo)
+print('This is a foo: {0:baz}'.format(foo))

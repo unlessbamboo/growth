@@ -84,7 +84,7 @@ class FileFilter(object):
         except Exception:
             globalLog.writeException('Read file %s' % (self._filename))
             return False
-        print len(self.originstr), '+++++++++++++++++++++'
+        print(len(self.originstr), '+++++++++++++++++++++')
         if len(self.originstr) == 0:
             globalLog.writeLog(INFO, 'file\'s length is zero')
             return False
@@ -131,8 +131,8 @@ class FileFilter(object):
                 return
             # get origin string's length
             buflen = len(self.originstr)
-            print 'Test--------------buflen=%d-----------------------' % (
-                buflen)
+            print('Test--------------buflen=%d-----------------------' % (
+                buflen))
             for regexstr in regexlist:
                 match = re.search(regexstr, self.originstr, re.IGNORECASE)
                 if match is None:
@@ -141,7 +141,7 @@ class FileFilter(object):
                 # copy string
                 mstart = match.start()
                 mend = match.end()
-                print 'Match string is :%s' % (self.originstr[mstart:mend])
+                print('Match string is :%s' % (self.originstr[mstart:mend]))
 
 
 if __name__ == '__main__':
@@ -155,5 +155,5 @@ if __name__ == '__main__':
         returnVal = []
         fl.filter(returnVal)
         for k in returnVal:
-            print '\n=========================================================='
-            print k
+            print('\n==========================================================')
+            print(k)

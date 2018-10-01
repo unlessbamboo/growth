@@ -23,8 +23,7 @@ class _DefaultMetaClass(type):
             raise TypeError("Not found getAge functions.")
 
 
-class Man(object):
-    __metaclass__ = _DefaultMetaClass
+class Man(object, metaclass=_DefaultMetaClass):
     authorName = "unlessbamboo@gmail.com"
     age = 26
 
@@ -54,13 +53,13 @@ class Man(object):
 
     def display(self):
         """display"""
-        print 'Name:', self.authorName
-        print 'Age:', self.age
-        print 'Description:', self.desc
+        print('Name:', self.authorName)
+        print('Age:', self.age)
+        print('Description:', self.desc)
         # 用于验证元类和其他类并非继承关系
         # 但是可以通过__new__来创建新的属性
         if hasattr(self, 'tellSomething'):
-            print 'Tell:', self.tellSomething
+            print('Tell:', self.tellSomething)
 
 
 if __name__ == '__main__':

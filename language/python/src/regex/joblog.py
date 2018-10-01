@@ -16,7 +16,7 @@ import logging.config
 import socket
 import time
 import stat
-import cPickle
+import pickle
 import struct
 import shutil
 
@@ -262,7 +262,7 @@ class UnixSocketHandler(logging.Handler):
             # just to get traceback text into record.exc_text
             dummy = self.format(record)
             record.exc_info = None  # to avoid Unpickleable error
-        s = cPickle.dumps(record.__dict__, 1)
+        s = pickle.dumps(record.__dict__, 1)
         if ei:
             record.exc_info = ei  # for next handler
         slen = struct.pack(">L", len(s))

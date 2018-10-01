@@ -55,6 +55,6 @@ def split():
 
 if __name__ == '__main__':
     # 执行程序开始时间
-    print 'Start at:', int(time.strftime('%H%M%S')) 
+    print('Start at:', int(time.strftime('%H%M%S'))) 
     split()
-    print 'Stop at:', int(time.strftime('%H%M%S'))
+    print('Stop at:', int(time.strftime('%H%M%S')))

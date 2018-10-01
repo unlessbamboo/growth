@@ -7,9 +7,9 @@ from multiprocessing import Process
 
 def func1(arg1, arg2, arg3):
     '''传入三个参数'''
-    print 'args1:', arg1
-    print 'args2:', arg2
-    print 'args3:', arg3
+    print('args1:', arg1)
+    print('args2:', arg2)
+    print('args3:', arg3)
 
 
 class CallableFucn(object):
@@ -26,7 +26,7 @@ class CallableFucn(object):
 
 
 def counter(n, b):
-    print 'Counter process:', n * b
+    print('Counter process:', n * b)
 
 
 class MyMultiprocess(Process):
@@ -37,7 +37,7 @@ class MyMultiprocess(Process):
         self.b = b
 
     def run(self):
-        print 'a*b:', self.a * self.b
+        print('a*b:', self.a * self.b)
 
 
 if __name__ == '__main__':
@@ -45,14 +45,14 @@ if __name__ == '__main__':
     p1 = Process(target=CallableFucn(counter, args=(3, 4)))
     p1.start()
     p1.join()
-    print 'p1 End'
+    print('p1 End')
 
     p2 = Process(target=func1, args=(3, 4, 5))
     p2.start()
     p2.join()
-    print 'p2, end'
+    print('p2, end')
 
     p3 = MyMultiprocess(3, 4)
     p3.start()
     p3.join()
-    print 'p3, end'
+    print('p3, end')

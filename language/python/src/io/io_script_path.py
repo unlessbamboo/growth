@@ -11,25 +11,25 @@ import sys
 
 def test1():
     '''test1'''
-    print 'getcwd():', os.getcwd()
-    print 'sys.path[0]:', sys.path[0]
-    print '__file__:', os.path.realpath(__file__)
-    print 'dirname(__file__):', os.path.normpath(os.path.dirname(__file__))
-    print
+    print('getcwd():', os.getcwd())
+    print('sys.path[0]:', sys.path[0])
+    print('__file__:', os.path.realpath(__file__))
+    print('dirname(__file__):', os.path.normpath(os.path.dirname(__file__)))
+    print()
 
 
 def test3():
     '''test3'''
-    print 'getcwd():', os.getcwd()
+    print('getcwd():', os.getcwd())
     os.chdir('/tmp/')
-    print 'change directory.............'
-    print 'Now, getcwd():', os.getcwd()
-    print
+    print('change directory.............')
+    print('Now, getcwd():', os.getcwd())
+    print()
 
 
 if __name__ == '__main__':
     '''main'''
-    print '==============================test1==========================='
+    print('==============================test1===========================')
     test1()
-    print '==============================test3==========================='
+    print('==============================test3===========================')
     test3()

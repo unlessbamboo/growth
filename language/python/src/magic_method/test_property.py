@@ -3,11 +3,11 @@ from __future__ import print_function
 
 
 class Property(object):
-    "
-        Emulate PyProperty_Type() in Objects / descrobject.c
-        该类时Property的python实现方式
-        参考: https: // stackoverflow.com / questions / 17330160 / how - does - the - property - decorator - work
-    "
+    """
+    Emulate PyProperty_Type() in Objects / descrobject.c
+    该类时Property的python实现方式
+    参考: https: // stackoverflow.com / questions / 17330160 / how - does - the - property - decorator - work
+    """
 
     def __init__(self, fget=None, fset=None, fdel=None, doc=None):
         self.fget = fget

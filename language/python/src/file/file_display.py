@@ -14,12 +14,12 @@ def recursePath(path):
     功能: walk本身逐级遍历，一层层进入
     """
     for rootpath, dirnames, filenames in os.walk(path):
-        print rootpath + '/'
+        print(rootpath + '/')
         for memo in dirnames:
-            print memo + '/'
+            print(memo + '/')
 
         for memo in filenames:
-            print memo
+            print(memo)
 
 
 if __name__ == '__main__':

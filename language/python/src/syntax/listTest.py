@@ -3,7 +3,7 @@
 '''
     function:Determine whether the list can store object.
 '''
-import thread
+import _thread
 import time
 
 
@@ -16,7 +16,7 @@ class A:
 
     def display(self):
         ''''''
-        print self.desc
+        print(self.desc)
 
 
 class B:
@@ -25,12 +25,12 @@ class B:
     def __init__(self):
         ''''''
         self.objList = {}
-        self.lock = thread.allocate_lock()
+        self.lock = _thread.allocate_lock()
 
     def create(self, objList, desc):
         '''create a new Object of A'''
         self.lock.acquire()
-        print desc + 'xx'
+        print(desc + 'xx')
         a = A(desc)
         objList.append(a)
         self.lock.release()
@@ -38,8 +38,8 @@ class B:
     def multipleDisplay(self, listDesc):
         ''''''
         for elm in listDesc:
-            print elm + 'wawa'
-            thread.start_new_thread(self.create, (self.objList, elm))
+            print(elm + 'wawa')
+            _thread.start_new_thread(self.create, (self.objList, elm))
         time.sleep(2)
         for ele in self.objList:
             ele.display()

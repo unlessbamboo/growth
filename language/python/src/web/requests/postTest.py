@@ -13,9 +13,9 @@ rsp = requests.post(
     data=paydata,
     headers={"Accept": "application/json"})
 rst = json.loads(rsp.text)
-print 'xxxxxxxxxxxxxxxxxxxxxx返回一个月的字典xxxxxxxxxxxxxxxxxxxxxxx'
-print rst
-print '字典长度为:', len(rst['list'])
+print('xxxxxxxxxxxxxxxxxxxxxx返回一个月的字典xxxxxxxxxxxxxxxxxxxxxxx')
+print(rst)
+print('字典长度为:', len(rst['list']))
 
 
 paydata = {
@@ -27,9 +27,9 @@ rsp = requests.post(
     'http://192.168.199.15:8989/api/v1.0/logparse',
     data=paydata)
 rst = json.loads(rsp.text)
-print '\n\nxxxxxxxxxxxxxxxxxxxxxx返回半年的字典xxxxxxxxxxxxxxxxxxxxxxx'
-print rst
-print '字典长度为:', len(rst['list'])
+print('\n\nxxxxxxxxxxxxxxxxxxxxxx返回半年的字典xxxxxxxxxxxxxxxxxxxxxxx')
+print(rst)
+print('字典长度为:', len(rst['list']))
 
 
 paydata = {
@@ -41,9 +41,9 @@ rsp = requests.post(
     'http://192.168.199.15:8989/api/v1.0/logparse',
     data=paydata)
 rst = json.loads(rsp.text)
-print '\n\nxxxxxxxxxxxxxxxxxxxxxx返回一周的字典xxxxxxxxxxxxxxxxxxxxxxx'
-print rst
-print '字典长度为:', len(rst['list'])
+print('\n\nxxxxxxxxxxxxxxxxxxxxxx返回一周的字典xxxxxxxxxxxxxxxxxxxxxxx')
+print(rst)
+print('字典长度为:', len(rst['list']))
 
 
 paydata = {
@@ -55,6 +55,6 @@ rsp = requests.post(
     'http://192.168.199.15:8989/api/v1.0/logparse',
     data=paydata)
 rst = json.loads(rsp.text)
-print '\n\nxxxxxxxxxxxxxxxxxxxxxx返回一天的字典xxxxxxxxxxxxxxxxxxxxxxx'
-print rst
-print '字典长度为:', len(rst['list'])
+print('\n\nxxxxxxxxxxxxxxxxxxxxxx返回一天的字典xxxxxxxxxxxxxxxxxxxxxxx')
+print(rst)
+print('字典长度为:', len(rst['list']))

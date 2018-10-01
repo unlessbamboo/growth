@@ -25,7 +25,7 @@ if __name__ == '__main__':
         sock.connect((server_address, port))
     except socket.error as msg:
         sock.close()
-        print msg
+        print(msg)
         globalLog.getError().log(globalLog.ERROR, '%s' % msg)
 
     # 发送报文信息
@@ -37,16 +37,16 @@ if __name__ == '__main__':
         ptype = '00'
         length = '%04d' % len(data)
         package = ''.join([ptype, length, data])
-        print '%s ----- %d' % (package, i)
+        print('%s ----- %d' % (package, i))
         try:
             sock.send(package)
         except socket.error as msg:
-            print msg
+            print(msg)
             globalLog.getError().log(globalLog.ERROR, '%s' % msg)
             sock.close()
             sys.exit(-1)
         except Exception as msg:
-            print msg
+            print(msg)
             globalLog.getError().log(globalLog.ERROR, '%s' % msg)
             sock.close()
             sys.exit(-1)

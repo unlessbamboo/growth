@@ -35,7 +35,7 @@ class BambooAction(argparse.Action):
         :param option_string:   命令行中的选项字符串，注意该值和__init__中
                                 的区别
         """
-        print '%r %r %r %r' % (namespace, values, option_string, self.dest)
+        print('%r %r %r %r' % (namespace, values, option_string, self.dest))
         setattr(namespace, self.dest, values + 1)
 
 
@@ -59,13 +59,13 @@ def defineAction_test():
     rst = parser.parse_args()
 
     # 输出
-    print rst
+    print(rst)
 
 
 def description_test():
     """description_test"""
-    print '=================={0}================='.format(
-        sys._getframe().f_code.co_name)
+    print('=================={0}================='.format(
+        sys._getframe().f_code.co_name))
     parser = argparse.ArgumentParser(description='This is description')
     # 在获取帮助信息后，会自动退出哦，哇哦
     parser.parse_args('-h'.split())
@@ -73,8 +73,8 @@ def description_test():
 
 def epilog_test():
     """epilog_test"""
-    print '=================={0}================='.format(
-        sys._getframe().f_code.co_name)
+    print('=================={0}================='.format(
+        sys._getframe().f_code.co_name))
     parser = argparse.ArgumentParser(
         epilog='This is epilog message.',
     )
@@ -83,8 +83,8 @@ def epilog_test():
 
 def parent_test():
     """parent_test"""
-    print '=================={0}================='.format(
-        sys._getframe().f_code.co_name)
+    print('=================={0}================='.format(
+        sys._getframe().f_code.co_name))
     parent_parser = argparse.ArgumentParser(
         add_help=False,
         epilog='I am a parent.',
@@ -104,8 +104,8 @@ def parent_test():
 
 def argumentGroup_test():
     """argumentGroup_test"""
-    print '=================={0}================='.format(
-        sys._getframe().f_code.co_name)
+    print('=================={0}================='.format(
+        sys._getframe().f_code.co_name))
     parser = argparse.ArgumentParser(
         description='This is argument group test.')
 
@@ -122,8 +122,8 @@ def argumentGroup_test():
 
 def subprocess_test():
     """subprocess_test"""
-    print '=================={0}================='.format(
-        sys._getframe().f_code.co_name)
+    print('=================={0}================='.format(
+        sys._getframe().f_code.co_name))
     parser = argparse.ArgumentParser(
         description='This is main parsers')
 
@@ -144,8 +144,8 @@ def subprocess_test():
 
 def conflict_test():
     """conflict_test"""
-    print '=================={0}================='.format(
-        sys._getframe().f_code.co_name)
+    print('=================={0}================='.format(
+        sys._getframe().f_code.co_name))
     parser = argparse.ArgumentParser(
         conflict_handler='resolve',
         description='This is conflict test')
@@ -159,8 +159,8 @@ def conflict_test():
 
 def prefixChars_test():
     """prefixChars_test"""
-    print '=================={0}================='.format(
-        sys._getframe().f_code.co_name)
+    print('=================={0}================='.format(
+        sys._getframe().f_code.co_name))
     parser = argparse.ArgumentParser(
         prefix_chars='-+',
         description='This is prefix chars test')
@@ -173,32 +173,32 @@ def prefixChars_test():
                         default=None)
 
     args = parser.parse_args('++value'.split())
-    print '++value的输出：', args
+    print('++value的输出：', args)
     args = parser.parse_args('--value'.split())
-    print '--value的输出：', args
-    print '================end================'
+    print('--value的输出：', args)
+    print('================end================')
 
 
 def const_test():
     """固定数值测试"""
-    print '=================={0}================='.format(
-        sys._getframe().f_code.co_name)
+    print('=================={0}================='.format(
+        sys._getframe().f_code.co_name))
     parser = argparse.ArgumentParser(
         description='This is const test.')
 
     parser.add_argument('--value', action='store_const', const=42, default=0)
 
     args = parser.parse_args(''.split())
-    print '无任何参数时输出为：', args
+    print('无任何参数时输出为：', args)
     args = parser.parse_args('--value'.split())
-    print '仅为--value时输出为：', args
-    print '================end================'
+    print('仅为--value时输出为：', args)
+    print('================end================')
 
 
 def simple_test():
     """固定数值测试"""
-    print '=================={0}================='.format(
-        sys._getframe().f_code.co_name)
+    print('=================={0}================='.format(
+        sys._getframe().f_code.co_name))
     parser = argparse.ArgumentParser(description='This is const test.')
 
     # int类型
@@ -207,8 +207,8 @@ def simple_test():
     parser.add_argument('--value', help='Value, str', type=str)
 
     args = parser.parse_args()
-    print '所有参数:', args
-    print '================end================'
+    print('所有参数:', args)
+    print('================end================')
 
 
 if __name__ == '__main__':

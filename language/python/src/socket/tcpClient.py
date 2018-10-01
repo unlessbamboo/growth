@@ -2,7 +2,8 @@
 # -*- coding:utf8 -*-
 
 import sys
-reload(sys)
+import imp
+imp.reload(sys)
 sys.setdefaultencoding('utf-8')
 
 import socket
@@ -15,8 +16,8 @@ class NetClient(object):
 
         sendDataLen = clientSock.send("this is send data from client")
         recvData = clientSock.recv(1024)
-        print "sendDataLen: ", sendDataLen
-        print "recvData: ", recvData
+        print("sendDataLen: ", sendDataLen)
+        print("recvData: ", recvData)
 
         clientSock.close()
 

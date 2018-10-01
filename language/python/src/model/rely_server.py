@@ -4,7 +4,7 @@ import rely_client
 
 
 def display():
-    print 'I am server'
+    print('I am server')
 
 
 rely_client.clientTest()

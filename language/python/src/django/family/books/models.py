@@ -1,5 +1,5 @@
 # coding:utf8
-from __future__ import unicode_literals
+
 
 from django.db import models
 
@@ -17,7 +17,7 @@ class Publisher(models.Model):
 
     def __unicode__(self):
         """__unicode__:个性化显示"""
-        return u'Name:{0}'.format(self.name)
+        return 'Name:{0}'.format(self.name)
 
 
 class Author(models.Model):
@@ -32,7 +32,7 @@ class Author(models.Model):
 
     def __unicode__(self):
         """__unicode__"""
-        return u'{0} {1}'.format(self.first_name, self.last_name)
+        return '{0} {1}'.format(self.first_name, self.last_name)
 
 
 class Book(models.Model):

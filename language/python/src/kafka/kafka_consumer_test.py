@@ -21,7 +21,7 @@ def simpleConsumer():
         consumer = KafkaConsumer('JOB_TEST_1',
                                  bootstrap_servers=['devops-dev1:9193', 'devops-dev1:9194'])
     except KafkaUnavailableError as msg:
-        print 'KafkaUnavailableError:', msg
+        print('KafkaUnavailableError:', msg)
         sys.exit(-1)
 
     while True:
@@ -34,12 +34,12 @@ def simpleConsumer():
                 @offset:消息在topic-partition中的偏移量
                 @value:原始字节(raw bytes)
                 '''
-                print("TOPIC:%s Partition:%d offset%d key=%s value=%s" % (
+                print(("TOPIC:%s Partition:%d offset%d key=%s value=%s" % (
                     message.topic, message.partition,
                     message.offset, message.key,
-                    message.value))
+                    message.value)))
         except (KafkaUnavailableError, LeaderNotAvailableError) as msg:
-            print 'Occur KafkaUnavailableError, msg:', msg
+            print('Occur KafkaUnavailableError, msg:', msg)
             time.sleep(10)
         else:
             break
@@ -64,7 +64,7 @@ def simpleConsumer1(topics):
             #auto_commit_enable = True,
             bootstrap_servers=['devops-dev1:9193', 'devops-dev1:9194'])
     except KafkaUnavailableError as msg:
-        print 'KafkaUnavailableError:', msg
+        print('KafkaUnavailableError:', msg)
         sys.exit(-1)
 
     # get offset
@@ -80,18 +80,18 @@ def simpleConsumer1(topics):
                 @offset:消息在topic-partition中的偏移量
                 @value:原始字节(raw bytes)
                 '''
-                print("TOPIC:%s Partition:%d offset%d key=%s value=%s" % (
+                print(("TOPIC:%s Partition:%d offset%d key=%s value=%s" % (
                     message.topic, message.partition,
                     message.offset, message.key,
-                    message.value))
+                    message.value)))
                 consumer.task_done(message)
                 consumer.commit()
         except (KafkaUnavailableError, LeaderNotAvailableError) as msg:
-            print 'Occur KafkaUnavailableError, msg:', msg
+            print('Occur KafkaUnavailableError, msg:', msg)
             time.sleep(10)
         else:
             consumer.task_done()
-            print "Commit:", consumer.commit()
+            print("Commit:", consumer.commit())
 
 
 def advanceConsumer():
@@ -107,10 +107,10 @@ def advanceConsumer():
 
     # initialize iteration
     for message in consumer:
-        print("TOPIC:%s Partition:%d offset%d key=%s value=%s" % (
+        print(("TOPIC:%s Partition:%d offset%d key=%s value=%s" % (
             message.topic, message.partition,
             message.offset, message.key,
-            message.value))
+            message.value)))
         consumer.task_done(message)
 
     consumer.commit()
@@ -118,10 +118,10 @@ def advanceConsumer():
     # Batch process interface
     while True:
         for m in consumer.fetch_messages():
-            print("===Topic:%s Partition:%d offset%d key=%s value=%s" % (
+            print(("===Topic:%s Partition:%d offset%d key=%s value=%s" % (
                 message.topic, message.partition,
                 message.offset, message.key,
-                message.value))
+                message.value)))
             consumer.task_done(m)
 
 

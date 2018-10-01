@@ -1,20 +1,20 @@
 #!/usr/bin/python
 # coding:utf-8
 # BaseHTTPRequestHandler类细分到处理每个协议的方法，这里是‘GET’方法的例子
-from BaseHTTPServer import BaseHTTPRequestHandler
-import urlparse
+from http.server import BaseHTTPRequestHandler
+import urllib.parse
 
 
 class GetHandler(BaseHTTPRequestHandler):
     def do_GET(self):  # 重写这个方法
         #import pdb
         # pdb.set_trace()
-        parsed_path = urlparse.urlparse(self.path)
-        print "============================================="
-        print parsed_path
-        print type(parsed_path)
-        print parsed_path.query
-        print "============================================="
+        parsed_path = urllib.parse.urlparse(self.path)
+        print("=============================================")
+        print(parsed_path)
+        print(type(parsed_path))
+        print(parsed_path.query)
+        print("=============================================")
         message_parts = [  # 建立一个想要返回的列表
             'CLIENT VALUES:',  # 客户端信息
             'client_address=%s (%s)' % (self.client_address,
@@ -44,8 +44,8 @@ class GetHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    from BaseHTTPServer import HTTPServer
+    from http.server import HTTPServer
     # 在本地8080端口上启用httpserver，使用自定义的GetHandler处理
     server = HTTPServer(('localhost', 8080), GetHandler)
-    print 'Starting server, use <Ctrl-C> to stop'
+    print('Starting server, use <Ctrl-C> to stop')
     server.serve_forever()  # 保存程序一直运行

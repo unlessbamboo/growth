@@ -22,9 +22,9 @@ def test():
         total += i
 
     t1 = sum_num(100000)
-    print "次数{0}，测试结束.".format(t1)
+    print("次数{0}，测试结束.".format(t1))
     t2 = sum_num(400000)
-    print "次数{0}，测试结束.".format(t2)
+    print("次数{0}，测试结束.".format(t2))
 
 
 if __name__ == "__main__":

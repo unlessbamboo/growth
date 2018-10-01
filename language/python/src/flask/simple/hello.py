@@ -43,7 +43,7 @@ def login():
     if request.method == 'POST':
         msg = "{0}-{1}".format(request.form['username'],
                                request.form['password'])
-        print msg
+        print(msg)
     return render_template("login.html", error=error)
 
 

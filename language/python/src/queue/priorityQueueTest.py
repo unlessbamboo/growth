@@ -51,8 +51,8 @@ def testReprAttr():
     itemReprStr = repr(item)
     itemStr = str(item)
     eval(itemReprStr)
-    print itemReprStr
-    print itemStr
+    print(itemReprStr)
+    print(itemStr)
 
 
 def testPriorityQueue():
@@ -60,7 +60,7 @@ def testPriorityQueue():
     qobj.push(Item('foo'), 1)
     qobj.push(Item('bar'), 5)
     qobj.push(Item('kuag'), 4)
-    print qobj.pop()
+    print(qobj.pop())
 
 
 if __name__ == '__main__':

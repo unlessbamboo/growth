@@ -11,8 +11,8 @@ class Thread(threading.Thread):
         self.name = name
 
     def run(self):
-        for i in xrange(10):
-            print self.name
+        for i in range(10):
+            print(self.name)
 
 
 def threadTest():
@@ -24,8 +24,8 @@ def threadTest():
 
 
 def run(name, nextGreenlets):
-    for i in xrange(10):
-        print name
+    for i in range(10):
+        print(name)
     if nextGreenlets:
         nextGreenlets.pop(0).switch(chr(ord(name) + 1), nextGreenlets)
 

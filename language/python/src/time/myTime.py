@@ -122,38 +122,38 @@ def first_day_after_or_before_as_type(today=None, interval=0, types='months'):
 
 if __name__ == '__main__':
     # 1 测试时间字符串转timestamp
-    print '时间201701转换为timestamp: ', timestr_to_timestamp('201701', '%Y%m')
+    print('时间201701转换为timestamp: ', timestr_to_timestamp('201701', '%Y%m'))
 
     # 2 将本地时区转换为特定的时区值
     now = parser.parse('2017-01-03 18:00:00')
     now_tz = datetime_to_timezone(now)
     timezone_9_tz = timezone_to_fake_timezone(now_tz, 9)
-    print '第8时区的时间值:', now_tz
-    print '第9时区的时间值(伪):', timezone_9_tz
+    print('第8时区的时间值:', now_tz)
+    print('第9时区的时间值(伪):', timezone_9_tz)
 
     # 3 将timestamp转为utc timezone
     timestamp = 1143408899
-    print '转换timestamp:{} to utc:{}'.format(
-        timestamp, timestamp_to_utc(timestamp))
+    print('转换timestamp:{} to utc:{}'.format(
+        timestamp, timestamp_to_utc(timestamp)))
 
     # 4 获取某一个国家的所有timezone信息
-    print '国家码: CN, 拥有的时区:', country_timezones_by_code('cn')
+    print('国家码: CN, 拥有的时区:', country_timezones_by_code('cn'))
 
     # 5 获取某一个日期之后的天数
-    print '今天:', time_after_or_before_as_type(types='days')
-    print '后天:', time_after_or_before_as_type(types='days', interval=2)
-    print '今年:', time_after_or_before_as_type(types='years').year
-    print '5年后:', time_after_or_before_as_type(types='years', interval=5).year
-    print '下周:', time_after_or_before_as_type(types='weeks', interval=1)
+    print('今天:', time_after_or_before_as_type(types='days'))
+    print('后天:', time_after_or_before_as_type(types='days', interval=2))
+    print('今年:', time_after_or_before_as_type(types='years').year)
+    print('5年后:', time_after_or_before_as_type(types='years', interval=5).year)
+    print('下周:', time_after_or_before_as_type(types='weeks', interval=1))
     now = datetime.now()
-    print '下下周:', time_after_or_before_as_type(
-        types='weeks', interval=2, today=now)
+    print('下下周:', time_after_or_before_as_type(
+        types='weeks', interval=2, today=now))
 
     # 6 下一个季度
-    print '当前季度第一天:', first_day_after_or_before_as_type(now, types='quarters')
-    print '下二个季度第一天:', first_day_after_or_before_as_type(
-        now, types='quarters', interval=2)
-    print '上一个季度第一天:', first_day_after_or_before_as_type(
-        now, types='quarters', interval=-1)
-    print '上三个季度第一天:', first_day_after_or_before_as_type(
-        now, types='quarters', interval=-3)
+    print('当前季度第一天:', first_day_after_or_before_as_type(now, types='quarters'))
+    print('下二个季度第一天:', first_day_after_or_before_as_type(
+        now, types='quarters', interval=2))
+    print('上一个季度第一天:', first_day_after_or_before_as_type(
+        now, types='quarters', interval=-1))
+    print('上三个季度第一天:', first_day_after_or_before_as_type(
+        now, types='quarters', interval=-3))

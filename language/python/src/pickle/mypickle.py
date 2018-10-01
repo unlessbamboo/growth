@@ -18,4 +18,4 @@ pickle.dump(obj, open("tmp.txt", "w"))
 # 从 tmp.txt 中读取并恢复 obj 对象
 obj2 = pickle.load(open("tmp.txt", "r"))
 
-print obj2
+print(obj2)

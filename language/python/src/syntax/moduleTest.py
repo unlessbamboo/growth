@@ -5,10 +5,10 @@
 '''
 
 if __name__ == '__main__' and __package__ is None:
-    print '以python module.py形式执行程序'
-    print '__name__:', __name__
-    print '__package__:', __package__
+    print('以python module.py形式执行程序')
+    print('__name__:', __name__)
+    print('__package__:', __package__)
 else:
-    print '以python -m module形式执行程序'
-    print '__name__:', __name__
-    print '__package__:', __package__
+    print('以python -m module形式执行程序')
+    print('__name__:', __name__)
+    print('__package__:', __package__)

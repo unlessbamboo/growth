@@ -15,29 +15,29 @@ class RegexTest(object):
         pattern = re.compile(r"hello")
         match = pattern.match('hello world')
         if match:
-            print match.group()
-            print match.string
-            print match.re
-            print match.pos
-            print match.endpos
-            print match.start()
-            print match.end()
-        print "======================================"
+            print(match.group())
+            print(match.string)
+            print(match.re)
+            print(match.pos)
+            print(match.endpos)
+            print(match.start())
+            print(match.end())
+        print("======================================")
 
     def regex_test_2(self):
         # \w匹配单词字符
         p = re.compile(r'(\w+) (\w+)')
         s = 'i say, hello world!'
 
-        print p.sub(r'\2 \1', s)
+        print(p.sub(r'\2 \1', s))
 
         def func(m):
             return m.group(1).title() + '(function)' + m.group(2).title()
-        print p.sub(func, s)
+        print(p.sub(func, s))
         ### output ###
         # say i, world hello!
         # I Say, Hello World!
-        print "======================================"
+        print("======================================")
 
 
 def main():

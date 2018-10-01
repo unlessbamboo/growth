@@ -42,7 +42,7 @@ class TestExceptCatch(object):
 if __name__ == '__main__':
     '''main'''
     import os
-    print __file__
-    print os.path.splitext(os.path.basename(__file__))
+    print(__file__)
+    print(os.path.splitext(os.path.basename(__file__)))
     testObject = TestExceptCatch()
     testObject.raiseExcept('Perfect')

@@ -12,7 +12,7 @@ class task_queue:
         self.num += 1
 
     def print_queue(self):
-        print self.queue, self.num
+        print(self.queue, self.num)
 
 
 if __name__ == "__main__":

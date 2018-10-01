@@ -65,4 +65,4 @@ if __name__ == '__main__':
     filename = '/tmp/ioNotify.tmp'
     tail(filename)
     endTime = time.time()
-    print '(old)Read-Running time:', endTime - startTime
+    print('(old)Read-Running time:', endTime - startTime)

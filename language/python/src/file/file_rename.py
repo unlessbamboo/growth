@@ -11,7 +11,7 @@ def rename_all(path):
     :param path: 待检索的目录
     """
     for rootpath, dirnames, filenames in os.walk(path):
-        print 'Root:', rootpath
+        print('Root:', rootpath)
         for filename in filenames:
             new_filepath = rootpath + os.sep + filename.replace('-', '_')
             filepath = rootpath + os.sep + filename

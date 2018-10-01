@@ -35,10 +35,10 @@ def find_unexist(filename):
             if fino != tempio:
                 fd.close()
                 fd = open(filename, 'r')
-            print fd.readline()
+            print(fd.readline())
             time.sleep(5)
         except (IOError, OSError) as msg:
-            print 'IOerror, msg:%s' % msg
+            print('IOerror, msg:%s' % msg)
             time.sleep(2)
 
 
@@ -48,7 +48,7 @@ def read_file_with_iter(filename):
     """
     with open(filename, 'r') as f:
         for line in f:
-            print line
+            print(line)
 
 
 if __name__ == '__main__':

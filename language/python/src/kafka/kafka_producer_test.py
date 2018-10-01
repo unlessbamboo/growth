@@ -14,13 +14,13 @@ def simpleTest():
     try:
         kafka = KafkaClient('bamboo:9192')
     except KafkaUnavailableError as msg:
-        print "KafkaUnavailableError:", msg
+        print("KafkaUnavailableError:", msg)
         sys.exit(-1)
     except Exception as msg:
-        print "Exception:", msg
+        print("Exception:", msg)
         sys.exit(-1)
     producer = SimpleProducer(kafka)
-    print kafka.topics
+    print(kafka.topics)
 
     '''
     Note that the application is responsible
@@ -33,7 +33,7 @@ def simpleTest():
 
         # Send unicode message
         producer.send_messages(b'JOB_TEST_1',
-                               u'你怎么样?'.encode('utf-8'))
+                               '你怎么样?'.encode('utf-8'))
         producer.stop()
 
 
@@ -105,7 +105,7 @@ def keyedProducerTest3():
             index += 1
             time.sleep(1)
         except (FailedPayloadsError, KafkaUnavailableError) as msg:
-            print 'Occur FailedPayloadsError error, msg:', msg
+            print('Occur FailedPayloadsError error, msg:', msg)
             time.sleep(10)
 
 

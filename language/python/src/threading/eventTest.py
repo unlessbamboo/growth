@@ -14,9 +14,9 @@ class TestThread(threading.Thread):
 
     def run(self):
         """run:运行并等待事件通知"""
-        print 'Thread: ', self.name, ' start at:', time.ctime(time.time())
+        print('Thread: ', self.name, ' start at:', time.ctime(time.time()))
         self.event.wait()
-        print 'Thread: ', self.name, ' finish at:', time.ctime(time.time())
+        print('Thread: ', self.name, ' finish at:', time.ctime(time.time()))
 
 
 def main():
@@ -25,14 +25,14 @@ def main():
     for i in range(1, 5):
         threads.append(TestThread(str(i), event))
 
-    print 'main thread start at: ', time.ctime(time.time())
+    print('main thread start at: ', time.ctime(time.time()))
     event.clear()
     for thread in threads:
         thread.start()
 
-    print 'sleep 5 seconds.......'
+    print('sleep 5 seconds.......')
     time.sleep(5)
-    print 'now awake other threads....'
+    print('now awake other threads....')
     event.set()
 
 

@@ -27,7 +27,7 @@ def genConcatenate(iobj):
     """
     # 文件迭代
     for it in iobj:
-        print '============================================'
+        print('============================================')
         # 每一个文件中的行迭代，
         # 相当于python3中的yield from it用法
         for subit in it:
@@ -38,4 +38,4 @@ if __name__ == '__main__':
     fileObj = genFind(['/etc/passwd', '/etc/group'])
     chainObj = genConcatenate(fileObj)
     for line in chainObj:
-        print line,
+        print(line, end=' ')

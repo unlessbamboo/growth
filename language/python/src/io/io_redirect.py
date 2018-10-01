@@ -14,12 +14,12 @@ class __redirection__:
 
     def to_console(self):
         sys.stdout = self.__console__
-        print self.buff
+        print(self.buff)
 
     def to_file(self, file_path):
         f = open(file_path, 'w')
         sys.stdout = f
-        print self.buff
+        print(self.buff)
         f.close()
 
     def flush(self):
@@ -31,14 +31,14 @@ class __redirection__:
 
 if __name__ == "__main__":
     # redirection
-    print "没有重定向之前的stdout类型：", type(sys.stdout)
+    print("没有重定向之前的stdout类型：", type(sys.stdout))
     r_obj = __redirection__()
     sys.stdout = r_obj
 
-    print "发生重定向之后的stdout类型：", type(sys.stdout)
+    print("发生重定向之后的stdout类型：", type(sys.stdout))
     # get output stream
-    print 'hello'
-    print 'there'
+    print('hello')
+    print('there')
 
     # redirect to console
     r_obj.to_console()

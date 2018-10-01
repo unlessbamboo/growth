@@ -3,4 +3,4 @@
 
 import moduleTest
 
-print 'XXXXXXXXXXXXXXXXXXXXXXXXX'
+print('XXXXXXXXXXXXXXXXXXXXXXXXX')

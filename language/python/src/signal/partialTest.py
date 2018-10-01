@@ -8,5 +8,5 @@ def GetNextDay(baseday, n):
 
 
 nday = partial(GetNextDay, '2015-01-01')
-print nday(1)
-print nday(3)
+print(nday(1))
+print(nday(3))

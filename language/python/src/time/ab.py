@@ -3,7 +3,7 @@
 进行ab测试, 获取不同并发数情况下某一个特定接口RPS值;
 其中HTTP服务由UWSGI启动;
 """
-from __future__ import print_function
+
 import re
 import os
 

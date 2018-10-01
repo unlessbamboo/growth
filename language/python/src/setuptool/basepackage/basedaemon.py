@@ -178,7 +178,7 @@ class Daemon(object):
 
     def usage(self):
         '''user help info'''
-        print '''
+        print('''
         usage:
             python command start      ---   start a new monitor
             python command stop       ---   stop a exists monitor
@@ -186,7 +186,7 @@ class Daemon(object):
             python command restart    ---   restart a monitor
             python command debug      ---   start a monitor with debug
             python command help       ---   help information
-        '''
+        ''')
 
     def run(self):
         """

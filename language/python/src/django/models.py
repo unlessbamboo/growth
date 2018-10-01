@@ -32,9 +32,7 @@ def getModel(db_table):
             name += db_table
             return models.base.ModelBase.__new__(cls, name, bases, attrs)
 
-    class ImageClass(models.Model):
-        __metaclass__ = ImageMetaClass
-
+    class ImageClass(models.Model, metaclass=ImageMetaClass):
         class Meta:
             db_table = db_table
 

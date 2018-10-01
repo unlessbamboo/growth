@@ -30,7 +30,7 @@ class HashRing(object):
     def add_node(self, node):
         """Adds a `node` to the hash ring (including a number of replicas).
         """
-        for i in xrange(0, self.replicas):
+        for i in range(0, self.replicas):
             key = self.gen_key('%s:%s' % (node, i))
             self.ring[key] = node
             self._sorted_keys.append(key)
@@ -40,7 +40,7 @@ class HashRing(object):
     def remove_node(self, node):
         """Removes `node` from the hash ring and its replicas.
         """
-        for i in xrange(0, self.replicas):
+        for i in range(0, self.replicas):
             key = self.gen_key('%s:%s' % (node, i))
             del self.ring[key]
             self._sorted_keys.remove(key)
@@ -64,7 +64,7 @@ class HashRing(object):
         key = self.gen_key(string_key)
 
         nodes = self._sorted_keys
-        for i in xrange(0, len(nodes)):
+        for i in range(0, len(nodes)):
             node = nodes[i]
             if key <= node:
                 return self.ring[node], i
@@ -97,7 +97,7 @@ class HashRing(object):
         #m = md5()
         m = md5.new()
         m.update(key)
-        return long(m.hexdigest(), 16)
+        return int(m.hexdigest(), 16)
 
 
 class ServerHash(HashRing):
@@ -124,7 +124,7 @@ class ServerHash(HashRing):
 
     def detect(self):
         '''monitor disable nodes'''
-        for node in self._nodeStatus.keys():
+        for node in list(self._nodeStatus.keys()):
             try:
                 url = "http://%s/status/cluster" % node
                 rsp = requests.get(url, headers={"Accept": "application/json"})
@@ -252,7 +252,7 @@ class ServerHash(HashRing):
 if __name__ == '__main__':
     '''main'''
     # 测试hbase中的get函数
-    from baselog import BaseLogRecord
+    from .baselog import BaseLogRecord
     globalLog = BaseLogRecord(disableExistLog=False, module="common")
 
     hbaseHash = ServerHash(globalLog,
@@ -260,7 +260,7 @@ if __name__ == '__main__':
     rsp = hbaseHash.get(
         'http://%s/basic/lg-main-nginx-bjc-001:201510101010',
         headers={"Accept": "application/json"})
-    print rsp.text
+    print(rsp.text)
 
     #
     # 测试post函数
@@ -283,4 +283,4 @@ if __name__ == '__main__':
         headers={
             "Content-Type": "application/json"},
         data=paydata)
-    print rsp.text
+    print(rsp.text)

@@ -33,4 +33,4 @@ if __name__ == '__main__':
     try:
         raise InputError('mylove', 'not found this file.')
     except Exception as msg:
-        print msg
+        print(msg)

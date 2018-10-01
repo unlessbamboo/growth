@@ -33,17 +33,18 @@ import subprocess
 
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import imp
 
 try:
     import pygments
     import markdown
 except ImportError:
-    print 'This script requires pygements and markdown to be installed.'
-    print 'Please:'
-    print '   pip install pygments markdown'
+    print('This script requires pygements and markdown to be installed.')
+    print('Please:')
+    print('   pip install pygments markdown')
     sys.exit(0)
 else:
-    reload(sys)
+    imp.reload(sys)
     sys.setdefaultencoding('utf8')
 
 
@@ -103,12 +104,12 @@ if args.send:
         server = smtplib.SMTP(config['smtp'])
         server.starttls()
         server.login(config['username'], config['password'])
-        print 'From:', message['From']
-        print 'To:', to
+        print('From:', message['From'])
+        print('To:', to)
         server.sendmail(message['From'], to, message.as_string())
         server.quit()
 elif args.preview:
     open('/tmp/preview.eml', 'w').write(message.as_string())
     os.system('open -a Mail /tmp/preview.eml')
 else:
-    print message.as_string()
+    print(message.as_string())

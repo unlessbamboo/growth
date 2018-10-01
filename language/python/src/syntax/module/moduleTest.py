@@ -5,6 +5,6 @@
 '''
 
 if __name__ == '__main__':
-    print '当前__name__为__main__脚本形式'
+    print('当前__name__为__main__脚本形式')
 else:
-    print '模块导入模式'
+    print('模块导入模式')

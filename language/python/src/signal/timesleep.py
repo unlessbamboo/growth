@@ -177,10 +177,10 @@ class timeSleep(Daemon):
                 try:
                     time.sleep(60)
                 except KeyboardInterrupt:
-                    print 'Interrupt'
+                    print('Interrupt')
                     break
 
-            print "done"
+            print("done")
 
 
 if __name__ == '__main__':

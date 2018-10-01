@@ -15,5 +15,5 @@ def get_ip_address(ifname):
     )[20:24])
 
 
-print "eth0 = " + get_ip_address('eth0')
-print "lo = " + get_ip_address('lo')
+print("eth0 = " + get_ip_address('eth0'))
+print("lo = " + get_ip_address('lo'))

@@ -3,7 +3,7 @@
 import smtplib
 from email.mime.text import MIMEText
 
-filename = raw_input(">>>Input filename:")
+filename = input(">>>Input filename:")
 fp = open(filename, "rb")
 # create a text/plain message
 msg = MIMEText(fp.read())

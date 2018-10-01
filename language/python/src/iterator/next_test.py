@@ -18,7 +18,7 @@ def manualIter(filename):
         try:
             while True:
                 line = next(f)
-                print line,
+                print(line, end=' ')
         except StopIteration:
             pass
 

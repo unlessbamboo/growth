@@ -3,7 +3,7 @@
 
 
 def clientTest():
-    print "I'm client"
+    print("I'm client")
 
 
 import rely_server_solve

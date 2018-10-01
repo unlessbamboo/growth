@@ -49,4 +49,4 @@ if __name__ == '__main__':
     s.add(d)
     s.add(emp1)
     s.commit()
-    print s.query(Employee).all()
+    print(s.query(Employee).all())

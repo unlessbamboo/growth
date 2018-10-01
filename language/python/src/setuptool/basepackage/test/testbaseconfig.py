@@ -9,7 +9,7 @@
 # @date 2016-01-23
 import os
 import unittest
-import Queue
+import queue
 
 from basepackage.baseconfig import BaseConfig
 from basepackage.baselog import MultiLogHandle
@@ -21,7 +21,7 @@ class TestBaseConfig(unittest.TestCase):
     def setUp(self):
         """set up"""
         self.baseConfObj = BaseConfig()
-        self.logQueue = Queue.Queue(-1)
+        self.logQueue = queue.Queue(-1)
         processName = 'testBaseConfig'
         rootpath = "/data/logs/test"
         self.globalLog = MultiLogHandle(self.logQueue,

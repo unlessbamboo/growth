@@ -16,8 +16,8 @@ class OssDB:
         self.username = username
         self.password = passwd
         self.database = dbname
-        print self.hostname
-        print self.port
+        print(self.hostname)
+        print(self.port)
 
     def connect(self):
         '''connect mysql db and return handle'''

@@ -11,7 +11,7 @@ try:
     import http.client as http_client
 except ImportError:
     # Python 2
-    import httplib as http_client
+    import http.client as http_client
 http_client.HTTPConnection.debuglevel = 1
 
 # You must initialize logging, otherwise you'll not see debug output.
@@ -29,9 +29,9 @@ headers = {'hosts': 'explicit.bamboo1.com'}
 # rsp = s.get("http://192.168.199.12/")
 rsp = requests.get('http://192.168.199.12/', headers=headers)
 if rsp.history:
-    print '跳转的历史记录为:', rsp.history
+    print('跳转的历史记录为:', rsp.history)
     s1 = rsp.history[0].status_code
-    print '首次挑战的返回码／类型：{}/{}'.format(s1, type(s1))
-print '最后请求的头／url为：{}/{}'.format(rsp.headers, rsp.url)
-print '最终的返回码:', rsp.status_code
-print '返回值:', rsp.text
+    print('首次挑战的返回码／类型：{}/{}'.format(s1, type(s1)))
+print('最后请求的头／url为：{}/{}'.format(rsp.headers, rsp.url))
+print('最终的返回码:', rsp.status_code)
+print('返回值:', rsp.text)

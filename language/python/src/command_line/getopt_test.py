@@ -20,7 +20,7 @@ def usage():
             please input a end test case number.
 
     For more info visit http://www.unlessbamboo.com.cn/"""
-    print usage_doc
+    print(usage_doc)
 
 
 def getCliOptions(argv):
@@ -34,16 +34,16 @@ def getCliOptions(argv):
     try:
         opts, args = getopt.getopt(sys.argv[1:], short_opt, long_opt)
     except getopt.GetoptError as msg:
-        print "Occur error, msg:{0}".format(msg)
+        print("Occur error, msg:{0}".format(msg))
         usage()
         sys.exit(1)
 
     # 仅仅进行必选项的检查（有就检查，没有就忽略）
-    print "选项序列:", opts
+    print("选项序列:", opts)
     for opt, arg in opts:
-        print "\t选项：{0}, 值:{1}".format(opt, arg)
+        print("\t选项：{0}, 值:{1}".format(opt, arg))
 
-    print "无关参数序列:", args
+    print("无关参数序列:", args)
 
 
 if __name__ == "__main__":

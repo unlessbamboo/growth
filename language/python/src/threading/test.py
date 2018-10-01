@@ -1,4 +1,4 @@
-import Queue
+import queue
 import time
 import logging
 import sys
@@ -11,18 +11,18 @@ logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 class Test1(object):
     def __init__(self):
         self.index = 3
-        self.q1 = Queue.Queue()
+        self.q1 = queue.Queue()
 
     def sig_quit(self, a, b):
         self.index = 10
         self.q1.put('quit')
-        print '========================'
+        print('========================')
 
     def sig_term(self, a, b):
         self.index = 10
         self.q1.put('quit')
-        print '========================'
-        print '++++++++++++++++++'
+        print('========================')
+        print('++++++++++++++++++')
 
     def run(self):
         signal.signal(signal.SIGQUIT, self.sig_quit)
@@ -38,11 +38,11 @@ class Test1(object):
         t1.start()
 
         while True:
-            print '*****************', self.index
+            print('*****************', self.index)
             self.q1.put('bbbbbbbbbb')
             time.sleep(1)
 
-        print 'xxxxxxxxxxxxxxxxx'
+        print('xxxxxxxxxxxxxxxxx')
 
 
 tObj = Test1()

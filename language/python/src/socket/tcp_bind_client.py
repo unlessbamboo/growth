@@ -17,10 +17,10 @@ def init_port():
 def send_package():
     socketfd = init_port()
     if not socketfd:
-        print 'Bind tcp client failed.'
+        print('Bind tcp client failed.')
         exit(-1)
     socketfd.connect(g_dstAddress)
-    for i in xrange(10):
+    for i in range(10):
         socketfd.send('This is {0} times test.'.format(i))
 
     socketfd.close()

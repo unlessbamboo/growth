@@ -5,6 +5,6 @@
 '''
 
 if __name__ == '__main__':
-    print '以python module.py形式执行程序'
+    print('以python module.py形式执行程序')
 else:
-    print '以python -m module形式执行程序'
+    print('以python -m module形式执行程序')

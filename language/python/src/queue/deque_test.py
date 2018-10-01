@@ -9,11 +9,11 @@ from collections import deque
 def simple_test():
     '''插入10条元素，最后遍历打印'''
     deque_object = deque(maxlen=5)
-    for i in xrange(100):
+    for i in range(100):
         deque_object.append(i)
 
     for i in deque_object:
-        print i
+        print(i)
 
 
 if __name__ == '__main__':

@@ -1,3 +1,3 @@
 import sys
 
-print "Add2 sys.path[0] :", sys.path[0]
+print("Add2 sys.path[0] :", sys.path[0])
