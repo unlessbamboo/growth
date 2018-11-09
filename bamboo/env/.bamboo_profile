@@ -28,6 +28,7 @@ export schedule=$HOME/Public/schedule/
 export crawler=$HOME/Public/crawler/
 export visaapi=$HOME/Public/crawler-api/
 export visaspider=$HOME/Public/visa/
+export visaalipay=$HOME/Public/alipay/
 export monitor=$HOME/Public/monitor/
 export monitorapi=$HOME/Public/monitor-api/
 export dama=$HOME/Public/dama/
