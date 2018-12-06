@@ -1,5 +1,4 @@
 # coding:utf-8
-#!/usr/bin/python
 import logging
 
 
@@ -43,6 +42,12 @@ def fileHandle():
     logging.error('This is a test message of filename print.')
 
 
+def print_trace_in_single_func(err):
+    def _sub_func(_err):
+        logging.exception('堆栈:{}'.format(_err))
+    _sub_func(err)
+
+
 def streamHandle():
     console = logging.StreamHandler()
     console.setLevel(logging.INFO)
@@ -50,7 +55,12 @@ def streamHandle():
     console.setFormatter(format)
     logging.getLogger('').addHandler(console)
 
-    logging.error('This ia a test message for streamHandle.')
+    try:
+        raise Exception('我是错误')
+    except Exception as err:
+        print_trace_in_single_func(err)
+        #  logging.exception('堆栈:{}'.format(err))
+    #  logging.error('This ia a test message for streamHandle.')
 
 
 if __name__ == '__main__':
