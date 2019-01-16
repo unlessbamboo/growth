@@ -24,14 +24,15 @@ export django=~/Public/django/
 export work=~/Public/
 export project=~/Growth/project/
 export rest=~/Public/restframework/
-export schedule=$HOME/Public/schedule/
 export crawler=$HOME/Public/crawler/
 export visaapi=$HOME/Public/crawler-api/
 export visaspider=$HOME/Public/visa/
 export visaalipay=$HOME/Public/alipay/
+export visadama=$HOME/Public/dama/
+export visaproxy=$HOME/Public/proxy/
+export reschedule=$HOME/Public/reschedule/
 export monitor=$HOME/Public/monitor/
 export monitorapi=$HOME/Public/monitor-api/
-export dama=$HOME/Public/dama/
 export shenyuan=$HOME/Public/japan_shenyuan/
 export flask=$HOME/Public/flask/
 export mydocker=$HOME/Public/docker/
@@ -187,3 +188,9 @@ if [[ -d $HOME/Library/Android/sdk/platform-tools/ ]];then
     export PATH=$PATH:/Users/bifeng/Library/Android/sdk/platform-tools/
 fi
 eval "$(pyenv init -)"
+
+# macport
+MAC_PORTS=~/macports/bin
+if [[ -d ${MAC_PORTS} ]];then
+    export PATH=$PATH:${MAC_PORTS}
+fi
