@@ -32,6 +32,8 @@ vps()
 server()
 {
     if [[ ! -n $1 ]];then
+        usage; exit -1
+    elif [[ $1 == 'root' ]];then
         ssh ${SERVER_NAME} -p ${SERVER_PORT}
     elif [[ $1 == 'monitor' ]];then
         ssh "monitor@${SERVER_HOST}" -p ${SERVER_PORT}
@@ -45,6 +47,8 @@ server()
 server02()
 {
     if [[ ! -n $1 ]];then
+        usage; exit -1
+    elif [[ $1 == 'root' ]];then
         ssh ${SERVER02_NAME} -p ${SERVER02_PORT}
     elif [[ $1 == 'monitor' ]];then
         ssh "monitor@${SERVER02_HOST}" -p ${SERVER02_PORT}
@@ -59,6 +63,8 @@ server02()
 server03()
 {
     if [[ ! -n $1 ]];then
+        usage; exit -1
+    elif [[ $1 == 'root' ]];then
         ssh ${SERVER03_NAME} -p ${SERVER03_PORT}
     elif [[ $1 == 'monitor' ]];then
         ssh "monitor@${SERVER03_HOST}" -p ${SERVER03_PORT}
@@ -70,28 +76,18 @@ server03()
 }
 
 
-verify()
+sh_server()
 {
     if [[ ! -n $1 ]];then
-        ssh ${VERIFY_NAME} -p ${VERIFY_PORT}
+        usage; exit -1
+    elif [[ $1 == 'root' ]];then
+        ssh "root@${VERIFY_HOST}" -p ${VERIFY_PORT}
     elif [[ $1 == 'visa' ]];then
         ssh "visa@${VERIFY_HOST}" -p ${VERIFY_PORT}
     elif [[ $1 == 'verifycode' ]];then
         ssh "verifycode@${VERIFY_HOST}" -p ${VERIFY_PORT}
     elif [[ $1 == 'api' ]];then
         ssh "apiv1@${VERIFY_HOST}" -p ${VERIFY_PORT}
-    fi
-}
-
-
-batch()
-{
-    if [[ ! -n $1 ]];then
-        ssh ${BATCH_NAME} -p ${BATCH_PORT}
-    elif [[ $1 == 'visa' ]];then
-        ssh "visa@${BATCH_HOST}" -p ${BATCH_PORT}
-    elif [[ $1 == 'api' ]];then
-        ssh "apiv1@${BATCH_HOST}" -p ${BATCH_PORT}
     fi
 }
 
@@ -136,24 +132,27 @@ usage()
     vps             go to vps
     ==============================================
     server          go to server
+                    root        --go to root user
                     visa        --go to visa user
                     api         --go to apiv1 user
                     monitor     --go to monitor user
 
     server2         go to crawler server 2
-                    visa        --go to visa user
-
-    server3         go to crawler server 3
+                    root        --go to root user
                     visa        --go to visa user
                     monitor     --go to monitor user
 
-    verify          go to verifycode or test
+    server3         go to crawler server 3
+                    root        --go to root user
+                    visa        --go to visa user
+                    monitor     --go to monitor user
+
+    sh_server       go to shanghai server
+                    root        --go to root user
                     visa        --go to visa user
                     api         --go to apiv1 user
                     verifycode  --go to verifycode user
 
-    batch           go to batch
-                    api         --go to apiv1 user
     ==============================================
     redis           connect local redis or 150
                     local       --connect localhost
@@ -178,8 +177,8 @@ case "$1" in
         server02 $2;;
     server3):
         server03 $2;;
-    verify):
-        verify $2;;
+    sh_server):
+        sh_server $2;;
     batch):
         batch $2;;
     redis):
