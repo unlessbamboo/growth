@@ -86,6 +86,8 @@ sh_server()
         ssh "visa@${VERIFY_HOST}" -p ${VERIFY_PORT}
     elif [[ $1 == 'verifycode' ]];then
         ssh "verifycode@${VERIFY_HOST}" -p ${VERIFY_PORT}
+    elif [[ $1 == 'monitor' ]];then
+        ssh "monitor@${VERIFY_HOST}" -p ${VERIFY_PORT}
     elif [[ $1 == 'api' ]];then
         ssh "apiv1@${VERIFY_HOST}" -p ${VERIFY_PORT}
     fi
@@ -151,6 +153,7 @@ usage()
                     root        --go to root user
                     visa        --go to visa user
                     api         --go to apiv1 user
+                    monitor     --go to monitor user
                     verifycode  --go to verifycode user
 
     ==============================================
