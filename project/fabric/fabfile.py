@@ -3,8 +3,8 @@
 列出所有命令以及文档介绍:
     fab -f fabfile.py --list
 """
-from fabric.api import local, lcd, run, env, cd, roles, settings, with_settings, hosts, parallel, hide
-from fabric.api import output, task, abort, prefix, path, quiet, remote_tunnel
+from fabric import local, lcd, run, env, cd, roles, settings, with_settings, hosts, parallel, hide
+from fabric import output, task, abort, prefix, path, quiet, remote_tunnel
 from fabric.contrib.console import confirm
 
 
