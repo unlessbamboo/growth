@@ -31,6 +31,7 @@ export visaspider=$HOME/Public/visa/
 export visaalipay=$HOME/Public/alipay/
 export visadama=$HOME/Public/dama/
 export visaproxy=$HOME/Public/proxy/
+export visaemail=$HOME/Public/visaemail/
 export reschedule=$HOME/Public/reschedule/
 export monitor=$HOME/Public/monitor/
 export monitorapi=$HOME/Public/monitor-api/
@@ -172,11 +173,12 @@ if [[ -n `python3 -V 2>/dev/null` ]];then
 fi
 
 # shadowsocks-NG
-alias unsetproxy='unset http_proxy; unset https_proxy'
 # proxy="http://127.0.0.1:8119"
 proxy="http://127.0.0.1:1087"
 export http_proxy=$proxy
 export https_proxy=$proxy
+alias unsetproxy='unset http_proxy; unset https_proxy'
+alias setproxy='export http_proxy='$proxy'; export https_proxy='$proxy''
 # 表示不仅过privoxy代理的地址或者域名, 通过,分隔, 类似PAC
 export no_proxy="localhost, 127.0.0.1, ::1"
 
