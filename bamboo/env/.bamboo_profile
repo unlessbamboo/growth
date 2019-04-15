@@ -175,8 +175,8 @@ fi
 # shadowsocks-NG
 # proxy="http://127.0.0.1:8119"
 proxy="http://127.0.0.1:1087"
-export http_proxy=$proxy
-export https_proxy=$proxy
+# export http_proxy=$proxy
+# export https_proxy=$proxy
 alias unsetproxy='unset http_proxy; unset https_proxy'
 alias setproxy='export http_proxy='$proxy'; export https_proxy='$proxy''
 # 表示不仅过privoxy代理的地址或者域名, 通过,分隔, 类似PAC
@@ -215,3 +215,8 @@ fi
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
 alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
