@@ -220,3 +220,12 @@ alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# MAC 上SSH 本机之后的配置
+# export LANG="zh_CN.UTF-8"
+# export LC_COLLATE="zh_CN.UTF-8"
+# export LC_CTYPE="zh_CN.UTF-8"
+# export LC_MESSAGES="zh_CN.UTF-8"
+# export LC_MONETARY="zh_CN.UTF-8"
+# export LC_NUMERIC="zh_CN.UTF-8"
+# export LC_TIME="zh_CN.UTF-8"
