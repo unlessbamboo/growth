@@ -157,12 +157,7 @@ usage()
                     api         --go to apiv1 user
                     monitor     --go to monitor user
 
-    server2         go to crawler server 2
-                    root        --go to root user
-                    visa        --go to visa user
-                    monitor     --go to monitor user
-
-    server3         go to crawler server 3
+    server[2-6]     go to crawler server 2 ~ 6
                     root        --go to root user
                     visa        --go to visa user
                     monitor     --go to monitor user
