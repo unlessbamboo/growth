@@ -25,7 +25,8 @@ def get_chrome_browser(proxy_url=None, ua=None, headless=True, timeout=None):
     chrome_options.add_argument('--no-sandbox')
     chrome_options.add_argument('--disable-extensions')
     chrome_options.add_argument('--disable-gpu')
-    chrome_options.add_argument('user-agent=Mozilla/5.0(WindowsNT10.0;Win64;x64)AppleWebKit/537.36(KHTML,likeGecko)Chrome/62.0.3202.94Safari/537.36'),
+    chrome_options.add_argument(
+        'user-agent=Mozilla/5.0(WindowsNT10.0;Win64;x64)AppleWebKit/537.36(KHTML,likeGecko)Chrome/62.0.3202.94Safari/537.36'),
     browser = webdriver.Chrome(chrome_options=chrome_options)
     browser.set_page_load_timeout(120 if not timeout else timeout)
     return browser
@@ -54,13 +55,20 @@ class Geetest(object):
             EC.presence_of_element_located((By.ID, 'btn')))
         element.click()
         # 等待滑动验证码出现
-        WebDriverWait(self.browser, 10, 0.5).until(EC.presence_of_element_located((By.CLASS_NAME, 'geetest_canvas_fullbg')))
+        WebDriverWait(
+            self.browser, 10, 0.5).until(
+            EC.presence_of_element_located(
+                (By.CLASS_NAME, 'geetest_canvas_fullbg')))
         return True
 
     def analog_drag(self):
         # 1. 将已经生成好的画布上的照片保存到本地
-        self.save_canvas_img('full.jpg', 'geetest_canvas_fullbg geetest_absolute')  # 原图
-        self.save_canvas_img('cut.jpg', 'geetest_canvas_bg geetest_absolute')  # 缺口背景图
+        self.save_canvas_img(
+            'full.jpg',
+            'geetest_canvas_fullbg geetest_absolute')  # 原图
+        self.save_canvas_img(
+            'cut.jpg',
+            'geetest_canvas_bg geetest_absolute')  # 缺口背景图
         full_image = Image.open('full.jpg')
         cut_image = Image.open('cut.jpg')
         distance = self.get_offset_distance(cut_image, full_image)
@@ -71,7 +79,8 @@ class Geetest(object):
 
     def save_canvas_img(self, filename, classname):
         """ 保存画布到本地 """
-        js = 'return document.getElementsByClassName("{}")[0].toDataURL("image/png")'.format(classname)
+        js = 'return document.getElementsByClassName("{}")[0].toDataURL("image/png")'.format(
+            classname)
         img = self.browser.execute_script(js)
         base64_data_img = img[img.find(',') + 1:]
         with open(filename, 'wb') as fd:
@@ -86,7 +95,8 @@ class Geetest(object):
                 fpx = full_image.getpixel((x, y))
                 if not self.is_similar_color(cpx, fpx):  # 如果颜色不想近, 表示这是一个缺口
                     # 保存一下计算出来位置图片，看看是不是缺口部分
-                    img = cut_image.crop((x, y, x + 50, y + 50))  # 从图像中提取某个矩形大小的图像
+                    img = cut_image.crop(
+                        (x, y, x + 50, y + 50))  # 从图像中提取某个矩形大小的图像
                     img.save("slice.png")
                     return x  # 切片图片和缺口的 Y 坐标肯定相同
 
@@ -100,7 +110,8 @@ class Geetest(object):
     def start_move(self, distance):
         """ 移动切片 """
         # 获取拖动按钮
-        element = self.browser.find_element_by_xpath('//div[@class="geetest_slider_button"]')
+        element = self.browser.find_element_by_xpath(
+            '//div[@class="geetest_slider_button"]')
         # 种类需要进行微调可能计算出来的位置不准确
         distance -= element.size.get('width') / 2
         distance += 25
@@ -115,11 +126,15 @@ class Geetest(object):
             else:
                 # 快到缺口了，就移动慢一点
                 span = random.randint(2, 3)
-            ActionChains(self.browser).move_by_offset(span, 0).perform()  # 从当前位置移动到某个坐标(x, y)
+            ActionChains(
+                self.browser).move_by_offset(
+                span, 0).perform()  # 从当前位置移动到某个坐标(x, y)
             distance -= span
             time.sleep(random.randint(10, 50) / 100)
         ActionChains(self.browser).move_by_offset(distance, 1).perform()
-        ActionChains(self.browser).release(on_element=element).perform()  # 释放鼠标左键
+        ActionChains(
+            self.browser).release(
+            on_element=element).perform()  # 释放鼠标左键
 
     def login(self):
         try:
