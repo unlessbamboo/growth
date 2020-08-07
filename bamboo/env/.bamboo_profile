@@ -145,6 +145,10 @@ if [[ -d ${MAC_PYTHON_BIN} ]];then
     fi
 fi
 
+# 替换brew Bottles(二进制)源, 需要搭配默认源使用
+# 中科大
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+
 # vim
 export EDITOR=vim
 # svn configure
@@ -223,11 +227,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# MAC 上SSH 本机之后的配置
-# export LANG="zh_CN.UTF-8"
-# export LC_COLLATE="zh_CN.UTF-8"
-# export LC_CTYPE="zh_CN.UTF-8"
-# export LC_MESSAGES="zh_CN.UTF-8"
-# export LC_MONETARY="zh_CN.UTF-8"
-# export LC_NUMERIC="zh_CN.UTF-8"
-# export LC_TIME="zh_CN.UTF-8"
+# MAC 上SSH 本机之后的配置(比如windows连接本机)
+export LANG="zh_CN.UTF-8"
+export LC_COLLATE="zh_CN.UTF-8"
+export LC_CTYPE="zh_CN.UTF-8"
+export LC_MESSAGES="zh_CN.UTF-8"
+export LC_MONETARY="zh_CN.UTF-8"
+export LC_NUMERIC="zh_CN.UTF-8"
+export LC_TIME="zh_CN.UTF-8"
