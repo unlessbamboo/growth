@@ -14,8 +14,12 @@ export mycx=~/Growth/language/g++/
 export mysh=~/Growth/language/shell/
 export myja=~/Growth/language/java/
 export myjs=~/Growth/language/js/
-export algo=~/Growth/algorithm/
-export dst=~/Growth/data-structure/
+export myalgo=~/Growth/algorithm/
+export mydst=~/Growth/data-structure/
+export mydocker=$HOME/Public/docker/
+export mydoc=$HOME/Documents/spider/
+export myfabric=$HOME/Public/fabric/
+
 export bamboo=~/Growth/bamboo/
 export unusebamboo=~/Public/unusebamboo/
 export blog=~/Public/blog/
@@ -25,23 +29,21 @@ export django=~/Public/django/
 export work=~/Public/
 export project=~/Growth/project/
 export rest=~/Public/restframework/
-export visacrawler=$HOME/Public/crawler/
-export visaoldcralwer=$HOME/Public/visa/
-export visaapi=$HOME/Public/crawler-api/
-export visaalipay=$HOME/Public/alipay/
-export visadama=$HOME/Public/dama/
-export visaproxy=$HOME/Public/proxy/
-export visaemail=$HOME/Public/visaemail/
-export visareschedule=$HOME/Public/reschedule/
-export visamonitor=$HOME/Public/monitor/
-export visamonitorapi=$HOME/Public/monitor-api/
-export visashenyuan=$HOME/Public/japan_shenyuan/
-export visaspider=$HOME/Public/spider/
-export visasms=$HOME/Public/visasms/
 export flask=$HOME/Public/flask/
-export mydocker=$HOME/Public/docker/
-export mydoc=$HOME/Documents/spider/
-export myfabric=$HOME/Public/fabric/
+# anniu keji
+export visacrawler=$HOME/Public/anniu/crawler/
+export visaoldcralwer=$HOME/Public/anniu/visa/
+export visaapi=$HOME/Public/anniu/crawler-api/
+export visaalipay=$HOME/Public/anniu/alipay/
+export visadama=$HOME/Public/anniu/dama/
+export visaproxy=$HOME/Public/anniu/proxy/
+export visaemail=$HOME/Public/anniu/visaemail/
+export visareschedule=$HOME/Public/anniu/reschedule/
+export visamonitor=$HOME/Public/anniu/monitor/
+export visamonitorapi=$HOME/Public/anniu/monitor-api/
+export visashenyuan=$HOME/Public/anniu/japan_shenyuan/
+export visaspider=$HOME/Public/anniu/spider/
+export visasms=$HOME/Public/anniu/visasms/
 
 # PATH
 if [[ -d /usr/local/sbin ]];then
