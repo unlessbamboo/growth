@@ -97,6 +97,10 @@ fi
 
 if [[ -d /opt/homebrew/bin/ ]];then
     export PATH=$PATH:/opt/homebrew/bin
+    alias abrew='/opt/homebrew/bin/brew'
+fi
+if [[ -f /usr/local/bin/brew ]];then
+    alias ibrew='arch -x86_64 /usr/local/bin/brew'
 fi
 
 if [[ -d /opt/homebrew/opt/ruby/bin ]];then
@@ -170,6 +174,7 @@ if [[ -d ${PYENV_ROOT} ]];then
     if command -v pyenv 1>/dev/null 2>&1;then
         eval "$(pyenv init -)"
     fi
+    alias ipyenv="arch -x86_64 pyenv"
 fi
 # 确保YCM 生效
 export PYTHON_CONFIGURE_OPTS="--enable-framework"
@@ -180,6 +185,12 @@ if [[ -d ${MAC_PYTHON_BIN} ]];then
     if [[ -f $(brew --prefix)/etc/bash_completion ]]; then
       . $(brew --prefix)/etc/bash_completion
     fi
+fi
+
+# MAC M1架构
+if [[ -d /usr/local/opt/zlib/lib ]];then
+    export LDFLAGS="-L/usr/local/opt/zlib/lib"
+    export CPPFLAGS="-I/usr/local/opt/zlib/include"
 fi
 
 # 替换brew Bottles(二进制)源, 需要搭配默认源使用
