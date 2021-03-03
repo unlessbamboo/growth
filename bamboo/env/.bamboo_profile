@@ -79,6 +79,7 @@ fi
 if [[ -d /opt/local/bin/ ]];then
     export PATH=$PATH:/opt/local/bin
 fi
+
 if [[ -d $HOME/.cargo/bin ]];then
     export PATH=$PATH:$HOME/.cargo/bin
 fi
@@ -94,6 +95,13 @@ if [[ -d ${oracle_dir} ]];then
     export OCI_LIBRARY_PATH=$OCI_LIB_DIR
 fi
 
+if [[ -d /opt/homebrew/bin/ ]];then
+    export PATH=$PATH:/opt/homebrew/bin
+fi
+
+if [[ -d /opt/homebrew/opt/ruby/bin ]];then
+    export PATH=$PATH:/opt/homebrew/opt/ruby/bin
+fi
 
 # python
 if [[ -d /usr/local/opt/python@2/ ]];then
@@ -110,6 +118,9 @@ if [[ -d "/usr/local/java/" ]];then
     export JAVA_HOME=/usr/local/java/jdk1.7.0_71
     export CLASSPATH=.:%JAVA_HOME%/lib/dt.jar:%JAVA_HOME%/lib/tools.jar
     export PATH=$PATH:$JAVA_HOME/bin
+fi
+if [[ -d "/opt/homebrew/opt/openjdk/bin" ]];then
+    export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 fi
 # 默认使用JAVA8
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
