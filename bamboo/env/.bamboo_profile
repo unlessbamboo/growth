@@ -79,6 +79,21 @@ fi
 if [[ -d /opt/local/bin/ ]];then
     export PATH=$PATH:/opt/local/bin
 fi
+if [[ -d $HOME/.cargo/bin ]];then
+    export PATH=$PATH:$HOME/.cargo/bin
+fi
+
+# ORACLE
+local oracle_dir=/opt/oracle/instanceclient
+if [[ -d ${oracle_dir} ]];then
+    export PATH=$PATH:${oracle_dir}
+    export OCI_HOME=${oracle_dir}
+    export OCI_LIB_DIR=$OCI_HOME
+    export OCI_INCLUDE_DIR=$OCI_HOME/sdk/include
+    export OCI_VERSION=11
+    export OCI_LIBRARY_PATH=$OCI_LIB_DIR
+fi
+
 
 # python
 if [[ -d /usr/local/opt/python@2/ ]];then
@@ -102,6 +117,11 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 if [[ -d "$HOME/Applications/Eclipse.app/Contents/Eclipse/" ]];then
     export ECLIPSE_HOME=~/Applications/Eclipse.app/Contents/Eclipse/
 fi
+# mysql头文件
+if [[ -d "/usr/local/opt/mysql-client/" ]];then
+    export LDFLAGS="$LDFLAGS -L/usr/local/opt/mysql-client/lib"
+    export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/mysql-client/include"
+fi
 
 export M2_HOME=/usr/local/apache-maven
 if [[ -d ${M2_HOME} ]];then
@@ -122,7 +142,7 @@ MAC_PYTHON_BIN="$HOME/Library/Python/2.7/bin/"
 if [[ -d ${MAC_PYTHON_BIN} ]];then
     export PATH=$PATH:${MAC_PYTHON_BIN}
 fi
-# virtualwrapper 
+# virtualwrapper, 不一定是/usr/local/目录下面
 WRAPPER_PATH=`which virtualenvwrapper.sh`
 if [[ -f ${WRAPPER_PATH} ]];then
     export WORKON_HOME=$HOME/.virtualenvs
@@ -133,11 +153,15 @@ if [[ -f ${WRAPPER_PATH} ]];then
     alias deact="deactivate"
 fi
 # pyenv
-# PYENV_ROOT="$HOME/.pyenv"
-# if [[ -d ${PYENV_ROOT} ]];then
-#     export PATH="$PYENV_ROOT/bin:$PATH"
-#     eval "$(pyenv init -)"
-# fi
+PYENV_ROOT="$HOME/.pyenv"
+if [[ -d ${PYENV_ROOT} ]];then
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    if command -v pyenv 1>/dev/null 2>&1;then
+        eval "$(pyenv init -)"
+    fi
+fi
+# 确保YCM 生效
+export PYTHON_CONFIGURE_OPTS="--enable-framework"
 
 # bash completion
 CURRENT_SYSTEM=`uname -s`
@@ -181,12 +205,10 @@ if [[ -n `python3 -V 2>/dev/null` ]];then
 fi
 
 # shadowsocks-NG
-# proxy="http://127.0.0.1:8119"
 proxy="http://127.0.0.1:1087"
-# export http_proxy=$proxy
-# export https_proxy=$proxy
 alias unsetproxy='unset http_proxy; unset https_proxy'
 alias setproxy='export http_proxy='$proxy'; export https_proxy='$proxy''
+# Trojan
 # 表示不仅过privoxy代理的地址或者域名, 通过,分隔, 类似PAC
 export no_proxy="localhost, 127.0.0.1, ::1"
 
@@ -237,3 +259,6 @@ export LC_MESSAGES="zh_CN.UTF-8"
 export LC_MONETARY="zh_CN.UTF-8"
 export LC_NUMERIC="zh_CN.UTF-8"
 export LC_TIME="zh_CN.UTF-8"
+
+# 设置系统文件句柄数目
+ulimit -S -n 4096

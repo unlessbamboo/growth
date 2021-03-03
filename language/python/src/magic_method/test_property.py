@@ -39,6 +39,7 @@ class Property(object):
         return type(self)(fget, self.fset, self.fdel, self.__doc__)
 
     def setter(self, fset):
+        """ getter,setter,deleter每一个都是装饰器 """
         return type(self)(self.fget, fset, self.fdel, self.__doc__)
 
     def deleter(self, fdel):
@@ -49,8 +50,15 @@ class TestProperty(object):
     def __init__(self):
         self._name = 'kuang'
 
-    @property
+    @Property
     def name(self):
+        """ 上面的装饰器类似
+        class TP():
+            def name(self):
+                pass
+            b = Property(name)  # 此时fget==name
+            name = b.__get__()
+        """
         print('我是descriptor，装饰器property.')
         return self._name
 
@@ -70,3 +78,4 @@ class TestProperty(object):
 testObj = TestProperty()
 print('实例拥有的属性值:', testObj.__dict__)
 print('类拥有的属性值：', TestProperty.__dict__)
+print(testObj.name)

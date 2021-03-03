@@ -8,12 +8,13 @@ bamboo()
     ssh ${CN_BLOG_NAME}
 }
 
+
 feng()
 {
     if [[ ! -n $1 ]];then
         usage
     elif [[ $1 == '0' ]];then
-        ssh ${HK_FENG_0_NAME}
+        ssh ${HK_FENG_0_NAME} -p ${HK_FENG_0_PORT}
     elif [[ $1 == '1' ]];then
         ssh ${CN_FENG_1_NAME}
     elif [[ $1 == '2' ]];then
@@ -23,92 +24,10 @@ feng()
     fi
 }
 
+
 vps()
 {
-    ssh ${VPS_NAME} -p ${VPS_PORT}
-}
-
-
-server()
-{
-    if [[ ! -n $1 ]];then
-        usage; exit -1
-    elif [[ $1 == 'root' ]];then
-        ssh ${SERVER_NAME} -p ${SERVER_PORT}
-    elif [[ $1 == 'monitor' ]];then
-        ssh "monitor@${SERVER_HOST}" -p ${SERVER_PORT}
-    elif [[ $1 == 'visa' ]];then
-        sshpass -p ${SERVER_VISA_PASSWD} ssh "visa@${SERVER_HOST}" -p ${SERVER_PORT}
-    elif [[ $1 == 'api' ]];then
-        sshpass -p ${SERVER_VISA_PASSWD} ssh "apiv1@${SERVER_HOST}" -p ${SERVER_PORT}
-    fi
-}
-
-server02()
-{
-    if [[ ! -n $1 ]];then
-        usage; exit -1
-    elif [[ $1 == 'root' ]];then
-        ssh ${SERVER02_NAME} -p ${SERVER02_PORT}
-    elif [[ $1 == 'monitor' ]];then
-        ssh "monitor@${SERVER02_HOST}" -p ${SERVER02_PORT}
-    elif [[ $1 == 'visa' ]];then
-        sshpass -p ${SERVER02_VISA_PASSWD} ssh "visa@${SERVER02_HOST}" -p ${SERVER02_PORT}
-    elif [[ $1 == 'api' ]];then
-        sshpass -p ${SERVER02_VISA_PASSWD} ssh "apiv1@${SERVER02_HOST}" -p ${SERVER02_PORT}
-    fi
-}
-
-
-server03()
-{
-    if [[ ! -n $1 ]];then
-        usage; exit -1
-    elif [[ $1 == 'root' ]];then
-        ssh ${SERVER03_NAME} -p ${SERVER03_PORT}
-    elif [[ $1 == 'monitor' ]];then
-        ssh "monitor@${SERVER03_HOST}" -p ${SERVER03_PORT}
-    elif [[ $1 == 'visa' ]];then
-        sshpass -p ${SERVER03_VISA_PASSWD} ssh "visa@${SERVER03_HOST}" -p ${SERVER03_PORT}
-    elif [[ $1 == 'api' ]];then
-        sshpass -p ${SERVER03_VISA_PASSWD} ssh "apiv1@${SERVER03_HOST}" -p ${SERVER03_PORT}
-    fi
-}
-
-
-sh_server()
-{
-    if [[ ! -n $1 ]];then
-        usage; exit -1
-    elif [[ $1 == 'root' ]];then
-        ssh "root@${VERIFY_HOST}" -p ${VERIFY_PORT}
-    elif [[ $1 == 'visa' ]];then
-        ssh "visa@${VERIFY_HOST}" -p ${VERIFY_PORT}
-    elif [[ $1 == 'verifycode' ]];then
-        ssh "verifycode@${VERIFY_HOST}" -p ${VERIFY_PORT}
-    elif [[ $1 == 'monitor' ]];then
-        ssh "monitor@${VERIFY_HOST}" -p ${VERIFY_PORT}
-    elif [[ $1 == 'api' ]];then
-        ssh "apiv1@${VERIFY_HOST}" -p ${VERIFY_PORT}
-    fi
-}
-
-mail_server()
-{
-    if [[ ! -n $1 ]];then
-        usage; exit -1
-    elif [[ $1 == 'root' ]];then
-        ssh ${VISA_MAIL_NAME} -p ${VISA_MAIL_PORT}
-    fi
-}
-
-adsl1()
-{
-    if [[ ! -n $1 ]];then
-        usage; exit -1
-    elif [[ $1 == 'root' ]];then
-        ssh "root@${US_ADSL_HOST_1}" -p ${US_ADSL_PORT_1}
-    fi
+    ssh ${VPS_NAME}@${VPS_IP} -p ${VPS_PORT}
 }
 
 
@@ -151,29 +70,6 @@ usage()
                     2           --go to CN_feng_2
     vps             go to vps
     ==============================================
-    server          go to server
-                    root        --go to root user
-                    visa        --go to visa user
-                    api         --go to apiv1 user
-                    monitor     --go to monitor user
-
-    server[2-6]     go to crawler server 2 ~ 6
-                    root        --go to root user
-                    visa        --go to visa user
-                    monitor     --go to monitor user
-
-    sh_server       go to shanghai server
-                    root        --go to root user
-                    visa        --go to visa user
-                    api         --go to apiv1 user
-                    monitor     --go to monitor user
-                    verifycode  --go to verifycode user
-    mail_server     go to mail server
-                    root        --go to root user
-    adsl1           go to us ADSL_1 server
-                    root        --go to root user
-
-    ==============================================
     redis           connect local redis or 150
                     local       --connect localhost
                     verify      --connect verify
@@ -191,20 +87,6 @@ case "$1" in
         feng $2;;
     vps):
         vps;;
-    server):
-        server $2;;
-    server2):
-        server02 $2;;
-    server3):
-        server03 $2;;
-    sh_server):
-        sh_server $2;;
-    mail_server):
-        mail_server $2;;
-    adsl1):
-        adsl1 $2;;
-    batch):
-        batch $2;;
     redis):
         redis $2;;
     *)

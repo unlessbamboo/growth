@@ -1,14 +1,56 @@
-#!/usr/bin/env python
 # coding:utf-8
-##
-# @file testDescipter.py
-# @brief    测试descipter的某些简单功能
-#           1，descripter是属性、实例方法、静态方法、类方法、super的实现机制
-# @author unlessbamboo
-# @version 0.1
-# @date 2016-01-29
+"""
+一个新式类一旦定义了:
+    __get__(self, instance, owner): instance使用描述符类实例, owner使用描述符类
+    __set__(self, instance, value)
+    __delete_(self, instance)
+    中任何一个方法, 该类就会被称为descripter(描述符).
+descripter分为: data descripter, non-data descripter.
+注意, descripter(类)是一个对象(有点蒙蔽是吧?), 一般作为其他类对象属性而存在.
+
+@绑定行为: 在属性get,set,del的时候做一些值的合法性判断, 打印字符等等额外操作.
+@托管属性: 利用描述符(类)去托管owner的相关属性, 一种代理机制, 见下面的性格类,
+    重量类.
+
+@1 对象属性访问顺序:
+    a. 实例属性(实际上就是调用默认的__getattribute__方法
+    b. 类属性
+    c. 父类属性
+    d. __getattr__方法
+
+测试descipter的某些简单功能:
+    1，descripter是属性、实例方法、静态方法、类方法、super的实现机制
+"""
+from __future__ import print_function
 import types
 import requests
+
+
+class CharacterDescriptor(object):
+    """ 描述性格的专用类 """
+    def __init__(self, value):
+        self._value = value
+
+    def __get__(self, instance, owner):
+        print('性格: get')
+        return self._value
+
+    def __set__(self, instance, value):
+        if not isinstance(value, str):
+            raise Exception('xxxxxx')
+        self._value = value
+
+
+class NumDescriptor(object):
+    def __init__(self, number):
+        self._num = number
+
+    def __get__(self, instance, owner):
+        return self._num
+
+    def __set__(self, instance, value):
+        if not isinstance(value, int):
+            raise Exception('xxxxxxx')
 
 
 class TestDescipter(object):
@@ -26,7 +68,8 @@ class TestDescipter(object):
         """testMethod"""
         print('testMeothd:{0}'.format(self.name))
 
-    def classMethod(TestDescipter):
+    @classmethod
+    def classmyMethod(cls):
         print('classMethod!')
 
     ##
@@ -44,7 +87,7 @@ class TestDescipter(object):
         :param value:
         """
         if not isinstance(value, int):
-            raise
+            raise Exception('xxx')
         self._score = value
 
     @score.getter
@@ -92,14 +135,13 @@ def methodTest():
     print('对象调用__dict__[...]输出:{0}'.format(
         TestDescipter.__dict__['testMethod'].__get__(test1, TestDescipter)))
     print('类调用-方法对象打印:{0}'.format(
-        TestDescipter.classMethod))
+        TestDescipter.classmyMethod))
     print('类调用__dict__[...]输出:{0}'.format(
-        TestDescipter.__dict__['classMethod'].__get__(None, TestDescipter)))
+        TestDescipter.__dict__['classmyMethod'].__get__(None, TestDescipter)))
     print('使用@property，逐渐递增score值：\n')
     print('Score value:{0}, {1}, {2}, {3}'.format(
         test1.score, test1.score, test1.score, test1.score))
 
 
 if __name__ == '__main__':
-    """main"""
     methodTest()
