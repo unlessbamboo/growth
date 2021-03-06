@@ -85,15 +85,24 @@ if [[ -d $HOME/.cargo/bin ]];then
 fi
 
 # ORACLE
-local oracle_dir=/opt/oracle/instanceclient
+local oracle_dir=''
+if [[ -d /opt/instantclient_19_8/ ]];then
+    oracle_dir=/opt/instantclient_19_8/
+elif [[ -d /opt/oracle/instanceclient ]];then
+    oracle_dir=/opt/oracle/instanceclient
+fi
 if [[ -d ${oracle_dir} ]];then
-    export PATH=$PATH:${oracle_dir}
-    export OCI_HOME=${oracle_dir}
+    export ORACLE_HOME=${oracle_dir}
+    export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:$ORACLE_HOME
+    export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$ORACLE_HOME
+    export PATH=${ORACLE_HOME}:$PATH
+    export OCI_HOME=${ORACLE_HOME}
     export OCI_LIB_DIR=$OCI_HOME
     export OCI_INCLUDE_DIR=$OCI_HOME/sdk/include
     export OCI_VERSION=11
     export OCI_LIBRARY_PATH=$OCI_LIB_DIR
 fi
+
 
 if [[ -d /opt/homebrew/bin/ ]];then
     export PATH=$PATH:/opt/homebrew/bin
