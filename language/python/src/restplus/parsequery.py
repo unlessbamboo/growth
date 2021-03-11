@@ -1,4 +1,7 @@
-""" 参数解析: 对请求数据进行校验, 以简化的代码进行参数检查, 避免硬编码和大量冗余代码存在 """
+"""
+参数解析: 对请求数据进行校验, 以简化的代码进行参数检查, 避免硬编码和大量冗余代码存在.
+    设计目的是对Flask中flask.request对象上的任何变量提供简单和统一的访问方式.
+"""
 from flask import Flask, request, jsonify, abort
 from flask_restplus import Resource, Api, reqparse
 
@@ -42,20 +45,23 @@ class ParseS(Resource):
         return jsonify( { 'task': make_public_task(task[0]) } )
 
 
+# 该功能在 2.0 之后被整体移除, 使用交互式的marsh来进行参数校验工作
+# location表示从哪个位置获取值: form, args, headers, cookies, files, json
 parser = reqparse.RequestParser()
 parser.add_argument('title', type=str, required=True,
-                    help='任务描述', location='json')
+                    help='任务描述', location='json')  # 请求中必须携带该参数
 parser.add_argument('description', type = str, default = "描述",
                     location = 'json')
 
 
-@api.route('/todo/api/v1.0/tasks/<int:task_id>', endpoint = 'tasks')
+@api.route('/todo/api/v2.0/tasks/<int:task_id>', endpoint = 'tasks')
 class UserAPI(Resource):
     """ 增加参数检查校验工作 """
     def get(self, task_id):
         return {'desc': 'Get Method'}
 
     def put(self, task_id):
+        parser.parse_args()  # 解析参数
         return {'desc': 'Put Method'}
 
 
