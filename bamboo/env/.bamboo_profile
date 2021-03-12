@@ -205,6 +205,8 @@ fi
 # 替换brew Bottles(二进制)源, 需要搭配默认源使用
 # 中科大
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+# 关闭每次执行命令的时候自动更新, 通过crontab定时任务在中午定时执行更新任务
+export HOMEBREW_NO_AUTO_UPDATE=true
 
 # vim
 export EDITOR=vim
@@ -237,7 +239,7 @@ fi
 
 # shadowsocks-NG
 proxy="http://127.0.0.1:1087"
-alias unsetproxy='unset http_proxy; unset https_proxy'
+alias unsetproxy='unset http_proxy; unset https_proxy; unset HTTP_PROXY; unset HTTPS_PROXY'
 alias setproxy='export http_proxy='$proxy'; export https_proxy='$proxy''
 # Trojan
 # 表示不仅过privoxy代理的地址或者域名, 通过,分隔, 类似PAC
@@ -293,3 +295,7 @@ export LC_TIME="zh_CN.UTF-8"
 
 # 设置系统文件句柄数目
 ulimit -S -n 4096
+
+# FLASK 项目默认配置
+export FLASK_APP=manage.py
+export FLASK_DEBUG=1

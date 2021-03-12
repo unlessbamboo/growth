@@ -53,7 +53,7 @@ resp_model = api.model('resp model', {
     'id': fields.Integer(),  # ID 测试
     'datetime': fields.DateTime(),  # 时间格式 
     'date': fields.Date(),  # 日期
-    'bool': fields.Boolean(),  # 布尔型
+    'bool': fields.Boolean(skip_none=True),  # 布尔型(可以在models或者expect中定义skip_none)
 
     'contact': fields.Nested(sub_model),  # 内嵌字典类型
     'friends': fields.List(fields.Nested(friend_model))  # 内嵌列表
@@ -128,7 +128,6 @@ class TodoSchema(Resource):
             'number': 110,
             'road': '余杭',
         }
-        
 
 
 if __name__ == '__main__':
