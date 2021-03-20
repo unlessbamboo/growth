@@ -30,10 +30,10 @@ class ParseS(Resource):
         if not request.json:
             print('2---------------')
             abort(400)
-        if 'title' in request.json and type(request.json['title']) != unicode:
+        if 'title' in request.json and type(request.json['title']) != str:
             print('3---------------')
             abort(400)
-        if 'description' in request.json and type(request.json['description']) is not unicode:
+        if 'description' in request.json and type(request.json['description']) is not str:
             print('4---------------')
             abort(400)
         if 'done' in request.json and type(request.json['done']) is not bool:
@@ -42,7 +42,7 @@ class ParseS(Resource):
         task[0]['title'] = request.json.get('title', task[0]['title'])
         task[0]['description'] = request.json.get('description', task[0]['description'])
         task[0]['done'] = request.json.get('done', task[0]['done'])
-        return jsonify( { 'task': make_public_task(task[0]) } )
+        return jsonify({'task': task[0]})
 
 
 # 该功能在 2.0 之后被整体移除, 使用交互式的marsh来进行参数校验工作
@@ -50,13 +50,14 @@ class ParseS(Resource):
 parser = reqparse.RequestParser()
 parser.add_argument('title', type=str, required=True,
                     help='任务描述', location='json')  # 请求中必须携带该参数
-parser.add_argument('description', type = str, default = "描述",
-                    location = 'json')
+parser.add_argument('description', type=str, default="描述",
+                    location='json')
 
 
-@api.route('/todo/api/v2.0/tasks/<int:task_id>', endpoint = 'tasks')
+@api.route('/todo/api/v2.0/tasks/<int:task_id>', endpoint='tasks')
 class UserAPI(Resource):
     """ 增加参数检查校验工作 """
+
     def get(self, task_id):
         return {'desc': 'Get Method'}
 

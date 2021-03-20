@@ -1,6 +1,7 @@
 {
     "python.linting.pylintEnabled": true,
     "python.pythonPath": "/Users/bamboounuse/.virtualenvs/mcdrcc/bin/python",
+    "cornflakes.linter.executablePath": "/Users/bamboounuse/.virtualenvs/mcdrcc/bin/flake8",
     "python.testing.unittestArgs": [
         "-v",
         "-s",
