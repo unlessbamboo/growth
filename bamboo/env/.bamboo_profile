@@ -299,3 +299,7 @@ ulimit -S -n 4096
 # FLASK 项目默认配置
 export FLASK_APP=manage.py
 export FLASK_DEBUG=1
+
+if [[ -f $HOME/.mc_profile ]];then
+    source $HOME/.mc_profile
+fi
