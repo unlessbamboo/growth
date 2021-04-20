@@ -2,10 +2,14 @@
 默认情况下: 返回的可迭代对象中的所有字段都会原样返回
 响应编组(marlshaling): 类似django rest framework中的序列化, 利用
     fields和marshal_with进行自定义格式化输出, 以便处理数据库对象.
+具体功能: 
+    1. 重命名属性, 利用attribute来对外隐藏, 另外还可以访问嵌套属性
+    2. 设置默认值, default
+    3. 自定义, 继承fields.Raw, 实现
 """
 import random
 from flask import Flask
-from flask_restplus import fields, Api, Resource, Namespace
+from flask_restplus import fields, Api, Resource, marshal_with, Model
 
 app = Flask(__name__)
 api = Api(app)
@@ -13,14 +17,21 @@ api = Api(app)
 
 class UnreadItem(fields.Raw):
     """ 自定义格式输出 """
+
     def format(self, value):
         return "Unread" if value & 0x02 else "Read"
+
+
 class RandomNumber(fields.Raw):
     """ 自定义随机数 """
+
     def output(self, key, obj, ordered=True):
         return random.random()
+
+
 class RawOutput(fields.Raw):
     """ 原样输出 """
+
     def format(self, value):
         return value
 
@@ -58,9 +69,27 @@ resp_model = api.model('resp model', {
     'contact': fields.Nested(sub_model),  # 内嵌字典类型
     'friends': fields.List(fields.Nested(friend_model))  # 内嵌列表
 })
-person_model = resp_model.clone('Person', {  # clone继承
+
+person_model = api.clone('Person', resp_model, {  # clone继承(api方式继承)
     'weight': fields.Float(),  # 体重
 })
+
+
+m_model = Model('m model', {
+    'name': fields.String,
+    'address': fields.String,
+})
+c_model = m_model.clone('c model', {  # 这种方式和api.clone有一些不同
+    'age': fields.Integer,
+})
+
+
+@marshal_with(c_model, skip_none=True)
+def show_my():
+    """ 自带的Model和marshal_with同api.Model, api.marshal_with的区别
+    就是后者会自动添加到swagger文档中
+    """
+    return {'name': 'bifeng', 'address': 'hangzhou', 'age': 19}
 
 
 @api.route('/todo/format', endpoint='todo_ep')
@@ -82,15 +111,18 @@ class TodoFormat(Resource):
         }
 
 
-
 _task_model = api.model('', {
     'id': fields.Integer(),
     'task': fields.String(), 
 })
 # 继承语法, 注意使用(namespace也有inherit语法)
+# orderer: 确保返回值的位置跟定义的位置保持一致, 这样会有一定的损耗.
+# 该用法在: Api, Namespace, marsha1中都可以使用
 order_model = api.inherit('order', _task_model, {
-    'desc': fields.String(), 
+    'desc': fields.String(),
 })
+
+
 @api.route('/todo/order', endpoint='order_ep')
 class TodoOrder(Resource):
     def get(self):
@@ -119,6 +151,8 @@ address_schema = api.schema_model('Address Schema', {
     },
     'type': 'object'
 })
+
+
 @api.route('/todo/schema', endpoint='schema_ep')
 class TodoSchema(Resource):
     @api.response(200, "ok", address_schema)

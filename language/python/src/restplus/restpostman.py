@@ -4,13 +4,13 @@ from werkzeug.contrib.fixers import ProxyFix
 
 app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
+app.config['SERVER_NAME'] = '127.0.0.1:5000'
 api = Api(app, version='1.0', title='TodoMVC API',
-    description='A simple TodoMVC API',
-)
+          description='A simple TodoMVC API',
+          )
+ns = api.namespace('todos', description='TODO operations')  # 这是实际上为Namespace工厂方法
 
-ns = api.namespace('todos', description='TODO operations')
-
-todo = api.model('Todo', {
+todo_model = api.model('Todo Model', {
     'id': fields.Integer(readonly=True, description='The task unique identifier'),
     'task': fields.String(required=True, description='The task details')
 })
@@ -53,14 +53,14 @@ DAO.create({'task': 'profit!'})
 class TodoList(Resource):
     '''Shows a list of all todos, and lets you POST to add new tasks'''
     @ns.doc('list_todos')
-    @ns.marshal_list_with(todo)
+    @ns.marshal_list_with(todo_model)
     def get(self):
         '''List all tasks'''
         return DAO.todos
 
     @ns.doc('create_todo')
-    @ns.expect(todo)
-    @ns.marshal_with(todo, code=201)
+    @ns.expect(todo_model)
+    @ns.marshal_with(todo_model, code=201)
     def post(self):
         '''Create a new task'''
         return DAO.create(api.payload), 201
@@ -72,7 +72,7 @@ class TodoList(Resource):
 class Todo(Resource):
     '''Show a single todo item and lets you delete them'''
     @ns.doc('get_todo')
-    @ns.marshal_with(todo)
+    @ns.marshal_with(todo_model)
     def get(self, id):
         '''Fetch a given resource'''
         return DAO.get(id)
@@ -84,16 +84,25 @@ class Todo(Resource):
         DAO.delete(id)
         return '', 204
 
-    @ns.expect(todo)
-    @ns.marshal_with(todo)
+    @ns.expect(todo_model)
+    @ns.marshal_with(todo_model)
     def put(self, id):
         '''Update a task given its identifier'''
         return DAO.update(id, api.payload)
 
 
+def show_postman():
+    """ 这里生成的postman是v1版本的, 必须通过命令转化为2.0 """
+    with app.app_context():
+        import json
+        urlvars = False  # Build query strings in URLs
+        swagger = True  # Export Swagger specifications
+        data = api.as_postman(urlvars=urlvars, swagger=swagger)
+        with open('data/postman_import.json', 'w') as fd:
+            fd.write(json.dumps(data, indent=2))
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
-    # urlvars = False  # Build query strings in URLs
-    # swagger = True  # Export Swagger specifications
-    # data = api.as_postman(urlvars=urlvars, swagger=swagger)
-    # print(json.dumps(data))
+    """ show """
+    show_postman()
+    app.run(host='0.0.0.0', debug=True)

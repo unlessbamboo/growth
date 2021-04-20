@@ -1,0 +1,102 @@
+{
+  "id": "295135f6-0ca1-5101-a9a0-098ef694cc65",
+  "name": "TodoMVC API 1.0",
+  "description": "A simple TodoMVC API",
+  "order": [
+    "93e06e40-b9f1-5fea-85b1-c9b2624f04cd"
+  ],
+  "requests": [
+    {
+      "id": "93e06e40-b9f1-5fea-85b1-c9b2624f04cd",
+      "method": "GET",
+      "name": "Swagger specifications",
+      "description": "The API Swagger specifications as JSON",
+      "url": "http://127.0.0.1:5000/swagger.json",
+      "headers": "",
+      "collectionId": "295135f6-0ca1-5101-a9a0-098ef694cc65",
+      "time": 1615989453
+    },
+    {
+      "id": "1ef78662-f671-59c8-b48b-957e4d8f0f35",
+      "method": "GET",
+      "name": "list_todos",
+      "description": "List all tasks",
+      "url": "http://127.0.0.1:5000/todos/",
+      "headers": "X-Fields:",
+      "collectionId": "295135f6-0ca1-5101-a9a0-098ef694cc65",
+      "folder": "941db64b-c541-57c2-80ed-3b29b32bea74",
+      "pathVariables": {},
+      "time": 1615989453
+    },
+    {
+      "id": "30f4463b-77fa-5eb9-bea8-ad11a5c50519",
+      "method": "POST",
+      "name": "create_todo",
+      "description": "Create a new task",
+      "url": "http://127.0.0.1:5000/todos/",
+      "headers": "Content-Type:application/json\nX-Fields:",
+      "collectionId": "295135f6-0ca1-5101-a9a0-098ef694cc65",
+      "folder": "941db64b-c541-57c2-80ed-3b29b32bea74",
+      "pathVariables": {},
+      "time": 1615989453
+    },
+    {
+      "id": "b00c1179-8448-53ee-a349-889029a2a5d1",
+      "method": "DELETE",
+      "name": "delete_todo",
+      "description": "Delete a task given its identifier",
+      "url": "http://127.0.0.1:5000/todos/:id",
+      "headers": "Content-Type:application/json",
+      "collectionId": "295135f6-0ca1-5101-a9a0-098ef694cc65",
+      "folder": "941db64b-c541-57c2-80ed-3b29b32bea74",
+      "pathVariables": {
+        "id": 0
+      },
+      "time": 1615989453
+    },
+    {
+      "id": "0a99507b-ae0f-5d64-bd7f-4c70739ad35e",
+      "method": "GET",
+      "name": "get_todo",
+      "description": "Fetch a given resource",
+      "url": "http://127.0.0.1:5000/todos/:id",
+      "headers": "X-Fields:",
+      "collectionId": "295135f6-0ca1-5101-a9a0-098ef694cc65",
+      "folder": "941db64b-c541-57c2-80ed-3b29b32bea74",
+      "pathVariables": {
+        "id": 0
+      },
+      "time": 1615989453
+    },
+    {
+      "id": "5982e378-de5f-5d52-95a5-25e7c3d37ca1",
+      "method": "PUT",
+      "name": "put_todo",
+      "description": "Update a task given its identifier",
+      "url": "http://127.0.0.1:5000/todos/:id",
+      "headers": "Content-Type:application/json\nX-Fields:",
+      "collectionId": "295135f6-0ca1-5101-a9a0-098ef694cc65",
+      "folder": "941db64b-c541-57c2-80ed-3b29b32bea74",
+      "pathVariables": {
+        "id": 0
+      },
+      "time": 1615989453
+    }
+  ],
+  "folders": [
+    {
+      "id": "941db64b-c541-57c2-80ed-3b29b32bea74",
+      "name": "todos",
+      "description": "TODO operations",
+      "order": [
+        "1ef78662-f671-59c8-b48b-957e4d8f0f35",
+        "30f4463b-77fa-5eb9-bea8-ad11a5c50519",
+        "b00c1179-8448-53ee-a349-889029a2a5d1",
+        "0a99507b-ae0f-5d64-bd7f-4c70739ad35e",
+        "5982e378-de5f-5d52-95a5-25e7c3d37ca1"
+      ],
+      "collectionId": "295135f6-0ca1-5101-a9a0-098ef694cc65"
+    }
+  ],
+  "timestamp": 1615989453
+}
