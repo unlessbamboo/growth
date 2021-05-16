@@ -204,7 +204,9 @@ fi
 
 # 替换brew Bottles(二进制)源, 需要搭配默认源使用
 # 中科大
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+# 阿里云
+# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 # 关闭每次执行命令的时候自动更新, 通过crontab定时任务在中午定时执行更新任务
 export HOMEBREW_NO_AUTO_UPDATE=true
 
@@ -238,7 +240,8 @@ if [[ -n `python3 -V 2>/dev/null` ]];then
 fi
 
 # shadowsocks-NG
-proxy="http://127.0.0.1:1087"
+# proxy="http://127.0.0.1:1087"
+proxy="http://127.0.0.1:58591"
 alias unsetproxy='unset http_proxy; unset https_proxy; unset HTTP_PROXY; unset HTTPS_PROXY'
 alias setproxy='export http_proxy='$proxy'; export https_proxy='$proxy''
 # Trojan
@@ -280,9 +283,12 @@ alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Goo
 alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
 
 # nvm
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # MAC 上SSH 本机之后的配置(比如windows连接本机)
 export LANG="zh_CN.UTF-8"
