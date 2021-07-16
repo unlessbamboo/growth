@@ -9,22 +9,6 @@ bamboo()
 }
 
 
-feng()
-{
-    if [[ ! -n $1 ]];then
-        usage
-    elif [[ $1 == '0' ]];then
-        ssh ${HK_FENG_0_NAME} -p ${HK_FENG_0_PORT}
-    elif [[ $1 == '1' ]];then
-        ssh ${CN_FENG_1_NAME}
-    elif [[ $1 == '2' ]];then
-        ssh ${CN_FENG_2_NAME}
-    else
-        usage
-    fi
-}
-
-
 vps()
 {
     ssh ${VPS_NAME}@${VPS_IP} -p ${VPS_PORT}
@@ -47,13 +31,17 @@ redis()
 {
     if [[ $1 == "local" ]];then
         redis-cli -h ${REDIS_HOST} -p ${REDIS_PORT} -a ${REDIS_PASSWD}
-    elif [[ $1 == "verify" ]];then
-        redis-cli -h ${SH_REDIS_HOST} -p ${SH_REDIS_PORT} -a ${SH_REDIS_PASSWD}
-    elif [[ $1 == "test" ]];then
-        redis-cli -h ${TEST_REDIS_HOST} -p ${TEST_REDIS_PORT}
     else
         echo "Not found this redis server."
         exit 1
+    fi
+}
+
+
+mc()
+{
+    if [[ $1 == 'ubuntu' ]];then
+        ssh 
     fi
 }
 
@@ -64,16 +52,10 @@ usage()
     db              go to online mysql, except aws
     ==============================================
     bamboo          go to personal blog server
-    feng            go to hongkong blog server
-                    0           --go to HongKong
-                    1           --go to CN_feng_1
-                    2           --go to CN_feng_2
     vps             go to vps
     ==============================================
     redis           connect local redis or 150
                     local       --connect localhost
-                    verify      --connect verify
-                    test        --connect test
     "
 }
 
@@ -83,8 +65,6 @@ case "$1" in
         db;;
     bamboo):
         bamboo;;
-    feng):
-        feng $2;;
     vps):
         vps;;
     redis):
