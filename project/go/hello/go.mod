@@ -27,3 +27,13 @@ replace mygo.com/greetings => ../greetings
 //  go.sum:
 //      文件包含特定模块版本内容的预期加密哈希. 
 //      go命令基于该文件确保模块的未来下载与第一次下载相同.
+//  go mod命令
+// 		download: 下载依赖的module到本地cache(on: pkg/mod, off: src/)
+// 		edit: 编辑mod
+//		graph: 打印模块关系依赖图
+// 		init: 初始化, 生成go.mod
+//		tidy: 增加丢失的module, 删除无用的module
+//		vendor: 将依赖复制到vendor下
+//		why: 解释为什么需要依赖
+
+// 	显示所有import库信息: go list -m -json all
