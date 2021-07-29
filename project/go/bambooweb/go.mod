@@ -8,6 +8,7 @@ require (
 	github.com/coreos/go-etcd v2.0.0+incompatible // indirect
 	github.com/gin-gonic/gin v1.7.2 // indirect
 	github.com/go-playground/validator/v10 v10.8.0 // indirect
+	github.com/go-redis/redis/v8 v8.11.1 // indirect
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/json-iterator/go v1.1.11 // indirect
@@ -18,6 +19,7 @@ require (
 	github.com/spf13/viper v1.8.1 // indirect
 	github.com/ugorji/go v1.2.6 // indirect
 	github.com/xordataexchange/crypt v0.0.3-0.20170626215501-b2862e3d0a77 // indirect
+	go.opentelemetry.io/otel v0.20.0 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect

@@ -26,6 +26,11 @@ func Info(fields logrus.Fields, args ...interface{})  {
     setOutPutFile(logrus.InfoLevel)
     logrus.WithFields(fields).Info(args)
 }
+
+/*
+1. logrus.Fields本身定义: map[string]interface{}, 这点请注意
+2. args会记录到msg减值对应的列表中
+*/
 func Warn(fields logrus.Fields, args ...interface{})  {
     setOutPutFile(logrus.WarnLevel)
     logrus.WithFields(fields).Warn(args)

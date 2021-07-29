@@ -24,7 +24,8 @@ func LoggerToFile() gin.HandlerFunc {
 			var err error
 			requestBody, err = ctx.GetRawData()
 			if err != nil{
-				log.Warn(map[string]interface{}{"err": err.Error(), "获取请求体失败"})
+				fields := map[string]interface{}{"err": err.Error()}
+				log.Warn(fields, "获取请求体失败")
 			}
 			ctx.Request.Body = ioutil.NopCloser(bytes.NewBuffer(requestBody))
 		}
@@ -33,12 +34,12 @@ func LoggerToFile() gin.HandlerFunc {
 		ctx.Next()
 		end := time.Now()
 
-		// 4. 日志记录
+		// 4. 日志记录(请求日志)
 		log.Info(map[string]interface{} {
-			"statusCode": ctx.Writer.Status(),
-			"cost": float64(end.Sub(start).Nanoseconds()/1e4) / 100.0,
-			"clientIp": ctx.ClientIP(),
-			"method": ctx.Request.Method,
+			"statusCode": ctx.Writer.Status(),  // 状态码
+			"cost": float64(end.Sub(start).Nanoseconds()/1e4) / 100.0,  // 耗时
+			"clientIp": ctx.ClientIP(),  // 客户端 IP
+			"method": ctx.Request.Method, // 方法
 			"uri": ctx.Request.RequestURI,
 		})
 	}
