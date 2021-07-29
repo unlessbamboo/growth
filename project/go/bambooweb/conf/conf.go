@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 
 	"bambooweb/library/cache"  // library.log引用了conf包, 这里会导致相互引用吗?
+	"bambooweb/library/database"
 )
 
 var BaseConf Config
@@ -16,6 +17,7 @@ type LogConf struct {  // 解析log下的配置项
 type Config struct {  // 解析yaml文件
 	Log LogConf `yaml:"log"`
 	Redis *cache.RedisConf `yaml:"redis"`
+	Mysql map[string]*database.MysqlConf `yaml:"mysql"`
 }
 
 var ConfigFile = "./conf/config.yaml" 

@@ -13,3 +13,17 @@ redis:  # redis配置
     readTimeout: 500ms
     # 写超时时间
     writeTimeout: 300ms
+  
+mysql:
+  # GRANT ALL PRIVILEGES ON bamboodba.* TO 'bamboo'@'%' WITH GRANT OPTION;
+  bambooweb:
+    database: bamboodba
+    addr: 127.0.0.1:3306
+    user: bamboo
+    password: bamboodba
+    connTimeout: 300ms
+    readTimeOut: 500ms
+    writeTimeOut: 500ms
+    MaxIdleConns: 10
+    MaxOpenConns: 10
+    ConnMaxLifeTime: 3m

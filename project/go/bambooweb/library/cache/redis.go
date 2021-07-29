@@ -28,16 +28,20 @@ var RedisCacheClient *RedisClient  // 连接客户端, 大写开头, 会被包�
 
 // 通过闯入的配置实例来初始化生成一个redis连接客户端
 func InitRedisClient(ctx *gin.Context, redisConf *RedisConf) {
+    // 1. 初始化redis选项
+    redisOption := redis.Options{
+        Addr: redisConf.Addr,
+        Password: redisConf.Password,
+        PoolSize: redisConf.PoolSize,
+        DialTimeout: redisConf.DialTimeout,
+        ReadTimeout: redisConf.ReadTimeout,
+        WriteTimeout: redisConf.WriteTimeout,
+    }
+
+    // 2. 实例化redis客户端并生成指针
 	RedisCacheClient = &RedisClient{
-		Client: redis.NewClient(&redis.Options{
-			Addr: redisConf.Addr,
-			Password: redisConf.Password,
-			PoolSize: redisConf.PoolSize,
-			DialTimeout: redisConf.DialTimeout,
-			ReadTimeout: redisConf.ReadTimeout,
-			WriteTimeout: redisConf.WriteTimeout,
-		}),
-		Ctx: ctx,
+		Client: redis.NewClient(&redisOption),
+        Ctx: ctx,
 	}
 }
 
