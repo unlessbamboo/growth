@@ -3,11 +3,13 @@ package database
 import (
     "fmt"
     "github.com/gin-gonic/gin"
-    "github.com/go-sql-driver/mysql"
+    _ "github.com/go-sql-driver/mysql"
     "gorm.io/driver/mysql"
     "gorm.io/gorm"
     "time"
 )
+
+
 // mysql连接配置项
 type MysqlConf struct {
     Service     string        `yaml:"service"`
@@ -23,11 +25,16 @@ type MysqlConf struct {
     ConnMaxLifeTime time.Duration `yaml:"ConnMaxLifeTime"`
 }
 
-// 2. 连接池
+// 2. 连接池(服务名 -> DB连接对象)
 var MysqlAllClients map[string] *gorm.DB
 
+/*
+1. 根据配置生成连接URL
+2. 打开数据库连接并生成连接对象指针: gorm.DB
+*/
 func InitMysqlClient(conf *MysqlConf) (client *gorm.DB, err error) {
 	// a. mysql连接url
+    fmt.Println("Mysql配置服务:", conf.Service, conf.User, conf.Password)
     dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?timeout=%s&readTimeout=%s&writeTimeout=%s&parseTime=True&loc=Asia%%2FShanghai",
         conf.User,
         conf.Password,

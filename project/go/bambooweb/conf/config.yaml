@@ -27,3 +27,15 @@ mysql:
     MaxIdleConns: 10
     MaxOpenConns: 10
     ConnMaxLifeTime: 3m
+
+  bamboowebtest:
+    database: bamboodbatest
+    addr: 127.0.0.1:3306
+    user: bambootest
+    password: bamboodbatest
+    connTimeout: 300ms
+    readTimeOut: 500ms
+    writeTimeOut: 500ms
+    MaxIdleConns: 10
+    MaxOpenConns: 10
+    ConnMaxLifeTime: 3m

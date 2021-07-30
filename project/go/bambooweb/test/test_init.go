@@ -1,3 +1,6 @@
+/*
+1. 测试用例初始化配置
+*/
 package test
 
 import (

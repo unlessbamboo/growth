@@ -15,9 +15,9 @@ type LogConf struct {  // 解析log下的配置项
 }
 
 type Config struct {  // 解析yaml文件
-	Log LogConf `yaml:"log"`
-	Redis *cache.RedisConf `yaml:"redis"`
-	Mysql map[string]*database.MysqlConf `yaml:"mysql"`
+	Log LogConf `yaml:"log"`  // 自动关联到LogConf
+	Redis *cache.RedisConf `yaml:"redis"`  // 自动关联到library/cache/redis.go中的RedisConf并解析
+	Mysql map[string]*database.MysqlConf `yaml:"mysql"`  // 类似redis
 }
 
 var ConfigFile = "./conf/config.yaml" 
@@ -28,9 +28,15 @@ var ConfigFile = "./conf/config.yaml"
 */
 func InitConf() {
 	// 1. yamlFile仅仅在if, else if 中有作用域
-	if yamlFile, err := ioutil.ReadFile(ConfigFile); err != nil {
+	// 解析配置文件
+	yamlFile, err := ioutil.ReadFile(ConfigFile) 
+	if err != nil {
 		panic("读取配置文件失败:" + err.Error())
-	} else if err := yaml.Unmarshal(yamlFile, &BaseConf); err != nil {
+	}
+	
+	// 2. 将配置文件中的值赋值给Config对象: BaseConf
+	err = yaml.Unmarshal(yamlFile, &BaseConf)
+	if err != nil {
 		panic("解析配置文件失败:" + err.Error())
 	}
 }
