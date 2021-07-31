@@ -81,6 +81,8 @@ func setOutPutFile(level logrus.Level) {
 	default:
 		panic(fmt.Errorf("invaild log level error %d", logrus.ErrorLevel))
 	}
+	name = "user"
+
 	// 设置不同等级的日志文件名
 	fileName := path.Join(conf.BaseConf.Log.Dir, name + ".log")
 

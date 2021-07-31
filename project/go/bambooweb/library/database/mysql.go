@@ -1,3 +1,6 @@
+/*
+数据库连接, 实例化等通用库包, 为models, repository服务
+*/
 package database
 
 import (
@@ -26,6 +29,7 @@ type MysqlConf struct {
 }
 
 // 2. 连接池(服务名 -> DB连接对象)
+// 在外层被赋值, 调用方为helpers, 用于连接的初始化
 var MysqlAllClients map[string] *gorm.DB
 
 /*
@@ -61,14 +65,16 @@ func InitMysqlClient(conf *MysqlConf) (client *gorm.DB, err error) {
 
 // 3. DB 库信息
 type DB struct {
-    Name string
+    Name string  //数据库名, 见MysqlAllClients中的service名
     Ctx *gin.Context
 }
 
 func (d *DB) GetConn() *gorm.DB {
+	// a. MysqlAllClients在helpers中被初始化, 作为一个不同数据库的连接集合
     return MysqlAllClients[d.Name]
 }
 
+// DB实例对象
 func NewDb(ctx *gin.Context, name string) DB {
     return DB{
         Name: name,

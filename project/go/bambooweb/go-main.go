@@ -20,7 +20,8 @@ func main() {
 
 	// 初始化配置
 	conf.InitConf()
-	helpers.InitTestMysql()
+	helpers.InitMysql()
+	// helpers.InitTestMysql()
 	helpers.InitRedis()
 
 	// 2. 绑定路由规则, 执行的函数(匿名函数)
