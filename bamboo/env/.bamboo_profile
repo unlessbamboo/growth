@@ -136,7 +136,9 @@ if [[ -d "/opt/homebrew/opt/openjdk/bin" ]];then
     export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 fi
 # 默认使用JAVA8
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+if [[ -f "/usr/libexec/java_home" ]];then
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+fi
 # 指定Eclipse路径
 if [[ -d "$HOME/Applications/Eclipse.app/Contents/Eclipse/" ]];then
     export ECLIPSE_HOME=~/Applications/Eclipse.app/Contents/Eclipse/

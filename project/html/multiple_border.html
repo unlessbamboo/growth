@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多重边框效果</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .border-container {
+            width: 800px;
+            height: 800px;
+            margin: 100px auto 0;
+            border: 1px solid aliceblue;
+        }
+
+        .shadow-container {
+            width: 150px;
+            height: 150px;
+            line-height: 20px;
+            text-align: center;
+            border: 1px solid red;
+            border-radius: 50%;
+            background: #fafafa;
+            margin: 100px auto;
+            /*
+            1. box-shadow第四个参数用于设置阴影扩张半径.
+                X Y 阴影模糊半径 阴影扩展半径 阴影颜色 投影方式
+            2. 可以设置多个阴影效果
+            */
+            box-shadow: 0 0 0 10px #E8E2D6, 0 0 0 20px #E1D9C9,  
+            0 0 0 30px #D9CFBB, 0 0 0 40px #D2C6AE,  
+            0 0 0 50px #CABCA0, 0 0 0 60px #C3B393,
+            0 0 0 70px #BBA985, 0 0 0 80px #B4A078;
+        }
+        .multiple-container {
+            width: 150px;
+            height: 150px;
+            margin: 50px auto 0;
+            line-height: 20px;
+            text-align: center;
+            border: 5px solid orange;
+            background: #efebe9;
+            /*
+            通过outline轮廓线来设置边框虚线;
+            通过outline-offset设置border和outline之间的偏移
+            */
+            outline: #B4A078 dashed 1px;
+            outline-offset: -10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="border-container">
+        <label>1. box-shadow实线阴影边框</label>
+        <div class="shadow-container">
+        </div>
+        <label>2. 多重边框效果</label>
+        <div class="multiple-container">
+        </div>
+    </div>
+    
+</body>
+</html>
