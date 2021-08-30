@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不规则卡片</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        main {
+            width: 700px;
+            margin: 100px auto 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        main div {
+            width: 200px;
+            height: 120px;
+            /*
+            方式 1: 通过line-height(设置与背景同高), text-align, 来达成居中效果
+            text-align: center;
+            line-height: 120px;
+            方式 2: 通过flex来实现
+            */
+            margin-top: 20px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            flex-flow: column wrap;
+        }
+
+        .coupon-card {
+            /*
+            radial-gradient: 创建一个渐变颜色的图片
+            */
+            background-image: radial-gradient(
+                circle at 100px -8px,
+                transparent 20px, 
+                #b4a078 21px
+            );
+        }
+
+        main div:nth-child(2) {
+            /*
+            1. 简单颜色渐变
+            对于径向渐变, 不指定渐变类型以及位置时
+                渐变距离: 容灾尺寸决定
+                位置: 容灾尺寸决定
+            若不想受外部容器尺寸影响, 需要使用circle
+            */
+            background-image: radial-gradient(yellow, #ff3c22);
+        }
+
+        main div:nth-child(3) {
+            /*
+            2. 简单圆形渐变
+                此时渐变范围按照最远边角距离作为渐变结束线, 位置还是中心点;
+                所以呈现出来上下两个部分确实的效果
+            */
+            background-image: radial-gradient(circle, yellow, #f00);
+        }
+
+        main div:nth-child(4) {
+            background-image: radial-gradient(50px circle, yellow, #59d);
+        }
+
+        main div:nth-child(5) {
+            /*
+            渐变起始位置
+            */
+            background-image: radial-gradient(
+                circle at 50px 50px, yellow, #59d
+            );
+        }
+        
+        main div:nth-child(6) {
+            /*
+                closest-side: 渐变中心距离容器最近的边作为终止位置
+                closest-corner: 渐变中心距离容器最近的角作为终止位置
+                farthest-side: 渐变中心距离容器最远的边作为终止位置
+                farthest-corner: 渐变中心距离容器最远的角作为终止位置
+            */
+            background-image: radial-gradient(
+                closest-side circle at 50px 50px, yellow, #59d
+            );
+        }
+
+        main div:nth-child(7) {
+            width: 262px;
+            width: 262px;
+            background:
+                linear-gradient(30deg, transparent 40%, rgba(42, 41, 40, .85) 40%) no-repeat 100% 0%;
+        }
+
+        .radial-gradient {
+            position: relative;
+            width: 262px;
+            height: 262px;
+            border-radius: 50%;
+            /*
+            1. 中心开始黑色, 一直到4px
+            2. 半径4px -> 5px: 黑色到黄色渐变
+            3. 5px -> 6px: 黄色到黑色渐变
+            4. > 6px: 黑色
+            */
+            background: 
+                radial-gradient(#2a2928, #2a2928 4px, #ada9a0 5px, #2a2928 6px);
+        }
+
+        .repeat-gradient {
+            position: relative;
+            /*
+            设置圆形
+            */
+            width: 262px;
+            height: 262px;
+            border-radius: 50%;
+            /*
+            radial-gradient: 径向渐变(由中心决定)
+            linear-gradient: 线性渐变(下, 上, 左, 右, 对角等某一个方向), 两种或多种颜色线性渐变图片
+                格式: 渐变轴角度(direction), color1-stop, color2-stop
+                例子: 
+                    上到下: color1, color2
+                    左到右: to right, red, yellow
+                    对角: to bottom right, red, yellow
+                    角度: 45deg, red, yellow
+                    多颜色渐变: color1, color2, color3, color4
+                透明度: transparent, 创建减弱变淡的效果, 或者使用rgba中的透明度来设置
+            repeating-radial-gradient: 表示径向渐变, 重复性渐变, 非重复参考上面的例子
+            */
+            background: 
+                repeating-radial-gradient(#2a2928, #2a2928 4px, #ada9a0 5px, #2a2928 6px);
+        }
+
+        .linear-gradient {
+            position: relative;
+            width: 262px;
+            height: 262px;
+            border-radius: 50%;
+            /*
+            参考: https://www.w3cplus.com/css3/do-you-really-understand-css-linear-gradients.html
+            渐变容器或者渐变框:
+                一个渐变图案和传统背景图不一样, 它是没有尺度的, 无限的, 决定其大小的是渐变容灾大小, 例如backgound中的border-box区域;
+            渐变线:
+                穿过容灾中心点 -> 颜色停止线, 连接在一起的称为渐变线
+            渐变角度:
+                基于渐变角度来控制渐变方向: 中心点垂直线作为 Y 轴, 渐变角度, 颜色停止点作为终点
+                参考: images/gradient-7.gif
+            渐变色节点（Color stops）:
+                语法: <color> [<percentage> | <length>]?
+
+            linear-gradient: 线性渐变(下, 上, 左, 右, 对角等某一个方向), 两种或多种颜色线性渐变图片
+                语法: linear-gradient([<angle> | to <side-or-corner>]? , <color-stop-list>)
+                格式: 渐变轴角度(direction), color1 precent stop(表示一个color-stop), color2 precent stop
+                例子: 
+                    上到下: color1, color2
+                    左到右: to right, red, yellow
+                    对角: to bottom right, red, yellow
+                    角度: 45deg, red, yellow
+                    多颜色渐变: color1, color2, color3, color4
+                透明度: transparent, 创建减弱变淡的效果, 或者使用rgba中的透明度来设置
+            */
+            background: 
+                /*
+                线性渐变的角度是圆心出发的发散方向(参考photoshop)
+                30度角, 100% 0表示background-position, 右上角, 背景图片位置
+                    transparent precent1: 表示从起始点到终点的直线距离的固定百分比是完全透明的
+                    rdba precent2: 表示该透明度颜色占用多少, 40%开始, 此时由于渐变的效果, 其余在 40%开始周围扩展开来
+                最终效果实际上:
+                    正方形右边渐进效果    
+                */
+                linear-gradient(30deg, transparent 0%, rgba(42, 41, 40, .85) 40%) no-repeat 100% 0%;
+            /*
+            设置背景图片大小, 其中逗号分割表示多重背景.
+            一个值: 
+                表示图片的宽度, 高度隐式为auto
+            二个值:
+                图片宽度, 图片高度
+            多重背景: 
+                与background中的背景数量互相对应, 每一个背景存放的大小在这里指定
+                比如上面backgound只有一个背景, 则下面即使指定多个也只有第一个生效
+            */
+            background-size: 50% 100%, 100% 50%, 100% 100%;
+        }
+
+        .linear-gradient-60 {
+            position: relative;
+            width: 262px;
+            height: 262px;
+            border-radius: 50%;
+            background: 
+                /*
+                60度角, 圆心出发, 结束位置右下角, 透明度 40%
+                */
+                linear-gradient(60deg, rgba(42, 41, 40, .85) 60%, transparent 0%) no-repeat 0 100%;
+            background-size: 100% 50%, 100% 100%;
+        }
+
+        .multi-repeat-gradient {
+            position: relative;
+            /*
+            设置圆形
+            */
+            width: 262px;
+            height: 262px;
+            border-radius: 50%;
+            /*
+            radial-gradient: 径向渐变(由中心决定)
+            linear-gradient: 线性渐变(下, 上, 左, 右, 对角等某一个方向), 两种或多种颜色线性渐变图片
+                格式: 渐变轴角度(direction), color1 precent stop(表示一个color-stop), color2 precent stop
+                例子: 
+                    上到下: color1, color2
+                    左到右: to right, red, yellow
+                    对角: to bottom right, red, yellow
+                    角度: 45deg, red, yellow
+                    多颜色渐变: color1, color2, color3, color4
+                透明度: transparent, 创建减弱变淡的效果, 或者使用rgba中的透明度来设置
+            repeating-radial-gradient: 表示径向渐变
+            */
+            background: 
+                /*
+                线性渐变的角度是圆心出发的发散方向(参考photoshop)
+                30度角, 100% 0表示background-position, 右上角, 背景图片位置
+                    transparent precent1: 表示从起始点到终点的直线距离的固定百分比是完全透明的
+                    rdba precent2: 表示该透明度颜色占用多少, 40%开始, 此时由于渐变的效果, 其余在 40%开始周围扩展开来
+                最终效果实际上:
+                    正方形右边渐进效果    
+                */
+                linear-gradient(30deg, transparent 40%, rgba(42, 41, 40, .85) 40%) no-repeat 100% 0%,
+                /*
+                60度角, 圆心出发, 结束位置右下角, 透明度 40%
+                */
+                linear-gradient(60deg, rgba(42, 41, 40, .85) 60%, transparent 60%) no-repeat 0 100%,
+                repeating-radial-gradient(#2a2928, #2a2928 4px, #ada9a0 5px, #2a2928 6px);
+            background-size: 50% 100%, 100% 50%, 100% 100%;
+        }
+        .repeat-gradient3:after {
+            position: absolute;
+            top: 50%; left: 50%;
+            margin: -35px;
+            border: solid 1px #d9a388;
+            width: 68px; height: 68px;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #da5b33, inset 0 0 0 27px #da5b33;
+            background: #b5ac9a;
+            content: '';
+        }
+    </style>
+</head>
+<body>
+   <main>
+       <div class="coupon-card">不规则卡片</div>
+       <div>黄->红渐变</div>
+       <div>黄->红圆形渐变</div>
+       <div>设置渐变距离(50px)渐变</div>
+       <div>指定渐变起始位置</div>
+       <div>指定渐变终止位置</div>
+       <div>线性渐变</div>
+       <!-- 径向渐变圆心 -->
+       <div class="radial-gradient"></div>
+        <!-- 可重复的渐变渐进 -->
+       <div class="repeat-gradient"></div>
+       <div class="linear-gradient"></div>
+       <div class="linear-gradient-60"></div>
+        <!-- 复杂可重复的渐变渐进 -->
+       <div class="multi-repeat-gradient"></div>
+   </main> 
+</body>
+</html>
