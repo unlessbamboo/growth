@@ -122,7 +122,17 @@
           */
         }
         /* 图片
-        1. transition: 设置两个状态之间的过渡效果(触发以及回溯)
+        1. transition: 设置两个状态之间的过渡效果(触发以及回溯), 其中状态之间的
+        过程成为implicit transitions.
+          a.更改CSS属性时控制动画速度的方法.
+          b.实验属性, 旧版本浏览器兼容不好.
+        格式:
+          transition: <property> <duration> <timing-function> <delay>;
+            property: 指定哪些属性用于过渡, 例如:
+              transition:width 2s, height 2s, background-color 2s, transform 2s;
+            duration: 过渡时长
+            timing function: 定义函数, 指明属性值怎么变化
+            delay: 延时
         2. polygon: 定义了一个由一组首尾相连的直线线段构成的闭合多边形形状
           50% 0: 中上
           100% 50%: 右中
@@ -133,7 +143,7 @@
         .diamond:nth-of-type(4) > img{
           width: 300px; height: 150px;
           clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-          transition: 1s clip-path;
+          transition: 1s clip-path 1s;
         }
         .diamond:nth-of-type(4) > img:hover{
           /* 触发后的四个角 */
