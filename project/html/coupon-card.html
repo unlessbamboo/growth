@@ -82,6 +82,12 @@
         main div:nth-child(6) {
             /*
                 closest-side: 渐变中心距离容器最近的边作为终止位置
+                   圆形:
+                    closet-side circle at 40%: 表示位置40% 50%, 半径也响应减小
+                    closet-side circle at 20% 30%: 在左上方向位置, 半径为0.2r
+                   椭圆:
+                    closet-side circle at 40%: 表示位置40% 50%, 纵向半径不变
+                    closet-side circle at 20% 30%: 在左上方向位置, 半径为0.2r, 0.3r
                 closest-corner: 渐变中心距离容器最近的角作为终止位置
                 farthest-side: 渐变中心距离容器最远的边作为终止位置
                 farthest-corner: 渐变中心距离容器最远的角作为终止位置
@@ -154,9 +160,19 @@
                 参考: images/gradient-7.gif
             渐变色节点（Color stops）:
                 语法: <color> [<percentage> | <length>]?
+            颜色表示方式有多种:
+                a. 英文字母
+                b. 16进制#RRGGBB
+                c. 16进制加透明度#RRGGBBAA
+                d. 使用rgb/rgba
+                e. 多个颜色控制
+                f. 指定范围的颜色控制
 
             linear-gradient: 线性渐变(下, 上, 左, 右, 对角等某一个方向), 两种或多种颜色线性渐变图片
-                语法: linear-gradient([<angle> | to <side-or-corner>]? , <color-stop-list>)
+                语法: linear-gradient(
+                    [<angle> | to <side-or-corner>]? ,  # 方向
+                    <color-stop-list> . # 颜色
+                    )
                 格式: 渐变轴角度(direction), color1 precent stop(表示一个color-stop), color2 precent stop
                 例子: 
                     上到下: color1, color2
