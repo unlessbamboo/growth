@@ -11,6 +11,41 @@
             padding: 0;
         }
 
+        .compare {
+            width: 800px;
+            margin: 100px auto;
+            padding: 10px;
+            border: 1px solid gray;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .compare > li {
+            list-style: none;
+        }
+
+        .compare > li:nth-child(1) {
+            width: 10px;
+            height: 5px;
+            border: solid 1px red;
+        }
+        .compare > li:nth-child(2) {
+            width: 20px;
+            height: 5px;
+            border: solid 1px red;
+        }
+        .compare > li:nth-child(3) {
+            width: 30px;
+            height: 5px;
+            border: solid 1px red;
+        }
+        .compare > li:nth-child(4) {
+            width: 40px;
+            height: 5px;
+            border: solid 1px red;
+        }
+
         main {
             width: 800px;
             margin: 100px auto;
@@ -20,6 +55,7 @@
             flex-wrap: wrap;
             justify-content: space-around;
         }
+
 
         /*
         参考: https://projects.verou.me/css3patterns/#
@@ -42,6 +78,7 @@
 
         main > div:nth-child(1) {
             /*
+            参考: https://www.jianshu.com/p/fdc5ee58b261
             radial-gradient要素:
                 方向, 形状, 大小, 颜色(起始, 终止, 中间色)
             radial-gradient语法:
@@ -70,9 +107,17 @@
                     其中百分比和数值都是从左上角往左, 往下进行计算圆心的
             第二参数: 颜色, 参考线性渐变
             background可用设置多个背景, 见coupon-card.html
-            1. 本实例
-                a. 背景色绿色
-                b. 
+            1. 本实例1
+                形状: 圆形
+                方向: 位置在0% 50%, 关键字默认为closet-side, 左半圆消失
+                颜色1: 
+                    9px: 暗红色, 透明度为0, 因为透明度为0, 所以这里展示为黑色
+                    10px: 艳红
+                    11px: 暗红色, 透明度0, 若为100%, 则会直接将整个图形覆盖
+              实例2:
+                方向: 位置100% 100%, 完整圆形
+            2. repeat: backgound的默认值
+            3. 位置: 0px, 11px, 表示从左上角下方11px位置开始
             */
             background:
                 radial-gradient(
@@ -84,8 +129,10 @@
                 radial-gradient(
                     at 100% 100%,      
                     rgba(96, 16, 48, 0) 9px, 
-                    #613 10px, rgba(96, 16, 48, 0) 11px),
-                #8a3;
+                    #613 10px, 
+                    rgba(96, 16, 48, 0) 11px
+                ),
+                #3a3;
             background-size: 20px 20px;
         }
 
@@ -165,6 +212,12 @@
     </style>
 </head>
 <body>
+    <div class="compare">
+        <li>10px</li>
+        <li>20px</li>
+        <li>30px</li>
+        <li>40px</li>
+    </div>
     <main>
         <div></div>
         <div></div>

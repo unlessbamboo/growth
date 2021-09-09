@@ -181,6 +181,20 @@
                     角度: 45deg, red, yellow
                     多颜色渐变: color1, color2, color3, color4
                 透明度: transparent, 创建减弱变淡的效果, 或者使用rgba中的透明度来设置
+            参数: 
+                第一个参数: 方向, 默认从上到下
+                    a. to left, to top right
+                    b. 角度, 0deg/360deg(上到下), 90deg(左到右), 顺时针为正, 逆时针为负
+                        45deg(对角线左下到右上)
+                第二个参数: 颜色
+                    a. 英文控制: blue, red
+                    b. transparent: 全透明效果渐变, 例如linear-gradient(transparent, blue)
+                    c. 16进制
+                    d. 16进制 + 透明度: #RRGGBBAA(AA: 00-全透明, FF-完全不透明)
+                    e: rgb或rgba控制
+                    f: 多颜色
+                    g: 指定颜色范围: 百分比-控制在整个宽度的百分比位置达到某一个颜色值,
+                        该点上下左右都是渐变
             */
             background: 
                 /*
