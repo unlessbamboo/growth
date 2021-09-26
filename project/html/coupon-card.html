@@ -148,18 +148,38 @@
             position: relative;
             width: 262px;
             height: 262px;
+            /*
             border-radius: 50%;
+            */
+            border: solid 1px red;
             /*
             参考: https://www.w3cplus.com/css3/do-you-really-understand-css-linear-gradients.html
             渐变容器或者渐变框:
-                一个渐变图案和传统背景图不一样, 它是没有尺度的, 无限的, 决定其大小的是渐变容灾大小, 例如backgound中的border-box区域;
+                一个渐变图案和传统背景图不一样, 它是没有尺度的, 无限的, 决定其大小的是渐变容灾大小,
+                例如backgound中的border-box区域;
             渐变线:
-                穿过容灾中心点 -> 颜色停止线, 连接在一起的称为渐变线
+                颜色起始点 -> 穿过容灾中心点 -> 颜色停止线, 连接在一起的称为渐变线
             渐变角度:
                 基于渐变角度来控制渐变方向: 中心点垂直线作为 Y 轴, 渐变角度, 颜色停止点作为终点
                 参考: images/gradient-7.gif
+                注意: 渐变角度影响了颜色起始点(并不是容器中心点),颜色停止点的位置, 角度并不决定渐变的角度,
+                而是影响了起始/停止点位置, 以及这两点之间按照一定角度的渐变.
+            渐变线长度:
+                起始颜色点和结束颜色点不定在border-box区域内, 在一定角度的渐变情况下, 起始/结束在外围,
+                以两点长度为直径的圆一定刚刚好将border-box区域包围, 从而进行颜色渐变.
             渐变色节点（Color stops）:
                 语法: <color> [<percentage> | <length>]?
+                情况:
+                    若只有两个颜色, 则颜色 0 放在"渐变线"0%位置, 结束颜色在渐变线 100%位置.
+                    若三个颜色, 则为 0%, 50%, 100%
+                    以此类推
+                渐变线: 起始->结束的直线
+                情况 2: 若下一个颜色位置为上一个颜色的位置, 则此时两个颜色之间就有一个明显的分界线,
+                    实际不会产生渐变效果, 例如
+                    line-gradient(90deg, black 0%, black 250%, white 25%
+                        white 50%, black 50%,
+                        black 75%, white 75%
+                    )
             颜色表示方式有多种:
                 a. 英文字母
                 b. 16进制#RRGGBB
@@ -207,7 +227,7 @@
                 */
                 linear-gradient(30deg, transparent 0%, rgba(42, 41, 40, .85) 40%) no-repeat 100% 0%;
             /*
-            设置背景图片大小, 其中逗号分割表示多重背景.
+            background-size, 设置背景图片大小, 其中逗号分割表示多重背景.
             一个值: 
                 表示图片的宽度, 高度隐式为auto
             二个值:
@@ -216,20 +236,66 @@
                 与background中的背景数量互相对应, 每一个背景存放的大小在这里指定
                 比如上面backgound只有一个背景, 则下面即使指定多个也只有第一个生效
                 若backgroud-size数量少于background, 则复用.
-            */
             background-size: 50% 100%, 100% 50%, 100% 100%;
+            宽度变为一般, 所以其起始颜色节点和结束颜色节点都是基于一半的宽度来进行计算的
+            */
+            background-size: 50% 100%;
+        }
+
+        .linear-gradient-0 {
+            position: relative;
+            width: 262px;
+            height: 262px;
+            /*
+            border-radius: 50%;
+            */
+            border: solid 1px red;
+            background: 
+                /*
+                默认方向: 从上到下
+                开始位置: 圆心出发(100%, 50%)
+                结束位置: 下方(0, 100%)
+                    0 ~ 20% 为黑色
+                    20% -> 20% 透明过度
+                角度:
+                    to top: 0deg
+                    to bottom: 180deg
+                    to left: 270deg
+                    to right: 90deg
+                    正值: 顺时针方向
+
+                180 度, 实际上: 起始颜色点为上, 结束颜色点变为下, 所以渐变线 20%位置为上方 20%位置
+
+                */
+                linear-gradient(180deg, rgba(42, 41, 40, .85) 20%, transparent 20%) no-repeat 0 100%;
+            /*
+            设置图片大小
+            图片高度: background宽度
+            高度: background一一半
+                background-size: 100% 50%, 100% 100%;
+            此时高度被调整为一半, 渐变方向: 上 -> 下, 所有此时的 20%就是半径开始的 20%位置
+            */
+            background-size: 100% 50%;
         }
 
         .linear-gradient-60 {
             position: relative;
             width: 262px;
             height: 262px;
+            /*
+            去除圆角更利于理解渐变
             border-radius: 50%;
+            */
+            border: solid 1px red;
             background: 
                 /*
-                60度角, 圆心出发, 结束位置右下角, 透明度 40%
+                渐变角度, 而不是旋转角度: 60, 表示起始颜色点在左下方, 结束颜色点在右上方, 见上面的渐变角度说明.
                 */
-                linear-gradient(60deg, rgba(42, 41, 40, .85) 60%, transparent 0%) no-repeat 0 100%;
+                linear-gradient(60deg, rgba(42, 41, 40, .85) 60%, transparent 10%) no-repeat 0 100%;
+            /*
+            图片高度: background宽度
+            高度: background一一半, 导致上面部分全部消失
+            */
             background-size: 100% 50%, 100% 100%;
         }
 
@@ -240,7 +306,10 @@
             */
             width: 262px;
             height: 262px;
+            /*
+            在理解渐变图形的时候, 首先将圆形边框注释
             border-radius: 50%;
+            */
             /*
             radial-gradient: 径向渐变(由中心决定)
             linear-gradient: 线性渐变(下, 上, 左, 右, 对角等某一个方向), 两种或多种颜色线性渐变图片
@@ -262,12 +331,19 @@
                     rdba precent2: 表示该透明度颜色占用多少, 40%开始, 此时由于渐变的效果, 其余在 40%开始周围扩展开来
                 最终效果实际上:
                     正方形右边渐进效果    
+                首先, 角度 30, 左下偏右 -> 右上偏左
+                其次, 宽度大小为 50%, 所以起始颜色节点基于右半部分
+                再次, 透明度为 40%, 角度 30,所有会发现左下部分全部为透明
+                最后, 图片背景色位置为右上位置(100% 0%)
                 */
                 linear-gradient(30deg, transparent 40%, rgba(42, 41, 40, .85) 40%) no-repeat 100% 0%,
                 /*
-                60度角, 圆心出发, 结束位置右下角, 透明度 40%
+                类似上面的说明
                 */
                 linear-gradient(60deg, rgba(42, 41, 40, .85) 60%, transparent 60%) no-repeat 0 100%,
+                /*
+                环形渐变: 一直不断重复, 从而向外扩散
+                */
                 repeating-radial-gradient(#2a2928, #2a2928 4px, #ada9a0 5px, #2a2928 6px);
             background-size: 50% 100%, 100% 50%, 100% 100%;
         }
@@ -298,6 +374,7 @@
         <!-- 可重复的渐变渐进 -->
        <div class="repeat-gradient"></div>
        <div class="linear-gradient"></div>
+       <div class="linear-gradient-0"></div>
        <div class="linear-gradient-60"></div>
         <!-- 复杂可重复的渐变渐进 -->
        <div class="multi-repeat-gradient"></div>
