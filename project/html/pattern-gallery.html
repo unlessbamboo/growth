@@ -64,16 +64,19 @@
             width: 150px;
             height: 150px;
             margin: 20px;
+            /*
+            影响整体的理解, 所以先删除
             border-radius: 50%;
+            */
             /* 见multiple_border.html文件, 这里设置了多个阴影效果
             rgb[a](R G B [/ A]), 其中A表示alpha， 表示非彩色通道,
             其值为0~1, 储存这个像素是否对图片有贡献, 0-透明 1-透明,
             其外在表现通过透明度来呈现
-            */
             box-shadow: 
                 0 0 0 10px rgb(255 255 255 / 60%) inset,
                 0 0 0 1px rgb(0 0 0 / 50%),
                 2px 2px 10px rgb(0 0 0 / 60%);
+            */
         }
 
         main > div:nth-child(1) {
@@ -95,34 +98,56 @@
                     <color-stop-list> [ , <color-stop-list> ]+
                 )
             第一个参数:
-                a. 第一个参数: 表示半径, 可不写, 默认从中间开始, 样式为圆形.
+                a. 第一个参数: 表示形状大小, 可不写, 默认从中间开始, 样式为圆形.
                     如果传入两个半径值, 则表示椭圆: 横向长度, 纵向长度
                         radial-gradient(hotpink, darkblue)
                         radial-gradient(200px, hotpink, darkblue)
                         radial-gradient(200px 300px, hotpink, darkblue)
                     如果传入关键字: closet-side, 见coupon-card.html文件
+                    可选值:
+                        closest-side: 指定径向渐变的半径长度为从圆心到离圆心最近的边
+                        closest-corner: 指定径向渐变的半径长度为从圆心到离圆心最近的角
+                        farthest-side: 指定径向渐变的半径长度为从圆心到离圆心最远的边
+                        farthest-corner: 指定径向渐变的半径长度为从圆心到离圆心最远的角
                 b. 第二参数: 表示形状, circle, ellipse(椭圆)
                     如果长度范围写在形状前面, 则前者的权重比后者高
-                c. 第三参数: 表示方向, at center, at right, at 40%, at 50px 50px
+                c. 第三参数(position): 表示径向渐变的圆心位置, 类似background-position, 用于
+                    确定元素渐变的中心位置, 默认为值center, 其值如下:
+                        length: 用长度值指定径向渐变的横坐标和纵坐标, 可以为负值, 例如at 50px 50px
+                        precent: 用百分比来确定横纵坐标, 可以为负值, 例如at 40%
+                        left: 左边为径向渐变圆心的横坐标值
+                        center: 中间为径向渐变圆心的横坐标值, 纵坐标值
+                        right: 右边为径向渐变圆心的横坐标值
+                        top: 顶部中间为径向渐变圆心的纵坐标值
+                        bottom: 顶部中间为径向渐变圆心的纵坐标值
                     其中百分比和数值都是从左上角往左, 往下进行计算圆心的
             第二参数: 颜色, 参考线性渐变
             background可用设置多个背景, 见coupon-card.html
             1. 本实例1
                 形状: 圆形
-                方向: 位置在0% 50%, 关键字默认为closet-side, 左半圆消失
+                圆心位置: 位置在0% 50%, 关键字默认为closet-side, 左半圆消失
                 颜色1: 
                     9px: 暗红色, 透明度为0, 因为透明度为0, 所以这里展示为黑色
                     10px: 艳红
                     11px: 暗红色, 透明度0, 若为100%, 则会直接将整个图形覆盖
+                背景位置: 0px 10px地方, 默认背景会自动重复直到覆盖整个border-size区域
               实例2:
-                方向: 位置100% 100%, 完整圆形
+                形状: 默认为圆形
+                圆形位置: 位置100% 100%, 右下角
+                颜色:
+                    10px: 艳红, 该颜色的半径
             2. repeat: backgound的默认值
             3. 位置: 0px, 11px, 表示从左上角下方11px位置开始
+            最后, 又因为整个背景大小为 20px, 20px, 所以导致
+                a. 第一个实例位置0px 10px位置处开始进行渐变, 其中渐变的圆心位置为:
+                    0% 50%: 即0px 10px + 0px 5px -> 0px 15px, 半径 5px
+                b. 第二实例位置: 未指定, 默认右上角, 其中渐变的圆心位置为
+                    100% 100%: 也就是无论background-size多大, 其都是1/4 圆
             */
             background:
                 radial-gradient(
                     circle at 0% 50%, 
-                    rgba(96, 16, 48, 0) 9px, 
+                    rgba(116, 102, 108, 0) 9px, 
                     #613 10px,
                     rgba(96, 16, 48, 0) 11px
                 ) 0px 10px,
@@ -133,16 +158,33 @@
                     rgba(96, 16, 48, 0) 11px
                 ),
                 #3a3;
+            background-repeat: repeat-x;
+            /* 指定背景图片的宽, 高, 但是不决定背景图片的位置 */
             background-size: 20px 20px;
         }
 
         main > div:nth-child(2) {
             background:
+            /* 
+            首先: 背景图片位置: 7px 0(右下角)
+            角度: 63deg
+            方向: 默认从下到上, 这里就是右下到左上, 并且仅仅显示 23%部分
+            效果: 形成一个上部分为三角, 下部分可能为长方形的图片, 通过控制背景位置就能清楚的知道
+            */
             linear-gradient(63deg, #999 23%, transparent 23%) 7px 0,
+            /*
+            位置: 未指定, 默认为左下
+            范围: 74%以下透明, 74% ~ 78%, 在右上角, 另外见coupon-card.html的半径说明
+            */
             linear-gradient(63deg, transparent 74%, #999 78%),
+            /*
+            这是中间部分
+            */
             linear-gradient(63deg, transparent 34%, #999 38%, #999 58%, transparent 62%),
             #444;
+            /* 长方形: 宽窄, 高长 */
             background-size: 16px 48px;
+            background-repeat: no-repeat;
         }
         main > div:nth-child(3) {
             background: #36c;
