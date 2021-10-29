@@ -236,6 +236,12 @@
                 与background中的背景数量互相对应, 每一个背景存放的大小在这里指定
                 比如上面backgound只有一个背景, 则下面即使指定多个也只有第一个生效
                 若backgroud-size数量少于background, 则复用.
+            例子: 
+                background-size: weight height: 设置宽度, 高度
+                background-size: precent1 precent2: 父元素的百分比来设置宽高
+                background-size: cover :背景覆盖到足够大
+                background-size: contain: 扩大到最大尺寸, 以适应内容区域
+            */
             background-size: 50% 100%, 100% 50%, 100% 100%;
             宽度变为一般, 所以其起始颜色节点和结束颜色节点都是基于一半的宽度来进行计算的
             */

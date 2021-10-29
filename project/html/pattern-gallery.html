@@ -84,6 +84,8 @@
             参考: https://www.jianshu.com/p/fdc5ee58b261
             radial-gradient要素:
                 方向, 形状, 大小, 颜色(起始, 终止, 中间色)
+            图形: 从中心点到边缘形状以及其延伸部分, 是由一系列同心轮廓构成,
+                这个形状由有设定的边缘形状决定.
             radial-gradient语法:
                 radial-gradient(
                     [
@@ -123,7 +125,8 @@
                     其中百分比和数值都是从左上角往左, 往下进行计算圆心的
             第二参数: 颜色, 参考线性渐变
             background可用设置多个背景, 见coupon-card.html
-            1. 本实例1
+            1. 实例
+              实例1
                 形状: 圆形
                 圆心位置: 位置在0% 50%, 关键字默认为closet-side, 左半圆消失
                 颜色1: 
@@ -160,6 +163,7 @@
                 #3a3;
             background-repeat: repeat-x;
             /* 指定背景图片的宽, 高, 但是不决定背景图片的位置 */
+            /* 圆形大小 */
             background-size: 20px 20px;
         }
 
@@ -252,6 +256,28 @@
             background-size: 470px 470px, 970px 970px, 410px 410px, 610px 610px, 530px 530px, 730px 730px, 100% 100%;
             background-color: #840b2a;
         }
+        /* 白色圆点 */
+        main > div:nth-child(9) {
+            background: 
+                radial-gradient(
+                    circle, 
+                    #fff 30%,
+                    transparent 0
+                ) 0 0,
+                /* 这里为单个背景所处的位置, 如果repeat则根据一定的算法随机排列 */
+                radial-gradient(
+                    circle,
+                    #fff 30%,
+                    transparent 0
+                ) 15px 15px,
+                #636c6e;
+            /*
+            repeat-x和repeat-y实际上是一个排列组合, 两个一起就占用整个元素内容区域
+            */
+            background-repeat: repeat-y;
+            /* 背景大小 */
+            background-size: 30px 30px;
+        }
     </style>
 </head>
 <body>
@@ -262,6 +288,7 @@
         <li>40px</li>
     </div>
     <main>
+        <div></div>
         <div></div>
         <div></div>
         <div></div>
