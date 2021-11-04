@@ -8,7 +8,7 @@
     1. 例子:
         timezone: 时区
         enable_utc: utc
-    2. 加载查询顺序: 
+    2. 加载查询顺序:
         a. 运行时所作更改
         b. 配置模块
         c. 默认配置(celery.app.default)
@@ -32,7 +32,7 @@
     5. 从环境变量中获取配置: config_from_envvar
     6. 过滤配置(敏感信息): app.config.humanize(with_defaults=False, censored=True)
 
-    7. 任务decorator配置
+    7. 任务decorator配置(见2.2节)
         Task.name: 任务注册名称
         Task.request: 任务请求信息
         Task.max_retries: 重试最大次数(异常时不会自动重试, 需要手动调用retry)
@@ -148,7 +148,8 @@ class DebugTask(Task):
 
 if __name__ == '__main__':
     """
-    1. 任务调用
+    2. 任务调用(calling Task)
+    2.1. 任务调用
         task的任务消息基于python消息库kombu实现, 其实现了一个客户端同rabbitmq/redis等broker
         进行交互:
             apply_async(args, kwargs, ...): 发送一个任务消息
@@ -158,9 +159,74 @@ if __name__ == '__main__':
             T.delay(args, kwargs=value): 等价于apply_async(args, kwargs)
             T.apply_async(countdown=10):  10秒后执行
             T.apply_async(countdown=60, expires=120): 60s后执行, 但在120s后过期
-            T.apply_async(expires=now + timedelta(days=2))
+            T.apply_async(expires=now + timedelta(days=2))  # 立刻开始执行, 两天内过期
+
         delay和apply_async调用区别:
             T.delay(args1, args2, kwargs1='x', kwargs2='y')
             T.apply_async(args=[args1, args2], kwargs={'kwargs1': 'x', 'kwargs2': 'y'})
+        
+        签名方式:
+            T.s(arg1, arg2, kwargs1='x1', 'kwargs2='y').apply_async()
+
+        任务链:
+            res = add.apply_async((2, 2), link=add.s(16))
+            其中res.get()结果: 4, res.children(0).get()结果: 20, 即回调任务用父任务的结果作为部分参数,
+            类似偏函数的操作逻辑.
+
+    2.2 任务调用参数
+        ETA(预计到期时间)或countdown:
+            result = add.apply_async((2, 2), countdown=3)
+            cesult = add.apply_async((2, 2), eta=datetime.utcnow() + timedelta(days=1))
+            设置一个日期, 在该时间之前任务将被执行, 其中countdown为以秒为单位的快捷ETA方式.
+            NOTE: 队列等待或者网络延时可能导致上面设置的时间点不准确, 需要提前监听队列拥塞情况.
+       
+        expires:
+            add.apply_async((2, 2), expires=60)
+            add.apply_async((2, 2), expires=datetime.now() + timedelta(days=1))
+            设置到期时间, 如果worker收到过期任务, 将该task标记为TaskRevokedError
+
+        retry以及其他重试策略(retry_policy):
+            add.apply_async((2, 2), retry=False)
+            消息重发, 默认情况下, 连接失败会自动重发消息, retry会直接禁止重试logic, 当然也可以
+            设置重试的详细策略:
+                max_retries: 最大重试次数, 抛出重试失败异常, 默认值为3, 若值为None, 表示一直重试
+                interval_start: 定义两次重试之间的间隔描述, 默认值为0
+                interval_step: 定义每次重试时延时, 默认为0.2
+                interval_max: 定义重试之间等待的最大描述, 默认为0.2
+            例子:
+                add.apply_async((2, 2), retry=True, retry_policy={
+                    'max_retries': 3,
+                    'interval_start': 0,
+                    'interval_step': 0.2,
+                    'interval_max': 0.2,
+                })
+            重试的最长时间为0.4秒, 确保代理连接等断开之后, 因为重试导致的堆效应.
+
+    2.3 连接池
+        从2.3版本开始, 支持自动连接池, 无需开发者手动创建连接池和重用连接;
+        从2.5版本开始, 默认弃用连接池;
+        手动处理连接:
+            results = []
+            with add.app.pool.acquire(block=True) as connection:
+                with add.get_publisher(connection) as publisher:
+                    try:
+                        for args in numbers:
+                            res = add.apply_async((2, 2), publisher=publisher)
+                            results.append(res)
+                    except Exception as msg:
+                        pass 
+            print(res.get() for res in results)
+
+    2.4 Routing Options
+        将任务路由到不同的队列中: add.apply_async(queue='priority.high')
+        队列: celery -A proj worker -l info -Q celery,priority.high
+
+    2.5 调用函数
+        a. 在工作进程中执行任务
+            add.s(2, 2).delay()
+            add.s(2, 2).apply_async(countdown=1)
+        b. 在当前进程中执行任务
+            add.s(2, 2)()
+                
     """
     app.start()
