@@ -80,9 +80,22 @@ AsyncResult:
                 s.options: {'countdown': 10}
             通过链式来为s设置执行选项:
                 s2. = add.s(2, 2).set(countdown=10)
-        e. 调用: 见2.5节
 
-    签名相关原语:
+        e. 调用: 见2.5节
+        f. 克隆
+            s1 = add.s(2)
+            s2 = s1.clone(args=(4,), kwargs={'debug': True})
+
+        g. 添加新的回调
+            add.apply_async((2, 2), link=other_task.s())
+            一旦设置了回调, 当任务成功退出时, callback才会被执行, 并且自动将父任务的结果
+            作为参数传递给回调task.
+
+        h. Immutability(不变性: 值传递, 引用传递): 不需要参数的回调
+            add.apply_async((2, 2), link=reset_buffers.signature(immutable=True))
+            add.apply_async((2, 2), link=reset_buffers.si())
+
+    3.2 签名相关原语:
         groups: 一个组并行调用task list, 返回一个special AsyncResult
             a. 签名
                 from celery import group
@@ -105,6 +118,11 @@ AsyncResult:
                 from celery import chord
                 from proj.tasks import add, xsum
                 chord((add.s(i, i) for i in xrange(10)), xsum.s())().get()
+
+4 Periodic定期任务(celery beat)
+    4.1 celery beat
+        调用程序, 定期启动任务并分发给集群中可用节点来执行task.
+        NOTE: 确保每次仅仅运行一个celery beat调度呈现, 否则会重复执行任务.
 
 路由: 将消息发送到指定的任务队列中(见2.4)
     a. task_routes: 设置一个按照名称分配的路由任务队列
