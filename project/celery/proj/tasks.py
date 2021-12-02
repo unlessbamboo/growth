@@ -51,41 +51,80 @@ AsyncResult:
         另外还有内置的task, 相关模块被导入的时候就会导入这些inline task.
         另外, app.task()装饰器会将task注册到task register中
 
-签名: 将task signature传递给另外一个进程, 或者作为其他函数参数
-    add.signature((2, 2), countdown=10)
-    add.s(2, 2)
-    a. 搭配签名使用delay:
-        s1 = add.s(2, 2)
-        res = s1.delay()
-    b. 搭配并使用partials偏函数功能:
-        s1 = add.s(2)  # add(?, 2)
-        res = s2.delay(8)  # add(8, 2)
+3. 工作流程(Work-flows)
+    3.1 签名
+        将task signature传递给另外一个进程, 或者作为其他函数参数
+        a. 创建
+            s1 = add.signature((2, 2), countdown=10)  # 创建签名
+            signature('tasks.add', (2, 2), countdown=10)
+            s1 = add.s(2, 2)  # 快捷方式
+        b. 搭配签名使用delay:
+            res = s1.delay()
+        c. 搭配并使用partials偏函数功能:
+            s1 = add.s(2)  # add(?, 2)
+            res = s1.delay(8)  # add(8, 2)
 
-签名相关原语:
-    groups: 一个组并行调用task list, 返回一个special AsyncResult
-        a. 签名
-            from celery import group
-            g = group(add.s(i, i) for i in xrange(10))
-            g().get()  # [0, 2, 4, 6, ...]
-        b. partials
-            from celery import group
-            g = group(add.s(i) for i in xrange(10))
-            g(10).get()
+            s2 = add.signature((2, 2), countdown=10)
+            res2 = s2.apply_async()
 
-    chains: 将任务链接在一起, 在一个返回之后调用链上下一个任务
-        例子:
-            from celery import chain
-            from proj.tasks import add, mul
-            chain(add.s(4, 4) | mul.s(8))().get()  # (4 + 4) * 8
-            或
-            (add.s(4, 4) | mul.s(8))().get()
-    chords: 和弦, 一个带有回调的组
-        例子:
-            from celery import chord
-            from proj.tasks import add, xsum
-            chord((add.s(i, i) for i in xrange(10)), xsum.s())().get()
+            partial = add.s(2)
+            partial.delay(2)
+            partial.apply_async((2,))
 
-路由: 将消息发送到指定的任务队列中
+        d. 传递参数
+            s1 = add.s(2, 2, debug=True, name='bifeng')
+            s2 = add.signature((2, 2), {'debug': True, 'name': 'bifeng'}, countdown=10)
+            此时参数值:
+                s.args: (2, 2)
+                s.kwargs: {'debug': True, 'name': 'bifeng'}
+                s.options: {'countdown': 10}
+            通过链式来为s设置执行选项:
+                s2. = add.s(2, 2).set(countdown=10)
+
+        e. 调用: 见2.5节
+        f. 克隆
+            s1 = add.s(2)
+            s2 = s1.clone(args=(4,), kwargs={'debug': True})
+
+        g. 添加新的回调
+            add.apply_async((2, 2), link=other_task.s())
+            一旦设置了回调, 当任务成功退出时, callback才会被执行, 并且自动将父任务的结果
+            作为参数传递给回调task.
+
+        h. Immutability(不变性: 值传递, 引用传递): 不需要参数的回调
+            add.apply_async((2, 2), link=reset_buffers.signature(immutable=True))
+            add.apply_async((2, 2), link=reset_buffers.si())
+
+    3.2 签名相关原语:
+        groups: 一个组并行调用task list, 返回一个special AsyncResult
+            a. 签名
+                from celery import group
+                g = group(add.s(i, i) for i in xrange(10))
+                g().get()  # [0, 2, 4, 6, ...]
+            b. partials
+                from celery import group
+                g = group(add.s(i) for i in xrange(10))
+                g(10).get()
+
+        chains: 将任务链接在一起, 在一个返回之后调用链上下一个任务
+            例子:
+                from celery import chain
+                from proj.tasks import add, mul
+                chain(add.s(4, 4) | mul.s(8))().get()  # (4 + 4) * 8
+                或
+                (add.s(4, 4) | mul.s(8))().get()
+        chords: 和弦, 一个带有回调的组
+            例子:
+                from celery import chord
+                from proj.tasks import add, xsum
+                chord((add.s(i, i) for i in xrange(10)), xsum.s())().get()
+
+4 Periodic定期任务(celery beat)
+    4.1 celery beat
+        调用程序, 定期启动任务并分发给集群中可用节点来执行task.
+        NOTE: 确保每次仅仅运行一个celery beat调度呈现, 否则会重复执行任务.
+
+路由: 将消息发送到指定的任务队列中(见2.4)
     a. task_routes: 设置一个按照名称分配的路由任务队列
     b. 指定消费任务队列 
         add.apply_async((2, 2), queue='hzmcq')
