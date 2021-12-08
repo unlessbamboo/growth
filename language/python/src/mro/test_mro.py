@@ -15,11 +15,13 @@ class F(object):
 
 
 class B(D, E):
-    pass
+    def show_msg(self):
+        print('B show')
 
 
 class C(D, F):
-    pass
+    def show_msg(self):
+        print('c show')
 
 
 class A(B, C):
@@ -29,3 +31,4 @@ class A(B, C):
 
 
 a = A()
+a.show_msg()
