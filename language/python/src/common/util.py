@@ -1,4 +1,5 @@
 """ python测试代码的通用工具函数 """
+import sys
 import inspect
 from functools import wraps
 
@@ -20,9 +21,11 @@ def show_function(desc=None):
             global execute_num  # pylint: disable=global-statement
 
             execute_num += 1
-            print(f'-----------{func_desc}-----------')
-            print(inspect.getsource(func))
-            print(f'> 函数执行结果(当前执行顺序{execute_num}):\n')
+            module = sys.modules[func.__module__]
+            print(f'\033[32m-----------{func_desc}-----------\033[0m')
+            print(f'\033[32m模块:{module}\033[0m\n')
+            print(f'\033[31m{inspect.getsource(func)}\033[0m')
+            print(f'> \033[32m函数执行结果(当前执行顺序{execute_num}):\033[0m\n')
             try:
                 value = func(*args, **kwargs)
                 if inspect.isfunction(value):
@@ -30,7 +33,7 @@ def show_function(desc=None):
             except Exception as msg:
                 print(f'函数执行发生异常:{msg}')
             finally:
-                print('-----------end-----------\n\n')
+                print('\033[32m-------------------end-----------------\033[0m\n\n')
         return _wrap
 
     return wrap

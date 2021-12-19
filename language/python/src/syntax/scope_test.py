@@ -23,17 +23,45 @@ def scope_classify_verify():
     print(f'num:{num}, name值: {name}')
 
 
+@show_function(desc='作用域-静态作用域')
+def scope_static_verify():
+    name = 'global'
+
+    def fun1():
+        print(f'被调用函数fun1, 此时name值:{name}')
+
+    def fun2():
+        name = 'fun2'
+        fun1()
+
+    fun2()
+
+
 @show_function(desc='作用域-重新定义和引用外部变量')
 def redefine_outer_variable_verify():
-    num = 0
+    """ 类似javascript代码:
+            function func() {
+                var num = 0;
+                function inner() {
+                    var num = num + 1;  // undefined + 1 == NaN
+                }
+                return inner;
+            }
+            func()();
+    """
+    def _do():
+        num = 0
 
-    def inner():
-        # 这里代码执行会报错, 类似javascript, 因为num被赋值, 故而python认为num是一个
-        # 全局变量, 然后就会报错: local variable 'num' referenced before assignment
-        num = num + 1
-        return num
-
-    return inner
+        def inner():
+            """ num被赋值, interpreter认为num是一个局部变量, 故而报错 """
+            print(f'执行函数时局部变量字典locals值:{locals()}')
+            num = num + 1  # noqa: F823, pylint: disable=used-before-assignment
+            return num
+        co = inner.__code__
+        print(f'函数(inner)预制的局部变量名: {co.co_varnames}, 非局部:{co.co_names}')
+        return inner
+    do = _do()
+    do()
 
 
 scope_name = 'global'
@@ -41,34 +69,37 @@ scope_name = 'global'
 
 @show_function(desc='作用域-作用域链测试')
 def scope_link_verify():
-    """ 作用域链, 类似javascript, Python 也有一个作用域链, 其在代码编写的
-    时候就已经决定了, 其中javascript的作用域是存储在函数变量对象的[[scope]]
+    """ 作用域链, 在代码编写的时候决定, 其中javascript的作用域是存储在函数变量对象的[[scope]]
     数组中, Python 则存储在函数``__closure__``魔术属性中, 其也是一个数组
     """
     scope_name = 'link'
 
     def scope_inner():
         scope_name = 'inner'
-        clo = scope_inner.__closure__
-        print(f'链长度:{len(clo)}')
-        for ele in clo:
-            print(ele.cell_contents)
+
+        def show():
+            scope_num = 0
+
+            def show_inner():
+                print(scope_name, '--', scope_num)
+            return show_inner
+
+        return show
 
     def scope_closure():
         print(f'My Scope Name:{scope_name}')
 
-    scope_inner()
+    show_inner = scope_inner()
+    in2 = show_inner()
     return scope_closure
 
 
+@show_function(desc='作用域-作用域链测试')
+def scope_test():
+    pass
+
+
 if __name__ == '__main__':
-    #  # 1. 作用域分类
-    #  scope_classify()
-    #  
-    #  redefine_outer_variable()
-    #  
-    #  # 2. 作用域链
-    #  scope_link()()
     import inspect
     global_info = globals()
     for k in list(global_info):
