@@ -1,9 +1,0 @@
-cscope.*
-*.png
-tags
-*.pyc
-*.pyo
-*.swp
-.idea
-.pylintrc
-bamboo.vim
