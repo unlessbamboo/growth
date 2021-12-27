@@ -14,11 +14,12 @@ async def startup(uri):
         message = b'my test'
         while True:
             await converse.send(message)
-            print('{time}-Client send: {message}'.format(time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'), message=message))
+            _time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            print(f'{_time}-Client send: {message}')
             mes = await converse.receive()
-            print('{time}-Client receive: {message}'.format(time=datetime.now().strftime('%Y-%m-%d %H:%M:%S'), message=mes))
+            _time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            print(f'{_time}-Client receive: {mes}')
             time.sleep(1)
-
 
 
 if __name__ == '__main__':
