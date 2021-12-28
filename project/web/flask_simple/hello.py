@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# coding:utf8
 import os
 from flask import (
     Flask, request, make_response,
@@ -14,24 +12,23 @@ from flask_sqlalchemy import SQLAlchemy
 from wtforms import (StringField, SubmitField)
 from wtforms.validators import Required
 
+import email_config
+
 
 app = Flask(__name__)
 
 # smtplib mail
-import sys
-sys.path.append("/data/python/")
-import data
 # mail headers
-app.config['MAIL_SERVER'] = data.MAIL_SERVER
-app.config['MAIL_PORT'] = data.MAIL_PORT
+app.config['MAIL_SERVER'] = email_config.MAIL_SERVER
+app.config['MAIL_PORT'] = email_config.MAIL_PORT
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_USERNAME'] = data.MAIL_USERNAME
-app.config['MAIL_PASSWORD'] = data.MAIL_PASSWD
+app.config['MAIL_USERNAME'] = email_config.MAIL_USERNAME
+app.config['MAIL_PASSWORD'] = email_config.MAIL_PASSWD
 # mail message
 app.config['MAIL_SUBJECT'] = "[bamboo web]"
-app.config['MAIL_SENDER'] = data.MAIL_USERNAME
-app.config['MAIL_ADMIN'] = data.MAIL_ADMIN
+app.config['MAIL_SENDER'] = email_config.MAIL_USERNAME
+app.config['MAIL_ADMIN'] = email_config.MAIL_ADMIN
 
 # sqlite db
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -49,6 +46,8 @@ mail = Mail(app)
 db = SQLAlchemy(app)
 
 # DB class (ORM)
+
+
 class Role(db.Model):
     """角色"""
     # 表名
@@ -59,7 +58,7 @@ class Role(db.Model):
     users = db.relationship('User', backref='role', lazy='dynamic')
 
     def __repr__(self):
-        return "<Role {}>".format(self.name)
+        return f"<Role {self.name}>"
 
 
 class User(db.Model):
@@ -70,7 +69,7 @@ class User(db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
     def __repr__(self):
-        return "<User {}>".format(self.username)
+        return f"<User {self.username}>"
 
 
 class NameForm(Form):
@@ -83,10 +82,9 @@ def send_mail(to, subject, template, **kwargs):
     msg = Message(
         app.config['MAIL_SUBJECT'] + subject,
         sender=app.config['MAIL_SENDER'],
-        recipients = [to])
+        recipients=[to])
     msg.body = render_template(template + '.txt', **kwargs)
     msg.html = render_template(template + '.html', **kwargs)
-    print msg
     mail.send(msg)
 
 
@@ -140,8 +138,7 @@ def index():
 @app.route('/cookie/<name>/')
 def cookie(name):
     response = make_response(
-        "<h1>Hello {}, "
-        "we carry a cookie!</h1>".format(name))
+        f"<h1>Hello {name}, we carry a cookie!</h1>")
     response.set_cookie('answer-bamboo', '100000')
     return response
 
@@ -165,6 +162,8 @@ def redirect_google():
 def make_shell_context():
     # 利用字典，python的自省
     return dict(app=app, db=db, User=User, Role=Role)
+
+
 manager.add_command("shell", Shell(make_context=make_shell_context))
 
 

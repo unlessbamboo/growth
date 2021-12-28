@@ -1,0 +1,9 @@
+Flask==2.0.2
+Flask-Bootstrap==3.3.7.1
+Flask-Mail==0.9.1
+Flask-Moment==1.0.2
+Flask-Script==2.0.6
+Flask-SQLAlchemy==2.5.1
+Flask-WTF==1.0.0
+websockets==9.1
+
