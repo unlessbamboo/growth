@@ -1,0 +1,3 @@
+gevent==20.9.0
+Flask==1.1.4
+Flask-Sockets==0.2.1
