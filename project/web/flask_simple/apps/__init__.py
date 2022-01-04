@@ -4,6 +4,7 @@ from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from flask_mail import (Mail, Message)
 from flask_sqlalchemy import SQLAlchemy
+from flask_socketio import SocketIO
 
 from . import email_config
 
@@ -11,6 +12,7 @@ bootstrap = Bootstrap()
 moment = Moment()
 mail = Mail()
 db = SQLAlchemy()
+socketio = SocketIO()
 
 
 
@@ -50,6 +52,7 @@ def create_app():
         moment.init_app(app)
         mail.init_app(app)
         db.init_app(app)
+        socketio.init_app(app)
         api_register_blueprints(app)
     except Exception as msg:
         print(msg)

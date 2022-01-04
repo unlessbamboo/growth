@@ -5,15 +5,15 @@ from flask import (
 from flask_mail import (Mail, Message)
 
 from apps.models.models import User, Role, NameForm
-from apps import db, mail
+from apps import db, mail, socketio
 
 from . import bp
 
 
 def send_mail(to, subject, template, **kwargs):
     msg = Message(
-        bp.config['MAIL_SUBJECT'] + subject,
-        sender=bp.config['MAIL_SENDER'],
+        current_app.config['MAIL_SUBJECT'] + subject,
+        sender=current_app.config['MAIL_SENDER'],
         recipients=[to])
     msg.body = render_template(template + '.txt', **kwargs)
     msg.html = render_template(template + '.html', **kwargs)
@@ -46,8 +46,8 @@ def index():
             user = User(username=name)
             db.session.add(user)
             session['known'] = False
-            if bp.config['MAIL_ADMIN']:
-                send_mail(bp.config['MAIL_ADMIN'],
+            if current_app.config['MAIL_ADMIN']:
+                send_mail(current_app.config['MAIL_ADMIN'],
                           "New user",
                           "mail/new_user",
                           user=user)
