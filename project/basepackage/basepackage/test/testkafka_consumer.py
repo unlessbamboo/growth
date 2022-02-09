@@ -25,8 +25,8 @@ class TestConsumer(object):
                 continue
             break
         endTime = time.time()
-        print('Send a single message for {0} second'.format(
-            endTime - startTime))
+        print(('Send a single message for {0} second'.format(
+            endTime - startTime)))
 
     def testMultiConsumer(self, num):
         """testMultiConsumer
@@ -46,13 +46,13 @@ class TestConsumer(object):
                     startTime = time.time()
                 index += 1
             if index % 200 == 0:
-                print('Current index:', index)
+                print(('Current index:', index))
             if index > num:
                 break
 
         endTime = time.time()
-        print('Send {0} messages for {1} second'.format(
-            num, endTime - startTime))
+        print(('Send {0} messages for {1} second'.format(
+            num, endTime - startTime)))
 
 
 if __name__ == '__main__':

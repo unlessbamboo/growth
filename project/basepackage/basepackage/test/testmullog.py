@@ -61,7 +61,7 @@ def mainProcess(rootpath):
             if not logObj.receive():
                 break
         except Exception as msg:
-            print("Main control occur error, msg:{0}.".format(msg))
+            print(("Main control occur error, msg:{0}.".format(msg)))
             break
 
     print("Main process quit.")

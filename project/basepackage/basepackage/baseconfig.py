@@ -1,5 +1,4 @@
-#!/usr/bin/python
-# coding:utf-8
+""" 包基础配置 """
 import os
 import sys
 import configparser
@@ -8,7 +7,7 @@ import configparser
 CONF_DIR = "/data/conf/job/basepackage.ini"
 
 
-def parseExcept(func):
+def parse_except(func):
     """Except exception when parse configure file"""
     def innerFunc(*args, **kwargs):
         try:
@@ -29,17 +28,17 @@ class _ParseConfig(object):
         self._configParser = configparser.ConfigParser()
         self._configParser.read(filename)
 
-    @parseExcept
+    @parse_except
     def getDataDir(self):
         """getDataDir:Get data directory"""
         return self._configParser.get("directory", "data")
 
-    @parseExcept
+    @parse_except
     def getLogDir(self):
         """getLogDir: Get log directory"""
         return self._configParser.get("directory", "logs")
 
-    @parseExcept
+    @parse_except
     def getPidFile(self, key):
         """getPidFile:Get pid filename by key.
 
@@ -47,12 +46,12 @@ class _ParseConfig(object):
         """
         return self._configParser.get("pid", key)
 
-    @parseExcept
+    @parse_except
     def getJavaTrace(self):
         """getJavaTrace:get java trace log"""
         return self._configParser.get("java", "tracelog")
 
-    @parseExcept
+    @parse_except
     def getKafkaConf(self):
         """getKafkaConf:get kafak configure"""
         return self._configParser.get("kafka", "kafka")
@@ -142,10 +141,10 @@ class KafkaParse(object):
     def setPythonpath(self):
         '''add new path into sys.path'''
         # change systempath
-        dir = os.path.dirname(os.path.dirname(
+        directory = os.path.dirname(os.path.dirname(
             os.path.realpath(__file__))) + "/"
         addPythonPath = [
-            dir + subpath for subpath in self._getPythonpath()]
+            directory + subpath for subpath in self._getPythonpath()]
         for path in addPythonPath:
             sys.path.insert(0, path)
         # sys.path.extend(addPythonPath)
@@ -297,10 +296,6 @@ globalBaseConfig = BaseConfig()
 # kafak configure
 _kafkaConfName = globalBaseConfig.getKafkaConf()
 if not _kafkaConfName:
+    print('获取Kafka基础配置信息失败, 请检查')
     sys.exit(-1)
-else:
-    globalConfigParse = KafkaParse(_kafkaConfName)
-
-
-if __name__ == '__main__':
-    pass
+globalConfigParse = KafkaParse(_kafkaConfName)

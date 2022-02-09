@@ -28,8 +28,8 @@ class TestProducer(object):
         startTime = time.time()
         self.baseKafkaProducer.send_message("keys", msg)
         endTime = time.time()
-        print('Send a single message for {0} second'.format(
-            endTime - startTime))
+        print(('Send a single message for {0} second'.format(
+            endTime - startTime)))
 
     def testMultiReplicaProducer(self, num):
         """testMultiReplicaProducer：发送多条数据并记录时间延迟
@@ -44,12 +44,12 @@ class TestProducer(object):
             index += 1
             self.baseKafkaProducer.send_message("keys", msg)
             if index % 200 == 0:
-                print('Current index:', index)
+                print(('Current index:', index))
             if index > num:
                 break
         endTime = time.time()
-        print('Send {0} messages for {1} second'.format(
-            num, endTime - startTime))
+        print(('Send {0} messages for {1} second'.format(
+            num, endTime - startTime)))
 
     def basicConstructor(self, data):
         """basicConstructor

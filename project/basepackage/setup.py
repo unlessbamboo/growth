@@ -1,5 +1,4 @@
-#!/usr/bin/python
-# coding:utf-8
+""" basepackage包 """
 import re
 import sys
 import os
@@ -12,35 +11,33 @@ LOGDIR = "/data/logs/job"
 CONFDIR = "/data/conf/job"
 
 
-def initConfEnv():
+def init_conf_env():
     """Initialize configure and modidy basepackage.ini"""
     # data
     conf = 'conf/basepackage.ini'
     with open(conf, 'r') as f:
         oldStr = f.read()
     with open(conf, 'w') as f:
-        f.write(re.sub("\ndata=.*?\n",
-                       "\ndata={0}\n".format(DATADIR), oldStr))
+        f.write(re.sub(f'\ndata=.*?\n', '\ndata={DATADIR}\n', oldStr))
 
     # logs
     conf = 'conf/basepackage.ini'
     with open(conf, 'r') as f:
         oldStr = f.read()
     with open(conf, 'w') as f:
-        f.write(re.sub("\nlogs=.*?\n",
-                       "\nlogs={0}\n".format(LOGDIR), oldStr))
+        f.write(re.sub('\nlogs=.*?\n', f'\nlogs={LOGDIR}\n', oldStr))
 
     # baseconfig
     conf = 'basepackage/baseconfig.py'
     with open(conf, 'r') as f:
         oldStr = f.read()
     with open(conf, 'w') as f:
-        f.write(re.sub("\nCONF_DIR.*basepackage.ini\"?\n",
-                       "\nCONF_DIR = \"{0}/basepackage.ini"
-                       "\"\n".format(CONFDIR), oldStr))
+        f.write(re.sub(
+            '\nCONF_DIR.*basepackage.ini\"?\n',
+            f'\nCONF_DIR = "{CONFDIR}/basepackage.ini"\n', oldStr))
 
 
-def mkdirDir():
+def create_directory():
     """Test data and log directory and make"""
     # data
     if not os.path.isdir(CONFDIR):
@@ -50,50 +47,51 @@ def mkdirDir():
     try:
         os.chmod(CONFDIR, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
     except Exception as msg:
-        sys.stderr.write('User does not have '
-                         'modify permissions, msg:%s\n' % msg)
+        sys.stderr.write(f'User does not have modify permissions, msg:{msg}\n')
 
 
-def copyConf():
+def copy_conf_file():
     """Copy configure file"""
     # basepackage
-    conf = "conf/basepackage.ini"
+    conf = 'conf/basepackage.ini'
     if not os.path.exists(conf):
-        sys.stderr.write("Note exists configure %s.\n" % conf)
+        sys.stderr.write(f'Note exists configure {conf}.\n')
         sys.exit(-1)
-    shutil.copy(conf, CONFDIR + "/")
+    shutil.copy(conf, CONFDIR + '/')
 
     # kafka
-    conf = "conf/kafka.ini"
+    conf = 'conf/kafka.ini'
     if not os.path.exists(conf):
-        sys.stderr.write("Note exists configure %s.\n" % conf)
+        sys.stderr.write(f'Note exists configure {conf}.\n')
         sys.exit(-1)
-    shutil.copy(conf, CONFDIR + "/")
+    shutil.copy(conf, CONFDIR + '/')
 
 
 def main():
     """main"""
     try:
-        initConfEnv()
-        mkdirDir()
-        copyConf()
+        init_conf_env()
+        create_directory()
+        copy_conf_file()
     except Exception as msg:
-        sys.stderr.write("Occur error, msg:{0}.\n".format(msg))
+        sys.stderr.write(f'Occur error, msg:{msg}.\n')
         sys.exit(-1)
 
 
 main()
 
 setup(
-    name="basepackage",
-    version="0.1",
+    name='basepackage',
+    version='0.1',
 
     packages=find_packages(),
-    # packages=find_packages('src'),
-    # package_dir={'':'src'},
-
-    install_requires=['pyinotify'],
-
+    # 依赖包名列表
+    install_requires=['kafka'],
+    # 元数据信息: 显示包的用途
+    classifiers = [
+    ]
+    # 命令行工具: scripts参数(指定详细相对地址), console_script入口
+    scripts = [],
     package_data={
         'basepackage': ['conf/*.ini'],
     },
@@ -102,8 +100,8 @@ setup(
 
     # exclude_package_data={},
 
-    author="unlessbamboo",
-    author_email="unlessbamboo@gmail.com",
-    description="This is job's base packages.",
-    license="JOB",
+    author='unlessbamboo',
+    author_email='unlessbamboo@gmail.com',
+    description='This is job\'s base packages.',
+    license='JOB',
 )

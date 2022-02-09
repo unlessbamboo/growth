@@ -189,8 +189,10 @@ class KafkaProducer(object):
                                             self.pkey[self._pIndex], message)
                 self._pIndex = (self._pIndex + 1) % self._pIndexRange
         except Exception as msg:
-            self._globalLog.getError().log(self._globalLog.ERROR,
-                                           "Publisher send message failed, msg:%s" % (msg))
+            self._globalLog.getError().log(
+                self._globalLog.ERROR,
+                "Publisher send message failed, msg:%s" %
+                (msg))
             self._removeKafkaNodes()
             self.send_message()
         else:

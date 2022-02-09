@@ -34,10 +34,12 @@ class TestBaseConfig(unittest.TestCase):
 
     def testPid(self):
         """testPid"""
-        self.assertEqual("aggregate.pid",
-                         os.path.basename(self.baseConfObj.getPidFile("aggregate")))
-        self.assertEqual("dubbo.pid",
-                         os.path.basename(self.baseConfObj.getPidFile("dubbo")))
+        self.assertEqual(
+            "aggregate.pid", os.path.basename(
+                self.baseConfObj.getPidFile("aggregate")))
+        self.assertEqual(
+            "dubbo.pid", os.path.basename(
+                self.baseConfObj.getPidFile("dubbo")))
 
     def testKafkaConf(self):
         """testKafkaConf"""

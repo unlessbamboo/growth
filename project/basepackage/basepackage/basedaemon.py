@@ -1,5 +1,5 @@
-#!/usr/bin/python
-# coding:utf-8
+""" 守护进程
+"""
 import os
 import sys
 import atexit
@@ -9,14 +9,14 @@ from signal import SIGTERM
 
 
 class Daemon(object):
-    """
-    A generic daemon class.
-
-    Usage: subclass the Daemon class and override the run() method
-    """
 
     def __init__(self, pidfile, globalLog, stdin='/dev/null',
                  stdout='/dev/null', stderr='/dev/null'):
+        """  一个基本的守护进程类, 子类通过集成并覆盖run方法来自定义功能
+        @pidfile: 存储守护进程PID的默认文件
+        @globalLog: 日志句柄
+        @stdin, stdout, stderr: 标准输入, 输出, 标准错误
+        """
         self.stdin = stdin
         self.stdout = stdout
         self.stderr = stderr
@@ -34,8 +34,9 @@ class Daemon(object):
             if pid > 0:
                 sys.exit(0)
         except OSError as e:
-            self._globalLog.getError().log(self._globalLog.ERROR,
-                                           "fork #1 failed: %d (%s)\n" % (e.errno, e.strerror))
+            self._globalLog.getError().log(
+                self._globalLog.ERROR, "fork #1 failed: %d (%s)\n" %
+                (e.errno, e.strerror))
             sys.exit(1)
 
         # decouple from parent environment
@@ -49,16 +50,17 @@ class Daemon(object):
             if pid > 0:
                 sys.exit(0)
         except OSError as e:
-            self._globalLog.getError().log(self._globalLog.ERROR,
-                                           "fork #2 failed: %d (%s)\n" % (e.errno, e.strerror))
+            self._globalLog.getError().log(
+                self._globalLog.ERROR, "fork #2 failed: %d (%s)\n" %
+                (e.errno, e.strerror))
             sys.exit(1)
 
         # redirect standard file descriptors
         sys.stdout.flush()
         sys.stderr.flush()
-        si = file(self.stdin, 'r')
-        so = file(self.stdout, 'a+')
-        se = file(self.stderr, 'a+', 0)
+        si = open(self.stdin, 'r')
+        so = open(self.stdout, 'a+')
+        se = open(self.stderr, 'a+', 0)
         os.dup2(si.fileno(), sys.stdin.fileno())
         os.dup2(so.fileno(), sys.stdout.fileno())
         os.dup2(se.fileno(), sys.stderr.fileno())
@@ -107,7 +109,7 @@ class Daemon(object):
         """
         # Check for a pidfile to see if the daemon already runs
         try:
-            pf = file(self.pidfile, 'r')
+            pf = open(self.pidfile, 'r')
             #pid = int(pf.read().strip())
             pid = None
             pf.close()
@@ -131,7 +133,7 @@ class Daemon(object):
         """
         # Get the pid from the pidfile
         try:
-            pf = file(self.pidfile, 'r')
+            pf = open(self.pidfile, 'r')
             pid = int(pf.read().strip())
             pf.close()
         except IOError:
@@ -172,9 +174,12 @@ class Daemon(object):
         pid = str(os.getpid())
         commandstr = "ps -ef|grep python|grep -w '%s'|grep -v grep|awk '{print $2}'|grep -v %s|xargs kill -9" % (
             cmdfile, pid)
-        if os.system(commandstr) >> 8 is not 0:
-            self._globalLog.getError().log(self._globalLog.ERROR,
-                                           "Forced to stop all process failed, command:%s" % commandstr)
+        command_result = os.system(commandstr) >> 8
+        if command_result != 0:
+            self._globalLog.getError().log(
+                self._globalLog.ERROR,
+                "Forced to stop all process failed, command:%s" %
+                commandstr)
 
     def usage(self):
         '''user help info'''

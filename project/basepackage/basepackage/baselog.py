@@ -2,7 +2,6 @@
 # coding:utf-8
 import os
 import sys
-import string
 import traceback
 import logging
 import logging.handlers
@@ -88,7 +87,7 @@ class _LogDeal(object):
 
 if hasattr(sys, 'frozen'):
     _srcfile = "logging%s__init__%s" % (os.sep, __file__[-4:])
-elif string.lower(__file__[-4:]) in ['.pyc', '.pyo']:
+elif __file__[-4:].lower() in ['.pyc', '.pyo']:
     _srcfile = __file__[:-4] + '.py'
 else:
     _srcfile = __file__
