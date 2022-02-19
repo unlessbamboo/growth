@@ -1,8 +1,0 @@
-# FROM指定基础镜像, 一般为Dockerfile的首条指令
-# 1 获取nginx: docker pull nginx
-# 2 使用命令: docker build -t nginx:bamboo -f CmdDockerfile . 定制镜像
-FROM nginx
-# 每一条指令都相当于在镜像中创建一层镜像
-# 一般而言, 利用&&将一些处于某一层镜像(功能尽可能高耦合)的命令在一个RUN中运行 
-RUN echo '<h1>Hello world</h1>' > /usr/share/nginx/html/index.html \
-CMD ["curl", "-s", "http://ip.cn"]

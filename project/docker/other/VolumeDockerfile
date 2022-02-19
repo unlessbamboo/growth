@@ -1,5 +1,0 @@
-# 用于测试匿名卷, 确保容器的存储层不会发生写操作, 所有的写入操作都直接持久化到物理磁盘中
-# 使用命令: docker build -t learn:volume -f VolumeDockerfile . 定制镜像
-FROM ubuntu:bamboo
-# 挂在/data, 将其变为匿名卷
-VOLUME /data

@@ -1,6 +1,0 @@
-# 下载安装python3镜像, 并逐层构建能够运行flask的镜像服务
-FROM python:3.6-alpine
-ADD composeweb /web
-WORKDIR /web
-RUN pip install redis flask
-CMD ["python", "app.py"]
