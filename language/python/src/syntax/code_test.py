@@ -1,10 +1,11 @@
 """ 代码对象 """
+from util import show_function  # pylint: disable=import-error
 import os
 import sys
 
-COMMON_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + os.sep + 'common'
+COMMON_PATH = os.path.abspath(os.path.dirname(
+    os.path.dirname(__file__))) + os.sep + 'common'
 sys.path.insert(0, COMMON_PATH)
-from util import show_function  # pylint: disable=import-error
 
 
 global_name = 'global'

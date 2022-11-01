@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 # -*- coding:utf8 -*-
 
+import socket
 import sys
 import imp
 imp.reload(sys)
 sys.setdefaultencoding('utf-8')
-
-import socket
 
 
 class NetClient(object):

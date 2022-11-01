@@ -34,7 +34,7 @@ def main(data):
     results = {}
     for key, values in data.items():
         group = grouper(results, key)
-        # 实际上类似初始化, 会在averager的yield处停住. 
+        # 实际上类似初始化, 会在averager的yield处停住.
         # next返回averager中抛出的'test'值, 这里没用
         next(group)
         for value in values:
@@ -46,7 +46,27 @@ def main(data):
 
 if __name__ == '__main__':
     data = {
-        'girls;kg':[40.9, 38.5, 44.3, 42.2, 45.2, 41.7, 44.5, 38.0, 40.6, 44.5],
-        'girls;m':[1.6, 1.51, 1.4, 1.3, 1.41, 1.39, 1.33, 1.46, 1.45, 1.43],
+        'girls;kg': [
+            40.9,
+            38.5,
+            44.3,
+            42.2,
+            45.2,
+            41.7,
+            44.5,
+            38.0,
+            40.6,
+            44.5],
+        'girls;m': [
+            1.6,
+            1.51,
+            1.4,
+            1.3,
+            1.41,
+            1.39,
+            1.33,
+            1.46,
+            1.45,
+            1.43],
     }
     main(data)

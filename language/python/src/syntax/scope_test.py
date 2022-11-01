@@ -1,15 +1,16 @@
 """
 功能: 作用域测试
-知识点: 
+知识点:
     1. 作用域是静态的, 变量名被赋值的位置决定了变量能够被访问的范围(javascrip也是, 预解析的时候就决定了)
     2. 作用域: 模块, 类, 函数中才会产生, 目前没有块作用域的概念
 """
+from util import show_function  # pylint: disable=import-error
 import os
 import sys
 
-COMMON_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + os.sep + 'common'
+COMMON_PATH = os.path.abspath(os.path.dirname(
+    os.path.dirname(__file__))) + os.sep + 'common'
 sys.path.insert(0, COMMON_PATH)
-from util import show_function  # pylint: disable=import-error
 
 
 @show_function(desc='作用域-测试是否存在块作用域')

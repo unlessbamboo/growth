@@ -18,8 +18,9 @@ def simpleConsumer():
     '''
     # To cunsume messages
     try:
-        consumer = KafkaConsumer('JOB_TEST_1',
-                                 bootstrap_servers=['devops-dev1:9193', 'devops-dev1:9194'])
+        consumer = KafkaConsumer(
+            'JOB_TEST_1', bootstrap_servers=[
+                'devops-dev1:9193', 'devops-dev1:9194'])
     except KafkaUnavailableError as msg:
         print('KafkaUnavailableError:', msg)
         sys.exit(-1)

@@ -36,4 +36,5 @@ def dump(obj, indent=2, islast=False):
 
 
 if __name__ == '__main__':
-    dump({'kuang': 3, 'edus': [{'name': 'H1', 'location': 3}, {'name': 'H2', 'location': 4}], 'age': 100}, islast=True)
+    dump({'kuang': 3, 'edus': [{'name': 'H1', 'location': 3}, {
+         'name': 'H2', 'location': 4}], 'age': 100}, islast=True)

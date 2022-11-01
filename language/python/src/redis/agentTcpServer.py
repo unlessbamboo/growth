@@ -1,5 +1,8 @@
 # /usr/bin/python
 # coding:utf-8
+from agentDaemon import Daemon
+from basepackage.baselog import globalLog
+from basepackage.baseConfig import BLACK_FILE, BLACK_PIPE
 import os
 import sys
 import redis
@@ -12,10 +15,6 @@ import signal
 # set root directory
 package_path = os.getcwd() + '/../'
 sys.path.append(package_path)
-
-from basepackage.baseConfig import BLACK_FILE, BLACK_PIPE
-from basepackage.baselog import globalLog
-from agentDaemon import Daemon
 
 
 class RedisCommnicate():
@@ -103,8 +102,9 @@ class AgentServer(Daemon):
             self._sock.setblocking(0)
             self._sock.listen(10)
         except Exception as msg:
-            globalLog.getError().log(globalLog.ERROR,
-                                     'AgentServer:bind socket %s failed, %s' % (ip, msg))
+            globalLog.getError().log(
+                globalLog.ERROR, 'AgentServer:bind socket %s failed, %s' %
+                (ip, msg))
             sys.exit(-1)
         globalLog.getError().log(globalLog.DEBUG, 'Bind %s successful.' % ip)
 
@@ -117,8 +117,9 @@ class AgentServer(Daemon):
             if os.path.exists(BLACK_PIPE) is False:
                 os.mkfifo(BLACK_PIPE)
         except Exception as msg:
-            globalLog.getError().log(globalLog.WARNING,
-                                     '%s:Handle attack file %s.' % (msg, BLACK_FILE))
+            globalLog.getError().log(
+                globalLog.WARNING, '%s:Handle attack file %s.' %
+                (msg, BLACK_FILE))
             return
 
         # write info into attack file(pipe and normal file)
@@ -176,8 +177,9 @@ class AgentServer(Daemon):
                                      'Package too small, drop package.')
             return True
         (type, totalLen) = struct.unpack('<ii', data)
-        globalLog.getError().log(globalLog.DEBUG,
-                                 "Package Type:%d, PackageLeng=%d" % (type, totalLen))
+        globalLog.getError().log(
+            globalLog.DEBUG, "Package Type:%d, PackageLeng=%d" %
+            (type, totalLen))
         # receive package(content)
         data = conn.recv(totalLen)
         if not data:

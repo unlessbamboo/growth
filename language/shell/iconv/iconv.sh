@@ -18,13 +18,13 @@ show_file()
             type=`echo $file_type |grep UTF-8`
             if [ -z "$type" ];then
                 echo "为空非utf-8编码，转换"
-                iconv -f latin1 -t utf8 $1"/"$file -o $1"/"$file
+                iconv -f GB2312 -t utf8 $1"/"$file -o $1"/"$file
             else
                 echo "utf8编码不用转换"
             fi
         fi
     done
 }
-path=/home/bamboo/grocery-shop/workspace/nginxSrc
+path=/Users/bamboounuse/Public/css/html/html
 show_file $path
 

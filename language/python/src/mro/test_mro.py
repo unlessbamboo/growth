@@ -1,7 +1,6 @@
 # coding:utf8
 
 
-
 class D(object):
     pass
 

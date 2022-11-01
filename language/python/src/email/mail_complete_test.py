@@ -111,7 +111,10 @@ def send(confDict, data):
     except KeyError:
         error_msg = ERR_DATA_FORMAT
 
-    _rsp = {'result': False, 'errmsg': error_msg} if error_msg else {'result': True}
+    _rsp = {
+        'result': False,
+        'errmsg': error_msg} if error_msg else {
+        'result': True}
 
     return _rsp
 

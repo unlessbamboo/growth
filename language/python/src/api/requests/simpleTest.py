@@ -32,9 +32,13 @@ def test_cookies():
 
 def test_files():
     """test files"""
-    rsp = requests.get(URL, files={'file1': open('manage', 'rb'),
-                                   'file2': ('manage999', open('manage', 'rb'))},
-                       data={'shit': 3})
+    rsp = requests.get(
+        URL, files={
+            'file1': open(
+                'manage', 'rb'), 'file2': (
+                'manage999', open(
+                    'manage', 'rb'))}, data={
+                        'shit': 3})
     print(rsp.status_code)
 
 

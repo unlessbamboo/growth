@@ -53,8 +53,9 @@ class OssDB:
             # connnect.cmmite()
             return rst
         except Exception as msg:
-            self.logObj.errorLog(self.logObj.ERROR,
-                                 "Execute SQL:%s failed,, msg:%s." % (sql, msg))
+            self.logObj.errorLog(
+                self.logObj.ERROR, "Execute SQL:%s failed,, msg:%s." %
+                (sql, msg))
             return None
 
 

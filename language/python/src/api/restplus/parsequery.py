@@ -12,7 +12,7 @@ api = Api(app)
 tasks = [
     {
         'id': 1,
-        'title': '标题1', 
+        'title': '标题1',
         'description': '标题描述',
         'done': 'done',
     }
@@ -30,17 +30,21 @@ class ParseS(Resource):
         if not request.json:
             print('2---------------')
             abort(400)
-        if 'title' in request.json and type(request.json['title']) != str:
+        if 'title' in request.json and not isinstance(
+                request.json['title'], str):
             print('3---------------')
             abort(400)
-        if 'description' in request.json and type(request.json['description']) is not str:
+        if 'description' in request.json and not isinstance(
+                request.json['description'], str):
             print('4---------------')
             abort(400)
-        if 'done' in request.json and type(request.json['done']) is not bool:
+        if 'done' in request.json and not isinstance(
+                request.json['done'], bool):
             print('5---------------')
             abort(400)
         task[0]['title'] = request.json.get('title', task[0]['title'])
-        task[0]['description'] = request.json.get('description', task[0]['description'])
+        task[0]['description'] = request.json.get(
+            'description', task[0]['description'])
         task[0]['done'] = request.json.get('done', task[0]['done'])
         return jsonify({'task': task[0]})
 

@@ -32,8 +32,18 @@ def lock_nowith_worker(lock):
 
 if __name__ == '__main__':
     lock = multiprocessing.Lock()
-    p1 = multiprocessing.Process(name='with', target=lock_with_worker, args=(lock,))
-    p2 = multiprocessing.Process(name='nowith', target=lock_nowith_worker, args=(lock,))
+    p1 = multiprocessing.Process(
+        name='with',
+        target=lock_with_worker,
+        args=(
+            lock,
+        ))
+    p2 = multiprocessing.Process(
+        name='nowith',
+        target=lock_nowith_worker,
+        args=(
+            lock,
+        ))
     p1.start()
     p2.start()
 

@@ -23,8 +23,8 @@ class AESCipher(object):
         return str(self._unpad(decrypted), 'utf8')
 
     def _pad(self, s):
-        return s + (self.bs - len(s) % self.bs) * chr(self.bs - len(s) % self.bs)
+        return s + (self.bs - len(s) % self.bs) * \
+            chr(self.bs - len(s) % self.bs)
 
     def _unpad(self, s):
-        return s[:-ord(s[len(s)-1:])]
-
+        return s[:-ord(s[len(s) - 1:])]

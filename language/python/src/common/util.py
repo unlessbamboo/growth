@@ -33,7 +33,8 @@ def show_function(desc=None):
             except Exception as msg:
                 print(f'函数执行发生异常:{msg}')
             finally:
-                print('\033[32m-------------------end-----------------\033[0m\n\n')
+                print(
+                    '\033[32m-------------------end-----------------\033[0m\n\n')
         return _wrap
 
     return wrap

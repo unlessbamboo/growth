@@ -10,7 +10,7 @@ value(字符串):
         "traceback": null,
         "result": "This is a backend test",
         "children": []
-    } 
+    }
 
 2. 发送一个任务并获取任务结果
     from task_backend import backend

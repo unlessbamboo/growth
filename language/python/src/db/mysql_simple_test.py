@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # coding:utf-8
+from basepackage.baselog import globalLog
 import os
 import sys
 import MySQLdb
@@ -7,8 +8,6 @@ import MySQLdb
 # set root directory
 package_path = os.getcwd() + '/../'
 sys.path.append(package_path)
-
-from basepackage.baselog import globalLog
 
 
 class MysqldbHandle(object):
@@ -46,8 +45,9 @@ class MysqldbHandle(object):
                                        'row0=%s' % (row[0]))
         except Exception as msg:
             self._db.rollbak()
-            globalLog.getError().log(globalLog.ERROR,
-                                     'Execute sql failed, sql=%s, msg:%s' % (sql, msg))
+            globalLog.getError().log(
+                globalLog.ERROR, 'Execute sql failed, sql=%s, msg:%s' %
+                (sql, msg))
 
 
 if __name__ == '__main__':

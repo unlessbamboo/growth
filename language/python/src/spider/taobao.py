@@ -24,7 +24,8 @@ class taobao_infos:
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-extensions')
         options.add_argument('--disable-gpu')
-        options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36')
+        options.add_argument(
+            'user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36')
         options.add_experimental_option(
             'excludeSwitches', ['enable-automation'])
         self.browser = webdriver.Chrome(chrome_options=options)
@@ -70,7 +71,7 @@ class taobao_infos:
         # 模拟向下滑动浏览
         for i in range(int(second / 0.1)):
             # 根据i的值，模拟上下滑动
-            if(i % 2 == 0):
+            if (i % 2 == 0):
                 js = "var q=document.documentElement.scrollTop=" + \
                     str(300 + 400 * i)
             else:

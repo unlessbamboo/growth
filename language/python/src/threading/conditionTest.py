@@ -55,9 +55,9 @@ if __name__ == '__main__':
     ptimer = ConditionTimer(1)
     ptimer.start()
     # 启动滴答
-    p1 = threading.Thread(target=count_down, args=(ptimer,10))
+    p1 = threading.Thread(target=count_down, args=(ptimer, 10))
     p1.start()
-    p2 = threading.Thread(target=count_up, args=(ptimer,5))
+    p2 = threading.Thread(target=count_up, args=(ptimer, 5))
     p2.start()
     p1.join()
     p2.join()

@@ -2,8 +2,8 @@
 def seconds_format(time_cost: int):
     """
     耗费时间格式转换
-    :param time_cost: 
-    :return: 
+    :param time_cost:
+    :return:
     """
     min = 60
     hour = 60 * 60
@@ -31,8 +31,8 @@ def seconds_format(time_cost: int):
 
 
 if __name__ == '__main__':
-	print(seconds_format(1))
-	print(seconds_format(393993))
-	print(seconds_format(0))
-	print(seconds_format(60))
-	print(seconds_format(3600))
+    print(seconds_format(1))
+    print(seconds_format(393993))
+    print(seconds_format(0))
+    print(seconds_format(60))
+    print(seconds_format(3600))

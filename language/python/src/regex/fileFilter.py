@@ -111,13 +111,13 @@ class FileFilter(object):
             每一个元祖（字符串大小、字符串）;
         @目前的匹配查询正则表达式，主要分为：
             匹配：com.xxx.abException:xxx字段
-            (\S*\.)+[a-z0-9A-Z_]*Exception:.*
+            (\\S*\\.)+[a-z0-9A-Z_]*Exception:.*
             匹配：at org.cage.xxx(xxx.java.88)
-            ((\n[ \t]*at *(\S*\.)+[a-z0-9A-Z_]*\(.*\))+)
+            ((\n[ \t]*at *(\\S*\\.)+[a-z0-9A-Z_]*\\(.*\\))+)
             匹配：Caused by: com.xxx.abdException.xxx字段
-            (\ncaused by: (\S*\.)+[a-z0-9A-Z_]*Exception:.*
+            (\ncaused by: (\\S*\\.)+[a-z0-9A-Z_]*Exception:.*
             # 同上
-            (\n[ \t]*at *(\S*\.)+[a-z0-9A-Z_]*\(.*\))+)+
+            (\n[ \t]*at *(\\S*\\.)+[a-z0-9A-Z_]*\\(.*\\))+)+
         '''
         regexlist = [
             # pre match

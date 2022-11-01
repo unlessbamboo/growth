@@ -29,6 +29,7 @@ async def hello(websocket, path):
 
 
 ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
-start_server = websockets.serve(hello, '0.0.0.0', 8003)  # pylint: disable=no-member
+start_server = websockets.serve(
+    hello, '0.0.0.0', 8003)  # pylint: disable=no-member
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()

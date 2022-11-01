@@ -33,11 +33,25 @@ def show_inc():
     #   z的id是一样的，都引用了同一块内存值（作用域变为global，可以通过co_globals查看）
     #
     print("Inc5:")
-    print("Value:", inc5.__closure__[0].cell_contents, "  ", inc5.__closure__[1].cell_contents)
-    print("Id:", id(inc5.__closure__[0].cell_contents), "  ", id(inc5.__closure__[1].cell_contents))
+    print(
+        "Value:",
+        inc5.__closure__[0].cell_contents,
+        "  ",
+        inc5.__closure__[1].cell_contents)
+    print(
+        "Id:", id(
+            inc5.__closure__[0].cell_contents), "  ", id(
+            inc5.__closure__[1].cell_contents))
     print("Inc10:")
-    print("Value:", inc10.__closure__[0].cell_contents, "  ", inc10.__closure__[1].cell_contents)
-    print("Id:", id(inc10.__closure__[0].cell_contents), "  ", id(inc10.__closure__[1].cell_contents))
+    print(
+        "Value:",
+        inc10.__closure__[0].cell_contents,
+        "  ",
+        inc10.__closure__[1].cell_contents)
+    print(
+        "Id:", id(
+            inc10.__closure__[0].cell_contents), "  ", id(
+            inc10.__closure__[1].cell_contents))
 
 
 def show_scope():

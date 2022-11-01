@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # coding:utf-8
+from basepackage.baseconfig import AGENT_PID
+from basepackage.baselog import globalLog
 import os
 import sys
 import time
@@ -9,9 +11,6 @@ from signal import SIGTERM
 
 dirpath = os.getcwd() + "/../"
 sys.path.append(dirpath)
-
-from basepackage.baselog import globalLog
-from basepackage.baseconfig import AGENT_PID
 
 
 class Daemon(object):
@@ -39,8 +38,9 @@ class Daemon(object):
             if pid > 0:
                 sys.exit(0)
         except OSError as e:
-            globalLog.getError().log(globalLog.ERROR,
-                                     "fork #1 failed: %d (%s)\n" % (e.errno, e.strerror))
+            globalLog.getError().log(
+                globalLog.ERROR, "fork #1 failed: %d (%s)\n" %
+                (e.errno, e.strerror))
             sys.exit(1)
 
         # decouple from parent environment
@@ -54,8 +54,9 @@ class Daemon(object):
             if pid > 0:
                 sys.exit(0)
         except OSError as e:
-            globalLog.getError().log(globalLog.ERROR,
-                                     "fork #2 failed: %d (%s)\n" % (e.errno, e.strerror))
+            globalLog.getError().log(
+                globalLog.ERROR, "fork #2 failed: %d (%s)\n" %
+                (e.errno, e.strerror))
             sys.exit(1)
 
         # redirect standard file descriptors

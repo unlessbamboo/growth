@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # coding:utf-8
+from basepackage.baselog import globalLog
 import os
 import sys
 import time
@@ -12,7 +13,6 @@ from agentServer import RedisCommnicate
 package_path = os.getcwd() + '/../'
 sys.path.append(package_path)
 
-from basepackage.baselog import globalLog
 
 if __name__ == '__main__':
     '''test'''

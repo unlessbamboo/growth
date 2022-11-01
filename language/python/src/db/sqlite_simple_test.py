@@ -2,16 +2,16 @@
 """
 Sqlite3 简单测试
 """
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
 from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, func
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
 
 
 Base = declarative_base()
-from sqlalchemy import create_engine
 engine = create_engine('sqlite:///orm_in_detail.sqlite')
 
-from sqlalchemy.orm import sessionmaker
 session = sessionmaker()
 session.configure(bind=engine)
 

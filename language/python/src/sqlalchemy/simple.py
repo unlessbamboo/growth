@@ -16,6 +16,6 @@ def get_conn():
         DB_POOL = db_pool()
     return DB_POOL.connect()
 
-    
+
 if __name__ == '__main__':
     pass

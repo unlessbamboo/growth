@@ -1,3 +1,4 @@
+import pdb
 import requests
 
 
@@ -18,7 +19,6 @@ for i in range(20):
     r2 = requests.get(url, headers={"Accept": "application/json"})
     print(r2)
 
-import pdb
 pdb.set_trace()
 url = "http://10.1.200.7:8080/basic_module/devops:201510221552"
 paydata = '{"Row": [{"key": "ZGV2b3BzOjIwMTUxMDIyMTU1Mg==", "Cell": [{"column": "aW86cmVhZF9ieXRlcw==", "$": "MC4wMA=="}, {"column": "bmV0OmJ5dGVzX3NlbnQ=", "$": "NjAzNC4wMA=="}, {"column": "bmV0OmJ5dGVzX3JlY3Y=", "$": "MTI1MDIuMDA="}, {"column": "Y3B1Omlvd2FpdA==", "$": "MC4xNQ=="}, {"column": "bWVtOm1lbXBlcmNlbnQ=", "$": "NTEuMjQ="}, {"column": "aW86d3JpdGVfdGltZQ==", "$": "MTYuMDA="}, {"column": "Y3B1OnNvZnRpcnE=", "$": "MC4wNw=="}, {"column": "bmV0OmVycmlu", "$": "MC4wMA=="}, {"column": "bmV0OmRyb3BvdXQ=", "$": "MC4wMA=="}, {"column": "bmV0OmRyb3Bpbg==", "$": "MC4wMA=="}, {"column": "Y3B1OnN5c3RlbQ==", "$": "MC43Mw=="}, {"column": "Y3B1OnVzZWQ=", "$": "NC4yMQ=="}, {"column": "bmV0OnBhY2tldHNfc2VudA==", "$": "NjguMDA="}, {"column": "bmV0OnBhY2tldHNfcmVjdg==", "$": "MTQ4LjAw"}, {"column": "bmV0OmVycm91dA==", "$": "MC4wMA=="}, {"column": "aW86cmVhZF90aW1l", "$": "MC4wMA=="}, {"column": "Y3B1OnVzZXI=", "$": "MS41Mw=="}, {"column": "aW86d3JpdGVfY291bnQ=", "$": "Ny4wMA=="}, {"column": "Y3B1OmlycQ==", "$": "MC4wMw=="}, {"column": "aW86d3JpdGVfYnl0ZXM=", "$": "NTY0NzAuMDA="}, {"column": "aW86cmVhZF9jb3VudA==", "$": "MC4wMA=="}]}]}'

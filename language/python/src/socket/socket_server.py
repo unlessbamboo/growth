@@ -31,20 +31,21 @@ def handle_context(conn, addr):
     print('请求数据:\n{}'.format('\n'.join('{}'.format(k) for k in str_request)))
     response = '\r\n'.join(response_param).encode('utf8')
     conn.send(response)
-    print('响应数据:\n{}'.format('\n'.join('{}'.format(k) for k in response_param)))
+    print('响应数据:\n{}'.format('\n'.join('{}'.format(k)
+          for k in response_param)))
     print('***' * 10)
     conn.close()
 
- 
+
 def main():
     """ 监听指定的端口, 启动一个简单的socket监听服务器 """
     serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     serversocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     serversocket.bind(('127.0.0.1', 8000))
     serversocket.listen(5)
-    
+
     print('Start server: http://127.0.0.1:8000')
-    try: 
+    try:
         while True:
             conn, address = serversocket.accept()
             handle_context(conn, address)

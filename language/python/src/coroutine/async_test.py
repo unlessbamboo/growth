@@ -2,9 +2,10 @@ import asyncio
 
 
 async def sleepN(num):
-    for _ in range(10):
+    for _i in range(10):
+        print(f'----------{_i}-------------')
         await asyncio.sleep(1)
-        print('IO结束, 回调开始======:{}'.format(num))
+        print('IO结束, 回调开始{_i}======:{}'.format(num))
 
     return 'End:{}'.format(num)
 

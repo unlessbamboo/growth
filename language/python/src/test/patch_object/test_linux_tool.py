@@ -1,6 +1,7 @@
 from unittest import TestCase, mock
 from linux_tool import LinuxTool
 
+
 class TestLinuxTool(TestCase):
     def setUp(self):
         self.linux_tool = LinuxTool()

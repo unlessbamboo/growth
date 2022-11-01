@@ -8,7 +8,8 @@ app.config['SERVER_NAME'] = '127.0.0.1:5000'
 api = Api(app, version='1.0', title='TodoMVC API',
           description='A simple TodoMVC API',
           )
-ns = api.namespace('todos', description='TODO operations')  # 这是实际上为Namespace工厂方法
+# 这是实际上为Namespace工厂方法
+ns = api.namespace('todos', description='TODO operations')
 
 todo_model = api.model('Todo Model', {
     'id': fields.Integer(readonly=True, description='The task unique identifier'),

@@ -18,7 +18,8 @@ class Toutiao(object):
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-extensions')
         chrome_options.add_argument('--disable-gpu')
-        chrome_options.add_argument('user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36')
+        chrome_options.add_argument(
+            'user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36')
         #  chrome_options.add_argument('--headless')  # 添加headless参数, 无界面模式
 
         self.browser = webdriver.Chrome(chrome_options=chrome_options)
@@ -47,7 +48,8 @@ class Toutiao(object):
         # 链接数组
         soup = BS(self.browser.page_source, 'lxml')
         groups = soup.find_all(class_='link')
-        return ['https://www.toutiao.com' + group.attrs['href'] for group in groups]
+        return ['https://www.toutiao.com' + group.attrs['href']
+                for group in groups]
 
     def get_article_news(self, links):
         """

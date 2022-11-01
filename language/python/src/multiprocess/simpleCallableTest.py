@@ -6,6 +6,7 @@ import time
 
 class CallableFucn(object):
     """可调用对象"""
+
     def __init__(self, func, args):
         """init"""
         self._argsList = args
@@ -30,4 +31,3 @@ if __name__ == '__main__':
         print('---主进程等待中---')
         p1.join()
     print('===============')
-

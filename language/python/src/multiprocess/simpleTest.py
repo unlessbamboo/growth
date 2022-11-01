@@ -14,7 +14,7 @@ def func1(arg1, arg2, arg3):
 
 if __name__ == "__main__":
     """main"""
-    p2 = multiprocessing.Process(target=func1, args=(3, 4, 5))
+    p2=multiprocessing.Process(target=func1, args=(3, 4, 5))
     p2.start()
     p2.join()
     print("p2, end")

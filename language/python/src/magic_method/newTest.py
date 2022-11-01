@@ -14,7 +14,7 @@ class browser(object):
 
     def __new__(cls):
         for i in browser.instances:
-            if i.occupied == False:
+            if not i.occupied:
                 i.occupied = True
                 return i
         else:

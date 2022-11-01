@@ -59,10 +59,10 @@ def testOffset():
     )
     #offsetDict = kc.offsets()
     # print
-    #print "commit:", offsetDict['commit']
-    #print "task_done:", offsetDict['task_done']
-    #print "fetch:", offsetDict['fetch']
-    #print '==============================================='
+    # print "commit:", offsetDict['commit']
+    # print "task_done:", offsetDict['task_done']
+    # print "fetch:", offsetDict['fetch']
+    # print '==============================================='
     # while 1:
     #   try:
     #       for consumer in kc.fetch_messages():

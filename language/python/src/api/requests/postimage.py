@@ -20,7 +20,7 @@ dataDict['subject'] = 'This is a test for ssh.'
 # rsp = requests.post('http://10.1.193.181:8000/sendemail/sendtest',
 #        data=json.dumps({u'body':3}),
 #        headers={"Content-type":"application/json"})
-#print rsp
+# print rsp
 
 rsp = requests.post('http://127.0.0.1:8000/sendemail/send',
                     data=json.dumps(dataDict),

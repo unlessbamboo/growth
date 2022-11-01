@@ -27,6 +27,7 @@ async def hello(websocket, path):
     print('------------等待新的连接------------')
 
 
-start_server = websockets.serve(hello, '0.0.0.0', 8003)  # pylint: disable=no-member
+start_server = websockets.serve(
+    hello, '0.0.0.0', 8003)  # pylint: disable=no-member
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()

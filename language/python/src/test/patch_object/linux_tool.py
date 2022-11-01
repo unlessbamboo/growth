@@ -1,5 +1,6 @@
 import re
 
+
 class LinuxTool(object):
     def __init__(self):
         pass

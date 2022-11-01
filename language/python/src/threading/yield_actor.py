@@ -3,6 +3,7 @@ from collections import deque
 
 class ActorScheduler:
     """ 角色调度器 """
+
     def __init__(self):
         self._actors = {}          # Mapping of names to actors
         self._msg_queue = deque()   # Message queue

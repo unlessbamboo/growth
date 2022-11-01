@@ -2,7 +2,7 @@
 默认情况下: 返回的可迭代对象中的所有字段都会原样返回
 响应编组(marlshaling): 类似django rest framework中的序列化, 利用
     fields和marshal_with进行自定义格式化输出, 以便处理数据库对象.
-具体功能: 
+具体功能:
     1. 重命名属性, 利用attribute来对外隐藏, 另外还可以访问嵌套属性
     2. 设置默认值, default
     3. 自定义, 继承fields.Raw, 实现
@@ -36,7 +36,7 @@ class RawOutput(fields.Raw):
         return value
 
 
-# 响应参数校验工作: 
+# 响应参数校验工作:
 # 1. 校验返回值是否有效, 失败抛出flask_restplus.fields.MarshallingError:异常;
 # 2. 过滤额外字段
 # 3. 默认值: 不存在时返回默认值
@@ -49,7 +49,8 @@ friend_model = api.model('friend model', {
     'age': fields.Integer(),
 })
 resp_model = api.model('resp model', {
-    'task': fields.String(attribute='task_private'),  # 任务, 重命名属性来进行映射, 从而隐藏内在属性名
+    # 任务, 重命名属性来进行映射, 从而隐藏内在属性名
+    'task': fields.String(attribute='task_private'),
     # 会自动递归查找嵌套的属性, 直到找到所需属性, 必须确保返回值包含age_value
     'identify': fields.Integer(attribute=lambda x: x.age_value if hasattr(x, 'age_value') else 0),
     # Raw作为 BaseField基类, 一般用于自定义和未确定类型的字段(比例二维,三维, 思维数组等), 必须确保有该值, 否则异常
@@ -62,9 +63,10 @@ resp_model = api.model('resp model', {
     'name': fields.String(default='bifeng'),  # 设置默认值
 
     'id': fields.Integer(),  # ID 测试
-    'datetime': fields.DateTime(),  # 时间格式 
+    'datetime': fields.DateTime(),  # 时间格式
     'date': fields.Date(),  # 日期
-    'bool': fields.Boolean(skip_none=True),  # 布尔型(可以在models或者expect中定义skip_none)
+    # 布尔型(可以在models或者expect中定义skip_none)
+    'bool': fields.Boolean(skip_none=True),
 
     'contact': fields.Nested(sub_model),  # 内嵌字典类型
     'friends': fields.List(fields.Nested(friend_model))  # 内嵌列表
@@ -113,7 +115,7 @@ class TodoFormat(Resource):
 
 _task_model = api.model('', {
     'id': fields.Integer(),
-    'task': fields.String(), 
+    'task': fields.String(),
 })
 # 继承语法, 注意使用(namespace也有inherit语法)
 # orderer: 确保返回值的位置跟定义的位置保持一致, 这样会有一定的损耗.

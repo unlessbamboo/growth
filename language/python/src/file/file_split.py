@@ -23,7 +23,8 @@ def init():
     if os.path.exists(TMP_DIR):
         os.makedirs(TMP_DIR)
     if not os.path.exists(NGINX_LOG_DIR):
-        raise Exception('Not found nginx log directory:{}'.format(NGINX_LOG_DIR))
+        raise Exception(
+            'Not found nginx log directory:{}'.format(NGINX_LOG_DIR))
 
 
 def split():
@@ -41,7 +42,8 @@ def split():
             while True:
                 lines = fp.readlines(sizehint)
                 # 分割成功的文件名
-                split_file_name = TMP_DIR + os.path.splitext(nginx_log_file)[0] + '_' + file_num + '.log'
+                split_file_name = TMP_DIR + \
+                    os.path.splitext(nginx_log_file)[0] + '_' + file_num + '.log'
                 with open(split_file_name, 'w') as split_fp:
                     split_fp.writelines(lines)
                 if fp.tell() - position <= 0:
@@ -55,6 +57,6 @@ def split():
 
 if __name__ == '__main__':
     # 执行程序开始时间
-    print('Start at:', int(time.strftime('%H%M%S'))) 
+    print('Start at:', int(time.strftime('%H%M%S')))
     split()
     print('Stop at:', int(time.strftime('%H%M%S')))

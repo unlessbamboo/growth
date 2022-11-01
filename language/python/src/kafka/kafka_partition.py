@@ -16,8 +16,9 @@ def exceptionCatch(func, *args, **kw):
         except Exception as msg:
             traceList = traceback.extract_tb(sys.exc_info()[2])
             for (file, lineno, funcname, text) in traceList:
-                globalLog.getError().log(globalLog.ERROR,
-                                         "Occur error, func:%s,lineno:%s, msg:%s" % (funcname, lineno, msg))
+                globalLog.getError().log(
+                    globalLog.ERROR, "Occur error, func:%s,lineno:%s, msg:%s" %
+                    (funcname, lineno, msg))
             sys.exit(-1)
     return innerFunc
 

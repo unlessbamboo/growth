@@ -1,10 +1,11 @@
 """ 命名空间说明 """
+from util import show_function  # pylint: disable=import-error
 import os
 import sys
 
-COMMON_PATH = os.path.abspath(os.path.dirname(os.path.dirname(__file__))) + os.sep + 'common'
+COMMON_PATH = os.path.abspath(os.path.dirname(
+    os.path.dirname(__file__))) + os.sep + 'common'
 sys.path.insert(0, COMMON_PATH)
-from util import show_function  # pylint: disable=import-error
 
 # 1. 打印内建命名空间信息
 print(f'内建命名空间信息:{dir(__builtins__)}')

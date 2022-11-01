@@ -1,4 +1,5 @@
 # coding:utf-8
+import itertools
 import time
 import psutil
 
@@ -7,7 +8,15 @@ def simpleTest():
     startTime = time.time()
     for i in range(100000000):
         mem = psutil.virtual_memory()
-        print('Total:', mem.total / 1024 / 1024, 'Used:', mem.used / 1024 / 1024)
+        print(
+            'Total:',
+            mem.total /
+            1024 /
+            1024,
+            'Used:',
+            mem.used /
+            1024 /
+            1024)
         break
     endTime = time.time()
     print('迭代器消耗时间:', endTime - startTime)
@@ -15,7 +24,15 @@ def simpleTest():
     startTime = time.time()
     for i in range(100000000):
         mem = psutil.virtual_memory()
-        print('Total:', mem.total / 1024 / 1024, 'Used:', mem.used / 1024 / 1024)
+        print(
+            'Total:',
+            mem.total /
+            1024 /
+            1024,
+            'Used:',
+            mem.used /
+            1024 /
+            1024)
         break
     endTime = time.time()
     print('消耗时间:', endTime - startTime)
@@ -83,9 +100,6 @@ def readFileByIter(filename):
     with open(filename, 'r') as f:
         for line in f:
             print(line)
-
-
-import itertools
 
 
 def itertoolsTest():

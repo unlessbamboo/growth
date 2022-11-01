@@ -12,7 +12,11 @@
 class UpperAttrMetaClass(type):
     """UpperAttrMetaClass
     """
-    def __new__(mcs, future_class_name, future_class_parents, future_class_attr):
+    def __new__(
+            mcs,
+            future_class_name,
+            future_class_parents,
+            future_class_attr):
         """__new__
 
         :param mcs: metaclass
@@ -20,30 +24,42 @@ class UpperAttrMetaClass(type):
         :param future_class_parents: 父类
         :param future_class_attr: 属性
         """
-        attrs = ((name, value) for name, value in list(future_class_attr.items()) if not name.startswith('__'))
+        attrs = ((name, value) for name, value in list(
+            future_class_attr.items()) if not name.startswith('__'))
         uppercase_attr = dict((name.upper(), value) for name, value in attrs)
         return type(future_class_name, future_class_parents, uppercase_attr)
 
 
 class UpperAttrMetaclass2(type):
-    def __new__(mcs, future_class_name, future_class_parents, future_class_attr):
-        attrs = ((name, value) for name, value in list(future_class_attr.items()) if not name.startswith('__'))
+    def __new__(
+            mcs,
+            future_class_name,
+            future_class_parents,
+            future_class_attr):
+        attrs = ((name, value) for name, value in list(
+            future_class_attr.items()) if not name.startswith('__'))
         uppercase_attr = dict((name.upper(), value) for name, value in attrs)
         # 复用type.__new__方法
         # 这就是基本的OOP编程，没什么魔法
-        return type.__new__(mcs, future_class_name, future_class_parents, uppercase_attr)
+        return type.__new__(
+            mcs,
+            future_class_name,
+            future_class_parents,
+            uppercase_attr)
 
 
 class UpperAttrMetaclass3(type):
     def __new__(mcs, name, bases, dct):
-        attrs = ((name, value) for name, value in list(dct.items()) if not name.startswith('__'))
+        attrs = ((name, value) for name, value in list(
+            dct.items()) if not name.startswith('__'))
         uppercase_attr = dict((name.upper(), value) for name, value in attrs)
         return type.__new__(mcs, name, bases, uppercase_attr)
 
 
 class UpperAttrMetaclass4(type):
     def __new__(mcs, name, bases, dct):
-        attrs = ((name, value) for name, value in list(dct.items()) if not name.startswith('__'))
+        attrs = ((name, value) for name, value in list(
+            dct.items()) if not name.startswith('__'))
         uppercase_attr = dict((name.upper(), value) for name, value in attrs)
         return super(UpperAttrMetaclass4, mcs).__new__(
             mcs, name, bases, uppercase_attr)

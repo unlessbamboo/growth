@@ -8,7 +8,8 @@ import re
 import os
 
 
-match_tpr = re.compile(r'Requests per second:[ ]*?(\d+\.?\d*?) \[#/sec\] \(mean\)')
+match_tpr = re.compile(
+    r'Requests per second:[ ]*?(\d+\.?\d*?) \[#/sec\] \(mean\)')
 header = 'application/json'
 url = 'http://127.0.0.1:5000/api/v2/evisa/sign'
 totals = 2000
@@ -21,7 +22,9 @@ for cnum in (5, 10, 15, 20):
     match = match_tpr.search(result)
     if match:
         rps = match.groups()[0]
-        print('Total Requests: {} Concurrency: {} Qps: {}'.format(totals, cnum, rps))
+        print(
+            'Total Requests: {} Concurrency: {} Qps: {}'.format(
+                totals, cnum, rps))
     else:
         print('Not found Request Per Second value....')
 

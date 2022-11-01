@@ -4,7 +4,6 @@
 """
 
 
-
 class TestNotExistedAttr1(object):
     """测试当重载__getattribute__时没有手动调用__getattr__的的输出"""
 

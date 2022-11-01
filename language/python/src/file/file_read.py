@@ -17,7 +17,9 @@ def catch_exception(func, *args, **kw):
         except Exception as msg:
             traceList = traceback.extract_tb(sys.exc_info()[2])
             for (file, lineno, funcname, text) in traceList:
-                info_logger.error("Occur error, func:%s,lineno:%s, msg:%s" % (funcname, lineno, msg))
+                info_logger.error(
+                    "Occur error, func:%s,lineno:%s, msg:%s" %
+                    (funcname, lineno, msg))
             return None
     return func
 

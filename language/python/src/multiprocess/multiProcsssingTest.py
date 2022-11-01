@@ -1,5 +1,7 @@
 # coding:utf-8
 
+from basepackage.basemultilog import MultiProcessingLog
+from basepackage.baseparse import globalConfigParse
 import os
 import sys
 import time
@@ -7,10 +9,7 @@ import multiprocessing
 
 search_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.insert(0, search_path)
-from basepackage.baseparse import globalConfigParse
 globalConfigParse.setPythonpath()
-
-from basepackage.basemultilog import MultiProcessingLog
 
 
 def producer1(squeue, d1):

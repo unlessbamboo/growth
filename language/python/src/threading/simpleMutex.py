@@ -15,12 +15,11 @@ class B(object):
             m.release()
 
 
-
 mutex = threading.Lock()
 threads = []
 obj = B()
 for i in range(5):
-    t = threading.Thread(target=obj.parse, args=(i, i*10, mutex))
+    t = threading.Thread(target=obj.parse, args=(i, i * 10, mutex))
     threads.append(t)
     t.start()
 

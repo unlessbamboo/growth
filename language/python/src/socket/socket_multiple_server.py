@@ -38,11 +38,12 @@ def handle_context(conn, addr):
     print('请求数据:\n{}'.format('\n'.join('{}'.format(k) for k in str_request)))
     response = '\r\n'.join(response_param).encode('utf8')
     conn.send(response)
-    print('响应数据:\n{}'.format('\n'.join('{}'.format(k) for k in response_param)))
+    print('响应数据:\n{}'.format('\n'.join('{}'.format(k)
+          for k in response_param)))
     print('***' * 10)
     conn.close()
 
- 
+
 def main():
     """ 监听指定的端口, 启动一个简单的socket监听服务器 """
     serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -51,10 +52,10 @@ def main():
     serversocket.listen(10)
     # 设置为非阻塞模式
     #  serversocket.setblocking(0)
-    
+
     print('Start server: http://127.0.0.1:8000')
     thread_index = 1
-    try: 
+    try:
         while True:
             try:
                 print('~~~~~~~~~~~~~~~~')
@@ -63,8 +64,9 @@ def main():
                 if e.args[0] == errno.EAGAIN:
                     raise
                 continue
-            thread_index+=1
-            t = threading.Thread(target=handle_context, args=(conn, address), name='thread_{}'.format(thread_index))
+            thread_index += 1
+            t = threading.Thread(target=handle_context, args=(
+                conn, address), name='thread_{}'.format(thread_index))
             t.start()
     except BaseException as e:
         logging.exception(e)
@@ -75,7 +77,8 @@ def main():
 def streamPrint():
     console = logging.StreamHandler()
     console.setLevel(logging.INFO)
-    console.setFormatter(logging.Formatter('%(name)-12s: %(levelname)-8s %(message)s'))
+    console.setFormatter(logging.Formatter(
+        '%(name)-12s: %(levelname)-8s %(message)s'))
     logging.getLogger('').addHandler(console)
 
 

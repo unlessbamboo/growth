@@ -336,9 +336,11 @@ class OssLog(object):
         '''initialize'''
         # Logger dict
         self._loggerDict = {
-            'info': ['infoLogger', ['_hconsole', '_hfile', '_hunix', '_htcp']],
-            'error': ['errorLogger', ['_hconsole', '_hefile', '_heunix', '_hetcp']],
-        }
+            'info': [
+                'infoLogger', [
+                    '_hconsole', '_hfile', '_hunix', '_htcp']], 'error': [
+                'errorLogger', [
+                    '_hconsole', '_hefile', '_heunix', '_hetcp']], }
         # @注意这个顺序
         self._loggerList = ['_info', '_error']
 
@@ -524,7 +526,8 @@ class OssLog(object):
             for lg in self._loggerList:
                 x = getattr(self, lg)
                 # 打印handlers和拥有的过滤级别
-                #print lg, '+++', level, '+++', x.handlers, '+++',x.getEffectiveLevel()
+                # print lg, '+++', level, '+++', x.handlers,
+                # '+++',x.getEffectiveLevel()
                 x.log(level, msg)
         except Exception as e:
             raise
@@ -593,7 +596,7 @@ if __name__ == '__main__':
     #bak = DEFAULT_CONF_BAK+'xx'
     #os.rename(DEFAULT_CONF_BAK, bak)
 
-    #print "\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX测试1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    # print "\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX测试1XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     # if os.path.exists(DEFAULT_CONF):
     #    os.remove(DEFAULT_CONF)
     #shitlog = OssLog(False)
@@ -604,7 +607,8 @@ if __name__ == '__main__':
     # except Exception,e:
     #    print e
     # logging.disable(logging.NOTSET)
-    #print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX测试1结束XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    # print
+    # "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX测试1结束XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
     # '''
     #    ------------------测试默认日志配置文件的记录情况----------------
@@ -620,7 +624,7 @@ if __name__ == '__main__':
     #        文件error.log中输出一条错误日志
     # '''
     #os.rename(bak, DEFAULT_CONF_BAK)
-    #print "\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX测试2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    # print "\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX测试2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
     #shitlog = OssLog()
     # try:
     #    shitlog.writeLog(INFO, 'Info2222 msg')
@@ -628,7 +632,8 @@ if __name__ == '__main__':
     #    shitlog.writeLog(ERROR, 'error2222 msg')
     # except Exception,e:
     #    print e
-    #print "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX测试2结束XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    # print
+    # "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX测试2结束XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
     # '''
     #    ------------------测试日志配置文件更新后的日志记录情况----------------
@@ -639,4 +644,4 @@ if __name__ == '__main__':
     #        请自由定义
     # '''
     # os.remove(DEFAULT_CONF)
-    #print "\n\n"
+    # print "\n\n"

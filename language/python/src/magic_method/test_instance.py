@@ -1,7 +1,6 @@
 # coding:utf8
 
 
-
 class Desc(object):
     """Desc本身就是一个描述符，因为存在__get__, __set__方法"""
 

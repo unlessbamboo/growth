@@ -19,12 +19,12 @@ def usage():
         -e or --end
             please input a end test case number.
 
-    For more info visit http://www.unlessbamboo.com.cn/"""
+    For more info visit http://www.unlessbamboo.top/"""
     print(usage_doc)
 
 
-def getCliOptions(argv):
-    """getCliOptions:get command options
+def get_cli_options(argv):
+    """get_cli_options:get command options
 
     :param argv:
     """
@@ -32,7 +32,7 @@ def getCliOptions(argv):
     short_opt = "m:s:e"
     long_opt = ["list", "module=", "start=", "end=", "lisa"]
     try:
-        opts, args = getopt.getopt(sys.argv[1:], short_opt, long_opt)
+        opts, args = getopt.getopt(argv[1:], short_opt, long_opt)
     except getopt.GetoptError as msg:
         print("Occur error, msg:{0}".format(msg))
         usage()
@@ -47,4 +47,4 @@ def getCliOptions(argv):
 
 
 if __name__ == "__main__":
-    getCliOptions(sys.argv)
+    get_cli_options(sys.argv)

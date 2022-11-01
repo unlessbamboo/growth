@@ -64,7 +64,14 @@ def sortdir(path, sort_cond='mtime', sort_filter=None,
 
     if onlyfn:
         # if onlyfn is True, return [filename1, filename2, ...]
-        return [e[0] for e in _sortdir(path, f_sort_cond, f_sf, reverse, abspath, postfix)]
+        return [
+            e[0] for e in _sortdir(
+                path,
+                f_sort_cond,
+                f_sf,
+                reverse,
+                abspath,
+                postfix)]
     else:
         return _sortdir(path, f_sort_cond, f_sf, reverse, abspath, postfix)
 

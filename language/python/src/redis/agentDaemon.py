@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # coding:utf-8
+from basepackage.baselog import globalLog
 import os
 import sys
 import atexit
@@ -9,8 +10,6 @@ from signal import SIGTERM
 # set root directory
 package_path = os.getcwd() + '/../'
 sys.path.append(package_path)
-
-from basepackage.baselog import globalLog
 
 
 class Daemon(object):
@@ -38,8 +37,9 @@ class Daemon(object):
             if pid > 0:
                 sys.exit(0)
         except OSError as e:
-            globalLog.getError().log(globalLog.ERROR,
-                                     "fork #1 failed: %d (%s)\n" % (e.errno, e.strerror))
+            globalLog.getError().log(
+                globalLog.ERROR, "fork #1 failed: %d (%s)\n" %
+                (e.errno, e.strerror))
             sys.exit(1)
 
         # decouple from parent environment
@@ -53,8 +53,9 @@ class Daemon(object):
             if pid > 0:
                 sys.exit(0)
         except OSError as e:
-            globalLog.getError().log(globalLog.ERROR,
-                                     "fork #2 failed: %d (%s)\n" % (e.errno, e.strerror))
+            globalLog.getError().log(
+                globalLog.ERROR, "fork #2 failed: %d (%s)\n" %
+                (e.errno, e.strerror))
             sys.exit(1)
 
         # redirect standard file descriptors

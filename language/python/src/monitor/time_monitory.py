@@ -3,6 +3,7 @@
 """
     时间处理测试函数
 """
+import sys
 import datetime
 import timeit
 import requests
@@ -28,7 +29,6 @@ def with_index_reverse(nowtime):
         nowtime.hour, nowtime.minute, nowtime.second)
 
 
-import sys
 CURRENT_TIME = datetime.datetime.now()
 
 

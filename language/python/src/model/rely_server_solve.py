@@ -2,9 +2,11 @@
 # coding:utf8
 
 
+import rely_client_solve
+
+
 def display():
     print('I am server')
 
 
-import rely_client_solve
 rely_client_solve.clientTest()

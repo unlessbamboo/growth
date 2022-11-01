@@ -39,7 +39,10 @@ def parse():
             new_occur_time = new_occur_time - \
                 relativedelta(minutes=new_occur_time.minute % 5)
             new_occur_time = new_occur_time.strftime('%Y%m%d%H%M%S')[:-2]
-            new_data.setdefault(new_occur_time, set([])).update(set(enable_times))
+            new_data.setdefault(
+                new_occur_time, set(
+                    [])).update(
+                set(enable_times))
         new_data = {str(key): list(value) for key, value in new_data.items()}
 
         # 时间排序
@@ -47,8 +50,10 @@ def parse():
         for occur_time, enable_times in new_data.items():
             new_enable_times = []
             for enable_time in enable_times:
-                enable_time_dt = datetime.datetime.strptime(enable_time, '%H:%M %A %B %d, %Y')
-                new_enable_times.append(enable_time_dt.strftime('%Y%m%d%H%M%S')[:-2])
+                enable_time_dt = datetime.datetime.strptime(
+                    enable_time, '%H:%M %A %B %d, %Y')
+                new_enable_times.append(
+                    enable_time_dt.strftime('%Y%m%d%H%M%S')[:-2])
             last_data[occur_time] = sorted(new_enable_times)
 
         with open(new_filename, 'w') as fd:
@@ -77,7 +82,8 @@ def generate_one_graph(title, image_file, data):
         avaliable_time_map = {}
         for avaliable_time in avaliable_times:
             available_date = avaliable_time[:-2]
-            avaliable_time_map[available_date] = avaliable_time_map.get(available_date, 0) + 1
+            avaliable_time_map[available_date] = avaliable_time_map.get(
+                available_date, 0) + 1
 
         for available_date, num in avaliable_time_map.items():
             if available_date not in origin_data:
@@ -102,7 +108,12 @@ def generate_one_graph(title, image_file, data):
     y_offset = np.zeros(len(columns))
     cell_text = []
     for row in range(n_rows):
-        plt.bar(index, table_rows[row], bar_width, bottom=y_offset, color=colors[row])
+        plt.bar(
+            index,
+            table_rows[row],
+            bar_width,
+            bottom=y_offset,
+            color=colors[row])
         y_offset = y_offset + table_rows[row]
         cell_text.append(['%d' % x for x in y_offset])
     print('{} {} {}'.format(image_file, rows, columns))
