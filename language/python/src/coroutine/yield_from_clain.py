@@ -9,7 +9,8 @@ Result = namedtuple('Result', 'count average')
 
 
 def averager():
-    """ 求取平均值, 根据send过来的值不断进行累加并返回平均值 """
+    """ 子生成器: 求取平均值, 根据send过来的值不断进行累加并返回平均值 """
+    print('Go into average generator...')
     count = total = 0.0
     while True:
         term = yield 'test'  # 这里'test'仅仅作为测试使用
@@ -22,26 +23,29 @@ def averager():
 
 def grouper(results, key):
     """ 双管道, 会自动将main中send的值传递给averager,
-    在averager最终return之后才会返回表达式本身的值.
+    在averager最终return之后才会返回表达式本身的值, 其他使用作为一个数据传输管道
     """
-    while True:
-        results[key] = yield from averager()
+    results[key] = yield from averager()
     print('---Grouper结束运行---')
+    return '委托end'
 
 
-def main(data):
+def main(_data):
     """ 统计平均值入口函数 """
     results = {}
-    for key, values in data.items():
-        group = grouper(results, key)
-        # 实际上类似初始化, 会在averager的yield处停住.
-        # next返回averager中抛出的'test'值, 这里没用
-        next(group)
-        for value in values:
-            group.send(value)  # 这个语句本身会返回'test'
-        group.send(None)  # 结束
+    for key, values in _data.items():
+        try:
+            group = grouper(results, key)
+            next(group)  # a. 初始化生成器(此时就开始进入子生成器), 注意, 这里相当于send(None)
+            for value in values:  # b. 进行数据交互, 第一个send就开始进入average
+                group.send(value)  # 'test'
+            group.send(None)  # c. 将子生成器退出
+        except Exception as msg:
+            print(F'委托生成器最终的返回值:{msg}')
+        finally:
+            print('\n')
     # 虽然程序最后结束了, 但是grouper以及averager生成器并没有结束.
-    print(json.dumps(results, indent=2))
+    print(f'最终的输入结果:\n{json.dumps(results, indent=2)}')
 
 
 if __name__ == '__main__':

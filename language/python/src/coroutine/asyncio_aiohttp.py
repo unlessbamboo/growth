@@ -1,20 +1,8 @@
 """ 协程异步任务
 note1: 协程中不要涉及数据库操作, 否则需要安装sqlalchemy协程支持包
-test:
-    from app.utils.bamboo_asyncio import *
-    bamboo_asyncio = BambooAsyncio()
-    for i in range(100):
-        bamboo_asyncio.add_task(test_cb, f'user{i}', i)
-
-    for i in range(50):
-        bamboo_asyncio.add_task(test_request)
-
-    bamboo_asyncio.run()
 """
 import asyncio
 import time
-
-from flask import current_app
 
 
 async def test_cb(user, uid, country='china', nation='汉族'):
@@ -43,7 +31,7 @@ class BambooAsyncio:
 
     def run(self):
         # 1. 初始化
-        current_app.logger.info(f'Bamboo asyncio简单异步处理任务: running')
+        print('Bamboo asyncio简单异步处理任务: running')  # noqa
         start = int(time.time() * 1000)
 
         # 2. 启动并等待任务
@@ -52,7 +40,7 @@ class BambooAsyncio:
             event_loop = asyncio.get_event_loop()
             event_loop.run_until_complete(asyncio.wait(self.loop_tasks))
         except Exception as msg:
-            current_app.logger.exception(f'Bamboo asyncio简单异步处理任务异常:{msg}')
+            print(f'Bamboo asyncio简单异步处理任务异常:{msg}')
         finally:
             try:
                 event_loop.close()
@@ -61,5 +49,15 @@ class BambooAsyncio:
 
         # 3. 收尾
         end = int(time.time() * 1000)
-        current_app.logger.info(
-            f'Bamboo asyncio简单异步处理任务: end, 处理时长:{end - start} ms')
+        print(f'Bamboo asyncio简单异步处理任务: end, 处理时长:{end - start} ms')
+
+
+if __name__ == '__main__':
+    bamboo_asyncio = BambooAsyncio()
+    for i in range(100):
+        bamboo_asyncio.add_task(test_cb, f'user{i}', i)
+
+    for i in range(50):
+        bamboo_asyncio.add_task(test_request)
+
+    bamboo_asyncio.run()

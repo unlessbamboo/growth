@@ -1,3 +1,5 @@
+""" 其余更详细的例子见https://github.com/Big-universe-group/asyncio-ftwpd中说明. """
+
 import asyncio
 
 
@@ -5,7 +7,7 @@ async def sleepN(num):
     for _i in range(10):
         print(f'----------{_i}-------------')
         await asyncio.sleep(1)
-        print('IO结束, 回调开始{_i}======:{}'.format(num))
+        print(f'IO结束, 回调开始{_i}======:{num}')
 
     return 'End:{}'.format(num)
 

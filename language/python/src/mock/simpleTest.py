@@ -1,4 +1,6 @@
-# coding:utf-8
+"""
+热补丁的概念
+"""
 import os
 import unittest
 import os.path
